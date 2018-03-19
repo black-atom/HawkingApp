@@ -5,13 +5,16 @@ import { ComponentsModule } from '../../components';
 
 import { AtividadesPage } from './atividades';
 import { Atividade } from './components/atividade/atividade.component';
-import { ModalAtividadesComponent } from './components/modal-atividades/modal-atividades.component';
+import { AtividadesExecucaoComponent } from './components/segments/atividades-execucao/atividades-execucao.component';
+import { AtividadesPendentesComponent } from './components/segments/atividades-pendentes/atividades-pendentes.component';
+import { PopoverComponent } from './components/popover/popover.component';
 
 @NgModule({
   declarations: [
     Atividade,
     AtividadesPage,
-    ModalAtividadesComponent,
+    PopoverComponent,
+    PopoverComponent,
   ],
   imports: [
     ComponentsModule,
@@ -20,7 +23,7 @@ import { ModalAtividadesComponent } from './components/modal-atividades/modal-at
   entryComponents: [
     AtividadesPage,
     Atividade,
-    ModalAtividadesComponent,
+    PopoverComponent,
   ]
 })
 

@@ -13,7 +13,7 @@ import {
 } from '../../redux/reducers/atendimento.reducer'
 import { PopoverController } from 'ionic-angular';
 
-import { ModalAtividadesComponent } from './components/modal-atividades/modal-atividades.component';
+import { PopoverComponent } from './components/popover/popover.component';
 
 @Component({
   selector: 'atividades',
@@ -57,7 +57,7 @@ export class AtividadesPage {
   }
   
   presentPopover() {
-    let popover = this.popoverCtrl.create(ModalAtividadesComponent);
+    let popover = this.popoverCtrl.create(PopoverComponent);
     popover.present();
   }  
 

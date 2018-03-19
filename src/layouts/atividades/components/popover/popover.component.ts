@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 
 @Component({
-  selector: 'modal-atividades',
-  templateUrl: 'modal-atividades.html'
+  selector: 'popover',
+  templateUrl: 'popover.html'
 })
-export class ModalAtividadesComponent {
+export class PopoverComponent {
   constructor(public viewCtrl: ViewController) {}
 
   close() {
