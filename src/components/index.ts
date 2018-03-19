@@ -16,8 +16,8 @@ import { FabButtonComponent } from './fab-button/fab-button.component';
   declarations: [
     NavbarComponent,
     SideMenuComponent,
-    TabFooterComponent,
     FabButtonComponent,
+    TabFooterComponent,
   ],
   entryComponents: [
     NavbarComponent,

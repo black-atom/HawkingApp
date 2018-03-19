@@ -11,6 +11,9 @@ import {
   atendimentosPendentes,
   atendimentosEmAndamento
 } from '../../redux/reducers/atendimento.reducer'
+import { PopoverController } from 'ionic-angular';
+
+import { ModalAtividadesComponent } from './components/modal-atividades/modal-atividades.component';
 
 @Component({
   selector: 'atividades',
@@ -26,6 +29,7 @@ export class AtividadesPage {
   public changeAtendimentos$: Subject<string> = new Subject<string>();
 
   constructor(
+    public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     private store: Store<State>
   ) {
@@ -51,4 +55,10 @@ export class AtividadesPage {
         return this.atividades$ = this.store.select(atendimentosPendentes)
     }
   }
+  
+  presentPopover() {
+    let popover = this.popoverCtrl.create(ModalAtividadesComponent);
+    popover.present();
+  }  
+
 }

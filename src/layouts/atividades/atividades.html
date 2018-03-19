@@ -16,6 +16,7 @@
 </ion-header>
 
 <ion-content>
+
   <div [ngSwitch]="segmentRoot">
     <ion-list>
       <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>

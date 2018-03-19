@@ -5,11 +5,13 @@ import { ComponentsModule } from '../../components';
 
 import { AtividadesPage } from './atividades';
 import { Atividade } from './components/atividade/atividade.component';
+import { ModalAtividadesComponent } from './components/modal-atividades/modal-atividades.component';
 
 @NgModule({
   declarations: [
     Atividade,
     AtividadesPage,
+    ModalAtividadesComponent,
   ],
   imports: [
     ComponentsModule,
@@ -18,6 +20,7 @@ import { Atividade } from './components/atividade/atividade.component';
   entryComponents: [
     AtividadesPage,
     Atividade,
+    ModalAtividadesComponent,
   ]
 })
 
