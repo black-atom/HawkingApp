@@ -1,0 +1,32 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>Detalhes</ion-title>
+    </ion-navbar>
+
+  <ion-toolbar color="white">
+    <ion-segment [(ngModel)]="segmentRoot">
+      <ion-segment-button class="chamado-segment" value="cliente">
+        Cliente
+      </ion-segment-button>
+      <ion-segment-button class="chamado-segment" value="relatorio">
+        Relatório
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <div [ngSwitch]="segmentRoot">
+
+      <ion-list *ngSwitchCase="'cliente'">
+        <detail *ngIf="AtividadeDetail$ | async; let atendimento" [atendimento]="atendimento"></detail>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'relatorio'">
+        <h3>Fomulario de interação do tecnico aqui</h3>
+      </ion-list>
+
+    </div>
+
+</ion-content>

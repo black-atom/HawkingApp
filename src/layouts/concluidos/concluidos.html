@@ -4,11 +4,10 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let atividadeConcluida of atividadesConcluidas$ | async">
+  <ion-card *ngFor="let atividadeConcluida of atividadesConcluidas$ | async" text-wrap>
     <ion-item>
       <img src="assets/icon/checked.svg" item-left>
       <h2>{{ atividadeConcluida.cliente.nome_razao_social }}</h2>
-      <p>{{ atividadeConcluida.endereco.rua }}</p>
     </ion-item>
   </ion-card>
 

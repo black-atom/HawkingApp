@@ -5,6 +5,7 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Store } from '@ngrx/store';
 
+import API_URL from '../app/api';
 import { Atendimento, Assinatura } from '../models';
 import { State } from '../redux/reducers';
 
@@ -14,7 +15,7 @@ import { State } from '../redux/reducers';
 @Injectable()
 export class AtendimentoProvider {
 
-  private url = 'http://165.227.78.113:3000/api/atendimentos';
+  private url = `${API_URL}/api/atendimentos`;
 
   constructor(public http: AuthHttp, private store: Store<State>) { }
 

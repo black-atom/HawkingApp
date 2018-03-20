@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Atendimento } from '../../../../models';
+import { NavController } from 'ionic-angular';
 
+import { AtividadeDetail } from './../../../../components/atividade-detail/atividade-detail.component';
+import { Atendimento } from '../../../../models';
 
 @Component({
   selector: 'atividade',
@@ -11,6 +13,12 @@ export class Atividade {
   @Input()
   Atividade: Atendimento;
 
-  constructor() {  }
+  constructor(
+    public navCtrl: NavController,
+  ) {  }
+
+  openAtividadeDetail( id ){
+    this.navCtrl.push(AtividadeDetail, { id });
+  }
 
 }

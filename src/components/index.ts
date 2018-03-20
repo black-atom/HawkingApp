@@ -1,5 +1,7 @@
-import { IonicPageModule } from 'ionic-angular';
 import { NgModule } from '@angular/core';
+import { IonicPageModule } from 'ionic-angular';
+
+import { AtividadeDetailModule } from './atividade-detail/atividade-detail.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SideMenuComponent } from './sidemenu/sidemenu.component';
@@ -8,7 +10,8 @@ import { FabButtonComponent } from './fab-button/fab-button.component';
 
 @NgModule({
   imports:[
-    IonicPageModule
+    IonicPageModule,
+    AtividadeDetailModule,
   ],
   declarations: [
     NavbarComponent,
@@ -16,11 +19,15 @@ import { FabButtonComponent } from './fab-button/fab-button.component';
     TabFooterComponent,
     FabButtonComponent,
   ],
+  entryComponents: [
+    NavbarComponent,
+  ],
   exports: [
     NavbarComponent,
     SideMenuComponent,
     TabFooterComponent,
     FabButtonComponent,
+    AtividadeDetailModule,
   ]
 })
-export class ComponentsModule{}
+export class ComponentsModule { }

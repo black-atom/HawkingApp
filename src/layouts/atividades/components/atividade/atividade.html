@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card (click)="openAtividadeDetail(Atividade?._id)">
   <ion-item text-wrap>
    <img  [src]="Atividade?.interacao_tecnico.estado === '' ? 'assets/icon/company.svg' : 'assets/icon/warning.svg'" item-left>
     <h5>{{ Atividade?.cliente.nome_razao_social | uppercase }}</h5>

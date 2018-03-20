@@ -1,0 +1,101 @@
+
+<!-- info-cliente -->
+<ion-list>
+
+    <ion-item no-lines>
+      <h3>Dados Cliente</h3>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <h4>{{ atendimento?.cliente.nome_razao_social | uppercase }}</h4>
+      <p>{{ atendimento?.cliente.cnpj_cpf }}</p>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <h2>Contato</h2>
+      <p *ngIf="atendimento?.contato.nome">{{ atendimento?.contato.nome }}</p>
+      <p *ngIf="atendimento?.contato.telefone">{{ atendimento?.contato.telefone }}</p>
+    </ion-item>
+
+    <ion-item text-wrap>
+      <h4>Endereço</h4>
+      <p>
+        {{ atendimento?.endereco.rua | uppercase }},
+        <span *ngIf="atendimento?.endereco.numero !== 'NULL'">
+          {{ atendimento?.endereco.numero }},
+        </span>
+        {{ atendimento?.endereco.bairro | uppercase }},
+        {{ atendimento?.endereco.cidade | uppercase }} -
+        {{ atendimento?.endereco.uf | uppercase }},
+        {{ atendimento?.endereco.cep }}
+      </p>
+    </ion-item>
+
+    <ion-item text-wrap *ngIf="atendimento?.ponto_referencia">
+      <h4>Ponto de Referência</h4>
+      <p>{{ atendimento?.ponto_referencia }}</p>
+    </ion-item>
+
+    <ion-item text-wrap *ngIf="atendimento?.estacionamento">
+      <h4>Estacionamento</h4>
+      <p>{{ atendimento?.estacionamento }}</p>
+    </ion-item>
+
+    <ion-item text-wrap *ngIf="atendimento?.Observacao">
+      <h4>Observação do chamado</h4>
+      <p>{{ atendimento?.Observacao }}</p>
+    </ion-item>
+
+  </ion-list>
+  <!-- info-cliente -->
+
+  <!-- info-atendimento -->
+    <ion-list>
+      <ion-item no-lines>
+        <h3>Dados do Chamado</h3>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <h4>Aberto Por:</h4>
+        <p>{{ atendimento?.createdBy | uppercase }}</p>
+      </ion-item>
+
+      <ion-item>
+        <h4>Tipo de Serviço</h4>
+        <p>
+          {{ atendimento?.tipo }}
+          <span *ngIf="atendimento?.garantia">
+            - {{ atendimento?.endereco.garantia | date: 'dd/MM/yyyy' }}
+          </span>
+          <span *ngIf="atendimento?.valor">
+            - R$ {{ atendimento?.valor }}
+          </span>
+          <span *ngIf="atendimento?.autorizado">
+            - {{ atendimento?.autorizado | uppercase }}
+          </span>
+        </p>
+      </ion-item>
+
+
+      <ion-item text-wrap>
+        <h4>Modelo do equipamento</h4>
+        <p>
+          {{ atendimento?.modelo_equipamento }}
+          <span *ngIf="atendimento?.numero_equipamento">
+            - N.º {{ atendimento?.numero_equipamento }}
+          </span>
+        </p>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <h4>Descrição do chamado</h4>
+        <p>{{ atendimento?.descricao }}</p>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <h4>Testes efetuados</h4>
+        <p>{{atendimento?.testes_efetuados}}</p>
+      </ion-item>
+
+    </ion-list>
+  <!-- info-atendimento -->

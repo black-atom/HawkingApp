@@ -6,10 +6,13 @@ import { AuthHttp } from 'angular2-jwt';
 
 import { Monitoramento } from './../models';
 
+import API_URL from '../app/api';
+
+
 @Injectable()
 export class MonitoramentoProvider {
 
-  private url = 'http://165.227.78.113:3000/api/monitoramentos';
+  private url = `${API_URL}/api/monitoramentos`;
 
   constructor(private http: AuthHttp) {  }
 

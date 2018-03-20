@@ -143,7 +143,8 @@ export const atendimentosEmAndamento = (state: State) => {
       date_Parse === date &&
       monthParse === month &&
       yearParse === year &&
-      atendimento.interacao_tecnico.estado !== ''
+      atendimento.interacao_tecnico.estado !== '' &&
+      atendimento.interacao_tecnico.estado !== 'fim_do_atendimento'
     ) return true;
     return  false;
   })
