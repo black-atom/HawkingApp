@@ -4,28 +4,10 @@ atividades {
       padding: 0 !important;
       margin: 0 !important;
       ion-segment {
-
         ion-segment-button {
           padding: 0 !important;
           margin-bottom: -10px !important;
         }
-      }
-    }
-
-    ion-card {
-      img {
-        height: 70px;
-        width: 70px;
-      }
-      h2 {
-        color: #333 !important;
-        font-family: 'Montserrat', sans-serif;
-      }
-      p {
-        color: #666 !important;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 13px;
-        line-height: 20px;
       }
     }
   }

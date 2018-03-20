@@ -1,7 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { RetriveAtendimento } from './../../redux/reducers/atendimento.reducer';
-import { State } from '../../redux/reducers';
 
 @Component({
   selector: 'navbar',
@@ -15,8 +12,7 @@ export class NavbarComponent {
   @Output()
   refreshLoading = new EventEmitter();
 
-  constructor(private store: Store<State>) {
-  }
+  constructor() { }
 
   referesh() {
     this.refreshLoading.emit();

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
 import { Nav } from 'ionic-angular';
 
 import { AtividadesPage } from '../../layouts/atividades/atividades';
@@ -14,22 +14,31 @@ import { LoginPage } from './../../layouts/login/login';
   templateUrl: 'sidemenu.html'
 })
 export class SideMenuComponent {
-  @ViewChild(Nav) nav: Nav;
-  rootPage: any = AtividadesPage;
-  pages: Array<{title: string, component: any}>;
+
+  @Input()
+  content
+
+  @ViewChild(Nav)
+  nav: Nav;
+
+  public setPageRoot;
+
+  public rootPage: any = AtividadesPage;
+  public pages: Array<{title: string, component: any, icon: string}>;
 
   constructor() {
     this.pages = [
-      { title: 'Login', component: LoginPage },
-      { title: 'Serviços', component: AtividadesPage },
-      { title: 'Serviços Concluídos', component: ConcluidosPage },
-      { title: 'Perfil', component: PerfilPage },
-      { title: 'Reembolsos', component: ReembolsosPage },
-      { title: 'Suporte', component: SuportePage }
+      { title: 'Login', component: LoginPage, icon: 'md-checkbox' },
+      { title: 'Serviços', component: AtividadesPage, icon: 'md-checkbox' },
+      { title: 'Serviços Concluídos', component: ConcluidosPage, icon: 'md-checkbox' },
+      { title: 'Perfil', component: PerfilPage, icon: 'md-contact' },
+      { title: 'Reembolsos', component: ReembolsosPage, icon: 'logo-usd' },
+      { title: 'Suporte', component: SuportePage, icon: 'md-help-circle' }
     ];
   }
 
-  openPage(page) {
-    this.nav.setRoot(page.component);
+  openPage() {
+    console.log(this.setPageRoot);
+    this.nav.setRoot(this.setPageRoot.component);
   }
 }

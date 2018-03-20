@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 import { Store } from "@ngrx/store";
 

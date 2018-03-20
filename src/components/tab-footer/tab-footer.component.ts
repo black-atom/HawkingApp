@@ -17,7 +17,5 @@ export class TabFooterComponent {
   tab3Root = LoginPage;
   tab4Root = SuportePage;
 
-  constructor() {
-
-  }
+  constructor() { }
 }

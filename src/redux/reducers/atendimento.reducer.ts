@@ -35,7 +35,6 @@ export class RetriveAtendimentoFailed implements Action{
   readonly type: string = RETRIEVE_ATENDIMENTOS_FAILED;
 }
 
-
 export class EditarAtendimento implements Action{
   readonly type: string = EDITAR_ATENDIMENTO;
   constructor(public payload: Atendimento) { }
@@ -55,7 +54,6 @@ export class SyncAtendimentosFailed implements Action{
   readonly type: string = SYNC_ATENDIMENTOS_FAILED;
   constructor(public payload: Atendimento) { }
 }
-
 
 export class AdicionarPerguntas implements Action{
   readonly type: string = ADICIONAR_PERGUNTAS;
@@ -130,7 +128,22 @@ export const atendimentosPendentes = (state: State) => {
       date_Parse === date &&
       monthParse === month &&
       yearParse === year &&
-      atendimento.interacao_tecnico.estado !== 'fim_do_atendimento'
+      atendimento.interacao_tecnico.estado === ''
+    ) return true;
+    return  false;
+  })
+}
+
+export const atendimentosEmAndamento = (state: State) => {
+
+  return state.atendimentos.atendimentos.filter(atendimento => {
+    const { date, month, year } = dateToday();
+    const { date: date_Parse, month: monthParse, year: yearParse } = dateParse(atendimento.data_atendimento);
+    if(
+      date_Parse === date &&
+      monthParse === month &&
+      yearParse === year &&
+      atendimento.interacao_tecnico.estado !== ''
     ) return true;
     return  false;
   })

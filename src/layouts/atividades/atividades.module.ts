@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
-import { AtividadesPage } from './atividades';
 import { ComponentsModule } from '../../components';
-import { AtividadesPendentesComponent } from './components/atividades-pendentes/atividades-pendentes.component';
-import { AtividadesExecucaoComponent } from './components/atividades-execucao/atividades-execucao.component';
+
+import { AtividadesPage } from './atividades';
+import { Atividade } from './components/atividade/atividade.component';
 
 @NgModule({
   declarations: [
+    Atividade,
     AtividadesPage,
-    AtividadesExecucaoComponent,
-    AtividadesPendentesComponent,
   ],
   imports: [
     ComponentsModule,
@@ -18,8 +17,7 @@ import { AtividadesExecucaoComponent } from './components/atividades-execucao/at
   ],
   entryComponents: [
     AtividadesPage,
-    AtividadesExecucaoComponent,
-    AtividadesPendentesComponent,
+    Atividade,
   ]
 })
 

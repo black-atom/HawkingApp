@@ -4,7 +4,7 @@
     </ion-icon>
   </navbar>
   <ion-toolbar color="white">
-    <ion-segment [(ngModel)]="segmentRoot">
+    <ion-segment [(ngModel)]="segmentRoot" (ionChange)="changeSementRoot()">
       <ion-segment-button class="chamado-segment" badge="3" badgeStyle="danger" value="pendentes">
         pendentes
       </ion-segment-button>
@@ -17,12 +17,10 @@
 
 <ion-content>
   <div [ngSwitch]="segmentRoot">
-    <ion-list *ngSwitchCase="'pendentes'">
-      <atividades-pendentes *ngFor="let atividade of atividadesPendentes$ | async" [AtividadePendente]="atividade"></atividades-pendentes>
-    </ion-list>
-    <ion-list *ngSwitchCase="'em-execucao'">
-      <atividades-execucao *ngFor="let atividade of atividadesPendentes$ | async" [AtividadePausada]="atividade"></atividades-execucao>
+    <ion-list>
+      <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
     </ion-list>
   </div>
+ <fab-button></fab-button>
 </ion-content>
 
