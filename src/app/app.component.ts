@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,24 +15,15 @@ import { SuportePage } from '../layouts/suporte/suporte';
   templateUrl: 'app.html'
 })
 export class MyApp implements OnInit {
-  @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  @ViewChild(Nav)
+  nav: Nav;
 
-  pages: Array<{title: string, component: any, icon: string}>;
+  // public rootPage: any = LoginPage;
 
   constructor(public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen) {
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Login', component: LoginPage, icon: 'md-checkbox' },
-      { title: 'Serviços', component: AtividadesPage, icon: 'md-checkbox' },
-      { title: 'Serviços Concluídos', component: ConcluidosPage, icon: 'md-checkbox' },
-      { title: 'Perfil', component: PerfilPage, icon: 'md-contact' },
-      { title: 'Reembolsos', component: ReembolsosPage, icon: 'logo-usd' },
-      { title: 'Suporte', component: SuportePage, icon: 'md-help-circle' }
-    ];
   }
 
   initializeApp() {
@@ -40,11 +31,6 @@ export class MyApp implements OnInit {
       this.statusBar.backgroundColorByHexString('#0E91D8');
       this.splashScreen.hide();
     });
-  }
-
-  openPage(page) {
-    console.log(page)
-    this.nav.setRoot(page.component);
   }
 
   ngOnInit(){
