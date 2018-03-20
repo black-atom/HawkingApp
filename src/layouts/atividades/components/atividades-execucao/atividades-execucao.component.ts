@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Atendimento } from '../../../../models/atendimento';
 
 @Component({
   selector: 'atividades-execucao',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AtividadesExecucaoComponent {
 
-  public title: string = "Abastecer";
+  @Input()
+  AtividadePausada: Atendimento;
 
   constructor() {
   }

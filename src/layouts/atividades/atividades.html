@@ -1,5 +1,8 @@
 <ion-header>
-  <navbar [titlePage]='title'></navbar>
+  <navbar [titlePage]='title' (refreshLoading)="eventRefresh()">
+    <ion-icon name="add">
+    </ion-icon>
+  </navbar>
   <ion-toolbar color="white">
     <ion-segment [(ngModel)]="segmentRoot">
       <ion-segment-button class="chamado-segment" badge="3" badgeStyle="danger" value="pendentes">
@@ -15,10 +18,10 @@
 <ion-content>
   <div [ngSwitch]="segmentRoot">
     <ion-list *ngSwitchCase="'pendentes'">
-      <atividades-pendentes></atividades-pendentes>
+      <atividades-pendentes *ngFor="let atividade of atividadesPendentes$ | async" [AtividadePendente]="atividade"></atividades-pendentes>
     </ion-list>
     <ion-list *ngSwitchCase="'em-execucao'">
-      <atividades-execucao ></atividades-execucao>
+      <atividades-execucao *ngFor="let atividade of atividadesPendentes$ | async" [AtividadePausada]="atividade"></atividades-execucao>
     </ion-list>
   </div>
 </ion-content>

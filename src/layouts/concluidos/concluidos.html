@@ -3,69 +3,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-row>
 
-        <ion-col col-12 class="nome-cliente">
-          <h2>
-            <strong>
-              CONEXÃO LOCAL LTDA
-            </strong>
-          </h2>
-        </ion-col>
-      </ion-row>
-
-
-    </ion-card-header>
-
-
-    <ion-card-content>
-      <ion-list>
-        <ion-row>
-          <ion-col col-12>
-            <p>
-              <ion-icon name="pin" color="primary"></ion-icon>
-              Rua Fernando Lourenço,237 - 08320-420
-            </p>
-          </ion-col>
-
-        </ion-row>
-
-      </ion-list>
-    </ion-card-content>
+  <ion-card *ngFor="let atividadeConcluida of atividadesConcluidas$ | async">
+    <ion-item>
+      <img src="assets/icon/checked.svg" item-left>
+      <h2>{{ atividadeConcluida.cliente.nome_razao_social }}</h2>
+      <p>{{ atividadeConcluida.endereco.rua }}</p>
+    </ion-item>
   </ion-card>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-row>
 
-        <ion-col col-12 class="nome-cliente">
-          <h2>
-            <strong>
-              CONEXÃO LOCAL LTDA
-            </strong>
-          </h2>
-        </ion-col>
-      </ion-row>
-
-
-    </ion-card-header>
-
-
-    <ion-card-content>
-      <ion-list>
-        <ion-row>
-          <ion-col col-12>
-            <p>
-              <ion-icon name="pin" color="primary"></ion-icon>
-              Rua Fernando Lourenço,237 - 08320-420
-            </p>
-          </ion-col>
-
-        </ion-row>
-
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
 </ion-content>

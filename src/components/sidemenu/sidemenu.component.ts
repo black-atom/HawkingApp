@@ -6,6 +6,8 @@ import { ConcluidosPage } from '../../layouts/concluidos/concluidos';
 import { PerfilPage } from '../../layouts/perfil/perfil';
 import { ReembolsosPage } from '../../layouts/reembolsos/reembolsos';
 import { SuportePage } from '../../layouts/suporte/suporte';
+import { LoginPage } from './../../layouts/login/login';
+
 
 @Component({
   selector: 'sidemenu',
@@ -18,6 +20,7 @@ export class SideMenuComponent {
 
   constructor() {
     this.pages = [
+      { title: 'Login', component: LoginPage },
       { title: 'Serviços', component: AtividadesPage },
       { title: 'Serviços Concluídos', component: ConcluidosPage },
       { title: 'Perfil', component: PerfilPage },

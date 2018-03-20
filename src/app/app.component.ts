@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AtividadesPage } from '../layouts/atividades/atividades';
 import { ConcluidosPage } from '../layouts/concluidos/concluidos';
 import { PerfilPage } from '../layouts/perfil/perfil';
+import { LoginPage } from '../layouts/login/login';
 import { ReembolsosPage } from '../layouts/reembolsos/reembolsos';
 import { SuportePage } from '../layouts/suporte/suporte';
 
@@ -16,7 +17,7 @@ import { SuportePage } from '../layouts/suporte/suporte';
 export class MyApp implements OnInit {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = AtividadesPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any, icon: string}>;
 
@@ -25,6 +26,7 @@ export class MyApp implements OnInit {
               public splashScreen: SplashScreen) {
     // used for an example of ngFor and navigation
     this.pages = [
+      { title: 'Login', component: LoginPage, icon: 'md-checkbox' },
       { title: 'Serviços', component: AtividadesPage, icon: 'md-checkbox' },
       { title: 'Serviços Concluídos', component: ConcluidosPage, icon: 'md-checkbox' },
       { title: 'Perfil', component: PerfilPage, icon: 'md-contact' },
@@ -41,6 +43,7 @@ export class MyApp implements OnInit {
   }
 
   openPage(page) {
+    console.log(page)
     this.nav.setRoot(page.component);
   }
 

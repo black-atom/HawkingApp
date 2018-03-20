@@ -1,15 +1,8 @@
-<ion-card>
-  <ion-item>
-    <img src="assets/icon/restaurant.svg" item-left>
-    <h2>Almoço</h2>
-    <p>início - 14h30</p>
-  </ion-item>
-</ion-card>
-<ion-card>
-  <ion-item>
-    <img src="assets/icon/gas-station.svg" item-left>
-    <h2>Abastecimento</h2>
-    <p>início - 14h50 | fim  - 14h55</p>
-  </ion-item>
-</ion-card>
 
+<ion-card>
+  <ion-item>
+    <img src="assets/icon/company.svg" item-left>
+    <h2>{{ AtividadePausada?.cliente.nome_razao_social }}</h2>
+    <p>{{ AtividadePausada?.endereco.rua }}</p>
+  </ion-item>
+</ion-card>

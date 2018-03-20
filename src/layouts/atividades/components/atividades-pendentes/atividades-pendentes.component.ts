@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Atendimento } from '../../../../models';
 
 @Component({
   selector: 'atividades-pendentes',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AtividadesPendentesComponent  {
 
-  constructor() {
-  }
+  @Input()
+  AtividadePendente: Atendimento;
+
+  constructor() {  }
 
 }
