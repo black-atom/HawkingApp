@@ -22,6 +22,6 @@
       <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
     </ion-list>
   </div>
- <fab-button></fab-button>
+ <fab-button (actionButton)="presentPopover()" [iconName]="fabIcon" ></fab-button>
 </ion-content>
 

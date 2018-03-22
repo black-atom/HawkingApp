@@ -1,20 +1,6 @@
-<ion-fab right bottom>
+<ion-fab right bottom (click)="actionButton.next()">
   <button ion-fab color="primary">
-    <ion-icon name="add">
+    <ion-icon name="{{ iconName }}">
     </ion-icon>
   </button>
-  <ion-fab-list side="top">
-      <button ion-fab (click)="AbrirModalAlmocar()">
-        <img src="assets/icon/restaurant.svg">
-      </button>
-    <button ion-fab (click)="AbrirModalAbastecer()">
-      <img src="assets/icon/gas-station.svg">
-    </button>
-    <button ion-fab (click)="AbrirModalVoltarEmpresa()">
-      <img src="assets/icon/company.svg">
-    </button>
-    <button ion-fab (click)="AbrirModalOutros()">
-      <img src="assets/icon/task.svg">
-    </button>
-  </ion-fab-list>
 </ion-fab>

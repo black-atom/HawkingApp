@@ -24,6 +24,7 @@ export class AtividadesPage {
   public segmentRoot: string = 'pendentes';
 
   public title = 'Atividades';
+  public fabIcon = 'add';
 
   public atividades$: Observable<Atendimento[]>;
   public changeAtendimentos$: Subject<string> = new Subject<string>();
@@ -55,10 +56,10 @@ export class AtividadesPage {
         return this.atividades$ = this.store.select(atendimentosPendentes)
     }
   }
-  
+
   presentPopover() {
     let popover = this.popoverCtrl.create(PopoverComponent);
     popover.present();
-  }  
+  }
 
 }

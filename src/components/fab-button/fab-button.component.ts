@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'fab-button',
-  templateUrl: 'fab-button.html'
+  templateUrl: 'fab-button.html',
 })
 export class FabButtonComponent {
 
-  constructor() {
+  @Output()
+  actionButton = new EventEmitter();
 
-  }
+  @Input()
+  iconName: string;
+
+  constructor() {}
 
 }
