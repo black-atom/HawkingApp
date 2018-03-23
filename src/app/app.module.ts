@@ -39,7 +39,7 @@ export function getAuthHttp(http) {
     ComponentsModule,
     HttpModule,
     ReduxModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, { tabsHideOnSubPages: 'true' }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
