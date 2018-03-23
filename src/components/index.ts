@@ -7,27 +7,35 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SideMenuComponent } from './sidemenu/sidemenu.component';
 import { TabFooterComponent } from './tab-footer/tab-footer.component';
 import { FabButtonComponent } from './fab-button/fab-button.component';
+import { PopoverComponent } from './popover/popover.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   imports:[
-    IonicPageModule,
     AtividadeDetailModule,
+    IonicPageModule,
   ],
   declarations: [
-    NavbarComponent,
-    SideMenuComponent,
     FabButtonComponent,
+    NavbarComponent,
+    PopoverComponent,
+    SideMenuComponent,
     TabFooterComponent,
+    ModalComponent,
   ],
   entryComponents: [
     NavbarComponent,
+    PopoverComponent,
+    ModalComponent,
   ],
   exports: [
+    AtividadeDetailModule,
+    FabButtonComponent,
     NavbarComponent,
+    PopoverComponent,
     SideMenuComponent,
     TabFooterComponent,
-    FabButtonComponent,
-    AtividadeDetailModule,
-  ]
+    ModalComponent,
+  ],
 })
 export class ComponentsModule { }

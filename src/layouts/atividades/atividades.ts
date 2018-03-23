@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { PopoverController } from 'ionic-angular';
 import { Observable, Subject } from 'rxjs/Rx';
-import { AlertController } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 
 import { Atendimento } from '../../models';
@@ -9,15 +9,14 @@ import { State } from '../../redux/reducers';
 import {
   RetriveAtendimento,
   atendimentosPendentes,
-  atendimentosEmAndamento
-} from '../../redux/reducers/atendimento.reducer'
-import { PopoverController } from 'ionic-angular';
+  atendimentosEmAndamento,
+} from '../../redux/reducers/atendimento.reducer';
 
-import { PopoverComponent } from './components/popover/popover.component';
+import { PopoverComponent } from '../../components/popover/popover.component';
 
 @Component({
   selector: 'atividades',
-  templateUrl: 'atividades.html'
+  templateUrl: 'atividades.html',
 })
 export class AtividadesPage {
 
@@ -29,10 +28,32 @@ export class AtividadesPage {
   public atividades$: Observable<Atendimento[]>;
   public changeAtendimentos$: Subject<string> = new Subject<string>();
 
+  public buttonProperties = [
+    {
+      name: 'Almoço',
+      imgPath: 'assets/icon/restaurant.svg',
+      pageType: '',
+    },
+    {
+      name: 'Almoço',
+      imgPath: 'assets/icon/restaurant.svg',
+      pageType: '',
+    },
+    {
+      name: 'Almoço',
+      imgPath: 'assets/icon/restaurant.svg',
+      pageType: '',
+    },
+    {
+      name: 'Almoço',
+      imgPath: 'assets/icon/restaurant.svg',
+      pageType: '',
+    },
+  ];
+
   constructor(
     public popoverCtrl: PopoverController,
-    public alertCtrl: AlertController,
-    private store: Store<State>
+    private store: Store<State>,
   ) {
 
   }
@@ -47,19 +68,21 @@ export class AtividadesPage {
 
   swichtMapToGetAtividadesOfTab () {
     this.store.dispatch(new RetriveAtendimento());
-    switch(this.segmentRoot) {
+    switch (this.segmentRoot) {
       case 'pendentes':
-        return this.atividades$ = this.store.select(atendimentosPendentes)
+        return this.atividades$ = this.store.select(atendimentosPendentes);
       case 'em-execucao':
-        return this.atividades$ = this.store.select(atendimentosEmAndamento)
+        return this.atividades$ = this.store.select(atendimentosEmAndamento);
       default:
-        return this.atividades$ = this.store.select(atendimentosPendentes)
+        return this.atividades$ = this.store.select(atendimentosPendentes);
     }
   }
 
   presentPopover() {
-    let popover = this.popoverCtrl.create(PopoverComponent);
+    const popover = this.popoverCtrl.create(
+      PopoverComponent,
+      { buttonProperties: this.buttonProperties },
+    );
     popover.present();
   }
-
 }

@@ -5,17 +5,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
 })
 export class MyApp implements OnInit {
 
   @ViewChild(Nav)
   nav: Nav;
 
-  constructor(public platform: Platform,
-              public statusBar: StatusBar,
-              public splashScreen: SplashScreen) {
-  }
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+  ) { }
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -24,7 +25,7 @@ export class MyApp implements OnInit {
     });
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.initializeApp();
   }
 
