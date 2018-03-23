@@ -1,0 +1,21 @@
+tool-bar-actions {
+  ion-header{
+    background: #039EF2 !important;
+    .tools {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+    }
+    .tool-item, p {
+      ion-icon {
+        font-size: 20px !important;
+      }
+      color: white !important;
+    }
+    .tool-item :hover {
+      opacity: 0.5;
+    }
+  }
+}

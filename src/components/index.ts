@@ -1,4 +1,3 @@
-import { ContentModalOutros } from './modal/content-modal/content-modal-outros/content-modal-outros';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
@@ -10,9 +9,27 @@ import { TabFooterComponent } from './tab-footer/tab-footer.component';
 import { FabButtonComponent } from './fab-button/fab-button.component';
 import { PopoverComponent } from './popover/popover.component';
 import { ModalComponent } from './modal/modal.component';
-import { ContentModalAtendimento } from './modal/content-modal/content-modal-atendimento/content-modal-atendimento';
-import { ContentModalAlmocoAbastecimentoEmpresa } from './modal/content-modal/content-modal-almoco-abastecimento-empresa/content-modal-almoco-abastecimento-empresa';
-import { ContentModalRelatorioTecnico } from './modal/content-modal/content-modal-relatorio-tecnico/content-modal-relatorio-tecnico';
+
+import {
+  ContentModalAtendimento,
+} from './modal/content-modal/content-modal-atendimento/content-modal-atendimento';
+
+import {
+  ContentModalAlmocoAbastecimentoEmpresa,
+} from './modal/content-modal/content-modal-almoco-abastecimento-empresa/content-modal-almoco-abastecimento-empresa';
+
+import {
+  ContentModalRelatorioTecnico,
+} from './modal/content-modal/content-modal-relatorio-tecnico/content-modal-relatorio-tecnico';
+
+import {
+  ContentModalOutros,
+} from './modal/content-modal/content-modal-outros/content-modal-outros';
+
+
+import { TimeLine } from './time-line/time-line';
+import { ToolBarActions } from './tool-bar-actions/tool-bar-actions';
+
 
 @NgModule({
   imports:[
@@ -29,6 +46,8 @@ import { ContentModalRelatorioTecnico } from './modal/content-modal/content-moda
     PopoverComponent,
     SideMenuComponent,
     TabFooterComponent,
+    TimeLine,
+    ToolBarActions,
     ModalComponent,
   ],
   entryComponents: [
@@ -39,6 +58,8 @@ import { ContentModalRelatorioTecnico } from './modal/content-modal/content-moda
     ContentModalAlmocoAbastecimentoEmpresa,
     ContentModalOutros,
     ContentModalRelatorioTecnico,
+    TimeLine,
+    ToolBarActions,
   ],
   exports: [
     AtividadeDetailModule,
@@ -51,6 +72,8 @@ import { ContentModalRelatorioTecnico } from './modal/content-modal/content-moda
     PopoverComponent,
     SideMenuComponent,
     TabFooterComponent,
+    TimeLine,
+    ToolBarActions,
     ModalComponent,
   ],
 })
