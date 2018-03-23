@@ -15,7 +15,6 @@ export class AtividadeDetail {
   private AtividadeID: string;
   public AtividadeDetail$: Observable<Atendimento>;
   public title = 'Detalhes';
-  public segmentRoot = 'cliente';
 
   constructor(
     private navParams: NavParams,

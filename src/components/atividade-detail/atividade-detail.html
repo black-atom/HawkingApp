@@ -1,32 +1,29 @@
 <ion-header>
-
-    <ion-navbar color="primary">
-      <ion-title>Detalhes</ion-title>
-    </ion-navbar>
-
-  <ion-toolbar color="white">
-    <ion-segment [(ngModel)]="segmentRoot">
-      <ion-segment-button class="chamado-segment" value="cliente">
-        Cliente
-      </ion-segment-button>
-      <ion-segment-button class="chamado-segment" value="relatorio">
-        Relatório
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
+  <ion-navbar color="primary">
+    <ion-title>Detalhes</ion-title>
+  </ion-navbar>
+  <div class="tools" color="primary">
+    <div class="tool-item">
+      <ion-icon name="ios-flag-outline"></ion-icon>
+      <p>Km Inicial</p>
+    </div>
+    <div class="tool-item">
+      <ion-icon name="ios-flag"></ion-icon>
+      <p>Km Final</p>
+    </div>
+    <div class="tool-item">
+      <ion-icon name="ios-play"></ion-icon>
+      <p>Iniciar</p>
+    </div>
+    <div class="tool-item">
+      <ion-icon name="ios-more"></ion-icon>
+      <p>Mais</p>
+    </div>
+  </div>
 </ion-header>
 
 <ion-content >
-    <div [ngSwitch]="segmentRoot">
-
-      <ion-list *ngSwitchCase="'cliente'">
-        <detail *ngIf="AtividadeDetail$ | async; let atendimento" [atendimento]="atendimento"></detail>
-      </ion-list>
-
-      <ion-list *ngSwitchCase="'relatorio'">
-        <h3>Fomulario de interação do tecnico aqui</h3>
-      </ion-list>
-
-    </div>
-
+  <ion-list>
+    <detail *ngIf="AtividadeDetail$ | async; let atendimento" [atendimento]="atendimento"></detail>
+  </ion-list>
 </ion-content>

@@ -20,8 +20,6 @@ import { PopoverComponent } from '../../components/popover/popover.component';
 })
 export class AtividadesPage {
 
-  public segmentRoot: string = 'pendentes';
-
   public title = 'Atividades';
   public fabIcon = 'add';
 
@@ -35,17 +33,17 @@ export class AtividadesPage {
       pageType: '',
     },
     {
-      name: 'Almoço',
+      name: 'Outros',
       imgPath: 'assets/icon/restaurant.svg',
       pageType: '',
     },
     {
-      name: 'Almoço',
+      name: 'Empresa',
       imgPath: 'assets/icon/restaurant.svg',
       pageType: '',
     },
     {
-      name: 'Almoço',
+      name: 'Abastecimento',
       imgPath: 'assets/icon/restaurant.svg',
       pageType: '',
     },
@@ -63,19 +61,8 @@ export class AtividadesPage {
   }
 
   eventRefresh() {
-    this.swichtMapToGetAtividadesOfTab();
-  }
-
-  swichtMapToGetAtividadesOfTab () {
     this.store.dispatch(new RetriveAtendimento());
-    switch (this.segmentRoot) {
-      case 'pendentes':
-        return this.atividades$ = this.store.select(atendimentosPendentes);
-      case 'em-execucao':
-        return this.atividades$ = this.store.select(atendimentosEmAndamento);
-      default:
-        return this.atividades$ = this.store.select(atendimentosPendentes);
-    }
+    this.atividades$ = this.store.select(atendimentosPendentes);
   }
 
   presentPopover() {

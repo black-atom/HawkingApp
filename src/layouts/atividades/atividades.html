@@ -3,25 +3,22 @@
     <ion-icon name="add">
     </ion-icon>
   </navbar>
-  <ion-toolbar color="white">
-    <ion-segment [(ngModel)]="segmentRoot" (ionChange)="eventRefresh()">
-      <ion-segment-button class="chamado-segment" badge="3" badgeStyle="danger" value="pendentes">
-        pendentes
-      </ion-segment-button>
-      <ion-segment-button class="chamado-segment" value="em-execucao">
-        em execução
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <div [ngSwitch]="segmentRoot">
+    <ion-list-header> <h3>Em Execução</h3></ion-list-header>
     <ion-list>
       <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
     </ion-list>
-  </div>
- <fab-button (actionButton)="presentPopover()" [iconName]="fabIcon" ></fab-button>
-</ion-content>
 
+    <ion-list-header> <h3>Em Execução</h3></ion-list-header>
+    <ion-list>
+      <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
+    </ion-list>
+
+    <ion-list-header> <h3>Em Execução</h3></ion-list-header>
+    <ion-list>
+      <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
+    </ion-list>
+    <fab-button (actionButton)="presentPopover()" [iconName]="fabIcon"></fab-button>
+</ion-content>
