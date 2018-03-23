@@ -23,8 +23,8 @@ export class PopoverComponent {
     this.buttonProperties = navParms.get('buttonProperties');
   }
 
-  openModal(href) {
-    const modal = this.modalCtrl.create(ModalComponent);
+  openModal(pageType) {
+    const modal = this.modalCtrl.create(ModalComponent, { pageType });
     modal.present();
   }
 

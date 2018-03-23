@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Nav } from 'ionic-angular';
 
 import { AtividadesPage } from '../../layouts/atividades/atividades';
@@ -15,13 +15,8 @@ import { LoginPage } from './../../layouts/login/login';
 })
 export class SideMenuComponent {
 
-  @Input()
-  content
-
   @ViewChild(Nav)
   nav: Nav;
-
-  public setPageRoot;
 
   public rootPage: any = AtividadesPage;
   public pages: Array<{title: string, component: any, icon: string}>;
@@ -37,8 +32,8 @@ export class SideMenuComponent {
     ];
   }
 
-  openPage() {
-    console.log(this.setPageRoot);
-    this.nav.setRoot(this.setPageRoot.component);
+  openPage(pageSelecionada) {
+    const route = this.pages.find(page => page.component === pageSelecionada);
+    this.nav.setRoot(route.component);
   }
 }

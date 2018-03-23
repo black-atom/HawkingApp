@@ -30,22 +30,22 @@ export class AtividadesPage {
     {
       name: 'Almoço',
       imgPath: 'assets/icon/restaurant.svg',
-      pageType: '',
+      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
     },
     {
       name: 'Outros',
       imgPath: 'assets/icon/restaurant.svg',
-      pageType: '',
+      pageType: 'ContentModalOutros',
     },
     {
       name: 'Empresa',
       imgPath: 'assets/icon/restaurant.svg',
-      pageType: '',
+      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
     },
     {
       name: 'Abastecimento',
       imgPath: 'assets/icon/restaurant.svg',
-      pageType: '',
+      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
     },
   ];
 

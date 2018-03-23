@@ -1,3 +1,4 @@
+import { ContentModalOutros } from './modal/content-modal/content-modal-outros/content-modal-outros';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
@@ -9,6 +10,9 @@ import { TabFooterComponent } from './tab-footer/tab-footer.component';
 import { FabButtonComponent } from './fab-button/fab-button.component';
 import { PopoverComponent } from './popover/popover.component';
 import { ModalComponent } from './modal/modal.component';
+import { ContentModalAtendimento } from './modal/content-modal/content-modal-atendimento/content-modal-atendimento';
+import { ContentModalAlmocoAbastecimentoEmpresa } from './modal/content-modal/content-modal-almoco-abastecimento-empresa/content-modal-almoco-abastecimento-empresa';
+import { ContentModalRelatorioTecnico } from './modal/content-modal/content-modal-relatorio-tecnico/content-modal-relatorio-tecnico';
 
 @NgModule({
   imports:[
@@ -16,6 +20,10 @@ import { ModalComponent } from './modal/modal.component';
     IonicPageModule,
   ],
   declarations: [
+    ContentModalAtendimento,
+    ContentModalAlmocoAbastecimentoEmpresa,
+    ContentModalOutros,
+    ContentModalRelatorioTecnico,
     FabButtonComponent,
     NavbarComponent,
     PopoverComponent,
@@ -27,9 +35,17 @@ import { ModalComponent } from './modal/modal.component';
     NavbarComponent,
     PopoverComponent,
     ModalComponent,
+    ContentModalAtendimento,
+    ContentModalAlmocoAbastecimentoEmpresa,
+    ContentModalOutros,
+    ContentModalRelatorioTecnico,
   ],
   exports: [
     AtividadeDetailModule,
+    ContentModalAtendimento,
+    ContentModalAlmocoAbastecimentoEmpresa,
+    ContentModalOutros,
+    ContentModalRelatorioTecnico,
     FabButtonComponent,
     NavbarComponent,
     PopoverComponent,
