@@ -12,7 +12,7 @@ import { effects } from './effects';
     EffectsModule.forRoot(effects),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 5 }),
-  ]
+  ],
 })
 
 export class ReduxModule { }

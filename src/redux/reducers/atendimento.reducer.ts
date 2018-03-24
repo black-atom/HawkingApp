@@ -5,7 +5,7 @@ import { AtendimentoState } from './../models';
 import { State } from './';
 
 const INITIAL_STATE: AtendimentoState = {
-  atendimentos: null,
+  atendimentos: [],
   loading: false,
   error: false,
 };
@@ -73,23 +73,24 @@ export type ActionsAtendimento =
 const atendimentoReducer = (state: AtendimentoState = INITIAL_STATE, action: any) => {
   switch (action.type) {
 
-    case RETRIEVE_ATENDIMENTOS:
-      return state;
-
-    case RETRIEVE_ATENDIMENTOS_SUCCESS:{
+    case RETRIEVE_ATENDIMENTOS_SUCCESS: {
       const atendimentos = action.payload.atendimentos.map((atendimento: Atendimento) => {
-        const atendimentoFound: Atendimento = state.atendimentos.find(at => at._id === atendimento._id);
-        if( atendimentoFound && atendimentoFound.synced === false ){
+        const atendimentoFound: Atendimento = state
+          .atendimentos.find(at => at._id === atendimento._id);
+
+        if (atendimentoFound && atendimentoFound.synced === false ) {
           return atendimentoFound;
-        }else{
-          return atendimento;
         }
+
+        return atendimento;
+
       });
-      return {...state, atendimentos, loading: true, error: false };
+
+      return { ...state, atendimentos, loading: true, error: false };
     }
 
     case RETRIEVE_ATENDIMENTOS_FAILED:
-      return { state, loading: false, error: true };
+      return { ...state, loading: false, error: true };
 
     default:
       return state;
@@ -104,7 +105,7 @@ const dateStancie = today => {
   return {
     date: today.getDate(),
     month: today.getMonth(),
-    year: today.getFullYear()
+    year: today.getFullYear(),
   }
 };
 
@@ -124,7 +125,7 @@ export const atendimentosPendentes = (state: State) => {
   return state.atendimentos.atendimentos.filter(atendimento => {
     const { date, month, year } = dateToday();
     const { date: date_Parse, month: monthParse, year: yearParse } = dateParse(atendimento.data_atendimento);
-    if(
+    if (
       date_Parse === date &&
       monthParse === month &&
       yearParse === year &&
@@ -139,7 +140,7 @@ export const atendimentosEmAndamento = (state: State) => {
   return state.atendimentos.atendimentos.filter(atendimento => {
     const { date, month, year } = dateToday();
     const { date: date_Parse, month: monthParse, year: yearParse } = dateParse(atendimento.data_atendimento);
-    if(
+    if (
       date_Parse === date &&
       monthParse === month &&
       yearParse === year &&
@@ -155,7 +156,7 @@ export const atendimentosConcluida = (state: State) => {
   return state.atendimentos.atendimentos.filter(atendimento => {
     const { date, month, year } = dateToday();
     const { date: date_Parse, month: monthParse, year: yearParse } = dateParse(atendimento.data_atendimento);
-    if(
+    if (
       date_Parse === date &&
       monthParse === month &&
       yearParse === year &&
@@ -163,4 +164,4 @@ export const atendimentosConcluida = (state: State) => {
     ) return true;
     return  false;
   })
-}
+};
