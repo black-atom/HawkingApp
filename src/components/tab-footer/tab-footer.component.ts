@@ -8,7 +8,7 @@ import { SuportePage } from './../../layouts/suporte/suporte';
 
 @Component({
   selector: 'tab-footer',
-  templateUrl: 'tab-footer.html'
+  templateUrl: 'tab-footer.html',
 })
 export class TabFooterComponent {
 

@@ -7,7 +7,7 @@ import { Login } from './../../redux/reducers/login.reducer';
 
 @Component({
   selector: 'login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html',
 })
 export class LoginPage {
 

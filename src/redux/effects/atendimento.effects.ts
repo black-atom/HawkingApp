@@ -24,8 +24,8 @@ export class AtendimentoEffects {
   .switchMap(payload => this.atendimentoProvider
     .getAllAtendimentosToday()
       .map(atendimentos => new RetriveAtendimentoSuccess(atendimentos))
-      .catch(() => Observable.of(new RetriveAtendimentoFailed()))
-  )
+      .catch(() => Observable.of(new RetriveAtendimentoFailed())),
+  );
 }
 
 

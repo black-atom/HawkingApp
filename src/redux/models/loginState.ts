@@ -6,4 +6,4 @@ export interface LoginState {
   error: boolean;
   token: string;
   nome: string;
-};
+}

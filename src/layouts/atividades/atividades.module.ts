@@ -18,7 +18,7 @@ import { Atividade } from './components/atividade/atividade.component';
   entryComponents: [
     AtividadesPage,
     Atividade,
-  ]
+  ],
 })
 
 export class AtividadesModule{}

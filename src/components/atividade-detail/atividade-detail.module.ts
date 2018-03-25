@@ -10,12 +10,12 @@ import { Detail } from './components/detail.component';
     Detail,
   ],
   imports: [
-    IonicPageModule.forChild(AtividadeDetail)
+    IonicPageModule.forChild(AtividadeDetail),
   ],
   entryComponents: [
     AtividadeDetail,
     Detail,
-  ]
+  ],
 })
 
 export class AtividadeDetailModule{}

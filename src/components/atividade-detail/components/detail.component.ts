@@ -4,7 +4,7 @@ import { Atendimento } from './../../../models';
 
 @Component({
   selector: 'detail',
-  templateUrl: 'detail.html'
+  templateUrl: 'detail.html',
 })
 export class Detail {
 

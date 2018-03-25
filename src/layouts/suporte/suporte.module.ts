@@ -6,15 +6,15 @@ import { ComponentsModule } from '../../components';
 
 @NgModule({
   declarations: [
-    SuportePage
+    SuportePage,
   ],
   imports: [
     ComponentsModule,
-    IonicPageModule.forChild(SuportePage)
+    IonicPageModule.forChild(SuportePage),
   ],
   entryComponents: [
-    SuportePage
-  ]
+    SuportePage,
+  ],
 })
 
 export class SuporteModule{}

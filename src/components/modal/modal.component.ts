@@ -1,7 +1,5 @@
 import { Component, ViewChild, Input } from '@angular/core';
-import { Nav } from 'ionic-angular';
-
-import { NavParams } from 'ionic-angular';
+import { Nav, NavParams } from 'ionic-angular';
 
 import { ContentModalAlmocoAbastecimentoEmpresa } from './content-modal/content-modal-almoco-abastecimento-empresa/content-modal-almoco-abastecimento-empresa';
 import { ContentModalAtendimento } from './content-modal/content-modal-atendimento/content-modal-atendimento';
@@ -10,7 +8,7 @@ import { ContentModalRelatorioTecnico } from './content-modal/content-modal-rela
 
 @Component({
   selector: 'modal',
-  templateUrl: 'modal.html'
+  templateUrl: 'modal.html',
 })
 export class ModalComponent {
 
@@ -21,7 +19,7 @@ export class ModalComponent {
   private page;
 
   constructor(
-    public navParms: NavParams
+    public navParms: NavParams,
   ) {
     this.page = {
       ContentModalAlmocoAbastecimentoEmpresa,

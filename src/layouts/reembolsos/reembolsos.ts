@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'reembolsos',
-  templateUrl: 'reembolsos.html'
+  templateUrl: 'reembolsos.html',
 })
 export class ReembolsosPage {
 

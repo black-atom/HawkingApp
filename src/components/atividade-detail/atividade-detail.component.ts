@@ -8,7 +8,7 @@ import { Atendimento } from '../../models';
 
 @Component({
   selector: 'atividade-detail',
-  templateUrl: 'atividade-detail.html'
+  templateUrl: 'atividade-detail.html',
 })
 export class AtividadeDetail {
 
@@ -26,6 +26,6 @@ export class AtividadeDetail {
     this.AtividadeDetail$ = this.store.select(state => {
       const { atendimentos } =  state.atendimentos;
       return atendimentos.find(atendimento => atendimento._id === this.AtividadeID);
-    })
+    });
   }
 }

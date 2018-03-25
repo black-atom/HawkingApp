@@ -16,8 +16,8 @@ import { SuporteModule } from './suporte/suporte.module';
     ReembolsosModule,
     PerfilModule,
     LoginModule,
-    SuporteModule
-  ]
+    SuporteModule,
+  ],
 })
 
 export class LayoutModule{}

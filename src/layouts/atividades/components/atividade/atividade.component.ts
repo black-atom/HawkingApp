@@ -6,7 +6,7 @@ import { Atendimento } from '../../../../models';
 
 @Component({
   selector: 'atividade',
-  templateUrl: 'atividade.html'
+  templateUrl: 'atividade.html',
 })
 export class Atividade {
 
@@ -17,7 +17,7 @@ export class Atividade {
     public navCtrl: NavController,
   ) {  }
 
-  openAtividadeDetail( id ){
+  openAtividadeDetail( id ) {
     this.navCtrl.push(AtividadeDetail, { id });
   }
 

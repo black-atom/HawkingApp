@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
 import { LoginSuccess, LoginFailed, LOGIN } from './../reducers/login.reducer';
 import { LoginProvider } from '../../providers';
 
-let storage = new Storage({});
+const storage = new Storage({});
 
 @Injectable()
 export class LoginEffects {
@@ -24,8 +24,8 @@ export class LoginEffects {
     .login(payload)
       .do(response => storage.set('token', response.token))
       .map(user => new LoginSuccess(user))
-      .catch(err => Observable.of(new LoginFailed()))
-  )
+      .catch(err => Observable.of(new LoginFailed())),
+  );
 }
 
 

@@ -4,4 +4,4 @@ export interface AtendimentoState {
   atendimentos: Atendimento[];
   loading: boolean;
   error: boolean;
-};
+}

@@ -8,16 +8,16 @@ import { ComponentsModule } from '../../components';
 
 @NgModule({
   declarations: [
-    LoginPage
+    LoginPage,
   ],
   imports: [
     ComponentsModule,
     FormsModule,
-    IonicPageModule.forChild(LoginPage)
+    IonicPageModule.forChild(LoginPage),
   ],
   entryComponents: [
-    LoginPage
-  ]
+    LoginPage,
+  ],
 })
 
 export class LoginModule { }

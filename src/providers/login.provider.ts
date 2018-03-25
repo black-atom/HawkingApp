@@ -15,7 +15,7 @@ export class LoginProvider {
 
   constructor(private http: Http) {  }
 
-  login(user: UserLogin): Observable<LoginState>{
+  login(user: UserLogin): Observable<LoginState> {
     return this.http.post(this.url, user).map( res => res.json() as LoginState);
   }
 

@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'navbar',
-  templateUrl: 'navbar.html'
+  templateUrl: 'navbar.html',
 })
 export class NavbarComponent {
 

@@ -18,16 +18,16 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export class Login implements Action {
   readonly type = LOGIN;
   constructor(public payload) { }
-};
+}
 
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
   constructor(public payload) { }
-};
+}
 
 export class LoginFailed implements Action {
   readonly type = LOGIN_FAILED;
-};
+}
 
 export type ActionsMonitoramento =
   |  Login

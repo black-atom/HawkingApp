@@ -18,14 +18,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AtendimentoProvider, LoginProvider, MonitoramentoProvider } from '../providers';
 
 
-let storage = new Storage({});
+const storage = new Storage({});
 
 export function getAuthHttp(http) {
   return new AuthHttp(new AuthConfig({
     noJwtError: true,
-    globalHeaders: [{'Accept': 'application/json'}],
+    globalHeaders: [{Accept: 'application/json'}],
     tokenGetter: (() => storage.get('token')),
-  }), http);
+  }),                 http);
 }
 
 
@@ -55,8 +55,8 @@ export function getAuthHttp(http) {
     {
       provide: AuthHttp,
       useFactory: getAuthHttp,
-      deps: [Http]
+      deps: [Http],
     },
-  ]
+  ],
 })
 export class AppModule {}

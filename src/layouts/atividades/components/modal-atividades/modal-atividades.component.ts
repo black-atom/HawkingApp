@@ -3,7 +3,7 @@ import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'modal-atividades',
-  templateUrl: 'modal-atividades.html'
+  templateUrl: 'modal-atividades.html',
 })
 export class ModalAtividadesComponent {
   constructor(public viewCtrl: ViewController) {}

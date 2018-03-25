@@ -20,12 +20,12 @@ export const PAUSE_MONITORAMENTO = 'PAUSE_MONITORAMENTO';
 export class CriarMonitoramento implements Action {
   readonly type = MONITORAMENTO_CRIAR_DESLOCAMENTO;
   constructor(public payload: Monitoramento) {}
-};
+}
 
 export class EditarMonitoramento implements Action {
   readonly type = MONITORAMENTO_EDITAR;
   constructor(public payload: Monitoramento) {}
-};
+}
 
 export class MonitoramentoUploadSuccess implements Action {
   readonly type: string = MONITORAMENTO_UPLOAD_SUCCESS;

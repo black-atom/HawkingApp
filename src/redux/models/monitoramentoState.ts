@@ -4,4 +4,4 @@ export interface MonitoramentoState {
   monitoramentos: Monitoramento[];
   loading: boolean;
   error: boolean;
-};
+}

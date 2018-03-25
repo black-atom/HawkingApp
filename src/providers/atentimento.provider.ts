@@ -30,11 +30,11 @@ export class AtendimentoProvider {
         estado: 'associado',
         data_atendimento: today,
         'tecnico.nome': nomeFuncionario,
-      }
+      };
       return this.http.get(this.url, { params: { ...query } })
       .map(res => res.json() as Atendimento[])
-      .catch(this.lidaComErro)
-    })
+      .catch(this.lidaComErro);
+    });
   }
 
   lidaComErro(erro: Response | any) {

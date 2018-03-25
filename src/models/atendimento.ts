@@ -120,7 +120,7 @@ export interface RemocaoRelogio {
   modelo_equipamento: string;
   numero_equipamento: string;
   peca: Peca[];
-};
+}
 
 export interface Peca {
   descricao_peca: string;
@@ -129,10 +129,10 @@ export interface Peca {
 
 export interface Faturamento {
   mesmo_cnpj: boolean;
-  cnpj: string,
-  nome_razao_social: string,
-  email: string,
-  quem_aprovou: string,
-  valor: string,
-  prazo_pagamento: string,
+  cnpj: string;
+  nome_razao_social: string;
+  email: string;
+  quem_aprovou: string;
+  valor: string;
+  prazo_pagamento: string;
 }

@@ -13,10 +13,10 @@ export interface Monitoramento {
   isUploaded?: boolean;
   isPause?: boolean;
   actions?: Action[];
-};
+}
 
 interface Action {
   status: string;
   motivo: string;
   date: Date;
-};
+}

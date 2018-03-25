@@ -11,7 +11,7 @@ import { LoginPage } from './../../layouts/login/login';
 
 @Component({
   selector: 'sidemenu',
-  templateUrl: 'sidemenu.html'
+  templateUrl: 'sidemenu.html',
 })
 export class SideMenuComponent {
 
@@ -28,7 +28,7 @@ export class SideMenuComponent {
       { title: 'Serviços Concluídos', component: ConcluidosPage, icon: 'md-checkbox' },
       { title: 'Perfil', component: PerfilPage, icon: 'md-contact' },
       { title: 'Reembolsos', component: ReembolsosPage, icon: 'logo-usd' },
-      { title: 'Suporte', component: SuportePage, icon: 'md-help-circle' }
+      { title: 'Suporte', component: SuportePage, icon: 'md-help-circle' },
     ];
   }
 

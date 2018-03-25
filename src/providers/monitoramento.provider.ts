@@ -16,7 +16,7 @@ export class MonitoramentoProvider {
 
   constructor(private http: AuthHttp) {  }
 
-  newMonitoramento(monitoramento: Monitoramento): Observable<Monitoramento>{
+  newMonitoramento(monitoramento: Monitoramento): Observable<Monitoramento> {
     return this.http.post(this.url, monitoramento).map( res => res.json());
   }
 

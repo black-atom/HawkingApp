@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'suporte',
-  templateUrl: 'suporte.html'
+  templateUrl: 'suporte.html',
 })
 export class SuportePage {
   public title: string = 'Suporte';

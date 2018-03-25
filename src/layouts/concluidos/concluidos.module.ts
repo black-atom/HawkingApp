@@ -10,11 +10,11 @@ import { ComponentsModule } from '../../components';
   ],
   imports: [
     ComponentsModule,
-    IonicPageModule.forChild(ConcluidosPage)
+    IonicPageModule.forChild(ConcluidosPage),
   ],
   entryComponents: [
-    ConcluidosPage
-  ]
+    ConcluidosPage,
+  ],
 })
 
 export class ConcluidosModule{}
