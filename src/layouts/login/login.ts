@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { LoginState } from '../../redux/models/loginState';
 import { Login } from './../../redux/reducers/login.reducer';
@@ -8,6 +8,9 @@ import { Login } from './../../redux/reducers/login.reducer';
 @Component({
   selector: 'login',
   templateUrl: 'login.html',
+})
+@IonicPage({
+  name: 'LoginPage',
 })
 export class LoginPage {
 

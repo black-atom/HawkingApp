@@ -7,6 +7,7 @@ import { ReembolsosModule } from './reembolsos/reembolsos.module';
 import { PerfilModule } from './perfil/perfil.module';
 import { LoginModule } from './login/login.module';
 import { SuporteModule } from './suporte/suporte.module';
+import { TabPageModule } from './tab-page/tab-page.module';
 
 @NgModule({
   imports:[
@@ -17,6 +18,7 @@ import { SuporteModule } from './suporte/suporte.module';
     PerfilModule,
     LoginModule,
     SuporteModule,
+    TabPageModule,
   ],
 })
 

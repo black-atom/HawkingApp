@@ -22,7 +22,7 @@ export class LoginEffects {
   .map((action: any) => action.payload)
   .switchMap(payload => this.loginProvider
     .login(payload)
-      .do(response => storage.set('token', response.token))
+      //.do(response => storage.set('token', response.token))
       .map(user => new LoginSuccess(user))
       .catch(err => Observable.of(new LoginFailed())),
   );
