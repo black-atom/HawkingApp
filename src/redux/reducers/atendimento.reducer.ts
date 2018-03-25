@@ -1,8 +1,9 @@
-import { Action } from '@ngrx/store';
+import { Action, createSelector } from '@ngrx/store';
 
 import { Atendimento } from './../../models';
 import { AtendimentoState } from './../models';
 import { State } from './';
+import moment from 'moment';
 
 const INITIAL_STATE: AtendimentoState = {
   atendimentos: [],
@@ -70,7 +71,7 @@ export type ActionsAtendimento =
   |  SyncAtendimentosFailed
   |  AdicionarPerguntas;
 
-const atendimentoReducer = (state: AtendimentoState = INITIAL_STATE, action: any) => {
+export const atendimentoReducer = (state: AtendimentoState = INITIAL_STATE, action: any) => {
   switch (action.type) {
 
     case RETRIEVE_ATENDIMENTOS_SUCCESS: {
@@ -78,7 +79,7 @@ const atendimentoReducer = (state: AtendimentoState = INITIAL_STATE, action: any
         const atendimentoFound: Atendimento = state
           .atendimentos.find(at => at._id === atendimento._id);
 
-        if (atendimentoFound && atendimentoFound.synced === false ) {
+        if (atendimentoFound && !atendimentoFound.synced) {
           return atendimentoFound;
         }
 
@@ -97,71 +98,47 @@ const atendimentoReducer = (state: AtendimentoState = INITIAL_STATE, action: any
   }
 };
 
-export {
-  atendimentoReducer,
-};
 
-const dateStancie = today => {
-  return {
-    date: today.getDate(),
-    month: today.getMonth(),
-    year: today.getFullYear(),
-  }
-};
+const isSameDate = firstDate => secondDate => moment(firstDate)
+  .isSame(secondDate, 'day');
 
-const dateToday = () => {
-  const today = new Date();
-  return dateStancie(today)
-};
+const isToday = isSameDate(new Date());
 
-const dateParse = date => {
-  const today = new Date(date);
-  return dateStancie(today)
-};
+export const getallAtendimentos = (state: State) => state.atendimentos;
 
+export const atendimentosPendentes = createSelector(
+  getallAtendimentos,
+  (atendimentoState: AtendimentoState) => {
+    return atendimentoState.atendimentos.filter((atendimento) => {
+      if (
+        isToday(atendimento.data_atendimento) &&
+        atendimento.interacao_tecnico.estado === ''
+      ) return true;
+      return  false;
+    });
+  });
 
-export const atendimentosPendentes = (state: State) => {
+export const atendimentosEmAndamento = createSelector(
+  getallAtendimentos,
+  (atendimentoState: AtendimentoState) => {
+    return atendimentoState.atendimentos.filter((atendimento) => {
+      if (
+        isToday(atendimento.data_atendimento) &&
+        atendimento.interacao_tecnico.estado !== '' &&
+        atendimento.interacao_tecnico.estado !== 'fim_do_atendimento'
+      ) return true;
+      return  false;
+    });
+  });
 
-  return state.atendimentos.atendimentos.filter(atendimento => {
-    const { date, month, year } = dateToday();
-    const { date: date_Parse, month: monthParse, year: yearParse } = dateParse(atendimento.data_atendimento);
-    if (
-      date_Parse === date &&
-      monthParse === month &&
-      yearParse === year &&
-      atendimento.interacao_tecnico.estado === ''
-    ) return true;
-    return  false;
-  })
-}
-
-export const atendimentosEmAndamento = (state: State) => {
-
-  return state.atendimentos.atendimentos.filter(atendimento => {
-    const { date, month, year } = dateToday();
-    const { date: date_Parse, month: monthParse, year: yearParse } = dateParse(atendimento.data_atendimento);
-    if (
-      date_Parse === date &&
-      monthParse === month &&
-      yearParse === year &&
-      atendimento.interacao_tecnico.estado !== '' &&
-      atendimento.interacao_tecnico.estado !== 'fim_do_atendimento'
-    ) return true;
-    return  false;
-  })
-}
-
-export const atendimentosConcluida = (state: State) => {
-
-  return state.atendimentos.atendimentos.filter(atendimento => {
-    const { date, month, year } = dateToday();
-    const { date: date_Parse, month: monthParse, year: yearParse } = dateParse(atendimento.data_atendimento);
-    if (
-      date_Parse === date &&
-      monthParse === month &&
-      yearParse === year &&
-      atendimento.interacao_tecnico.estado === 'fim_do_atendimento'
-    ) return true;
-    return  false;
-  })
-};
+export const atendimentosConcluida = createSelector(
+  getallAtendimentos,
+  (atendimentoState: AtendimentoState) => {
+    return atendimentoState.atendimentos.filter((atendimento) => {
+      if (
+        isToday(atendimento.data_atendimento) &&
+        atendimento.interacao_tecnico.estado === 'fim_do_atendimento'
+      ) return true;
+      return  false;
+    });
+  });
