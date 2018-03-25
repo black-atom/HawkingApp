@@ -6,15 +6,15 @@ import { ComponentsModule } from '../../components';
 
 @NgModule({
   declarations: [
-    ReembolsosPage
+    ReembolsosPage,
   ],
   imports: [
     ComponentsModule,
-    IonicPageModule.forChild(ReembolsosPage)
+    IonicPageModule.forChild(ReembolsosPage),
   ],
   entryComponents: [
-    ReembolsosPage
-  ]
+    ReembolsosPage,
+  ],
 })
 
 export class ReembolsosModule{}

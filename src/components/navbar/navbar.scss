@@ -1,10 +1,16 @@
+navbar {
+  ion-navbar, div {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    button {
+      color: white !important
+    }
+  }
+}
+
 ion-toolbar {
   padding-top: 30px;
-
-  .navbar {
-    height: 200px !important;
-    background-color: primary !important;
-  }
   ion-title {
     font-size: 30px;
   }

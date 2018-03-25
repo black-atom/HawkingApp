@@ -1,0 +1,28 @@
+atividade-detail {
+  h1, h2, h3, h4, h5 {
+    color: #333 !important;
+    font-family: 'Montserrat', sans-serif !important;
+  }
+  p {
+    color: #666 !important;
+    font-family: 'Open Sans', sans-serif !important;
+    line-height: 20px !important;
+  }
+  ion-header{
+    background: #0099F2 !important;
+    .tools {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+    }
+    .tool-item, p {
+      ion-icon {
+        font-size: 20px !important;
+      }
+      color: white !important;
+    }
+  }
+
+}

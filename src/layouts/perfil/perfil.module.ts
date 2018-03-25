@@ -6,15 +6,15 @@ import { ComponentsModule } from '../../components';
 
 @NgModule({
   declarations: [
-    PerfilPage
+    PerfilPage,
   ],
   imports: [
     ComponentsModule,
-    IonicPageModule.forChild(PerfilPage)
+    IonicPageModule.forChild(PerfilPage),
   ],
   entryComponents: [
-    PerfilPage
-  ]
+    PerfilPage,
+  ],
 })
 
 export class PerfilModule{}

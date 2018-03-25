@@ -1,21 +1,75 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
+import { Observable, Subject } from 'rxjs/Rx';
+import { Store } from '@ngrx/store';
+
+import { Atendimento } from '../../models';
+import { State } from '../../redux/reducers';
+
+import {
+  RetriveAtendimento,
+  atendimentosPendentes,
+  atendimentosEmAndamento,
+} from '../../redux/reducers/atendimento.reducer';
+
+import { PopoverComponent } from '../../components/popover/popover.component';
 
 @Component({
   selector: 'atividades',
-  templateUrl: 'atividades.html'
+  templateUrl: 'atividades.html',
 })
-
 export class AtividadesPage {
-  public segmentRoot: string = 'pendentes';
-  public title = 'Atividades';
-  public clients = [
-    { nome: ' CONEXÃO LOCAL LTDA', endereco: ' Rua Fernando Lourenço,237 - 08320-420', tipo: 'Manutenção'},
-    { nome: ' PAGAR ME LTDA', endereco: ' Rua Brigadeiro faria Lima Lourenço,237 - 08320-420', tipo: 'Instalação'},
-    { nome: ' PADARIA CONEXAO LOCAL LTDA', endereco: ' Rua Fernando Lourenço,237 - 08320-420', tipo: 'Contrato'},
-  ]
 
-  constructor(public navCtrl: NavController,
-              public alertCtrl: AlertController) {
+  public title = 'Atividades';
+  public fabIcon = 'add';
+
+  public atividades$: Observable<Atendimento[]>;
+  public changeAtendimentos$: Subject<string> = new Subject<string>();
+
+  public buttonProperties = [
+    {
+      name: 'Almoço',
+      imgPath: 'assets/icon/restaurant.svg',
+      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
+    },
+    {
+      name: 'Outros',
+      imgPath: 'assets/icon/restaurant.svg',
+      pageType: 'ContentModalOutros',
+    },
+    {
+      name: 'Empresa',
+      imgPath: 'assets/icon/restaurant.svg',
+      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
+    },
+    {
+      name: 'Abastecimento',
+      imgPath: 'assets/icon/restaurant.svg',
+      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
+    },
+  ];
+
+  constructor(
+    public popoverCtrl: PopoverController,
+    private store: Store<State>,
+  ) {
+
+  }
+
+  ionViewDidLoad() {
+    this.store.dispatch(new RetriveAtendimento());
+  }
+
+  eventRefresh() {
+    this.store.dispatch(new RetriveAtendimento());
+    this.atividades$ = this.store.select(atendimentosPendentes);
+  }
+
+  presentPopover() {
+    const popover = this.popoverCtrl.create(
+      PopoverComponent,
+      { buttonProperties: this.buttonProperties },
+    );
+    popover.present();
   }
 }

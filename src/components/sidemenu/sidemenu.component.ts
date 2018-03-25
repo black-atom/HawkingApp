@@ -6,27 +6,34 @@ import { ConcluidosPage } from '../../layouts/concluidos/concluidos';
 import { PerfilPage } from '../../layouts/perfil/perfil';
 import { ReembolsosPage } from '../../layouts/reembolsos/reembolsos';
 import { SuportePage } from '../../layouts/suporte/suporte';
+import { LoginPage } from './../../layouts/login/login';
+
 
 @Component({
   selector: 'sidemenu',
-  templateUrl: 'sidemenu.html'
+  templateUrl: 'sidemenu.html',
 })
 export class SideMenuComponent {
-  @ViewChild(Nav) nav: Nav;
-  rootPage: any = AtividadesPage;
-  pages: Array<{title: string, component: any}>;
+
+  @ViewChild(Nav)
+  nav: Nav;
+
+  public rootPage: any = AtividadesPage;
+  public pages: Array<{title: string, component: any, icon: string}>;
 
   constructor() {
     this.pages = [
-      { title: 'Serviços', component: AtividadesPage },
-      { title: 'Serviços Concluídos', component: ConcluidosPage },
-      { title: 'Perfil', component: PerfilPage },
-      { title: 'Reembolsos', component: ReembolsosPage },
-      { title: 'Suporte', component: SuportePage }
+      { title: 'Login', component: LoginPage, icon: 'md-checkbox' },
+      { title: 'Serviços', component: AtividadesPage, icon: 'md-checkbox' },
+      { title: 'Serviços Concluídos', component: ConcluidosPage, icon: 'md-checkbox' },
+      { title: 'Perfil', component: PerfilPage, icon: 'md-contact' },
+      { title: 'Reembolsos', component: ReembolsosPage, icon: 'logo-usd' },
+      { title: 'Suporte', component: SuportePage, icon: 'md-help-circle' },
     ];
   }
 
-  openPage(page) {
-    this.nav.setRoot(page.component);
+  openPage(pageSelecionada) {
+    const route = this.pages.find(page => page.component === pageSelecionada);
+    this.nav.setRoot(route.component);
   }
 }

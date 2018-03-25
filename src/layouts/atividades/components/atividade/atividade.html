@@ -1,0 +1,13 @@
+<ion-card (click)="openAtividadeDetail(Atividade?._id)">
+  <ion-item text-wrap>
+   <img  [src]="Atividade?.interacao_tecnico.estado === '' ? 'assets/icon/company.svg' : 'assets/icon/warning.svg'" item-left>
+    <h5>{{ Atividade?.cliente.nome_razao_social | uppercase }}</h5>
+    <p>
+      <ion-icon name="pin" color="primary"></ion-icon>
+      {{ Atividade?.endereco.bairro | uppercase }},
+      {{ Atividade?.endereco.cidade | uppercase }} -
+      {{ Atividade?.endereco.uf | uppercase }},
+      {{ Atividade?.endereco.cep | uppercase }}
+    </p>
+  </ion-item>
+</ion-card>
