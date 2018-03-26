@@ -1,3 +1,4 @@
+import { ProvidersModule } from './../providers/providers.module';
 import { NgModule } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store';
@@ -9,6 +10,7 @@ import { effects } from './effects';
 
 @NgModule({
   imports:[
+    ProvidersModule,
     EffectsModule.forRoot(effects),
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 5 }),
