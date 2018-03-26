@@ -1,6 +1,22 @@
-<tool-bar-actions></tool-bar-actions>
+<ion-header>
+  <ion-toolbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="md-arrow-back"></ion-icon>
+    </button>
+
+    <ion-title>Almoço</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="more">
+        <ion-icon name="ios-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!-- <tool-bar-actions></tool-bar-actions> -->
+</ion-header>
+
 <ion-content>
   <time-line></time-line>
+  <fab-button (actionButton)="presentPopover()" [iconName]="fabIcon"></fab-button>
 </ion-content>
 
 

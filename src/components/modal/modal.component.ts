@@ -5,6 +5,7 @@ import { ContentModalAlmocoAbastecimentoEmpresa } from './content-modal/content-
 import { ContentModalAtendimento } from './content-modal/content-modal-atendimento/content-modal-atendimento';
 import { ContentModalOutros } from './content-modal/content-modal-outros/content-modal-outros';
 import { ContentModalRelatorioTecnico } from './content-modal/content-modal-relatorio-tecnico/content-modal-relatorio-tecnico';
+import { ModalFormComponent } from './../modal-form/modal-form.component';
 
 @Component({
   selector: 'modal',
@@ -26,6 +27,7 @@ export class ModalComponent {
       ContentModalOutros,
       ContentModalRelatorioTecnico,
       ContentModalAtendimento,
+      ModalFormComponent,
     };
   }
 
