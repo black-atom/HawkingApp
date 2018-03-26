@@ -33,19 +33,19 @@ export class AtividadesPage {
       pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
     },
     {
-      name: 'Outros',
-      imgPath: 'assets/icon/restaurant.svg',
-      pageType: 'ContentModalOutros',
-    },
-    {
-      name: 'Empresa',
-      imgPath: 'assets/icon/restaurant.svg',
-      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
-    },
-    {
       name: 'Abastecimento',
-      imgPath: 'assets/icon/restaurant.svg',
+      imgPath: 'assets/icon/gas-station.svg',
       pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
+    },
+    {
+      name: 'Realponto',
+      imgPath: 'assets/icon/realponto.svg',
+      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
+    },
+    {
+      name: 'Outros',
+      imgPath: 'assets/icon/other.svg',
+      pageType: 'ContentModalOutros',
     },
   ];
 
