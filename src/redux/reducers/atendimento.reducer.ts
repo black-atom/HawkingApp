@@ -1,3 +1,4 @@
+import { atendimentosArray } from './../../utils/atendimentos';
 import { Action, createSelector } from '@ngrx/store';
 
 import { Atendimento } from './../../models';
@@ -104,12 +105,12 @@ const isSameDate = firstDate => secondDate => moment(firstDate)
 
 const isToday = isSameDate(new Date());
 
-export const getallAtendimentos = (state: State) => state.atendimentos;
+export const getAllAtendimentos = (state: State) => state.atendimentos.atendimentos;
 
 export const atendimentosPendentes = createSelector(
-  getallAtendimentos,
-  (atendimentoState: AtendimentoState) => {
-    return atendimentoState.atendimentos.filter((atendimento) => {
+  getAllAtendimentos,
+  (atendimentos: Atendimento[]) => {
+    return atendimentos.filter((atendimento) => {
       if (
         isToday(atendimento.data_atendimento) &&
         atendimento.interacao_tecnico.estado === ''
@@ -119,9 +120,9 @@ export const atendimentosPendentes = createSelector(
   });
 
 export const atendimentosEmAndamento = createSelector(
-  getallAtendimentos,
-  (atendimentoState: AtendimentoState) => {
-    return atendimentoState.atendimentos.filter((atendimento) => {
+  getAllAtendimentos,
+  (atendimentos: Atendimento[]) => {
+    return atendimentos.filter((atendimento) => {
       if (
         isToday(atendimento.data_atendimento) &&
         atendimento.interacao_tecnico.estado !== '' &&
@@ -132,9 +133,9 @@ export const atendimentosEmAndamento = createSelector(
   });
 
 export const atendimentosConcluida = createSelector(
-  getallAtendimentos,
-  (atendimentoState: AtendimentoState) => {
-    return atendimentoState.atendimentos.filter((atendimento) => {
+  getAllAtendimentos,
+  (atendimentos: Atendimento[]) => {
+    return atendimentos.filter((atendimento) => {
       if (
         isToday(atendimento.data_atendimento) &&
         atendimento.interacao_tecnico.estado === 'fim_do_atendimento'

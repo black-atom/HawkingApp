@@ -11,7 +11,7 @@ export interface Monitoramento {
   id_funcionario?: string;
   id_atendimento?: string;
   isUploaded?: boolean;
-  isPause?: boolean;
+  isPaused?: boolean;
   actions?: Action[];
 }
 

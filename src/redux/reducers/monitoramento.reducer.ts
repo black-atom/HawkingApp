@@ -1,10 +1,13 @@
-import { Action } from '@ngrx/store';
+import { getAllAtendimentos } from './atendimento.reducer';
+import { Action, createSelector } from '@ngrx/store';
 
 import { Monitoramento } from './../../models';
 import { MonitoramentoState } from './../models';
+import { State } from './index';
+import { monitoramentosArray } from '../../utils/monitoramentos';
 
 const INITIAL_STATE: MonitoramentoState = {
-  monitoramentos: null,
+  monitoramentos: [],
   loading: false,
   error: false,
 };
@@ -43,13 +46,37 @@ export type ActionsMonitoramento =
   |  MonitoramentoUploadSuccess
   |  MonitoramentoUploadFailed;
 
-export const monitoramentoReducer = (state: MonitoramentoState = INITIAL_STATE, action: ActionsMonitoramento) => {
+export const monitoramentoReducer =
+(state: MonitoramentoState = INITIAL_STATE, action: ActionsMonitoramento) => {
   switch (action.type) {
     case MONITORAMENTO_CRIAR_DESLOCAMENTO:
-      return { ...state, monitoramentos: [...state.monitoramentos, action.payload], loading: true,  error: false };
+      return {
+        ...state,
+        monitoramentos: [...state.monitoramentos, action.payload],
+        loading: true,  error: false,
+      };
     case MONITORAMENTO_EDITAR:
       return { ...state, error: true };
     default:
       return state;
   }
 };
+
+export const getAllMonitoramentos = (appState: State) => appState.monitoramentos.monitoramentos;
+
+export const getAllAtividades = createSelector(
+  getAllAtendimentos,
+  getAllMonitoramentos,
+  (atendimentos, monitoramentos) => {
+    const atividades = monitoramentos.map((monitoramento) => {
+      const atendimento = atendimentos.find(atd => atd._id === monitoramento.id_atendimento);
+      return {
+        ...monitoramento,
+        atendimento,
+      };
+    });
+    return atividades;
+  });
+
+export const filterAllAtividadesPausadas = atividade => atividade.isPaused;
+export const filterAllAtividadesEmExecucao = atividade => !atividade.isPaused;
