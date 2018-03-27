@@ -1,4 +1,3 @@
-import { atendimentosArray } from './../../utils/atendimentos';
 import { Action, createSelector } from '@ngrx/store';
 
 import { Atendimento } from './../../models';

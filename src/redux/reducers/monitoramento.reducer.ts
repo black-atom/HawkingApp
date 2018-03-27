@@ -4,7 +4,6 @@ import { Action, createSelector } from '@ngrx/store';
 import { Monitoramento } from './../../models';
 import { MonitoramentoState } from './../models';
 import { State } from './index';
-import { monitoramentosArray } from '../../utils/monitoramentos';
 
 const INITIAL_STATE: MonitoramentoState = {
   monitoramentos: [],
