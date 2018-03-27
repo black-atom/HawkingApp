@@ -15,3 +15,8 @@ ion-menu {
     background: white !important;
   }
 }
+
+ion-backdrop {
+  opacity: 0.4;
+  transition: background 0.3s ease-in-out !important;
+}
