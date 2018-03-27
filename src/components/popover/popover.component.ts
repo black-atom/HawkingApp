@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { ViewController, NavParams, NavController, ModalController } from 'ionic-angular';
 
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../modal/modal';
+
 
 @Component({
   selector: 'popover',

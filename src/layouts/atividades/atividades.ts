@@ -28,7 +28,6 @@ import { getAllAtividades } from '../../redux/reducers/monitoramento.reducer';
 export class AtividadesPage {
 
   public title = 'Atividades';
-  public fabIcon = 'add';
 
   public atividades$: Observable<any[]>;
   public atividadesPausadas$;
@@ -40,17 +39,17 @@ export class AtividadesPage {
     {
       name: 'Almoço',
       imgPath: 'assets/icon/restaurant.svg',
-      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
+      pageType: 'ContentModalAlmoco',
     },
     {
       name: 'Abastecimento',
       imgPath: 'assets/icon/gas-station.svg',
-      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
+      pageType: 'ContentModalAtendimento',
     },
     {
       name: 'Realponto',
       imgPath: 'assets/icon/realponto.svg',
-      pageType: 'ContentModalAlmocoAbastecimentoEmpresa',
+      pageType: 'ContentModalAlmoco',
     },
     {
       name: 'Outros',

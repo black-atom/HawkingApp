@@ -6,6 +6,12 @@
 </ion-header>
 
 <ion-content>
+  <ion-list-header> <h3>Em Execução</h3></ion-list-header>
+  <ion-list>
+    <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
+  </ion-list>
+
+  <ion-list-header> <h3>Em Execução</h3></ion-list-header>
   <ion-list>
     <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
   </ion-list>

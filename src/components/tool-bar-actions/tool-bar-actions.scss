@@ -1,21 +1,20 @@
 tool-bar-actions {
-  ion-header{
-    background: #039EF2 !important;
-    .tools {
-      margin-top: 15px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      text-align: center;
+  .tools {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding-top: 15px;
+    background-color: #039EF2 !important;
+  }
+  .tool-item, p {
+    ion-icon {
+      font-size: 20px !important;
     }
-    .tool-item, p {
-      ion-icon {
-        font-size: 20px !important;
-      }
-      color: white !important;
-    }
-    .tool-item :hover {
-      opacity: 0.5;
-    }
+    color: white !important;
+  }
+  .tool-item :hover {
+    background: chocolate !important;
+    opacity: 0.5;
   }
 }
