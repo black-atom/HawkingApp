@@ -21,7 +21,6 @@ import { PopoverComponent } from '../../components/popover/popover.component';
 export class AtividadesPage {
 
   public title = 'Atividades';
-  public fabIcon = 'add';
 
   public atividades$: Observable<Atendimento[]>;
   public changeAtendimentos$: Subject<string> = new Subject<string>();

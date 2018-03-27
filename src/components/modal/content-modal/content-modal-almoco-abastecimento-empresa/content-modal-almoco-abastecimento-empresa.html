@@ -11,12 +11,18 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-  <!-- <tool-bar-actions></tool-bar-actions> -->
 </ion-header>
 
 <ion-content>
+
   <time-line></time-line>
-  <fab-button (actionButton)="presentPopover()" [iconName]="fabIcon"></fab-button>
+  <ion-fab right bottom (click)="presentPopover()">
+    <button ion-fab color="primary">
+      <ion-icon name="play">
+      </ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
 
 
