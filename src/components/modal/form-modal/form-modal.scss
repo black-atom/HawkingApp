@@ -1,0 +1,28 @@
+  ion-popover {
+    .popover-wrapper {
+      .popover-content {
+        top: 17% !important;
+        left: 6% !important;
+        width: 87%;
+        height: 70%;
+
+        h1 , h2 {
+          font-size: 20px;
+          color: #666 !important ;
+        }
+
+        button {
+          background-color: white !important;
+          .avatar {
+            height: 60px !important;
+            width: 60px !important;
+          }
+          h2 {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+

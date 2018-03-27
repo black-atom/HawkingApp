@@ -1,11 +1,16 @@
 import { Component, ViewChild, Input } from '@angular/core';
 import { Nav, NavParams } from 'ionic-angular';
 
-import { ContentModalAlmocoAbastecimentoEmpresa } from './content-modal/content-modal-almoco-abastecimento-empresa/content-modal-almoco-abastecimento-empresa';
-import { ContentModalAtendimento } from './content-modal/content-modal-atendimento/content-modal-atendimento';
+import { FormModalComponent } from './form-modal/form-modal.component';
 import { ContentModalOutros } from './content-modal/content-modal-outros/content-modal-outros';
-import { ContentModalRelatorioTecnico } from './content-modal/content-modal-relatorio-tecnico/content-modal-relatorio-tecnico';
-import { ModalFormComponent } from './../modal-form/modal-form.component';
+import { ContentModalAlmoco } from './content-modal/content-modal-almoco/content-modal-almoco';
+import {
+  ContentModalRelatorioTecnico,
+}
+from './content-modal/content-modal-relatorio-tecnico/content-modal-relatorio-tecnico';
+import {
+  ContentModalAtendimento,
+} from './content-modal/content-modal-atendimento/content-modal-atendimento';
 
 @Component({
   selector: 'modal',
@@ -16,18 +21,18 @@ export class ModalComponent {
   @ViewChild(Nav)
   nav: Nav;
 
-  public rootPage = ContentModalAlmocoAbastecimentoEmpresa;
+  public rootPage;
   private page;
 
   constructor(
     public navParms: NavParams,
   ) {
     this.page = {
-      ContentModalAlmocoAbastecimentoEmpresa,
+      ContentModalAlmoco,
       ContentModalOutros,
       ContentModalRelatorioTecnico,
       ContentModalAtendimento,
-      ModalFormComponent,
+      FormModalComponent,
     };
   }
 
