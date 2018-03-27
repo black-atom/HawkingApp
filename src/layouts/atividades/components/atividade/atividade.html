@@ -1,7 +1,11 @@
-<ion-card (click)="openAtividadeDetail(Atividade?._id)">
-  <ion-item text-wrap>
-   <img  [src]="Atividade?.interacao_tecnico.estado === '' ? 'assets/icon/company.svg' : 'assets/icon/warning.svg'" item-left>
-    <h5>{{ Atividade?.cliente.nome_razao_social | uppercase }}</h5>
+<ion-item-group>
+  <ion-item-divider>Em Execução</ion-item-divider>
+  <ion-item (click)="openAtividadeDetail(Atividade?._id)">
+    <ion-avatar item-start>
+      <img src="assets/icon/company.svg">
+    </ion-avatar>
+    <h2>{{ Atividade?.cliente.nome_razao_social | uppercase }}</h2>
+    <h3>Don't Know What To Do!</h3>
     <p>
       <ion-icon name="pin" color="primary"></ion-icon>
       {{ Atividade?.endereco.bairro | uppercase }},
@@ -10,4 +14,4 @@
       {{ Atividade?.endereco.cep | uppercase }}
     </p>
   </ion-item>
-</ion-card>
+</ion-item-group>
