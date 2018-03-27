@@ -1,11 +1,11 @@
-import { Action } from '@ngrx/store';
+import { Action, createSelector } from '@ngrx/store';
 import { LoginState } from './../models';
+import { State } from '.';
 
 const INITIAL_STATE: LoginState = {
   login: null,
   loading: false,
   error: false,
-  token: '',
   nome: null,
 };
 
@@ -37,11 +37,17 @@ export type ActionsMonitoramento =
 export const loginReducer = (state: LoginState = INITIAL_STATE, action: ActionsMonitoramento) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      const { funcionario: { login, nome }, token } = action.payload;
-      return { ...state, nome, login, token, loading: true,  error: false };
+      const { funcionario: { login, nome } } = action.payload;
+      return { ...state, nome, login, loading: true,  error: false };
     case LOGIN_FAILED:
       return { ...state, error: true };
     default:
       return state;
   }
 };
+
+const getLogin = (state: State) => state.login;
+
+export const isLogged = createSelector(getLogin, (loginState:LoginState) => loginState
+  .login !== null,
+);

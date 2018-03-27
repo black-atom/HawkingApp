@@ -12,7 +12,14 @@ import {
   atendimentosEmAndamento,
 } from '../../redux/reducers/atendimento.reducer';
 
+
+import {
+  filterAllAtividadesEmExecucao,
+  filterAllAtividadesPausadas,
+} from './../../redux/reducers/monitoramento.reducer';
+
 import { PopoverComponent } from '../../components/popover/popover.component';
+import { getAllAtividades } from '../../redux/reducers/monitoramento.reducer';
 
 @Component({
   selector: 'atividades',
@@ -23,9 +30,12 @@ export class AtividadesPage {
   public title = 'Atividades';
   public fabIcon = 'add';
 
-  public atividades$: Observable<Atendimento[]>;
-  public changeAtendimentos$: Subject<string> = new Subject<string>();
+  public atividades$: Observable<any[]>;
+  public atividadesPausadas$;
+  public atividadesEmExecucao$;
+  public atividadesPendentes$;
 
+  public changeAtendimentos$: Subject<string> = new Subject<string>();
   public buttonProperties = [
     {
       name: 'Almoço',
@@ -53,7 +63,14 @@ export class AtividadesPage {
     public popoverCtrl: PopoverController,
     private store: Store<State>,
   ) {
-
+    this.atividades$ = this.store.select(getAllAtividades);
+    this.atividadesPausadas$ = this.atividades$.map((atividades) => {
+      return atividades.filter(filterAllAtividadesPausadas);
+    });
+    this.atividadesEmExecucao$ = this.atividades$.map((atividades) => {
+      return atividades.filter(filterAllAtividadesEmExecucao);
+    });
+    this.atividadesPendentes$ = this.store.select(atendimentosPendentes);
   }
 
   ionViewDidLoad() {
@@ -62,7 +79,6 @@ export class AtividadesPage {
 
   eventRefresh() {
     this.store.dispatch(new RetriveAtendimento());
-    this.atividades$ = this.store.select(atendimentosPendentes);
   }
 
   presentPopover() {

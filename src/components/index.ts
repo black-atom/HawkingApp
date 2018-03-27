@@ -5,7 +5,6 @@ import { AtividadeDetailModule } from './atividade-detail/atividade-detail.modul
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SideMenuComponent } from './sidemenu/sidemenu.component';
-import { TabFooterComponent } from './tab-footer/tab-footer.component';
 import { FabButtonComponent } from './fab-button/fab-button.component';
 import { PopoverComponent } from './popover/popover.component';
 import { ModalComponent } from './modal/modal.component';
@@ -45,7 +44,6 @@ import { ToolBarActions } from './tool-bar-actions/tool-bar-actions';
     NavbarComponent,
     PopoverComponent,
     SideMenuComponent,
-    TabFooterComponent,
     TimeLine,
     ToolBarActions,
     ModalComponent,
@@ -71,7 +69,6 @@ import { ToolBarActions } from './tool-bar-actions/tool-bar-actions';
     NavbarComponent,
     PopoverComponent,
     SideMenuComponent,
-    TabFooterComponent,
     TimeLine,
     ToolBarActions,
     ModalComponent,

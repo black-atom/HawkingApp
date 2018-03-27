@@ -1,3 +1,105 @@
 login {
+  ion-content {
+    // background: #039EF2 !important;
+    background: url(http://pm1.narvii.com/6578/3b0afbfa5f69f7a4f4a36a047ae3b8ec79e981c7_00.jpg)  no-repeat scroll center top !important;
+    background-size: cover !important;
+    #overlay {
+      position: absolute;
+      background-color: rgba(0,0,0,0.4);
+      z-index: -5;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+    }
 
+    .loginbox {
+      width: 320px;
+      height: 360px;
+      color: #000;
+      top: 50%;
+      left: 50%;
+      padding: 60px 30px;
+      position: absolute;
+      transform: translate(-50%,  -50%);
+      box-sizing: border-box;
+      border-radius: 3%;
+      box-shadow: 8px 8px 50px #000;
+    }
+
+    h1 {
+      color: #fff;
+      margin: 0;
+      padding: 0 0 0px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .loginbox p {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .loginbox input {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    #text-account {
+      font-size: 14px !important;
+      color: #fff !important;
+    }
+
+    .loginbox input[type="text"], input[type="password"]{
+      border: none;
+      border-bottom: 1px solid #bdc3c7;
+      background: transparent;
+      outline: none;
+      height: 30px;
+      font-size: 16px;
+      opacity: 1;
+      color:  #fff !important;
+    }
+
+    .loginbox input[type="submit"] {
+      border: none;
+      outline: none;
+      height: 40px;
+      background: #039EF2;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 20px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .loginbox input[type="submit"]:hover {
+      cursor: pointer;
+      background: #2e78cc;
+      color: #fff;
+
+    }
+
+    .loginbox a {
+      font-size: 14px;
+      text-decoration: none;
+      color: #fff;
+      opacity: 0.8;
+    }
+
+    .loginbox a:hover {
+      color: #fff;
+      opacity: 1;
+    }
+
+  }
 }
+
+
+
+
+
+

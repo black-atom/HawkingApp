@@ -15,7 +15,8 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AtendimentoProvider, LoginProvider, MonitoramentoProvider } from '../providers';
+import { LoginProvider } from '../providers';
+import { ProvidersModule } from '../providers/providers.module';
 
 
 const storage = new Storage({});
@@ -40,18 +41,17 @@ export function getAuthHttp(http) {
     HttpModule,
     ReduxModule,
     IonicModule.forRoot(MyApp, { tabsHideOnSubPages: 'true' }),
+    ProvidersModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
   ],
   providers: [
-    AtendimentoProvider,
     LoginProvider,
-    MonitoramentoProvider,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     {
       provide: AuthHttp,
       useFactory: getAuthHttp,
