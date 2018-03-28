@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav } from 'ionic-angular';
 
-import { AtividadesPage } from '../../layouts/atividades/atividades';
-import { ConcluidosPage } from '../../layouts/concluidos/concluidos';
-import { PerfilPage } from '../../layouts/perfil/perfil';
-import { ReembolsosPage } from '../../layouts/reembolsos/reembolsos';
-import { SuportePage } from '../../layouts/suporte/suporte';
-import { LoginPage } from './../../layouts/login/login';
+import { AtividadesPage } from './../../pages/atividades/atividades';
+import { ConcluidosPage } from '../../pages/concluidos/concluidos';
+import { PerfilPage } from '../../pages/perfil/perfil';
+import { ReembolsosPage } from '../../pages/reembolsos/reembolsos';
+import { SuportePage } from '../../pages/suporte/suporte';
+import { LoginPage } from './../../pages/login/login';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class SideMenuComponent {
   nav: Nav;
 
   public rootPage: any = AtividadesPage;
-  public pages: Array<{title: string, component: any, icon: string}>;
+  public pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor() {
     this.pages = [

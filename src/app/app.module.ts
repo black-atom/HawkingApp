@@ -7,7 +7,7 @@ import { HttpModule, Http } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { Storage } from '@ionic/storage';
 
-import { LayoutModule } from './../layouts/index';
+import { PagesModule } from './../pages/pages.module';
 import { ComponentsModule } from './../components';
 import { ReduxModule } from './../redux/redux.module';
 
@@ -24,7 +24,7 @@ const storage = new Storage({});
 export function getAuthHttp(http) {
   return new AuthHttp(new AuthConfig({
     noJwtError: true,
-    globalHeaders: [{Accept: 'application/json'}],
+    globalHeaders: [{ Accept: 'application/json' }],
     tokenGetter: (() => storage.get('token')),
   }),                 http);
 }
@@ -36,7 +36,7 @@ export function getAuthHttp(http) {
   ],
   imports: [
     BrowserModule,
-    LayoutModule,
+    PagesModule,
     ComponentsModule,
     HttpModule,
     ReduxModule,

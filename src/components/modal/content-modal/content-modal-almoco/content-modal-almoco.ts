@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, PopoverController } from 'ionic-angular';
 
-import { AtividadesPage } from './../../../../layouts/atividades/atividades';
-import { TabPage } from '../../../../layouts/tab-page/tab-page';
+import { TabPage } from '../../../../pages/tab-page/tab-page';
 import { FormModalComponent } from '../../form-modal/form-modal.component';
 
 @Component({
