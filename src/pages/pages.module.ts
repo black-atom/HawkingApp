@@ -22,5 +22,5 @@ import { TabPageModule } from './tab-page/tab-page.module';
   ],
 })
 
-export class LayoutModule{}
+export class PagesModule{}
 

@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { AtividadeDetail } from './../../../../components/atividade-detail/atividade-detail.component';
 import { Atendimento } from '../../../../models';
+import {
+  AtividadeDetail,
+} from '../../../../components/atividade-detail/atividade-detail.component';
 
 @Component({
   selector: 'atividade',
