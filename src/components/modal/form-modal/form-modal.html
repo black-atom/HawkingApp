@@ -1,16 +1,18 @@
-<ion-list inset>
+<h1> {{ titles[0] }} </h1>
 
+<h3> {{ descriptions[0] }}  </h3>
+
+<ion-list inset>
   <ion-item>
-    <ion-label fixed>Insira a Km</ion-label>
-    <ion-input
-      type="number"
-      placeholder="121304"
-      clearInput="true"
-    >
+    <ion-label floating>{{ titles[0] }}</ion-label>
+      <ion-input type="number">
     </ion-input>
   </ion-item>
-
 </ion-list>
 
+<div class="buttons">
+  <button class="button" (click)="close()">CANCELAR</button>
+  <button class="button">SALVAR</button>
+</div>
 
 

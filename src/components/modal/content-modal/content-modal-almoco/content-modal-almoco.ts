@@ -15,7 +15,13 @@ export class ContentModalAlmoco {
   ) { }
 
   presentPopover() {
-    const popover = this.popoverCtrl.create(FormModalComponent);
+    const data: any = {};
+    const options = { cssClass : 'form-modal' };
+    const popover = this.popoverCtrl.create(
+      FormModalComponent,
+      data,
+      options,
+    );
     popover.present();
   }
 

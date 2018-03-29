@@ -27,6 +27,7 @@ export class PopoverComponent {
   openModal(pageType) {
     const modal = this.modalCtrl.create(ModalComponent, { pageType });
     modal.present();
+    this.close();
   }
 
   close() {

@@ -81,9 +81,11 @@ export class AtividadesPage {
   }
 
   presentPopover() {
+    const options = { cssClass : 'atividade-modal' };
     const popover = this.popoverCtrl.create(
       PopoverComponent,
       { buttonProperties: this.buttonProperties },
+      options,
     );
     popover.present();
   }
