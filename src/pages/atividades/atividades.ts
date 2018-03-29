@@ -36,26 +36,118 @@ export class AtividadesPage {
   public atividadesConcluidas$;
 
   public changeAtendimentos$: Subject<string> = new Subject<string>();
+
   public buttonProperties = [
     {
+      key: 'almoco',
       name: 'Almoço',
       imgPath: 'assets/icon/restaurant.svg',
-      pageType: 'ContentModalAlmoco',
+      pageType: 'ContentModalMonitoramento',
+      imageHeader: '',
+      props: [
+        {
+          buttonName: 'km Inicial',
+          inputType: 'number',
+          message: 'Insira a quilometrangem do veículo para o deslocamento.',
+        },
+        {
+          buttonName: 'km Final',
+          inputType: 'number',
+          message: 'Insira a quilometrangem do veículo para o deslocamento.',
+        },
+        {
+          buttonName: 'Iniciar',
+          inputType: 'btn',
+          message: 'Deseja iniciar o Almoço.',
+        },
+        {
+          buttonName: 'Finalizar',
+          inputType: 'btn',
+          message: 'Deseja finalizar o Almoço.',
+        },
+      ],
     },
     {
+      key: 'abastecimento',
       name: 'Abastecimento',
       imgPath: 'assets/icon/gas-station.svg',
-      pageType: 'ContentModalAtendimento',
+      pageType: 'ContentModalMonitoramento',
+      imageHeader: '',
+      props: [
+        {
+          buttonName: 'km Inicial',
+          inputType: 'number',
+          message: 'Insira a quilometrangem do veículo para o deslocamento.',
+        },
+        {
+          buttonName: 'km Final',
+          inputType: 'number',
+          message: 'Insira a quilometrangem do veículo para o deslocamento.',
+        },
+        {
+          buttonName: 'Iniciar',
+          inputType: 'btn',
+          message: 'Deseja iniciar o Abastecimento.',
+        },
+        {
+          buttonName: 'Finalizar',
+          inputType: 'btn',
+          message: 'Deseja finalizar o Abastecimento.',
+        },
+      ],
     },
     {
+      key: 'empresa',
       name: 'Realponto',
       imgPath: 'assets/icon/realponto.svg',
-      pageType: 'ContentModalAlmoco',
+      pageType: 'ContentModalMonitoramento',
+      imageHeader: '',
+      props: [
+        {
+          buttonName: 'km Inicial',
+          inputType: 'number',
+          message: 'Insira a quilometrangem do veículo para o deslocamento.',
+        },
+        {
+          buttonName: 'km Final',
+          inputType: 'number',
+          message: 'Insira a quilometrangem do veículo para o deslocamento.',
+        },
+      ],
     },
     {
+      key: 'outros',
       name: 'Outros',
       imgPath: 'assets/icon/other.svg',
-      pageType: 'ContentModalOutros',
+      pageType: 'ContentModalMonitoramento',
+      imageHeader: '',
+      props: [
+        {
+          buttonName: 'Descrição',
+          inputType: 'text',
+          message: 'Insira a descrição do deslocamento.',
+        },
+        {
+          buttonName: 'km Inicial',
+          inputType: 'number',
+          message: 'Insira a quilometrangem do veículo para o deslocamento.',
+        },
+        {
+          buttonName: 'km Final',
+          inputType: 'number',
+          message: 'Insira a quilometrangem do veículo para o deslocamento.',
+        },
+        {
+          buttonName: 'Iniciar',
+          inputType: 'btn',
+          message: 'Deseja iniciar.',
+        },
+        {
+          buttonName: 'Finalizar',
+          inputType: 'btn',
+          message: 'Deseja finalizar.',
+        },
+      ],
     },
   ];
 

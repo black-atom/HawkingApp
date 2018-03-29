@@ -10,23 +10,13 @@ import { ToolBarActions } from './tool-bar-actions/tool-bar-actions';
 import { NavbarComponent } from './navbar/navbar.component';
 
 import {
-  ContentModalAtendimento,
-} from './modal/content-modal/content-modal-atendimento/content-modal-atendimento';
+  ContentModalMonitoramento,
+} from './modal/content-modal-monitoramento/content-modal-monitoramento';
 
 
-import {
-  ContentModalRelatorioTecnico,
-} from './modal/content-modal/content-modal-relatorio-tecnico/content-modal-relatorio-tecnico';
-
-import {
-  ContentModalOutros,
-} from './modal/content-modal/content-modal-outros/content-modal-outros';
-
-import {
-  ContentModalAlmoco,
-} from './modal/content-modal/content-modal-almoco/content-modal-almoco';
 import { FormModalComponent } from './modal/form-modal/form-modal.component';
 import { ModalComponent } from './modal/modal';
+
 
 @NgModule({
   imports:[
@@ -34,43 +24,34 @@ import { ModalComponent } from './modal/modal';
     IonicPageModule,
   ],
   declarations: [
-    ContentModalAtendimento,
-    ContentModalAlmoco,
-    ContentModalOutros,
-    ContentModalRelatorioTecnico,
+    ContentModalMonitoramento,
+    FormModalComponent,
+    ModalComponent,
     NavbarComponent,
     PopoverComponent,
     SideMenuComponent,
     TimeLine,
     ToolBarActions,
-    ModalComponent,
-    FormModalComponent,
   ],
   entryComponents: [
+    ContentModalMonitoramento,
+    FormModalComponent,
+    ModalComponent,
     NavbarComponent,
     PopoverComponent,
-    ModalComponent,
-    FormModalComponent,
-    ContentModalAtendimento,
-    ContentModalAlmoco,
-    ContentModalOutros,
-    ContentModalRelatorioTecnico,
     TimeLine,
     ToolBarActions,
   ],
   exports: [
     AtividadeDetailModule,
-    ContentModalAtendimento,
-    ContentModalAlmoco,
-    ContentModalOutros,
-    ContentModalRelatorioTecnico,
+    ContentModalMonitoramento,
+    FormModalComponent,
+    ModalComponent,
     NavbarComponent,
     PopoverComponent,
     SideMenuComponent,
     TimeLine,
     ToolBarActions,
-    ModalComponent,
-    FormModalComponent,
   ],
 })
 export class ComponentsModule { }

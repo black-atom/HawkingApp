@@ -1,18 +1,18 @@
-<h1> {{ titles[0] }} </h1>
+<h1> {{ formConfig.title }} </h1>
 
-<h3> {{ descriptions[0] }}  </h3>
+<h3> {{ formConfig.message }}</h3>
 
-<ion-list inset>
+<ion-list inset *ngIf="formConfig.inputType !== 'btn'">
   <ion-item>
-    <ion-label floating>{{ titles[0] }}</ion-label>
-      <ion-input type="number">
+    <ion-label floating>
+      {{ formConfig.label }}
+    </ion-label>
+      <ion-input [type]="formConfig.inputType" [(ngModel)]="km">
     </ion-input>
   </ion-item>
 </ion-list>
 
 <div class="buttons">
   <button class="button" (click)="close()">CANCELAR</button>
-  <button class="button">SALVAR</button>
+  <button class="button" (click)="saveMonitoramento()" >SALVAR</button>
 </div>
-
-

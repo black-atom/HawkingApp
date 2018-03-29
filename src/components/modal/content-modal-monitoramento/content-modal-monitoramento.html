@@ -1,4 +1,6 @@
+
 <ion-header>
+
   <ion-toolbar color="primary">
 
     <button ion-button icon-only menuToggle (click)="close()">
@@ -12,14 +14,17 @@
     </ion-buttons>
 
   </ion-toolbar>
-
   <div class="buttons">
-    <h1>almoço</h1>
-    <button (click)="presentPopover()" ion-button class="km-steps" color="primary">
-      km inicial
+    <h1>{{ pageType?.name }}</h1>
+    <button
+      *ngFor="let button of pageType?.props"
+      (click)="presentPopover(button)"
+      ion-button class="km-steps"
+      color="primary"
+    >
+      {{ button?.buttonName }}
     </button>
   </div>
-
 </ion-header>
 
 <ion-content>
