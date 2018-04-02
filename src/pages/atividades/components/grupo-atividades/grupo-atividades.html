@@ -1,0 +1,14 @@
+<ion-item-group class="collapse-list">
+
+  <ion-item-divider class="collapse-header" [class.active]="collapse" (click)="collapsed()">
+    <ion-title> {{ title }} </ion-title>
+    <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+  </ion-item-divider>
+
+  <ion-list class="collapse-content" [class.active]="collapse" >
+    <div *ngIf="collapse">
+      <atividade *ngFor="let atividade of grupoAtividades | async" [Atividade]="atividade"></atividade>
+    </div>
+  </ion-list>
+
+</ion-item-group>

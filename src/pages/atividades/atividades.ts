@@ -33,6 +33,7 @@ export class AtividadesPage {
   public atividadesPausadas$;
   public atividadesEmExecucao$;
   public atividadesPendentes$;
+  public atividadesConcluidas$;
 
   public changeAtendimentos$: Subject<string> = new Subject<string>();
   public buttonProperties = [

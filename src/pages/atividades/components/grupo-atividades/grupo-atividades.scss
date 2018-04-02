@@ -1,0 +1,25 @@
+grupo-atividades {
+  .collapse-list {
+    margin: 0 !important;
+
+    .collapse-header {
+      padding-right: 10px;
+      ion-icon {
+          transition: all .25s ease-in;
+          transform: rotate(0);
+      }
+    }
+    .active ion-icon {
+      transform: rotate(90deg);
+    }
+
+    .collapse-content {
+      background: #FFFFFF !important;
+      transition: 0.5s ease-in-out;
+      &.active {
+          padding: .75rem;
+      }
+    }
+
+  }
+}
