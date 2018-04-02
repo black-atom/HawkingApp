@@ -1,23 +1,23 @@
 grupo-atividades {
   .collapse-list {
+    background: #FFFFFF !important;
     margin: 0 !important;
 
     .collapse-header {
       padding-right: 10px;
-      ion-icon {
-          transition: all .25s ease-in;
+      .arrow-icon {
+          transition: all .3s ease-in;
           transform: rotate(0);
       }
     }
-    .active ion-icon {
+    .active .arrow-icon {
       transform: rotate(90deg);
     }
 
     .collapse-content {
-      background: #FFFFFF !important;
-      transition: 0.5s ease-in-out;
+      transition: 0.3s ease-in-out;
       &.active {
-          padding: .75rem;
+          padding: .25rem;
       }
     }
 

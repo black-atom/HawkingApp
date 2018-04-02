@@ -13,7 +13,7 @@ export class GrupoAtividadesComponent {
   public title: string = '';
 
   @Input()
-  public grupoAtividades: any;
+  public atividades: any = [];
 
   constructor() { }
 
