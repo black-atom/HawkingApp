@@ -37,8 +37,8 @@ export type ActionsMonitoramento =
 export const loginReducer = (state: LoginState = INITIAL_STATE, action: ActionsMonitoramento) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      const { funcionario: { login, nome } } = action.payload;
-      return { ...state, nome, login, loading: true,  error: false };
+      const { funcionario: { login, nome, _id } } = action.payload;
+      return { ...state, _id, nome, login, loading: true,  error: false };
     case LOGIN_FAILED:
       return { ...state, error: true };
     default:
