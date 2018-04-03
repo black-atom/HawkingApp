@@ -5,8 +5,7 @@ import {
   ModalController,
 } from 'ionic-angular';
 
-import { ModalComponent } from '../modal/modal';
-
+import { ModalMonitoramento } from './../modal-monitoramento/modal-monitoramento';
 
 @Component({
   selector: 'popover',
@@ -25,7 +24,7 @@ export class PopoverComponent {
   }
 
   openModal(props) {
-    const modal = this.modalCtrl.create(ModalComponent, { props });
+    const modal = this.modalCtrl.create(ModalMonitoramento, { props });
     modal.present();
     this.close();
   }

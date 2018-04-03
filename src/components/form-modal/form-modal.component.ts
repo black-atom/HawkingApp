@@ -1,9 +1,10 @@
-import { State } from './../../../redux/reducers/index';
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 import { Store } from '@ngrx/store';
+import { State } from '../../redux/reducers';
 
 import  uuidv4 from 'uuid/v4';
+
 
 @Component({
   selector: 'form-modal',

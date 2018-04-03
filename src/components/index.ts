@@ -8,14 +8,9 @@ import { PopoverComponent } from './popover/popover.component';
 import { TimeLine } from './time-line/time-line';
 import { ToolBarActions } from './tool-bar-actions/tool-bar-actions';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ModalMonitoramento } from './modal-monitoramento/modal-monitoramento';
+import { FormModalComponent } from './form-modal/form-modal.component';
 
-import {
-  ContentModalMonitoramento,
-} from './modal/content-modal-monitoramento/content-modal-monitoramento';
-
-
-import { FormModalComponent } from './modal/form-modal/form-modal.component';
-import { ModalComponent } from './modal/modal';
 
 
 @NgModule({
@@ -24,9 +19,8 @@ import { ModalComponent } from './modal/modal';
     IonicPageModule,
   ],
   declarations: [
-    ContentModalMonitoramento,
+    ModalMonitoramento,
     FormModalComponent,
-    ModalComponent,
     NavbarComponent,
     PopoverComponent,
     SideMenuComponent,
@@ -34,9 +28,8 @@ import { ModalComponent } from './modal/modal';
     ToolBarActions,
   ],
   entryComponents: [
-    ContentModalMonitoramento,
+    ModalMonitoramento,
     FormModalComponent,
-    ModalComponent,
     NavbarComponent,
     PopoverComponent,
     TimeLine,
@@ -44,9 +37,8 @@ import { ModalComponent } from './modal/modal';
   ],
   exports: [
     AtividadeDetailModule,
-    ContentModalMonitoramento,
+    ModalMonitoramento,
     FormModalComponent,
-    ModalComponent,
     NavbarComponent,
     PopoverComponent,
     SideMenuComponent,

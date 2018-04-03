@@ -8,10 +8,10 @@
 <ion-content>
 
   <ion-item-group>
-    <grupo-atividades [title]='"Em execução"' [atividades]='atividadesEmExecucao$' ></grupo-atividades>
-    <grupo-atividades [title]='"Pausado"' [atividades]='atividadesPausadas$' [collapse]="false" ></grupo-atividades>
-    <grupo-atividades [title]='"Pendente"' [atividades]='atividadesPendentes$' [collapse]="false" ></grupo-atividades>
-    <grupo-atividades [title]='"Concluído"' [atividades]='atividadesConcluidas$' [collapse]="false" ></grupo-atividades>
+    <grupo-atividades [title]='"Em execução"' [atividades]='atividadesEmExecucao$ | async' ></grupo-atividades>
+    <grupo-atividades [title]='"Pausado"' [atividades]='atividadesPausadas$ | async' [collapse]="false" ></grupo-atividades>
+    <grupo-atividades [title]='"Pendente"' [atividades]='atividadesPendentes$ | async' [collapse]="true" ></grupo-atividades>
+    <!-- <grupo-atividades [title]='"Concluído"' [atividades]='atividadesConcluidas$ | async' [collapse]="false" ></grupo-atividades> -->
   </ion-item-group>
 
   <ion-fab right bottom (click)="presentPopover()">
