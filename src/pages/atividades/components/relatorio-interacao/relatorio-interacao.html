@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Relatório do Técnico</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content >
+      <ion-item text-wrap>
+        <ion-label color="primary" stacked>Resumo do atendimento</ion-label>
+        <ion-textarea rows="7" cols="10" placeholder="Digite o resumo do atendimento..."></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item text-wrap>
+        <ion-label color="primary" stacked>Relatório do atendimento</ion-label>
+        <ion-textarea rows="7" cols="10" placeholder="Digite o Relatório do atendimento..."></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label> Retornará ao local ? </ion-label>
+        <ion-toggle  [(ngModel)]="relatorioInteracao.retornoLocal.retorno" ></ion-toggle>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content *ngIf="relatorioInteracao.retornoLocal.retorno">
+      <ion-list>
+        <ion-item>
+          <ion-label>Motivo</ion-label>
+          <ion-select [(ngModel)]="relatorioInteracao.retornoLocal.retorno" cancelText="Cancelar">
+            <ion-option *ngFor="let motivo of motivosRetornoLocal" value="{{ motivo }}"> {{ motivo }} </ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label> Houve treinamento ?</ion-label>
+        <ion-toggle  [(ngModel)]="relatorioInteracao.detalhesTreinamento.houveTreinamento" ></ion-toggle>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content *ngIf="relatorioInteracao.detalhesTreinamento.houveTreinamento">
+      <ion-item>
+        <ion-label>Topicos</ion-label>
+        <ion-select [(ngModel)]="relatorioInteracao.detalhesTreinamento.topicos" multiple="true" cancelText="Cancelar">
+          <ion-option *ngFor="let topico of topicosDetalhesTreinamento"> {{ topico }} </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Software</ion-label>
+        <ion-select [(ngModel)]="relatorioInteracao.detalhesTreinamento.software" cancelText="Cancelar">
+          <ion-option *ngFor="let software of softwares" value="{{ software }}">{{ software }} </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" stacked> Caminho da rede </ion-label>
+        <ion-input type="text" placeholder="Digite o caminho da rede." value=""></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label> Houve remoção de equipamento ?</ion-label>
+        <ion-toggle  [(ngModel)]="relatorioInteracao.remocaoRelogio.houveRemocaoRelogio" ></ion-toggle>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content *ngIf="relatorioInteracao.remocaoRelogio.houveRemocaoRelogio">
+      <ion-item>
+        <ion-label>Equipamento</ion-label>
+        <ion-select [(ngModel)]="relatorioInteracao.remocaoRelogio.relogio" cancelText="Cancelar">
+          <ion-option *ngFor="let equipamento of equipamentos"> {{ equipamento }} </ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label> Faturamento </ion-label>
+        <ion-toggle [(ngModel)]="relatorioInteracao.faturamento.mesmoCnpj" ></ion-toggle>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content *ngIf="relatorioInteracao.faturamento.mesmoCnpj">
+      <ion-item>
+        <ion-label color="primary" stacked> CNPJ </ion-label>
+        <ion-input type="number" placeholder="00.000.000/0000-00" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked> Razão Social </ion-label>
+        <ion-input type="text" placeholder="REAL PONTO" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked> E-mail </ion-label>
+        <ion-input type="email" placeholder="exemplo@exemplo.com.br" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked> Valor </ion-label>
+        <ion-input type="number" placeholder="100,00" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked> Prazo de Pagamento </ion-label>
+        <ion-input type="number"placeholder="3"  value="" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked> Quem aprovou </ion-label>
+        <ion-input type="text" placeholder="ALAN" value=""></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
