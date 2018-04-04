@@ -7,6 +7,7 @@ const INITIAL_STATE: LoginState = {
   loading: false,
   error: false,
   nome: null,
+  _id: null,
 };
 
 export const LOGIN = 'LOGIN';

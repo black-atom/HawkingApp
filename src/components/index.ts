@@ -46,4 +46,5 @@ import { FormModalComponent } from './form-modal/form-modal.component';
     ToolBarActions,
   ],
 })
-export class ComponentsModule { }
+
+export class ComponentsModule {}

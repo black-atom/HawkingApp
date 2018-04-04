@@ -1,72 +1,46 @@
 <div class="timeline">
-  <div class="entry">
-    <div class="title">
-      <h3>12:32</h3>
+    <div class="entry">
+      <div class="title">
+        <h3>{{ atividade?.data_hora_inicial_km | date: 'HH:mm' }}</h3>
+      </div>
+      <div class="body">
+        <p>Km Inicial</p>
+        <ul>
+          <li>{{ atividade?.km_inicial }} km</li>
+        </ul>
+      </div>
     </div>
-    <div class="body">
-      <p>Km Inicial</p>
-      <ul>
-        <li>189012 km</li>
-      </ul>
+    <div class="entry">
+      <div class="title">
+        <h3>{{ atividade?.data_hora_final_km | date: 'HH:mm' }}</h3>
+      </div>
+      <div class="body">
+        <p>Km Final</p>
+        <ul>
+          <li>{{ atividade?.km_final }} km</li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="entry">
-    <div class="title">
-      <h3>12:38</h3>
+    <div class="entry">
+      <div class="title">
+        <h3>{{ atividade?.data_hora_inicial_virgente_local | date: 'HH:mm' }}</h3>
+      </div>
+      <div class="body">
+        <p>Início da Atividade</p>
+        <ul>
+          <li>{{ atividade?.tipo | uppercase }}</li>
+        </ul>
+      </div>
     </div>
-    <div class="body">
-      <p>Km Final</p>
-      <ul>
-        <li>189012 km</li>
-      </ul>
-    </div>
-  </div>
-  <div class="entry">
-    <div class="title">
-      <h3>12:32</h3>
-    </div>
-    <div class="body">
-      <p>Início do Almoço</p>
-      <ul>
-        <li>189012 km</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="title">
-      <h3>12:32</h3>
-    </div>
-    <div class="body">
-      <p>(pausa)</p>
-      <ul>
-        <li>189012 km</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="title">
-      <h3>12:32</h3>
-    </div>
-    <div class="body">
-      <p>(retorno)</p>
-      <ul>
-        <li>189012 km</li>
-      </ul>
+    <div class="entry">
+      <div class="title">
+        <h3>{{ atividade?.data_hora_final_virgente_local | date: 'HH:mm' }}</h3>
+      </div>
+      <div class="body">
+        <p>Fim da Atividade</p>
+        <ul>
+          <li>{{ atividade?.tipo | uppercase }}</li>
+        </ul>
+      </div>
     </div>
   </div>
-
-  <div class="entry">
-    <div class="title">
-      <h3>12:32</h3>
-    </div>
-    <div class="body">
-      <p>Fim do Almoço</p>
-      <ul>
-        <li>189012 km</li>
-      </ul>
-    </div>
-  </div>
-
-</div>

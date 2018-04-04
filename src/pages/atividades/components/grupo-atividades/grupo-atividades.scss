@@ -6,7 +6,7 @@ grupo-atividades {
     .collapse-header {
       padding-right: 10px;
       .arrow-icon {
-          transition: all .3s ease-in;
+          transition: all 1ms ease-in;
           transform: rotate(0);
       }
     }
@@ -15,7 +15,6 @@ grupo-atividades {
     }
 
     .collapse-content {
-      transition: 0.3s ease-in-out;
       &.active {
           padding: .25rem;
       }

@@ -16,8 +16,8 @@
   </ion-toolbar>
   <div class="buttons">
     <h1>{{ pageType?.name }}</h1>
+    <div *ngFor="let button of pageType?.props">
     <button
-      *ngFor="let button of pageType?.props"
       (click)="presentPopover(button)"
       ion-button class="km-steps"
       color="primary"
@@ -25,8 +25,10 @@
       {{ button?.buttonName }}
     </button>
   </div>
+
+  </div>
 </ion-header>
 
 <ion-content>
-  <time-line></time-line>
+  <time-line [atividade]='atividadeEmExecucao$ | async'></time-line>
 </ion-content>

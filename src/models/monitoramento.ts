@@ -16,8 +16,8 @@ export interface Monitoramento {
   actions?: Action[];
 }
 
-interface Action {
-  status: string;
-  motivo: string;
-  date: Date;
+export interface Action {
+  status?: string;
+  motivo?: string;
+  date?: Date;
 }

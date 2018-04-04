@@ -3,7 +3,18 @@ import { ViewController, NavParams } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { State } from '../../redux/reducers';
 
-import  uuidv4 from 'uuid/v4';
+
+
+import {
+  Descricao,
+  KmInicial,
+  KmFinal,
+  Finalizar,
+  Iniciar,
+  KmInicialAfterDescricao,
+} from './../../redux/reducers/monitoramento.reducer';
+
+import { Monitoramento } from '../../models';
 
 
 @Component({
@@ -13,7 +24,7 @@ import  uuidv4 from 'uuid/v4';
 export class FormModalComponent {
 
   public formConfig;
-  public km: number;
+  public dataForm;
   private funcionario;
 
   constructor(
@@ -22,7 +33,8 @@ export class FormModalComponent {
     private store: Store<State>,
   ) {
     this.infoPage();
-    this.store.select('login').subscribe(user => console.log(user));
+    this.store.select('login').subscribe(user => this.funcionario = user);
+
 
   }
 
@@ -37,6 +49,7 @@ export class FormModalComponent {
       buttonName: label,
       message,
       name: title,
+      uuid,
     } = this.navParms.get('props');
 
     this.formConfig = {
@@ -45,27 +58,76 @@ export class FormModalComponent {
       label,
       message,
       title,
+      uuid,
     };
+  }
+
+  kmInicial() {
+    this.store.dispatch(
+      new KmInicial(
+        this.formConfig.key,
+        this.dataForm,
+        this.funcionario._id,
+        null,
+      ),
+    );
+    this.close();
+  }
+
+  kmInicialAfterDescricao() {
+    this.store.dispatch(
+      new KmInicialAfterDescricao(
+        this.dataForm,
+        this.formConfig.uuid,
+      ),
+    );
+    this.close();
+  }
+
+  monitoramentoDescricao() {
+    this.store.dispatch(
+      new Descricao(
+        this.formConfig.key,
+        this.dataForm,
+        this.funcionario._id,
+        null,
+      ),
+    );
+    this.close();
+  }
+
+  kmInicialSalvar() {
+    this.formConfig.key === 'outros' ? this.kmInicialAfterDescricao() : this.kmInicial();
+  }
+
+  kmFinal() {
+    this.store.dispatch(new KmFinal(this.formConfig.uuid, this.dataForm));
+    this.close();
+  }
+
+  iniciar() {
+    this.store.dispatch(new Iniciar(this.formConfig.uuid));
+    this.close();
+  }
+
+  finalizar() {
+    this.store.dispatch(new Finalizar(this.formConfig.uuid));
+    this.close();
   }
 
   saveMonitoramento() {
-    const monitoramento = {
-      uuid: uuidv4(),
-      km_inicial: this.km,
-      km_final: null,
-      data_hora_inicial_km: new Date(),
-      data_hora_final_km: null,
-      data_hora_inicial_virgente_local: null,
-      data_hora_final_virgente_local: null,
-      tipo: this.formConfig.key,
-      id_funcionario: '',
-      id_atendimento: '',
-      isUploaded: '',
-      isPaused: '',
-      actions: [],
-    };
-    console.log(monitoramento);
+    switch (this.formConfig.label) {
+      case 'Descrição':
+        return this.monitoramentoDescricao();
+      case 'km Inicial':
+        return this.kmInicialSalvar();
+      case 'km Final':
+        return this.kmFinal();
+      case 'Iniciar':
+        return this.iniciar();
+      case 'Finalizar':
+        return this.finalizar();
+    }
   }
-
 
 }
