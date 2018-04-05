@@ -2,10 +2,13 @@ import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 
 import {
-  TOPICOS_DETALHES_TREINAMENTO } from './../../../../utils/mocks/topicos-detalhes-treinamento';
-import { MOTIVOS_RETORNO_LOCAL } from './../../../../utils/mocks/motivos-retorno-local';
-import { SOFTWARES } from './../../../../utils/mocks/softwares';
-import { EQUIPAMENTOS } from './../../../../utils/mocks/equipamentos';
+  EQUIPAMENTOS,
+  FUNCIONARIOS,
+  MOTIVOS_RETORNO_LOCAL,
+  SOFTWARES,
+  TOPICOS_DETALHES_TREINAMENTO,
+} from './../../../../utils/mocks';
+
 
 @Component({
   selector: 'relatorio-interacao',
@@ -14,8 +17,9 @@ import { EQUIPAMENTOS } from './../../../../utils/mocks/equipamentos';
 export class RelatorioInteracaoPage {
 
   public equipamentos = EQUIPAMENTOS;
-  public softwares = SOFTWARES;
+  public funcinarios = FUNCIONARIOS;
   public motivosRetornoLocal = MOTIVOS_RETORNO_LOCAL;
+  public softwares = SOFTWARES;
   public topicosDetalhesTreinamento = TOPICOS_DETALHES_TREINAMENTO;
 
   public relatorioInteracao: any = {
