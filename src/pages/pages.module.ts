@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AtividadesModule } from './atividades/atividades.module';
 import { ConcluidosModule } from './concluidos/concluidos.module';
@@ -19,6 +20,7 @@ import { TabPageModule } from './tab-page/tab-page.module';
     LoginModule,
     SuporteModule,
     TabPageModule,
+    ReactiveFormsModule,
   ],
 })
 
