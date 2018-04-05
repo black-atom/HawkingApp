@@ -5,19 +5,22 @@ import { ComponentsModule } from '../../components';
 
 import { AtividadesPage } from './atividades';
 import { Atividade } from './components/atividade/atividade.component';
+import { GrupoAtividadesComponent } from './components/grupo-atividades/grupo-atividades';
 
 @NgModule({
   declarations: [
     Atividade,
     AtividadesPage,
+    GrupoAtividadesComponent,
   ],
   imports: [
     ComponentsModule,
     IonicPageModule.forChild(AtividadesPage),
   ],
   entryComponents: [
-    AtividadesPage,
     Atividade,
+    AtividadesPage,
+    GrupoAtividadesComponent,
   ],
 })
 

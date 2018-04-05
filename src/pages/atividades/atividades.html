@@ -6,15 +6,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-list-header> <h3>Em Execução</h3></ion-list-header>
-  <ion-list>
-    <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
-  </ion-list>
 
-  <ion-list-header> <h3>Em Execução</h3></ion-list-header>
-  <ion-list>
-    <atividade *ngFor="let atividade of atividades$ | async" [Atividade]="atividade"></atividade>
-  </ion-list>
+  <ion-item-group>
+    <grupo-atividades [title]='"Em execução"' [atividades]='atividadesEmExecucao$ | async' [collapse]="true"></grupo-atividades>
+    <grupo-atividades [title]='"Pausado"' [atividades]='atividadesPausadas$ | async' [collapse]="false"></grupo-atividades>
+    <grupo-atividades [title]='"Pendente"' [atividades]='atividadesPendentes$ | async' [collapse]="true"></grupo-atividades>
+    <grupo-atividades [title]='"Concluído"' [atividades]='atividadesConcluidas$ | async' [collapse]="false"></grupo-atividades>
+  </ion-item-group>
 
   <ion-fab right bottom (click)="presentPopover()">
     <button ion-fab color="primary">

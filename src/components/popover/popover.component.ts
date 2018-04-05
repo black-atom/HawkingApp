@@ -1,8 +1,11 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { ViewController, NavParams, NavController, ModalController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import {
+  ViewController,
+  NavParams,
+  ModalController,
+} from 'ionic-angular';
 
-import { ModalComponent } from '../modal/modal';
-
+import { ModalMonitoramento } from './../modal-monitoramento/modal-monitoramento';
 
 @Component({
   selector: 'popover',
@@ -12,20 +15,16 @@ export class PopoverComponent {
 
   public buttonProperties = [];
 
-  @Output()
-  actionButtonPopover = new EventEmitter();
-
   constructor(
-    public viewCtrl: ViewController,
-    public navCtrl: NavController,
-    public modalCtrl: ModalController,
     public navParms: NavParams,
+    public viewCtrl: ViewController,
+    public modalCtrl: ModalController,
   ) {
     this.buttonProperties = navParms.get('buttonProperties');
   }
 
-  openModal(pageType) {
-    const modal = this.modalCtrl.create(ModalComponent, { pageType });
+  openModal(props) {
+    const modal = this.modalCtrl.create(ModalMonitoramento, { props });
     modal.present();
     this.close();
   }

@@ -3,7 +3,7 @@ import { PopoverController } from 'ionic-angular';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 
-import { Atendimento } from '../../models';
+import { Atendimento, IAtividade } from '../../models';
 import { State } from '../../redux/reducers';
 
 import {
@@ -16,10 +16,13 @@ import {
 import {
   filterAllAtividadesEmExecucao,
   filterAllAtividadesPausadas,
+  filterAllAtividadesConcluida,
 } from './../../redux/reducers/monitoramento.reducer';
 
 import { PopoverComponent } from '../../components/popover/popover.component';
 import { getAllAtividades } from '../../redux/reducers/monitoramento.reducer';
+import { buttonProperties } from '../../utils/ButtonProperties';
+
 
 @Component({
   selector: 'atividades',
@@ -30,33 +33,13 @@ export class AtividadesPage {
   public title = 'Atividades';
 
   public atividades$: Observable<any[]>;
-  public atividadesPausadas$;
-  public atividadesEmExecucao$;
-  public atividadesPendentes$;
+  public atividadesPausadas$: Observable<IAtividade[]>;
+  public atividadesEmExecucao$: Observable<IAtividade[]>;
+  public atividadesPendentes$: Observable<IAtividade[]>;
+  public atividadesConcluidas$: Observable<IAtividade[]>;
 
   public changeAtendimentos$: Subject<string> = new Subject<string>();
-  public buttonProperties = [
-    {
-      name: 'Almoço',
-      imgPath: 'assets/icon/restaurant.svg',
-      pageType: 'ContentModalAlmoco',
-    },
-    {
-      name: 'Abastecimento',
-      imgPath: 'assets/icon/gas-station.svg',
-      pageType: 'ContentModalAtendimento',
-    },
-    {
-      name: 'Realponto',
-      imgPath: 'assets/icon/realponto.svg',
-      pageType: 'ContentModalAlmoco',
-    },
-    {
-      name: 'Outros',
-      imgPath: 'assets/icon/other.svg',
-      pageType: 'ContentModalOutros',
-    },
-  ];
+  public buttonProperties = buttonProperties;
 
   constructor(
     public popoverCtrl: PopoverController,
@@ -70,6 +53,9 @@ export class AtividadesPage {
       return atividades.filter(filterAllAtividadesEmExecucao);
     });
     this.atividadesPendentes$ = this.store.select(atendimentosPendentes);
+    this.atividadesConcluidas$ = this.atividades$.map((atividades) => {
+      return atividades.filter(filterAllAtividadesConcluida);
+    });
   }
 
   ionViewDidLoad() {

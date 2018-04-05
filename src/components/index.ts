@@ -8,25 +8,10 @@ import { PopoverComponent } from './popover/popover.component';
 import { TimeLine } from './time-line/time-line';
 import { ToolBarActions } from './tool-bar-actions/tool-bar-actions';
 import { NavbarComponent } from './navbar/navbar.component';
-
-import {
-  ContentModalAtendimento,
-} from './modal/content-modal/content-modal-atendimento/content-modal-atendimento';
+import { ModalMonitoramento } from './modal-monitoramento/modal-monitoramento';
+import { FormModalComponent } from './form-modal/form-modal.component';
 
 
-import {
-  ContentModalRelatorioTecnico,
-} from './modal/content-modal/content-modal-relatorio-tecnico/content-modal-relatorio-tecnico';
-
-import {
-  ContentModalOutros,
-} from './modal/content-modal/content-modal-outros/content-modal-outros';
-
-import {
-  ContentModalAlmoco,
-} from './modal/content-modal/content-modal-almoco/content-modal-almoco';
-import { FormModalComponent } from './modal/form-modal/form-modal.component';
-import { ModalComponent } from './modal/modal';
 
 @NgModule({
   imports:[
@@ -34,43 +19,32 @@ import { ModalComponent } from './modal/modal';
     IonicPageModule,
   ],
   declarations: [
-    ContentModalAtendimento,
-    ContentModalAlmoco,
-    ContentModalOutros,
-    ContentModalRelatorioTecnico,
+    ModalMonitoramento,
+    FormModalComponent,
     NavbarComponent,
     PopoverComponent,
     SideMenuComponent,
     TimeLine,
     ToolBarActions,
-    ModalComponent,
-    FormModalComponent,
   ],
   entryComponents: [
+    ModalMonitoramento,
+    FormModalComponent,
     NavbarComponent,
     PopoverComponent,
-    ModalComponent,
-    FormModalComponent,
-    ContentModalAtendimento,
-    ContentModalAlmoco,
-    ContentModalOutros,
-    ContentModalRelatorioTecnico,
     TimeLine,
     ToolBarActions,
   ],
   exports: [
     AtividadeDetailModule,
-    ContentModalAtendimento,
-    ContentModalAlmoco,
-    ContentModalOutros,
-    ContentModalRelatorioTecnico,
+    ModalMonitoramento,
+    FormModalComponent,
     NavbarComponent,
     PopoverComponent,
     SideMenuComponent,
     TimeLine,
     ToolBarActions,
-    ModalComponent,
-    FormModalComponent,
   ],
 })
-export class ComponentsModule { }
+
+export class ComponentsModule {}

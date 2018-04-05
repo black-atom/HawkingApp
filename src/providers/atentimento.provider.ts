@@ -44,7 +44,6 @@ export class AtendimentoProvider {
     } else {
       mensagemErro = erro.toString();
     }
-    console.log(mensagemErro);
     return Observable.throw(mensagemErro);
   }
 

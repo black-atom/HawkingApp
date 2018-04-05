@@ -12,11 +12,12 @@ export interface Monitoramento {
   id_atendimento?: string;
   isUploaded?: boolean;
   isPaused?: boolean;
+  descricao: string;
   actions?: Action[];
 }
 
-interface Action {
-  status: string;
-  motivo: string;
-  date: Date;
+export interface Action {
+  status?: string;
+  motivo?: string;
+  date?: Date;
 }
