@@ -1,3 +1,4 @@
+import { EquipamentoComponent } from './components/relatorio-interacao/equipamento/equipamento.component';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
@@ -14,6 +15,7 @@ import {
   declarations: [
     Atividade,
     AtividadesPage,
+    EquipamentoComponent,
     GrupoAtividadesComponent,
     RelatorioInteracaoPage,
   ],
@@ -24,6 +26,7 @@ import {
   entryComponents: [
     Atividade,
     AtividadesPage,
+    EquipamentoComponent,
     GrupoAtividadesComponent,
     RelatorioInteracaoPage,
   ],

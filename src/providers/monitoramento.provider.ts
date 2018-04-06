@@ -17,7 +17,7 @@ export class MonitoramentoProvider {
 
   constructor(private http: HttpClient) {  }
 
-  newMonitoramento(monitoramento: Monitoramento): Observable<Monitoramento> {
+  newMonitoramento(monitoramento: Monitoramento): Observable<any> {
     return this.http.post(this.url, monitoramento);
   }
 

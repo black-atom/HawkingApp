@@ -1,27 +1,16 @@
-<ion-header>
-  <ion-navbar color="primary">
+  <!-- <ion-header>
+ <ion-navbar color="primary">
     <ion-title>Relatório do Técnico</ion-title>
   </ion-navbar>
 </ion-header>
-
+-->
 <ion-content padding>
 
-
-<!--
-  <ion-card>
-    <ion-card-content>
-      <ion-item text-wrap>
-        <ion-label color="primary" stacked>Relatório do atendimento</ion-label>
-        <ion-textarea rows="7" cols="10" placeholder="Digite o Relatório do atendimento..."></ion-textarea>
-      </ion-item>
-    </ion-card-content>
-  </ion-card> -->
-
-  <ion-card>
+   <!-- <ion-card>
     <ion-card-header>
       <ion-item>
         <ion-label> Retornará ao local ? </ion-label>
-        <ion-toggle  [(ngModel)]="relatorioInteracao.retornoLocal.retorno" ></ion-toggle>
+        <ion-toggle [(ngModel)]="relatorioInteracao.retornoLocal.retorno" ></ion-toggle>
       </ion-item>
     </ion-card-header>
     <ion-card-content *ngIf="relatorioInteracao.retornoLocal.retorno">
@@ -33,7 +22,7 @@
           </ion-select>
         </ion-item>
       </ion-list>
-    </ion-card-content>
+    </ion-card-content>length
   </ion-card>
 
   <ion-card>
@@ -60,35 +49,102 @@
 
       <ion-item>
         <ion-label color="primary" stacked> Caminho da rede </ion-label>
-        <ion-input type="text" placeholder="Digite o caminho da rede." value=""></ion-input>
+        <ion-input [(ngModel)]="relatorioInteracao.detalhesTreinamento.caminhoRede" type="text" placeholder="Digite o caminho da rede."></ion-input>
       </ion-item>
     </ion-card-content>
-  </ion-card>
+  </ion-card>  -->
+<form [formGroup]="form">
 
-  <ion-card>
+  <ion-card formArrayName="equipamentos">
+
     <ion-card-header>
       <ion-item>
         <ion-label> Houve remoção de equipamento ?</ion-label>
-        <ion-toggle  [(ngModel)]="relatorioInteracao.remocaoRelogio.houveRemocaoRelogio" ></ion-toggle>
+        <ion-toggle></ion-toggle>
       </ion-item>
     </ion-card-header>
-    <ion-card-content *ngIf="relatorioInteracao.remocaoRelogio.houveRemocaoRelogio">
-      <ion-item>
-        <ion-label>Equipamento</ion-label>
-        <ion-select [(ngModel)]="relatorioInteracao.remocaoRelogio.relogio" cancelText="Cancelar">
-          <ion-option *ngFor="let equipamento of equipamentos"> {{ equipamento }} </ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
 
+    <ion-item-divider></ion-item-divider>
+
+    <ion-card-content>
+      <equipamento *ngFor="let equipamento of equipamentos.controls; index as i"
+                    [equipamentoForm]="equipamento">
+      </equipamento>
+
+      <ion-item text-center>
+        <button ion-button clear only-icon full (click)="addItem()">
+          <ion-icon name="add" large></ion-icon>
+        </button>
+      </ion-item>
+
+
+    </ion-card-content>
+
+
+  </ion-card>
+          <!-- <ion-item>
+
+          <ion-label>Equipamento</ion-label>
+          <ion-select cancelText="Cancelar" formControlName="modelo_equipamento">
+            <ion-option *ngFor="let equipament of equipamentosMock"> {{ equipament }} </ion-option>
+          </ion-select>
+        </ion-item>
+
+        {{ form.value.equipamentos[i].modelo_equipamento | json }}
+        <ion-item>
+            <ion-label color="primary" stacked> Nº Equipamento </ion-label>
+            <ion-input
+              type="number"
+              placeholder="Digite o número do equipamento."
+              formControlName="numero_equipamento"></ion-input>
+          </ion-item>
+
+
+        <ion-item>
+          <ion-label>Itens do Equipamento</ion-label>
+          <ion-select multiple="true" cancelText="Cancelar">
+            <ion-option
+            *ngFor="let item of getItemsEquipamento()">
+            {{ item }}
+          </ion-option>
+          </ion-select>
+        </ion-item>
+
+
+
+        <ion-item>
+          <ion-list>
+            <ion-item *ngFor="let item of items; let i = index; ">
+              {{item}}
+            </ion-item>
+          </ion-list>
+        </ion-item>
+
+        <ion-item item-end>
+          <button color="primary" item-end ion-button clear (click)="removerEquipamento(relatorioInteracao.remocaoEquipamento.equipamentos, i)">
+            remover
+          </button>
+        </ion-item>
+        <ion-item-divider></ion-item-divider> -->
+
+    <!-- <ion-item item-end>
+      <button item-end ion-button icon-only clear (click)="addItem()">
+      <ion-icon color="secondary" name="add-circle"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-card-content>
+  </ion-card> -->
+
+</form>
+<!--
   <ion-card>
     <ion-card-header>
       <ion-item>
         <ion-label> Faturamento </ion-label>
-        <ion-toggle [(ngModel)]="relatorioInteracao.faturamento.mesmoCnpj" ></ion-toggle>
+        <ion-toggle [(ngModel)]="relatorioInteracao.faturamento.mesmoCnpj"></ion-toggle>
       </ion-item>
     </ion-card-header>
+
     <ion-card-content *ngIf="relatorioInteracao.faturamento.mesmoCnpj">
       <ion-item>
         <ion-label color="primary" stacked> CNPJ </ion-label>
@@ -121,9 +177,16 @@
     <ion-card-content >
       <ion-item text-wrap>
         <ion-label color="primary" stacked>Resumo do atendimento</ion-label>
-        <ion-textarea rows="7" cols="10" placeholder="Digite o resumo do atendimento..."></ion-textarea>
+        <ion-textarea [(ngModel)]="relatorioInteracao.resumoAtendimento" placeholder="Digite o resumo do atendimento..." rows="7" cols="10"></ion-textarea>
       </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="print()">
+      <ion-icon name="camera">
+      </ion-icon>
+    </button>
+  </ion-fab> -->
 
 </ion-content>
