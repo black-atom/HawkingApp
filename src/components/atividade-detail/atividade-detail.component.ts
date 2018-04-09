@@ -15,19 +15,22 @@ import {
 })
 export class AtividadeDetail {
 
-  private AtividadeID: string;
-  public AtividadeDetail$: Observable<Atendimento>;
+  private atividadeID: string;
+  public atividadeDetail$: Observable<Atendimento>;
   public title = 'Detalhes';
 
   constructor(
     public navCtrl: NavController,
     private navParams: NavParams,
-    private store: Store<State>) { this.AtividadeID = this.navParams.get('id'); }
+    private store: Store<State>,
+  ) {
+    this.atividadeID = this.navParams.get('id');
+  }
 
   ionViewDidLoad() {
-    this.AtividadeDetail$ = this.store.select(state => {
+    this.atividadeDetail$ = this.store.select((state) => {
       const { atendimentos } =  state.atendimentos;
-      return atendimentos.find(atendimento => atendimento._id === this.AtividadeID);
+      return atendimentos.find(atendimento => atendimento._id === this.atividadeID);
     });
   }
 

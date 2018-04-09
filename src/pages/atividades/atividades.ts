@@ -36,7 +36,7 @@ export class AtividadesPage {
     public popoverCtrl: PopoverController,
     private store: Store<State>,
   ) {
-
+    this.atividadesPendentes$ = this.store.select(atendimentosPendentes);
   }
 
   ionViewDidLoad() {
