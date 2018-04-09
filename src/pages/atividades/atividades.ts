@@ -12,15 +12,6 @@ import {
   atendimentosEmAndamento,
 } from '../../redux/reducers/atendimento.reducer';
 
-
-import {
-  filterAllAtividadesEmExecucao,
-  filterAllAtividadesPausadas,
-  filterAllAtividadesConcluida,
-} from './../../redux/reducers/monitoramento.reducer';
-
-import { PopoverComponent } from '../../components/popover/popover.component';
-import { getAllAtividades } from '../../redux/reducers/monitoramento.reducer';
 import { buttonProperties } from '../../utils/ButtonProperties';
 
 
@@ -45,17 +36,7 @@ export class AtividadesPage {
     public popoverCtrl: PopoverController,
     private store: Store<State>,
   ) {
-    this.atividades$ = this.store.select(getAllAtividades);
-    this.atividadesPausadas$ = this.atividades$.map((atividades) => {
-      return atividades.filter(filterAllAtividadesPausadas);
-    });
-    this.atividadesEmExecucao$ = this.atividades$.map((atividades) => {
-      return atividades.filter(filterAllAtividadesEmExecucao);
-    });
-    this.atividadesPendentes$ = this.store.select(atendimentosPendentes);
-    this.atividadesConcluidas$ = this.atividades$.map((atividades) => {
-      return atividades.filter(filterAllAtividadesConcluida);
-    });
+
   }
 
   ionViewDidLoad() {
@@ -66,13 +47,4 @@ export class AtividadesPage {
     this.store.dispatch(new RetriveAtendimento());
   }
 
-  presentPopover() {
-    const options = { cssClass : 'atividade-modal' };
-    const popover = this.popoverCtrl.create(
-      PopoverComponent,
-      { buttonProperties: this.buttonProperties },
-      options,
-    );
-    popover.present();
-  }
 }

@@ -1,4 +1,4 @@
-  <ion-item  *ngIf="atividade.id_atendimento !== null" (click)="checkAtividade(atividade)">
+  <ion-item (click)="openAtividadeDetail(atividade)">
     <ion-avatar item-start>
       <img src="assets/icon/company.svg">
     </ion-avatar>
@@ -9,21 +9,5 @@
       {{ atividade?.endereco.cidade | uppercase }} -
       {{ atividade?.endereco.uf | uppercase }},
       {{ atividade?.endereco.cep | uppercase }}
-    </p>
-  </ion-item>
-
-
-  <ion-item *ngIf="atividade.id_atendimento === null" (click)="checkAtividade(atividade)">
-    <ion-avatar item-start>
-      <img src="assets/icon/company.svg">
-    </ion-avatar>
-    <h2>{{ atividade?.tipo | uppercase }}</h2>
-    <p>
-      <ion-icon name="clock" color="primary"></ion-icon>
-      Km Inicial {{ atividade?.km_inicial }} km - {{ atividade.data_hora_inicial_km | date: 'HH:mm' }}
-    </p>
-    <p>
-      <ion-icon name="clock" color="primary"></ion-icon>
-      Km Final {{ atividade?.km_final }} - {{ atividade.data_hora_final_km | date: 'HH:mm' }}
     </p>
   </ion-item>
