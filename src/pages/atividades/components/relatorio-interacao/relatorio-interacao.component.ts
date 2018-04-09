@@ -96,7 +96,7 @@ export class RelatorioInteracaoPage {
   }
   equipamento() {
     return this.fb.group({
-      modelo_equipamento: ['A', Validators.required],
+      modelo_equipamento: ['', Validators.required],
       numero_equipamento: ['', Validators.required],
       pecas: this.fb.array([]),
     });
@@ -120,7 +120,6 @@ export class RelatorioInteracaoPage {
   }
 
 }
-
 interface Equipamento {
   nome: string;
   itens: string[];
