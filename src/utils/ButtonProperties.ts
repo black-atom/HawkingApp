@@ -7,26 +7,26 @@ const buttonProperties = [
     imageHeader: '',
     props: [
       {
+        key: 'kmInicial',
         buttonName: 'km Inicial',
-        isViewed: true,
         inputType: 'number',
         message: 'Insira a quilometrangem do veículo para o deslocamento.',
       },
       {
+        key: 'kmFinal',
         buttonName: 'km Final',
-        isViewed: false,
         inputType: 'number',
         message: 'Insira a quilometrangem do veículo para o deslocamento.',
       },
       {
+        key: 'iniciar',
         buttonName: 'Iniciar',
-        isViewed: false,
         inputType: 'btn',
         message: 'Deseja iniciar.',
       },
       {
+        key: 'finalizar',
         buttonName: 'Finalizar',
-        isViewed: false,
         inputType: 'btn',
         message: 'Deseja finalizar.',
       },
@@ -40,26 +40,26 @@ const buttonProperties = [
     imageHeader: '',
     props: [
       {
+        key: 'kmInicial',
         buttonName: 'km Inicial',
-        isViewed: true,
         inputType: 'number',
         message: 'Insira a quilometrangem do veículo para o deslocamento.',
       },
       {
+        key: 'kmFinal',
         buttonName: 'km Final',
-        isViewed: false,
         inputType: 'number',
         message: 'Insira a quilometrangem do veículo para o deslocamento.',
       },
       {
+        key: 'iniciar',
         buttonName: 'Iniciar',
-        isViewed: false,
         inputType: 'btn',
         message: 'Deseja iniciar.',
       },
       {
+        key: 'finalizar',
         buttonName: 'Finalizar',
-        isViewed: false,
         inputType: 'btn',
         message: 'Deseja finalizar.',
       },
@@ -73,14 +73,14 @@ const buttonProperties = [
     imageHeader: '',
     props: [
       {
+        key: 'kmInicial',
         buttonName: 'km Inicial',
-        isViewed: true,
         inputType: 'number',
         message: 'Insira a quilometrangem do veículo para o deslocamento.',
       },
       {
+        key: 'kmFinal',
         buttonName: 'km Final',
-        isViewed: false,
         inputType: 'number',
         message: 'Insira a quilometrangem do veículo para o deslocamento.',
       },
@@ -94,32 +94,32 @@ const buttonProperties = [
     imageHeader: '',
     props: [
       {
+        key: 'descricao',
         buttonName: 'Descrição',
-        isViewed: true,
         inputType: 'text',
         message: 'Insira a descrição do deslocamento.',
       },
       {
+        key: 'kmInicial',
         buttonName: 'km Inicial',
-        isViewed: false,
         inputType: 'number',
         message: 'Insira a quilometrangem do veículo para o deslocamento.',
       },
       {
+        key: 'kmFinal',
         buttonName: 'km Final',
-        isViewed: false,
         inputType: 'number',
         message: 'Insira a quilometrangem do veículo para o deslocamento.',
       },
       {
+        key: 'iniciar',
         buttonName: 'Iniciar',
-        isViewed: false,
         inputType: 'btn',
         message: 'Deseja iniciar.',
       },
       {
+        key: 'finalizar',
         buttonName: 'Finalizar',
-        isViewed: false,
         inputType: 'btn',
         message: 'Deseja finalizar.',
       },
