@@ -1,4 +1,6 @@
 atividade-detail {
+  @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+  background-color: #fefefe !important;
   h1, h2, h3, h4, h5 {
     color: #333 !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -9,7 +11,30 @@ atividade-detail {
     line-height: 20px !important;
   }
   ion-header{
-    background: #0099F2 !important;
+    position: relative;
+    height: 280px;
+    background:
+      url(http://www.giardinopollensa.com/wp-content/uploads/2013/06/blur1.jpg)
+      no-repeat center center;
+    background-size: cover;
+
+    .buttons {
+      h1 {
+        font-size: 80px !important;
+        font-family: 'Amatic SC', cursive !important;
+        color: #FFFFFF !important;
+      }
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      .km-steps {
+        height: 40px;
+        width: 40%;
+        margin-top: 40px;
+        border-radius: 20px;
+      }
+    }
+
     .tools {
       margin-top: 15px;
       display: flex;
@@ -24,5 +49,4 @@ atividade-detail {
       color: white !important;
     }
   }
-
 }

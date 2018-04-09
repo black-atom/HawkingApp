@@ -10,10 +10,10 @@ time-line {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      height: auto;
       width: 100vw;
       margin: 0;
-      padding: 12vh 100px;
+      padding: 100vh 100px;
       font-family: 'Source Sans Pro', arial, sans-serif;
       font-weight: 300;
       color: #333;
@@ -101,4 +101,11 @@ time-line {
         }
       }
     }
+
+    .info-monitoramento {
+      background-color: white;
+      height: 100vh;
+      width: 100%;
+    }
 }
+

@@ -1,0 +1,10 @@
+<ion-content>
+ <div id="overlay"></div>
+ <div class="loginbox">
+    <h1>Bem vindo ao Connecta!</h1><br>
+    <input [(ngModel)]="username" type="text" placeholder="Usuário"><br>
+    <input  [(ngModel)]="password" type="password" placeholder="Senha">
+    <input type="submit" value="LOGIN" (click)="login()">
+    <span id="text-account"><a>Termos e condições</a></span>
+ </div>
+</ion-content>

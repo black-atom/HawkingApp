@@ -1,0 +1,24 @@
+grupo-atividades {
+  .collapse-list {
+    background: #FFFFFF !important;
+    margin: 0 !important;
+
+    .collapse-header {
+      padding-right: 10px;
+      .arrow-icon {
+          transition: all 1ms ease-in;
+          transform: rotate(0);
+      }
+    }
+    .active .arrow-icon {
+      transform: rotate(90deg);
+    }
+
+    .collapse-content {
+      &.active {
+          padding: .25rem;
+      }
+    }
+
+  }
+}

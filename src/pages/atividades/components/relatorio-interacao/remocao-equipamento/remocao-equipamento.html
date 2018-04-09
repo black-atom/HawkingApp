@@ -1,0 +1,26 @@
+<ion-item-group [formGroup]="equipamentoForm">
+
+  <ion-item>
+    <ion-label>Equipamento</ion-label>
+    <ion-select cancelText="Cancelar" formControlName="modelo_equipamento">
+      <ion-option *ngFor="let equipament of equipamentos" [value]="equipament">{{ equipament }}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Itens do Equipamento</ion-label>
+    <ion-select multiple="true" cancelText="Cancelar" (ionChange)="changeItens($event)">
+      <ion-option *ngFor="let item of items" [value]="item">
+        {{ item }}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked> Nº Equipamento </ion-label>
+    <ion-input type="number" placeholder="Digite o número do equipamento."></ion-input>
+  </ion-item>
+
+</ion-item-group>
+
+<ion-item-divider></ion-item-divider>
