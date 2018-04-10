@@ -1,5 +1,4 @@
-import { Atendimento } from './atendimento';
-import { Monitoramento } from './monitoramento';
+import { Atendimento, Monitoramento } from './';
 
 export enum AtividadeTipo {
   almoco = 'almoco',
