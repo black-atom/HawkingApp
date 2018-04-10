@@ -1,12 +1,12 @@
 import { Atendimento, Assinatura } from './atendimento';
-import { IAtividade } from './atividade';
+import { AtividadeI } from './atividade';
 
 import { Monitoramento } from './monitoramento';
 import { UserLogin } from './login';
 
 export {
   Atendimento,
-  IAtividade,
+  AtividadeI,
   Assinatura,
   Monitoramento,
   UserLogin,
