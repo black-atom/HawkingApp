@@ -13,6 +13,7 @@ export enum AtividadeStatus {
   pendente = 'pendente',
   pausado = 'pausado',
   em_execucao = 'em_execucao',
+  concluido = 'concluido',
 }
 
 

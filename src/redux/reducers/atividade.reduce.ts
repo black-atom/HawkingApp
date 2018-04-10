@@ -51,7 +51,7 @@ const mapAtividade = (atendimentos:Atendimento[]) => (atividade: AtividadeI): At
   atendimento: atendimentos.find(atendimento => atendimento._id === atividade.atendimento_id),
 });
 
-const getAtividadesPendentes = createSelector(
+export const getAtividadesPendentes = createSelector(
   getAllAtividades,
   getAllAtendimentos,
   (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
@@ -59,7 +59,7 @@ const getAtividadesPendentes = createSelector(
       .filter(atividade => atividade.status === AtividadeStatus.pendente);
   });
 
-const getAtividadesEmExecucao = createSelector(
+export const getAtividadesEmExecucao = createSelector(
   getAllAtividades,
   getAllAtendimentos,
   (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
@@ -67,10 +67,19 @@ const getAtividadesEmExecucao = createSelector(
       .filter(atividade => atividade.status === AtividadeStatus.em_execucao);
   });
 
-const getAtividadesPausadas = createSelector(
+export const getAtividadesPausadas = createSelector(
   getAllAtividades,
   getAllAtendimentos,
   (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
     return atividades.map(mapAtividade(atendimentos))
       .filter(atividade => atividade.status === AtividadeStatus.pausado);
   });
+
+export const getAtividadesConcluidas = createSelector(
+  getAllAtividades,
+  getAllAtendimentos,
+  (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
+    return atividades.map(mapAtividade(atendimentos))
+      .filter(atividade => atividade.status === AtividadeStatus.concluido);
+  });
+
