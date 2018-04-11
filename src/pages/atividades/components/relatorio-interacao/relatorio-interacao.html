@@ -9,7 +9,7 @@
   <houve-treinamento [treinamentoForm]="form.controls['treinamento']"></houve-treinamento>
   <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos_retirados']"></remocao-equipamento>
   <retorno-local [retornoLocalForm]="form"></retorno-local>
-  <faturamento [faturamentoForm]="form.controls['faturamento']"></faturamento>
+  <faturamento [faturamentoForm]="form.controls['faturamento']" [dadosCliente]="atividadeDetail$ | async"></faturamento>
   <ion-card>
     <ion-card-content >
       <ion-item text-wrap>
@@ -30,9 +30,6 @@
       <ion-icon name="camera"></ion-icon>
     </button>
   </ion-fab>
-
-  <pre>{{ form.value | json }}</pre>
-
 </ion-content>
 
 

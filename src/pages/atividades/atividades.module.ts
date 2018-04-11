@@ -5,23 +5,26 @@ import { ComponentsModule } from '../../components';
 
 import { AtividadesPage } from './atividades';
 import { Atividade } from './components/atividade/atividade.component';
+import {
+  EquipamentoComponent,
+} from './components/relatorio-interacao/remocao-equipamento/equipamento/equipamento';
+import {
+  EquipamentoFaturamentoComponent,
+// tslint:disable-next-line:max-line-length
+} from './components/relatorio-interacao/faturamento/equipamento-faturamento/equipamento-faturamento';
+import {
+  FaturamentoComponent,
+} from './components/relatorio-interacao/faturamento/faturamento.component';
 import { GrupoAtividadesComponent } from './components/grupo-atividades/grupo-atividades';
-import {
-  RelatorioInteracaoPage,
-} from './components/relatorio-interacao/relatorio-interacao.component';
-
-import {
-  RetornoLocalComponent,
-} from './components/relatorio-interacao/retorno-local/retorno-local.component';
 import {
   HouveTreinamentoComponent,
 } from './components/relatorio-interacao/houve-treinamento/houve-treinamento.component';
 import {
-  FaturamentoComponent,
-} from './components/relatorio-interacao/faturamento/faturamento.component';
+  RelatorioInteracaoPage,
+} from './components/relatorio-interacao/relatorio-interacao.component';
 import {
-  EquipamentoComponent,
-} from './components/relatorio-interacao/equipamento/equipamento';
+  RetornoLocalComponent,
+} from './components/relatorio-interacao/retorno-local/retorno-local.component';
 import {
   RemocaoEquipamentoComponent,
 } from './components/relatorio-interacao/remocao-equipamento/remocao-equipamento';
@@ -30,11 +33,12 @@ import {
   declarations: [
     Atividade,
     AtividadesPage,
+    EquipamentoComponent,
+    EquipamentoFaturamentoComponent,
     FaturamentoComponent,
     GrupoAtividadesComponent,
     HouveTreinamentoComponent,
     RemocaoEquipamentoComponent,
-    EquipamentoComponent,
     RelatorioInteracaoPage,
     RetornoLocalComponent,
   ],
@@ -45,12 +49,13 @@ import {
   entryComponents: [
     Atividade,
     AtividadesPage,
+    EquipamentoComponent,
+    EquipamentoFaturamentoComponent,
     FaturamentoComponent,
     GrupoAtividadesComponent,
     HouveTreinamentoComponent,
     RelatorioInteracaoPage,
     RemocaoEquipamentoComponent,
-    EquipamentoComponent,
     RetornoLocalComponent,
   ],
 })

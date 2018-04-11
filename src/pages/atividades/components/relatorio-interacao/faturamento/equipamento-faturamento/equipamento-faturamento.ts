@@ -14,10 +14,10 @@ import {
 import { ModalController } from 'ionic-angular';
 
 @Component({
-  selector: 'equipamento',
-  templateUrl: 'equipamento.html',
+  selector: 'equipamento-faturamento',
+  templateUrl: 'equipamento-faturamento.html',
 })
-export class EquipamentoComponent {
+export class EquipamentoFaturamentoComponent {
 
   @Input()
   equipamentoForm;
@@ -38,10 +38,10 @@ export class EquipamentoComponent {
       'Bobina',
     ],
     pecas: [
-      { id: 1, decricao: 'impressora', preco: 256.3 },
-      { id: 2, decricao: 'pino da bobina', preco: 256.3 },
-      { id: 3, decricao: 'leitor biometrico', preco: 256.3 },
-      { id: 4, decricao: 'sensor da impresora', preco: 256.3 },
+      { id: 1, descricao: 'impressora', preco: 256.3 },
+      { id: 2, descricao: 'pino da bobina', preco: 256.3 },
+      { id: 3, descricao: 'leitor biometrico', preco: 256.3 },
+      { id: 4, descricao: 'sensor da impresora', preco: 256.3 },
     ],
   },
   {
@@ -55,22 +55,24 @@ export class EquipamentoComponent {
       'cortina',
     ],
     pecas: [
-      { id: 1, decricao: 'impressora', preco: 256.3 },
-      { id: 2, decricao: 'pino da bobina', preco: 256.3 },
-      { id: 3, decricao: 'leitor biometrico', preco: 256.3 },
-      { id: 4, decricao: 'sensor da impresora', preco: 256.3 },
+      { id: 1, descricao: 'impressora', preco: 256.3 },
+      { id: 2, descricao: 'pino da bobina', preco: 256.3 },
+      { id: 3, descricao: 'leitor biometrico', preco: 256.3 },
+      { id: 4, descricao: 'sensor da impresora', preco: 256.3 },
     ],
   }];
 
   constructor(
     private fb: FormBuilder,
-    public modalCtrl: ModalController,
-  ) { }
+  ) {
+
+  }
 
   itemControl() {
     return this.fb.group({
       descricao: ['', Validators.required],
       quantidade: [1, Validators.required],
+      preco: ['', Validators.required],
     });
   }
 
@@ -78,29 +80,28 @@ export class EquipamentoComponent {
     this.itensEquipamentoSelecionado = [];
 
     const equipamentoSelecionado =
-      this.equipamentos.find(equipamento => equipamento.modelo === modeloEquipamento).itens;
+      this.equipamentos.find(equipamento => equipamento.modelo === modeloEquipamento).pecas;
 
     this.itensEquipamentoSelecionado = equipamentoSelecionado;
 
-    const items = (<FormArray>this.equipamentoForm.controls['itens']);
+    const items = (<FormArray>this.equipamentoForm.controls['pecas']);
     items.push(this.itemControl());
 
   }
 
   removeItem(index) {
-    const items = (<FormArray>this.equipamentoForm.controls['itens']);
+    const items = (<FormArray>this.equipamentoForm.controls['pecas']);
     items.removeAt(index);
   }
 
   resetItemsForm() {
-    const items = (<FormArray>this.equipamentoForm.controls['itens']);
+    const items = (<FormArray>this.equipamentoForm.controls['pecas']);
     items.value.forEach(() => items.removeAt(0));
   }
 
   removeEquipamento() {
     this.removeEquipamentoEmitter.emit();
   }
-
 }
 
 
