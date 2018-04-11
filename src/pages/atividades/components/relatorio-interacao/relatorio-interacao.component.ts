@@ -35,7 +35,6 @@ export class RelatorioInteracaoPage {
       treinamento: this.treinamentoControl(),
       faturamento: this.faturamentoControl(),
     });
-    this.addEquipamento();
   }
 
   faturamentoControl() {
@@ -51,18 +50,6 @@ export class RelatorioInteracaoPage {
       software: ['', Validators.required],
       caminho_rede: ['', Validators.required],
     });
-  }
-  equipamentoControl() {
-    return this.fb.group({
-      modelo_equipamento: ['', Validators.required],
-      numero_equipamento: ['', Validators.required],
-      itens: this.fb.array([]),
-    });
-  }
-
-  addEquipamento() {
-    const equipamentos: FormArray = <FormArray>this.form.controls['equipamentos_retirados'];
-    equipamentos.push(this.equipamentoControl());
   }
 
   saveForm(form) {

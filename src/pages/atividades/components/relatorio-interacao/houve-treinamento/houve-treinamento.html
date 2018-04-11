@@ -8,20 +8,21 @@
   </ion-card-header>
 
   <ion-card-content *ngIf="showInput">
-    <ion-item>
-      <ion-label>Topicos</ion-label>
-      <ion-select multiple="true" cancelText="Cancelar" formControlName="topicos">
-        <ion-option *ngFor="let topico of topicos" [value]="topico" >
-          {{ topico }}
-        </ion-option>
-      </ion-select>
-    </ion-item>
 
     <ion-item>
       <ion-label>Software</ion-label>
       <ion-select cancelText="Cancelar" formControlName="software">
         <ion-option *ngFor="let software of softwares" [value]="software">
           {{ software }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Topicos</ion-label>
+      <ion-select multiple="true" cancelText="Cancelar" formControlName="topicos">
+        <ion-option *ngFor="let topico of topicos" [value]="topico" >
+          {{ topico }}
         </ion-option>
       </ion-select>
     </ion-item>

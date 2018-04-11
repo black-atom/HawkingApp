@@ -1,6 +1,8 @@
 import {
   Component,
   Input,
+  EventEmitter,
+  Output,
 } from '@angular/core';
 import {
   FormGroup,
@@ -19,6 +21,9 @@ export class EquipamentoComponent {
 
   @Input()
   equipamentoForm;
+
+  @Output()
+  removeEquipamentoEmitter =  new EventEmitter();
 
   public itensEquipamentoSelecionado = [];
 
@@ -82,14 +87,18 @@ export class EquipamentoComponent {
 
   }
 
+  removeItem(index) {
+    const items = (<FormArray>this.equipamentoForm.controls['itens']);
+    items.removeAt(index);
+  }
+
   resetItemsForm() {
     const items = (<FormArray>this.equipamentoForm.controls['itens']);
     items.value.forEach(() => items.removeAt(0));
   }
 
-  removeItem(index) {
-    const items = (<FormArray>this.equipamentoForm.controls['itens']);
-    items.removeAt(index);
+  removeEquipamento() {
+    this.removeEquipamentoEmitter.emit();
   }
 
 }

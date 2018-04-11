@@ -18,6 +18,25 @@ export class RemocaoEquipamentoComponent implements OnInit {
 
   ngOnInit() {  }
 
+  equipamentoControl() {
+    return this.fb.group({
+      modelo_equipamento: ['', Validators.required],
+      numero_equipamento: ['', Validators.required],
+      itens: this.fb.array([]),
+    });
+  }
+
+  addEquipamento() {
+    const equipamentos: any = this.remocaoEquipamentoForm;
+    if (this.showInput) return equipamentos.push(this.equipamentoControl());
+    return equipamentos.value.forEach(() => equipamentos.removeAt(0));
+  }
+
+  removeEquipamento(index) {
+    const equipamento: any = this.remocaoEquipamentoForm;
+    equipamento.removeAt(index);
+  }
+
 }
 
 
