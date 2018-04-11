@@ -1,6 +1,10 @@
 <ion-item-group [formGroup]="equipamentoForm">
 
   <ion-item>
+    <button (click)="removeEquipamento()">text</button>
+  </ion-item>
+
+  <ion-item>
     <ion-label>Equipamento</ion-label>
     <ion-select cancelText="Cancelar" formControlName="modelo_equipamento" value="modelo_equipamento" (ionChange)="resetItemsForm()">
       <ion-option *ngFor="let equipamento of equipamentos" [value]="equipamento.modelo">{{ equipamento.modelo }}</ion-option>

@@ -5,26 +5,20 @@
 </ion-header>
 
 <ion-content [formGroup]="form" padding>
- <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos_retirados']"></remocao-equipamento>
 
- <ion-item text-center>
-    <button ion-button clear only-icon full (click)="addEquipamento()">
-      <ion-icon name="add" large></ion-icon>
-    </button>
-  </ion-item>
-
-
+  <houve-treinamento [treinamentoForm]="form.controls['treinamento']"></houve-treinamento>
+  <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos_retirados']"></remocao-equipamento>
   <retorno-local [retornoLocalForm]="form"></retorno-local>
   <faturamento [faturamentoForm]="form.controls['faturamento']"></faturamento>
-  <houve-treinamento [treinamentoForm]="form.controls['treinamento']"></houve-treinamento>
-
   <ion-card>
     <ion-card-content >
       <ion-item text-wrap>
         <ion-label color="primary" stacked>Resumo do atendimento</ion-label>
-        <ion-textarea formControlName="resumo_atendimento"
-                      placeholder="Digite o resumo do atendimento..."
-                      rows="7" cols="10">
+        <ion-textarea
+          formControlName="resumo_atendimento"
+          placeholder="Digite o resumo do atendimento..."
+          rows="7" cols="10"
+        >
         </ion-textarea>
       </ion-item>
     </ion-card-content>
