@@ -6,19 +6,15 @@
     </ion-item>
   </ion-card-header>
 
-  <pre>{{ retornoLocalForm.value | json }}</pre>
   <ion-card-content *ngIf="showInput">
     <ion-list>
       <ion-item>
         <ion-label>Motivo</ion-label>
-        <ion-select formControlName="motivo" cancelText="Cancelar">
-          <ion-option *ngFor="let motivo of motivos" [value]="motivo"> {{motivo}} </ion-option>
+        <ion-select formControlName="motivo_retorno" cancelText="Cancelar">
+          <ion-option *ngFor="let motivo of motivos" [value]="motivo"> {{ motivo }} </ion-option>
         </ion-select>
       </ion-item>
     </ion-list>
   </ion-card-content>
 </ion-card>
 
-<button ion-button (click)="print()"></button>
-
-<button ion-button (click)="print1()"></button>

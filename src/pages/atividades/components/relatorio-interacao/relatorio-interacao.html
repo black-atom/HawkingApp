@@ -4,46 +4,41 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <retorno-local></retorno-local>
-  <form [formGroup]="form">
-    <!-- <houve-treinamento></houve-treinamento> -->
-    <!-- <ion-card formArrayName="equipamentos">
-      <ion-card-header>
-        <ion-item>
-          <ion-label> Houve remoção de equipamento ?</ion-label>
-          <ion-toggle></ion-toggle>
-        </ion-item>
-      </ion-card-header>
+<ion-content [formGroup]="form" padding>
+ <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos_retirados']"></remocao-equipamento>
 
-      <ion-item-divider></ion-item-divider>
+ <ion-item text-center>
+    <button ion-button clear only-icon full (click)="addEquipamento()">
+      <ion-icon name="add" large></ion-icon>
+    </button>
+  </ion-item>
 
-      <ion-card-content>
-        <remocao-equipamento *ngFor="let equipamento of equipamentos.controls; index as i" [equipamentoForm]="equipamento">
-        </remocao-equipamento>
 
-        <ion-item text-center>
-          <button ion-button clear only-icon full (click)="addItem()">
-            <ion-icon name="add" large></ion-icon>
-          </button>
-        </ion-item>
+  <retorno-local [retornoLocalForm]="form"></retorno-local>
+  <faturamento [faturamentoForm]="form.controls['faturamento']"></faturamento>
+  <houve-treinamento [treinamentoForm]="form.controls['treinamento']"></houve-treinamento>
 
-      </ion-card-content>
-    </ion-card> -->
-  </form>
-  <!-- <faturamento></faturamento>
   <ion-card>
     <ion-card-content >
       <ion-item text-wrap>
         <ion-label color="primary" stacked>Resumo do atendimento</ion-label>
-        <ion-textarea placeholder="Digite o resumo do atendimento..." rows="7" cols="10"></ion-textarea>
+        <ion-textarea formControlName="resumo_atendimento"
+                      placeholder="Digite o resumo do atendimento..."
+                      rows="7" cols="10">
+        </ion-textarea>
       </ion-item>
     </ion-card-content>
-  </ion-card>-->
+  </ion-card>
+
+
   <ion-fab right bottom>
-    <button ion-fab color="primary" (click)="print()">
+    <button ion-fab color="primary" (click)="saveForm(form)">
       <ion-icon name="camera"></ion-icon>
     </button>
   </ion-fab>
 
+  <pre>{{ form.value | json }}</pre>
+
 </ion-content>
+
+
