@@ -1,26 +1,19 @@
-<ion-item-group [formGroup]="equipamentoForm">
+ <ion-card [formGroup]="remocaoEquipamentoForm">
+  <ion-card-header>
+    <ion-item>
+      <ion-label> Houve remoção de equipamento ?</ion-label>
+      <ion-toggle [(ngModel)]="showInput" [ngModelOptions]="{standalone: true}"></ion-toggle>
+    </ion-item>
+  </ion-card-header>
 
-  <ion-item>
-    <ion-label>Equipamento</ion-label>
-    <ion-select cancelText="Cancelar" formControlName="modelo_equipamento">
-      <ion-option *ngFor="let equipament of equipamentos" [value]="equipament">{{ equipament }}</ion-option>
-    </ion-select>
-  </ion-item>
+  <ion-item-divider></ion-item-divider>
 
-  <ion-item>
-    <ion-label>Itens do Equipamento</ion-label>
-    <ion-select multiple="true" cancelText="Cancelar" (ionChange)="changeItens($event)">
-      <ion-option *ngFor="let item of items" [value]="item">
-        {{ item }}
-      </ion-option>
-    </ion-select>
-  </ion-item>
+  <ion-card-content *ngIf="showInput">
+    <equipamento
+      *ngFor="let equipamento of remocaoEquipamentoForm.controls; index as i"
+      [equipamentoForm]="equipamento"
+    >
+    </equipamento>
 
-  <ion-item>
-    <ion-label color="primary" stacked> Nº Equipamento </ion-label>
-    <ion-input type="number" placeholder="Digite o número do equipamento."></ion-input>
-  </ion-item>
-
-</ion-item-group>
-
-<ion-item-divider></ion-item-divider>
+  </ion-card-content>
+</ion-card>
