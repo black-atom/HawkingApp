@@ -1,5 +1,4 @@
 import { AtividadeI } from './../../../../models/atividade';
-
 import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
 
@@ -31,12 +30,14 @@ import { FotoPage } from '../foto/foto';
 export class RelatorioInteracaoPage {
 
   public form: FormGroup;
+
   public atividade: AtividadeI;
 
   constructor(
     private fb: FormBuilder,
     public navParams: NavParams,
     private store: Store<State>,
+
     public navCtrl: NavController,
   ) {
     this.atividade = this.navParams.get('atividade');

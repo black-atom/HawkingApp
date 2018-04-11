@@ -37,7 +37,6 @@ export class FaturamentoComponent {
     return equipamentos.value.forEach(() => equipamentos.removeAt(0));
   }
 
-
   removeEquipamento(index) {
     const equipamento: FormArray =
     (<FormArray>this.faturamentoForm.controls['equipamentos_com_troca_de_peca']);
