@@ -9,9 +9,7 @@ import { GrupoAtividadesComponent } from './components/grupo-atividades/grupo-at
 import {
   RelatorioInteracaoPage,
 } from './components/relatorio-interacao/relatorio-interacao.component';
-import {
-  RemocaoEquipamentoComponent,
-} from './components/relatorio-interacao/remocao-equipamento/remocao-equipamento.component';
+
 import {
   RetornoLocalComponent,
 } from './components/relatorio-interacao/retorno-local/retorno-local.component';
@@ -21,6 +19,12 @@ import {
 import {
   FaturamentoComponent,
 } from './components/relatorio-interacao/faturamento/faturamento.component';
+import {
+  EquipamentoComponent,
+} from './components/relatorio-interacao/equipamento/equipamento';
+import {
+  RemocaoEquipamentoComponent,
+} from './components/relatorio-interacao/remocao-equipamento/remocao-equipamento';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import {
     GrupoAtividadesComponent,
     HouveTreinamentoComponent,
     RemocaoEquipamentoComponent,
+    EquipamentoComponent,
     RelatorioInteracaoPage,
     RetornoLocalComponent,
   ],
@@ -45,6 +50,7 @@ import {
     HouveTreinamentoComponent,
     RelatorioInteracaoPage,
     RemocaoEquipamentoComponent,
+    EquipamentoComponent,
     RetornoLocalComponent,
   ],
 })
