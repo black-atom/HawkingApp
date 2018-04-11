@@ -45,9 +45,9 @@
     </div>
  </ion-item-group>
 
-  <ion-item text-center>
-    <button ion-button clear only-icon (click)="addItem(equipamentoForm.controls['modelo_equipamento'].value)">
-      <ion-icon name="add" large></ion-icon>
+  <ion-item text-left *ngIf="equipamentoForm.controls['modelo_equipamento'].value">
+    <button ion-button outline only-icon (click)="addItem(equipamentoForm.controls['modelo_equipamento'].value)">
+      <ion-icon name="add" large>Adicionar Peca</ion-icon>
     </button>
   </ion-item>
 

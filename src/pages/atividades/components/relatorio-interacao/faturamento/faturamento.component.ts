@@ -15,6 +15,7 @@ export class FaturamentoComponent implements OnInit {
   public dadosCliente;
   public showInput: boolean = false;
   public showFaturamento: boolean = false;
+  public showInputFaturamento: boolean = false;
 
   constructor(
     private fb: FormBuilder,
