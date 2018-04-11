@@ -1,8 +1,11 @@
+
+import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
 
 import {
   IonicPage,
   NavController,
+  NavParams,
   Item,
   ItemSliding,
 } from 'ionic-angular';
@@ -14,6 +17,10 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { Observable } from 'rxjs/Rx';
+
+import { Atendimento } from './../../../../models';
+import { State } from '../../../../redux/reducers';
 
 @Component({
   selector: 'relatorio-interacao',
@@ -22,8 +29,20 @@ import {
 export class RelatorioInteracaoPage {
 
   public form: FormGroup;
+  public atividadeID;
+  public atividadeDetail$: Observable<Atendimento>;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    public navParams: NavParams,
+    private store: Store<State>,
+  ) {
+
+    this.atividadeID = this.navParams.get('id_atendimento');
+    this.atividadeDetail$ = this.store.select((state) => {
+      const { atendimentos } =  state.atendimentos;
+      return atendimentos.find(atendimento => atendimento._id === this.atividadeID);
+    });
     this.initForm();
   }
 
@@ -42,6 +61,7 @@ export class RelatorioInteracaoPage {
       cnpj: ['', Validators.required],
       razao_social: ['', Validators.required],
       email: ['', Validators.required],
+      equipamentos_com_troca_de_peca: this.fb.array([]),
     });
   }
   treinamentoControl() {

@@ -15,7 +15,7 @@ import {
 })
 export class AtividadeDetail {
 
-  private atividadeID: string;
+  public atividadeID: string;
   public atividadeDetail$: Observable<Atendimento>;
   public title = 'Detalhes';
 
@@ -35,6 +35,6 @@ export class AtividadeDetail {
   }
 
   openRelatorioInteracaoPage() {
-    this.navCtrl.push(RelatorioInteracaoPage);
+    this.navCtrl.push(RelatorioInteracaoPage, { id_atendimento: this.atividadeID });
   }
 }
