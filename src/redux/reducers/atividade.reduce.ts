@@ -1,5 +1,5 @@
 import { Monitoramento } from './../../models/monitoramento';
-import { uuidv4 } from 'uuid/v4';
+import uuidv4  from 'uuid/v4';
 import { AtividadeI, AtividadeStatus, AtividadeTipo } from '../../models/atividade';
 import { Atendimento } from '../../models';
 import { RETRIEVE_ATENDIMENTOS_SUCCESS } from './atendimento.reducer';
@@ -21,10 +21,12 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
           }
 
           const mapToAtividade = ({
-              atendimento_id,
+              _id,
               funcionario_id,
             }) => ({
+              atendimento,
               funcionario_id,
+              atendimento_id: _id,
               status: AtividadeStatus.pendente,
               monitoramentos: [],
               atividade_id: uuidv4(),
@@ -33,6 +35,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
 
           return mapToAtividade(<any>atendimento);
         });
+
 
       return atividades;
     }
@@ -43,7 +46,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
 };
 
 
-const getAllAtividades = (state: State) => state.atividades;
+export const getAllAtividades = (state: State) => state.atividades;
 const getAllAtendimentos = (state: State) => state.atendimentos;
 
 const mapAtividade = (atendimentos:Atendimento[]) => (atividade: AtividadeI): AtividadeI => ({

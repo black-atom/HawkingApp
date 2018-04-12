@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { Atendimento } from './../../../models';
+import { AtividadeI } from '../../../models/atividade';
 
 @Component({
   selector: 'detail',
@@ -9,8 +10,10 @@ import { Atendimento } from './../../../models';
 export class Detail {
 
   @Input()
-  atendimento: Atendimento;
+  atividade: AtividadeI;
 
-  constructor( ) { }
+  constructor( ) {
+    console.log(this.atividade)
+  }
 
 }

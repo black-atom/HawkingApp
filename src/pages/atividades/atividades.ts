@@ -1,11 +1,10 @@
 import { getAtividadesPendentes, getAtividadesEmExecucao, getAtividadesConcluidas } from './../../redux/reducers/atividade.reduce';
-import { AtividadeI } from './../../models/atividade';
 import { Component } from '@angular/core';
 import { PopoverController } from 'ionic-angular';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 
-import { Atendimento, IAtividade } from '../../models';
+import { Atendimento, AtividadeI } from '../../models';
 import { State } from '../../redux/reducers';
 
 import {

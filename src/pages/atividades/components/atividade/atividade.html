@@ -1,13 +1,13 @@
-  <ion-item (click)="openAtividadeDetail(atividade._id)">
+  <ion-item (click)="openAtividadeDetail(atividade.atendimento_id)">
     <ion-avatar item-start>
       <img src="assets/icon/company.svg">
     </ion-avatar>
-    <h2>{{ atividade?.cliente.nome_razao_social | uppercase }}</h2>
+    <h2>{{ atividade?.atendimento.cliente.nome_razao_social }}</h2>
     <p>
       <ion-icon name="pin" color="primary"></ion-icon>
-      {{ atividade?.endereco.bairro | uppercase }},
-      {{ atividade?.endereco.cidade | uppercase }} -
-      {{ atividade?.endereco.uf | uppercase }},
-      {{ atividade?.endereco.cep | uppercase }}
+      {{ atividade?.atendimento.endereco.bairro | uppercase }},
+      {{ atividade?.atendimento.endereco.cidade | uppercase }} -
+      {{ atividade?.atendimento.endereco.uf | uppercase }},
+      {{ atividade?.atendimento.endereco.cep | uppercase }}
     </p>
   </ion-item>
