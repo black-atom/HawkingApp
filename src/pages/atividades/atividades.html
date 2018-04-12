@@ -8,10 +8,10 @@
 <ion-content>
 
   <ion-item-group>
-    <grupo-atividades [title]='"Em execução"' [atividades]='atividadesEmExecucao$ | async' [collapse]="true"></grupo-atividades>
-    <grupo-atividades [title]='"Pausado"' [atividades]='atividadesPausadas$ | async' [collapse]="false"></grupo-atividades>
-    <grupo-atividades [title]='"Pendente"' [atividades]='atividadesPendentes$ | async' [collapse]="true"></grupo-atividades>
-    <grupo-atividades [title]='"Concluído"' [atividades]='atividadesConcluidas$ | async' [collapse]="false"></grupo-atividades>
+    <grupo-atividades [classGroup]="'em-execucao'" [title]='"Em execução"' [atividades]='atividadesEmExecucao$ | async' [collapse]="true"></grupo-atividades>
+    <grupo-atividades [classGroup]="'pausado'" [title]='"Pausado"' [atividades]='atividadesPausadas$ | async' [collapse]="false"></grupo-atividades>
+    <grupo-atividades [classGroup]="'pendente'" [title]='"Pendente"' [atividades]='atividadesPendentes$ | async' [collapse]="true"></grupo-atividades>
+    <grupo-atividades [classGroup]="'concluido'" [title]='"Concluído"' [atividades]='atividadesConcluidas$ | async' [collapse]="false"></grupo-atividades>
   </ion-item-group>
 
 </ion-content>

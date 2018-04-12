@@ -18,6 +18,12 @@ export class Atividade {
   @Input()
   atividade: AtividadeI;
 
+  @Input()
+  situacao;
+
+  @Input()
+  class;
+
   constructor(
     public navCtrl: NavController,
     public modalCtrl: ModalController,
