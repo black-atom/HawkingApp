@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { IonicPage } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
 
 @Component({
   selector: 'foto',
@@ -12,15 +12,16 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 
 export class FotoPage {
 
-
   private options: CameraOptions = {
-    quality: 100,
+    quality: 5,
     destinationType: this.camera.DestinationType.DATA_URL,
-    encodingType: this.camera.EncodingType.JPEG,
+    encodingType: this.camera.EncodingType.PNG,
     mediaType: this.camera.MediaType.PICTURE,
     saveToPhotoAlbum: true,
     cameraDirection: 0,
     correctOrientation: true,
+    targetWidth: 600,
+    targetHeight: 800,
   };
 
   public photosStart = [
