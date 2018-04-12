@@ -31,6 +31,8 @@
     "angular2-jwt": "^0.2.3",
     "axios": "^0.18.0",
     "cordova-android": "6.4.0",
+    "cordova-browser": "~5.0.3",
+    "cordova-plugin-camera": "^4.0.2",
     "cordova-plugin-device": "^2.0.1",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -57,10 +59,12 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

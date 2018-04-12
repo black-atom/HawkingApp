@@ -38,8 +38,11 @@ export class AtividadesPage {
     private store: Store<State>,
   ) {
     this.atividadesPendentes$ = this.store.select(getAtividadesPendentes);
-    this.atividadesEmExecucao$ = this.store.select(getAtividadesEmExecucao);
-    this.atividadesConcluidas$ = this.store.select(getAtividadesConcluidas);
+    // this.atividadesEmExecucao$ = this.store.select(getAtividadesEmExecucao);
+    // this.atividadesConcluidas$ = this.store.select(getAtividadesConcluidas);
+    this.atividadesEmExecucao$ = this.store.select(getAtividadesPendentes);
+    this.atividadesConcluidas$ = this.store.select(getAtividadesPendentes);
+    this.atividadesPausadas$ = this.store.select(getAtividadesPendentes);
   }
 
   ionViewDidLoad() {
