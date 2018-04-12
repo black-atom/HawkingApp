@@ -10,7 +10,7 @@ import { effects } from './effects';
 
 function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({
-    keys: ['login','atendimentos', 'monitoramentos', 'atividades'],
+    keys: ['login','atendimentos', 'monitoramentos', 'atividades', 'fotos'],
     rehydrate: true,
   })(reducer);
 }
