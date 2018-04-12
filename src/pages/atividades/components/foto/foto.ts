@@ -59,11 +59,7 @@ export class FotoPage {
 
   ];
 
-  constructor(private camera: Camera) {
-
-  }
-
-
+  constructor(private camera: Camera) {  }
 
   changePicture(tipo) {
     this.camera.getPicture(this.options).then((imageData) => {
