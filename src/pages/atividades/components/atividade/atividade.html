@@ -1,6 +1,6 @@
 <ion-card-content class="{{class}}" (click)="openAtividadeDetail(atividade)">
   <div class="content-atividade">
-    <div>
+    <div *ngIf="atividade.tipo === 'atendimento'">
       <ion-item>
         <ion-avatar item-start>
           <img src="assets/icon/company.svg">
@@ -13,6 +13,16 @@
         </p>
       </ion-item>
     </div>
+
+    <div *ngIf="atividade.tipo !== 'atendimento'">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/icon/company.svg">
+          </ion-avatar>
+          <h2>{{ atividade?.tipo | uppercase }}</h2>
+        </ion-item>
+      </div>
+
     <div>
       <ion-label class="{{class}}">{{ situacao }}</ion-label>
     </div>
