@@ -15,7 +15,8 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginProvider } from '../providers';
+import { LoginProvider, FotoProvider } from '../providers';
+
 import { ProvidersModule } from '../providers/providers.module';
 
 
@@ -49,6 +50,7 @@ export function getAuthHttp(http) {
   ],
   providers: [
     LoginProvider,
+    FotoProvider,
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
