@@ -20,9 +20,7 @@ export class FaturamentoComponent {
 
   constructor(
     private fb: FormBuilder,
-  ) {
-    console.log(this.dadosCliente);
-  }
+  ) {  }
 
   equipamentoControl() {
     return this.fb.group({
