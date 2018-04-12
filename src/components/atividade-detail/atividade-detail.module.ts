@@ -2,19 +2,22 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
 import { AtividadeDetail } from './atividade-detail.component';
-import { Detail } from './components/detail.component';
+import { AtendimentoComponet } from './components/atendimento/atendimento.component';
+import { AtividadeComponet } from './components/atividade/atividade';
 
 @NgModule({
   declarations: [
     AtividadeDetail,
-    Detail,
+    AtendimentoComponet,
+    AtividadeComponet,
   ],
   imports: [
     IonicPageModule.forChild(AtividadeDetail),
   ],
   entryComponents: [
     AtividadeDetail,
-    Detail,
+    AtividadeComponet,
+    AtendimentoComponet,
   ],
 })
 

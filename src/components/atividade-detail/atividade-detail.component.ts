@@ -30,14 +30,7 @@ export class AtividadeDetail {
     this.atividadeID = this.navParams.get('id');
   }
 
-  ionViewDidLoad() {
-    this.atividadeDetail$ = this.store.select(getAllAtividades)
-      .map(atividades => atividades
-        .find(atividades => atividades.atendimento_id === this.atividadeID),
-      );
-  }
-
-  openRelatorioInteracaoPage() {
-    this.navCtrl.push(RelatorioInteracaoPage, { id_atendimento: this.atividadeID });
+  openRelatorioInteracaoPage(atividade) {
+    this.navCtrl.push(RelatorioInteracaoPage, { atividade });
   }
 }

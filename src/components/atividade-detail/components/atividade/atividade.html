@@ -1,0 +1,18 @@
+<ion-list>
+
+  <ion-item no-lines>
+    <h3>Informações da Atividade</h3>
+  </ion-item>
+
+  <ion-item text-wrap>
+    <h4>{{ atividade.status | uppercase }}</h4>
+    <h5>{{ atividade.tipo }}</h5>
+  </ion-item>
+
+  <ion-item text-wrap>
+    <h2>Logs</h2>
+    <p *ngFor="let monitoramento of atividade.monitoramento">{{ monitoramento | json }}</p>
+  </ion-item>
+
+</ion-list>
+

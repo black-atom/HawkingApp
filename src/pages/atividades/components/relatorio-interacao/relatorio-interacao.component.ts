@@ -21,6 +21,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { Atendimento } from './../../../../models';
 import { State } from '../../../../redux/reducers';
+import { FotoPage } from '../foto/foto';
 
 @Component({
   selector: 'relatorio-interacao',
@@ -29,20 +30,16 @@ import { State } from '../../../../redux/reducers';
 export class RelatorioInteracaoPage {
 
   public form: FormGroup;
-  public atividadeID;
-  public atividadeDetail$: Observable<Atendimento>;
+  public atividade;
 
   constructor(
     private fb: FormBuilder,
     public navParams: NavParams,
     private store: Store<State>,
+    public navCtrl: NavController,
   ) {
 
-    this.atividadeID = this.navParams.get('id_atendimento');
-    this.atividadeDetail$ = this.store.select((state) => {
-      const { atendimentos } = state;
-      return atendimentos.find(atendimento => atendimento._id === this.atividadeID);
-    });
+    this.atividade = this.navParams.get('atividade');
     this.initForm();
   }
 
@@ -70,6 +67,11 @@ export class RelatorioInteracaoPage {
       software: ['', Validators.required],
       caminho_rede: ['', Validators.required],
     });
+  }
+
+
+  openPhotoPage() {
+    this.navCtrl.push(FotoPage);
   }
 
   saveForm(form) {
