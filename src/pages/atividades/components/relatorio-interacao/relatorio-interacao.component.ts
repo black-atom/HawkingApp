@@ -40,7 +40,7 @@ export class RelatorioInteracaoPage {
 
     this.atividadeID = this.navParams.get('id_atendimento');
     this.atividadeDetail$ = this.store.select((state) => {
-      const { atendimentos } =  state.atendimentos;
+      const { atendimentos } = state;
       return atendimentos.find(atendimento => atendimento._id === this.atividadeID);
     });
     this.initForm();
