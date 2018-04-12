@@ -38,7 +38,6 @@ export class RelatorioInteracaoPage {
     private store: Store<State>,
     public navCtrl: NavController,
   ) {
-
     this.atividade = this.navParams.get('atividade');
     this.initForm();
   }
