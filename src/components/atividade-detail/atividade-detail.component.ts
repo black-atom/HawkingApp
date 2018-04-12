@@ -17,8 +17,7 @@ import { AtividadeI } from '../../models/atividade';
 })
 export class AtividadeDetail {
 
-  private atividadeID: string;
-  public atividadeDetail$: Observable<AtividadeI>;
+  public atividade;
   public title = 'Detalhes';
 
   constructor(
@@ -26,17 +25,10 @@ export class AtividadeDetail {
     private navParams: NavParams,
     private store: Store<State>,
   ) {
-    this.atividadeID = this.navParams.get('id');
+    this.atividade = this.navParams.get('id');
   }
 
-  ionViewDidLoad() {
-    this.atividadeDetail$ = this.store.select(getAllAtividades)
-      .map(atividades => atividades
-        .find(atividades => atividades.atendimento_id === this.atividadeID),
-      );
-  }
-
-  openRelatorioInteracaoPage() {
-    this.navCtrl.push(RelatorioInteracaoPage, { id_atendimento: this.atividadeID });
+  openRelatorioInteracaoPage(atividade) {
+    this.navCtrl.push(RelatorioInteracaoPage, { atividade });
   }
 }

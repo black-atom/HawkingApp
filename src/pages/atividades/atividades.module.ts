@@ -15,6 +15,7 @@ import {
 import {
   FaturamentoComponent,
 } from './components/relatorio-interacao/faturamento/faturamento.component';
+import { FotoModule } from './components/foto/foto.module';
 import { GrupoAtividadesComponent } from './components/grupo-atividades/grupo-atividades';
 import {
   HouveTreinamentoComponent,
@@ -44,6 +45,7 @@ import {
   ],
   imports: [
     ComponentsModule,
+    FotoModule,
     IonicPageModule.forChild(AtividadesPage),
   ],
   entryComponents: [
