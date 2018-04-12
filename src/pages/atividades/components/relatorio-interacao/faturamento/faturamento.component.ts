@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, Item, ItemSliding  } from 'ionic-angular';
 import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
@@ -6,23 +6,23 @@ import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@ang
   selector: 'faturamento',
   templateUrl: 'faturamento.html',
 })
-export class FaturamentoComponent implements OnInit {
+export class FaturamentoComponent {
 
   @Input()
   public faturamentoForm: FormGroup;
 
   @Input()
   public dadosCliente;
+
   public showInput: boolean = false;
   public showFaturamento: boolean = false;
   public showInputFaturamento: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-  ) { }
-
-  ngOnInit() { }
-
+  ) {
+    console.log(this.dadosCliente);
+  }
 
   equipamentoControl() {
     return this.fb.group({
