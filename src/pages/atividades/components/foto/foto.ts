@@ -15,7 +15,7 @@ export class FotoPage {
   private options: CameraOptions = {
     quality: 5,
     destinationType: this.camera.DestinationType.DATA_URL,
-    encodingType: this.camera.EncodingType.PNG,
+    encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     saveToPhotoAlbum: true,
     cameraDirection: 0,
