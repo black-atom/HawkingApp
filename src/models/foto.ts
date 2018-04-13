@@ -4,4 +4,5 @@ export interface Foto{
   isUploading: boolean;
   atendimentoID: string;
   tipo: string;
+  id: string;
 }

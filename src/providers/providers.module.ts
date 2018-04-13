@@ -1,3 +1,5 @@
+import { MonitoramentoProvider } from './monitoramento.provider';
+import { FotoProvider } from './foto.provider';
 import { File, FileEntry, IFile } from '@ionic-native/file';
 
 import { AtendimentoProvider } from './atentimento.provider';
@@ -17,6 +19,8 @@ import { NgModule } from '@angular/core';
       multi: true,
     },
     AtendimentoProvider,
+    FotoProvider,
+    MonitoramentoProvider,
   ],
 })
 export class ProvidersModule {}

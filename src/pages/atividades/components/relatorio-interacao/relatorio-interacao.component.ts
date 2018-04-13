@@ -1,3 +1,4 @@
+import { AtividadeI } from './../../../../models/atividade';
 
 import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
@@ -30,7 +31,7 @@ import { FotoPage } from '../foto/foto';
 export class RelatorioInteracaoPage {
 
   public form: FormGroup;
-  public atividade;
+  public atividade: AtividadeI;
 
   constructor(
     private fb: FormBuilder,
@@ -70,7 +71,7 @@ export class RelatorioInteracaoPage {
 
 
   openPhotoPage() {
-    this.navCtrl.push(FotoPage);
+    this.navCtrl.push(FotoPage, { atendimento_id: this.atividade.atendimento_id});
   }
 
   saveForm(form) {

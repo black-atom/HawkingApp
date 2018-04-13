@@ -1,6 +1,9 @@
+import { AddFoto } from './../../../../redux/reducers/foto.reducer';
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Store } from '@ngrx/store';
+import { State } from '../../../../redux/reducers';
 
 @Component({
   selector: 'foto',
@@ -13,8 +16,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class FotoPage {
 
   private options: CameraOptions = {
-    quality: 5,
-    destinationType: this.camera.DestinationType.DATA_URL,
+    quality: 80,
+    destinationType: this.camera.DestinationType.NATIVE_URI,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
     saveToPhotoAlbum: true,
@@ -60,12 +63,19 @@ export class FotoPage {
 
   ];
 
-  constructor(private camera: Camera) {  }
+  private atendimentoID;
+
+  constructor(
+    private camera: Camera,
+    private navParams: NavParams,
+    private store: Store<State>,
+  ) {
+    this.atendimentoID = this.navParams.get('atendimento_id');
+  }
 
   changePicture(tipo) {
     this.camera.getPicture(this.options).then((imageData) => {
-      const base64Image = 'data:image/jpeg;base64,' + imageData;
-      console.log(base64Image);
+      this.store.dispatch(new AddFoto(this.atendimentoID, tipo, imageData));
     });
   }
 }

@@ -1,3 +1,4 @@
+import uuidv4  from 'uuid/v4';
 import { Action, createSelector } from '@ngrx/store';
 
 import { State } from './';
@@ -10,7 +11,17 @@ export const UPLOAD_FOTO_FAILED = 'UPLOAD_FOTO_FAILED';
 
 export class AddFoto implements Action{
   readonly type = ADD_FOTO;
-  constructor(public payload: Foto) { }
+  public payload: Foto;
+  constructor(atendimentoID, tipo= 'inicio_atendimento', localPath) {
+    this.payload = {
+      atendimentoID,
+      localPath,
+      tipo,
+      isUploaded: false,
+      isUploading: false,
+      id: uuidv4(),
+    };
+  }
 }
 
 export class UploadFoto implements Action{
@@ -47,7 +58,7 @@ export const fotoReducer = (state: Foto[] = [], action: ActionsFoto) => {
 
     case UPLOAD_FOTO:
       return state.map((foto) => {
-        if (foto.localPath === action.payload.localPath) {
+        if (foto.id === action.payload.id) {
           return { ...foto, isUploading: true };
         }
         return foto;
@@ -55,7 +66,7 @@ export const fotoReducer = (state: Foto[] = [], action: ActionsFoto) => {
 
     case UPLOAD_FOTO_SUCCESS: {
       return state.map((foto) => {
-        if (foto.localPath === action.payload.localPath) {
+        if (foto.id === action.payload.id) {
           return { ...foto, isUploaded: true, isUploading: false };
         }
         return foto;
@@ -63,7 +74,7 @@ export const fotoReducer = (state: Foto[] = [], action: ActionsFoto) => {
     }
     case UPLOAD_FOTO_FAILED: {
       return state.map((foto) => {
-        if (foto.localPath === action.payload.localPath) {
+        if (foto.id === action.payload.id) {
           return { ...foto, isUploaded: false, isUploading: false };
         }
         return foto;
