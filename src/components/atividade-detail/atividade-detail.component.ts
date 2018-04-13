@@ -1,5 +1,5 @@
 import { getAllAtividades } from './../../redux/reducers/atividade.reduce';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 
@@ -19,6 +19,7 @@ export class AtividadeDetail {
 
   public atividade;
   public title = 'Detalhes';
+  public actionSegments = 'acoes';
 
   constructor(
     public navCtrl: NavController,
