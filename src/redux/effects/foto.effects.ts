@@ -27,6 +27,6 @@ export class FotoEffects{
     .map((action: ActionWithPayload<Foto>) => action.payload)
     .mergeMap(foto => this.fotoProvider.enviarFoto(foto)
       .map(() => new UploadFotoSuccess(foto))
-      .catch(() => Observable.of(new UploadFotoSuccess(foto))),
+      .catch(() => Observable.of(new UploadFotoFailed(foto))),
   );
 }
