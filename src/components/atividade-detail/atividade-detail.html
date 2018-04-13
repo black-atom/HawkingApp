@@ -3,21 +3,106 @@
     <ion-title>Detalhes</ion-title>
   </ion-navbar>
 
-  <div class="buttons" *ngIf="atividade.tipo === 'atendimento'">
-    <h1>{{ atividade.tipo | uppercase }}</h1>
-    <button ion-button class="km-steps" color="primary" (click)="openRelatorioInteracaoPage(atividade)">relatório de Atendimento</button>
-  </div>
+    <div class="header-title">
+      <h1>{{ atividade.tipo | uppercase }}</h1>
+    </div>
 
+    <div padding>
+      <ion-segment [(ngModel)]="actionSegments">
+        <ion-segment-button value="acoes">
+          Ações
+        </ion-segment-button>
+        <ion-segment-button value="atividade">
+          Detalhes
+        </ion-segment-button>
+      </ion-segment>
+    </div>
 </ion-header>
 
 <ion-content>
 
-  <ion-list *ngIf="atividade.tipo === 'atendimento'">
-    <atendimento [atividade]="atividade"></atendimento>
-  </ion-list>
 
-  <ion-list *ngIf="atividade.tipo !== 'atendimento'">
-    <atividade [atividade]="atividade"></atividade>
-  </ion-list>
+
+  <div [ngSwitch]="actionSegments">
+    <ion-list *ngSwitchCase="'acoes'">
+      <div class="actions">
+        <div class="action">
+          <div class="photo">
+            <img src="" onerror="this.src='assets/icon/pointer.svg'" />
+          </div>
+          <p>Iniciar <br>
+            Deslocamento</p>
+        </div>
+
+        <div class="action">
+          <div class="photo">
+            <img src="" onerror="this.src='assets/icon/placeholder.svg'" />
+          </div>
+          <p>Finalizar <br>
+             Deslocamento</p>
+        </div>
+
+        <div class="action">
+          <div class="photo">
+            <img src="" onerror="this.src='assets/icon/google.svg'" />
+          </div>
+          <p>Gps</p>
+        </div>
+
+        <div class="action">
+          <div class="photo">
+            <img src="" onerror="this.src='assets/icon/clock.svg'" />
+          </div>
+          <p>Iniciar</p>
+        </div>
+
+      </div>
+
+        <div class="actions">
+
+            <div class="action" (click)="openRelatorioInteracaoPage(atividade)">
+              <div class="photo">
+                <img src="" onerror="this.src='assets/icon/pause.svg'" />
+              </div>
+              <p>Pausar</p>
+            </div>
+
+            <div class="action">
+              <div class="photo">
+                <img src="" onerror="this.src='assets/icon/play-button.svg'" />
+              </div>
+              <p>Continuar</p>
+            </div>
+
+            <div class="action" (click)="openRelatorioInteracaoPage(atividade)">
+              <div class="photo">
+                <img src="" onerror="this.src='assets/icon/clipboard.svg'" />
+              </div>
+              <p>Relatório</p>
+            </div>
+
+            <div class="action">
+              <div class="photo">
+                <img src="" onerror="this.src='assets/icon/checked.svg'" />
+              </div>
+              <p>Finalizar</p>
+            </div>
+          </div>
+
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'atividade'">
+      <ion-list *ngIf="atividade.tipo === 'atendimento'">
+          <atendimento [atividade]="atividade"></atendimento>
+        </ion-list>
+
+        <ion-list *ngIf="atividade.tipo !== 'atendimento'">
+          <atividade [atividade]="atividade"></atividade>
+        </ion-list>
+    </ion-list>
+  </div>
+
+
 
 </ion-content>
