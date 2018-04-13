@@ -1,35 +1,68 @@
-<ion-card>
+<ion-card [formGroup]="faturamentoForm">
+
   <ion-card-header>
     <ion-item>
       <ion-label> Faturamento </ion-label>
-      <ion-toggle></ion-toggle>
+      <ion-toggle [(ngModel)]="showInputFaturamento" [ngModelOptions]="{standalone: true}"></ion-toggle>
     </ion-item>
   </ion-card-header>
 
-  <ion-card-content >
-    <ion-item>
-      <ion-label color="primary" stacked> CNPJ </ion-label>
-      <ion-input type="number" placeholder="00.000.000/0000-00" value=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked> Razão Social </ion-label>
-      <ion-input type="text" placeholder="REAL PONTO" value=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked> E-mail </ion-label>
-      <ion-input type="email" placeholder="exemplo@exemplo.com.br" value=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked> Valor </ion-label>
-      <ion-input type="number" placeholder="100,00" value=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked> Prazo de Pagamento </ion-label>
-      <ion-input type="number"placeholder="3"  value="" ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" stacked> Quem aprovou </ion-label>
-      <ion-input type="text" placeholder="ALAN" value=""></ion-input>
-    </ion-item>
-  </ion-card-content>
+  <div *ngIf="showInputFaturamento">
+    <ion-card-content>
+      <ion-item text-wrap>
+        <p>Cliente: {{ dadosCliente.atendimento.cliente.nome_razao_social | uppercase }}</p>
+        <p>Cnpj/Cpf: {{ dadosCliente.atendimento.cliente.cnpj_cpf }}</p>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label> Outro Cnpj? </ion-label>
+        <ion-toggle [(ngModel)]="showInput" [ngModelOptions]="{standalone: true}"></ion-toggle>
+      </ion-item>
+
+      <div *ngIf="showInput">
+        <ion-item>
+          <ion-label color="primary" stacked> CNPJ </ion-label>
+          <ion-input formControlName="cnpj" type="number" placeholder="00.000.000/0000-00"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" stacked> Razão Social </ion-label>
+          <ion-input formControlName="razao_social" type="text" placeholder="REAL PONTO"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" stacked> E-mail </ion-label>
+          <ion-input formControlName="email" type="email" placeholder="exemplo@exemplo.com.br"></ion-input>
+        </ion-item>
+      </div>
+    </ion-card-content>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label> Adicionar Equipamentos que tiveram troca de peca </ion-label>
+        <ion-toggle [(ngModel)]="showFaturamento" [ngModelOptions]="{standalone: true}" (ionChange)="addEquipamento()"></ion-toggle>
+      </ion-item>
+
+      <div *ngIf="showFaturamento">
+
+        <equipamento-faturamento
+          *ngFor="let equipamento of faturamentoForm.controls['equipamentos_com_troca_de_peca'].controls; index as i"
+          [equipamentoForm]="equipamento"
+          (removeEquipamentoEmitter)="removeEquipamento(i)"
+        >
+        </equipamento-faturamento>
+
+        <ion-item text-right>
+          <button ion-button outline only-icon (click)="addEquipamento()">
+            <ion-icon name="add" large>Adicionar Equipamento</ion-icon>
+          </button>
+        </ion-item>
+
+      </div>
+
+    </ion-card-content>
+  </div>
+
 </ion-card>
+

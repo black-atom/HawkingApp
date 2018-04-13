@@ -13,6 +13,9 @@ export class GrupoAtividadesComponent {
   public title: string = '';
 
   @Input()
+  public classGroup;
+
+  @Input()
   public atividades: any = [];
 
   constructor() { }

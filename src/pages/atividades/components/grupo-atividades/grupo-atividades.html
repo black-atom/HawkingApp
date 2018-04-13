@@ -1,14 +1,11 @@
-<ion-item-group class="collapse-list">
+<ion-item-group *ngIf="atividades && atividades.length > 0">
 
-  <ion-list-header class="collapse-header" [class.active]="collapse" (click)="collapsed()">
-    <ion-title> {{ title }} </ion-title>
-    <ion-icon class="arrow-icon" name="ios-arrow-forward" item-end></ion-icon>
-  </ion-list-header>
+    <ion-list-header>
+      <ion-title> {{ title }} (s) </ion-title>
+    </ion-list-header>
 
-  <div class="collapse-content" [class.active]="collapse">
-    <ion-list *ngIf="collapse" >
-      <atividade *ngFor="let atividade of atividades" [atividade]="atividade"></atividade>
-    </ion-list>
-  </div>
-
+    <ion-card *ngFor="let atividade of atividades">
+      <atividade [atividade]="atividade" [situacao]="title" [class]="classGroup"></atividade>
+    </ion-card>
+<br>
 </ion-item-group>

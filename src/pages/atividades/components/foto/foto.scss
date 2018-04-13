@@ -1,0 +1,42 @@
+foto {
+  h2 {
+    margin: 10% 0 8% 0;
+    color: #333;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  ion-content div.photos {
+    display: flex;
+    justify-content: space-around;
+  }
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.container img {
+  width: 80%;
+  height: auto;
+  border: 5px solid white;
+  border-left: 5px solid white;
+  border-right: 5px solid white;
+  border-bottom: 35px solid white;
+  box-shadow: 1px 1px 10px #ccc;
+}
+
+.container .btn {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+}

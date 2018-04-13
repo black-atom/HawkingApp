@@ -1,14 +1,28 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, Item, ItemSliding  } from 'ionic-angular';
-import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import {
-  EQUIPAMENTOS,
-  FUNCIONARIOS,
-  MOTIVOS_RETORNO_LOCAL,
-  SOFTWARES,
-  TOPICOS_DETALHES_TREINAMENTO,
-} from './../../../../utils/mocks';
+import { AtividadeI } from './../../../../models/atividade';
 
+import { Store } from '@ngrx/store';
+import { Component } from '@angular/core';
+
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  Item,
+  ItemSliding,
+} from 'ionic-angular';
+
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
+import { Observable } from 'rxjs/Rx';
+
+import { Atendimento } from './../../../../models';
+import { State } from '../../../../redux/reducers';
+import { FotoPage } from '../foto/foto';
 
 @Component({
   selector: 'relatorio-interacao',
@@ -16,111 +30,52 @@ import {
 })
 export class RelatorioInteracaoPage {
 
-  // public equipamentos = EQUIPAMENTOS;
-  public funcinarios = FUNCIONARIOS;
-  public motivosRetornoLocal = MOTIVOS_RETORNO_LOCAL;
-  public softwares = SOFTWARES;
-  public equipamentoSelecionado;
-  public allEquipamentosSelecionado = [];
-  public topicosDetalhesTreinamento = TOPICOS_DETALHES_TREINAMENTO;
   public form: FormGroup;
+  public atividade: AtividadeI;
 
-
-  public equipamentosMock = ['A', 'B','C'];
-  public equipamentoItems = {
-    A: [
-      'Caneta',
-      'Lapis',
-      'Camisinha',
-    ],
-    B: [
-      'Caneta',
-      'Lapis',
-      'Camisinha',
-    ],
-    C: [
-      'Caneta',
-      'Lapis',
-      'Camisinha',
-    ],
-  };
-
-  public relatorioInteracao: any = {
-    resumoAtendimento: '',
-    retornoLocal: {
-      retorno: false,
-      motivo: '',
-    },
-    detalhesTreinamento: {
-      houveTreinamento: false,
-      topicos: [],
-      software: '',
-      caminhoRede: '',
-    },
-    remocaoEquipamento: {
-      houveRemocaoEquipamento: false,
-      equipamentos: [
-        {
-          nome: 'MESMO RELÓGIO',
-          itens: [],
-        },
-      ],
-    },
-    faturamento: {
-      mesmoCnpj: false,
-      cnpj: '',
-      razaoSocial: '',
-      email: '',
-      quemAprovou: '',
-      valor: '',
-      prazoPagamento: '',
-    },
-  };
-
-  items = [];
-
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    public navParams: NavParams,
+    private store: Store<State>,
+    public navCtrl: NavController,
+  ) {
+    this.atividade = this.navParams.get('atividade');
     this.initForm();
   }
 
-
   initForm() {
-    this.form = new FormGroup({
-      equipamentos: new FormArray([]),
+    this.form = this.fb.group({
+      motivo_retorno: ['', Validators.required],
+      resumo_atendimento: ['', Validators.required],
+      equipamentos_retirados: this.fb.array([]),
+      treinamento: this.treinamentoControl(),
+      faturamento: this.faturamentoControl(),
     });
-    this.addItem();
   }
 
-  get ItemsEquipamento() {
-    return [1,2,3,4];
-  }
-  equipamento() {
+  faturamentoControl() {
     return this.fb.group({
-      modelo_equipamento: ['', Validators.required],
-      numero_equipamento: ['', Validators.required],
-      pecas: this.fb.array([]),
+      cnpj: ['', Validators.required],
+      razao_social: ['', Validators.required],
+      email: ['', Validators.required],
+      equipamentos_com_troca_de_peca: this.fb.array([]),
+    });
+  }
+  treinamentoControl() {
+    return this.fb.group({
+      topicos: [[], Validators.required],
+      software: ['', Validators.required],
+      caminho_rede: ['', Validators.required],
     });
   }
 
-  print() {
-    console.log(this.relatorioInteracao);
+
+  openPhotoPage() {
+    this.navCtrl.push(FotoPage, { atendimento_id: this.atividade.atendimento_id});
   }
 
-  addItem() {
-    const equipamentos: FormArray = <FormArray>this.form.get('equipamentos');
-    equipamentos.push(this.equipamento());
+  saveForm(form) {
+    console.log(form.value);
   }
 
-  get equipamentos(): FormArray {
-    return this.form.get('equipamentos') as FormArray;
-  }
-
-  removerEquipamento(list, index) {
-    list.splice(index,1);
-  }
-
-}
-interface Equipamento {
-  nome: string;
-  itens: string[];
 }
