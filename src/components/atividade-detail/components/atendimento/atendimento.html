@@ -2,7 +2,7 @@
 <!-- info-cliente -->
  <ion-list>
 
-    <ion-item no-lines>
+    <ion-item no-lines class="top-item">
       <h3>Dados Cliente</h3>
     </ion-item>
 
@@ -41,16 +41,13 @@
       <p>{{ atividade.atendimento?.estacionamento }}</p>
     </ion-item>
 
-    <!-- <ion-item text-wrap *ngIf="atividade.atendimento?.Observacao">
+    <ion-item text-wrap *ngIf="atividade.atendimento?.observacao" no-lines>
       <h4>Observação do chamado</h4>
-      <p>{{ atividade.atendimento?.Observacao }}</p>
-    </ion-item> -->
+      <p>{{ atividade.atendimento?.observacao }}</p>
+    </ion-item>
 
-  </ion-list>
-  <!-- info-cliente -->
-
-  <!-- info-atendimento -->
-    <ion-list>
+      <hr>
+      <br>
       <ion-item no-lines>
         <h3>Dados do Chamado</h3>
       </ion-item>
@@ -59,13 +56,13 @@
         <h4>Aberto Por:</h4>
         <p>{{ atividade.atendimento?.createdBy | uppercase }}</p>
       </ion-item>
-<!--
+
       <ion-item>
         <h4>Tipo de Serviço</h4>
         <p>
           {{ atividade.atendimento?.tipo }}
           <span *ngIf="atividade.atendimento?.garantia">
-            - {{ atividade.atendimento?.endereco.garantia | date: 'dd/MM/yyyy' }}
+            - {{ atividade.atendimento?.garantia | date: 'dd/MM/yyyy' }}
           </span>
           <span *ngIf="atividade.atendimento?.valor">
             - R$ {{ atividade.atendimento?.valor }}
@@ -74,7 +71,7 @@
             - {{ atividade.atendimento?.autorizado | uppercase }}
           </span>
         </p>
-      </ion-item> -->
+      </ion-item>
 
 
       <ion-item text-wrap>

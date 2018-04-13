@@ -11,42 +11,57 @@ atividade-detail {
     line-height: 20px !important;
   }
   ion-header{
+    background-color: #FFFFFF !important;
     position: relative;
-    height: 280px;
+    height: 295px;
     background:
       url(http://www.giardinopollensa.com/wp-content/uploads/2013/06/blur1.jpg)
       no-repeat center center;
     background-size: cover;
 
-    .buttons {
+    ion-navbar {
+      box-shadow: 0 1px 8px #000;
+    }
+
+    .header-title {
+      text-align: center;
       h1 {
         font-size: 80px !important;
         font-family: 'Amatic SC', cursive !important;
         color: #FFFFFF !important;
-      }
-      height: 100%;
-      width: 100%;
-      text-align: center;
-      .km-steps {
-        height: 40px;
-        width: 40%;
-        margin-top: 40px;
-        border-radius: 20px;
+        width: 100%;
       }
     }
+  }
 
-    .tools {
-      margin-top: 15px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      text-align: center;
-    }
-    .tool-item, p {
-      ion-icon {
-        font-size: 20px !important;
-      }
-      color: white !important;
-    }
+  ion-content {
+    background-color: #FFFFFF !important;
+  }
+
+  .actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .action {
+    text-align: center !important;
+  }
+
+  .photo {
+    text-align: center !important;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px !important;
+    box-shadow: 2px 2px rgb(160, 160, 160);
+    padding: 15px;
+  }
+  ion-segment {
+    background-color: #FFFFFF !important;
+    margin-top: 12.7% !important;
+  }
+
+  ion-list {
+    margin-top: 10% !important;
   }
 }
