@@ -902,7 +902,7 @@ cordova-android@6.4.0:
     q "^1.4.1"
     shelljs "^0.5.3"
 
-cordova-browser@~5.0.3:
+cordova-browser@5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/cordova-browser/-/cordova-browser-5.0.3.tgz#f7e54202fdf09694385d78c0ad872410cb094df5"
   dependencies:
@@ -937,13 +937,17 @@ cordova-plugin-device@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-device/-/cordova-plugin-device-2.0.1.tgz#9b9e2313e682119ff8402f68096a38bcc5013593"
 
+cordova-plugin-file@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-file/-/cordova-plugin-file-6.0.1.tgz#49606b8c15a5688d4728f92e4a7325a061de07f5"
+
 cordova-plugin-ionic-keyboard@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-keyboard/-/cordova-plugin-ionic-keyboard-2.0.5.tgz#c7c35ffd8f6a1ef77e27a1eee70ccaa2e94f99e1"
 
-cordova-plugin-ionic-webview@^1.1.16:
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.16.tgz#92d5f2e4a5a829f91b487b1761848765a31c9f1e"
+cordova-plugin-ionic-webview@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.2.0.tgz#83a3a7743422833899d623c074d8a0e39d36a6a1"
 
 cordova-plugin-splashscreen@^5.0.2:
   version "5.0.2"

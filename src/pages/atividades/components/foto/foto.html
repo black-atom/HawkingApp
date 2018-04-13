@@ -8,8 +8,8 @@
 
   <h2>Início do Atendimento</h2>
   <div class="photos">
-    <ion-avatar (click)="changePicture('inicio')" class="container" *ngFor="let photo of photosStart">
-      <img src="{{photo.src}}" onerror="this.src='assets/imgs/img-default.png'" />
+    <ion-avatar (click)="!blockAction && photo.canClick && changePicture('inicio_atedimento')" class="container" *ngFor="let photo of photosStart | async">
+      <img [src]="photo.localPath" onerror="this.src='assets/imgs/img-default.png'" />
       <button ion-button color="primary" class="btn">
         <ion-icon name="md-images"></ion-icon>
       </button>
@@ -18,11 +18,12 @@
 
   <h2>Fim do Atendimento</h2>
   <div class="photos">
-    <ion-avatar (click)="changePicture('fim')" class="container" *ngFor="let photo of photosEnd">
-      <img src="{{photo.src}}" onerror="this.src='assets/imgs/img-default.png'">
-      <button ion-button color="primary" class="btn">
-        <ion-icon name="md-images"></ion-icon>
-      </button>
+
+    <ion-avatar (click)="!blockAction && photo.canClick && changePicture('fim_atedimento')" class="container" *ngFor="let photo of photosEnd | async">
+        <img [src]="photo.localPath" onerror="this.src='assets/imgs/img-default.png'" />
+        <button ion-button color="primary" class="btn">
+          <ion-icon name="md-images"></ion-icon>
+        </button>
     </ion-avatar>
 
   </div>
