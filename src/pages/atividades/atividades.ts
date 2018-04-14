@@ -1,9 +1,10 @@
+import { getAtividadesPendentes, getAtividadesEmExecucao, getAtividadesConcluidas } from './../../redux/reducers/atividade.reduce';
 import { Component } from '@angular/core';
 import { PopoverController } from 'ionic-angular';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 
-import { Atendimento, IAtividade } from '../../models';
+import { Atendimento, AtividadeI } from '../../models';
 import { State } from '../../redux/reducers';
 
 import {
@@ -24,10 +25,10 @@ export class AtividadesPage {
   public title = 'Atividades';
 
   public atividades$: Observable<any[]>;
-  public atividadesPausadas$: Observable<IAtividade[]>;
-  public atividadesEmExecucao$: Observable<IAtividade[]>;
-  public atividadesPendentes$: Observable<IAtividade[]>;
-  public atividadesConcluidas$: Observable<IAtividade[]>;
+  public atividadesPausadas$: Observable<AtividadeI[]>;
+  public atividadesEmExecucao$: Observable<AtividadeI[]>;
+  public atividadesPendentes$: Observable<AtividadeI[]>;
+  public atividadesConcluidas$: Observable<AtividadeI[]>;
 
   public changeAtendimentos$: Subject<string> = new Subject<string>();
   public buttonProperties = buttonProperties;
@@ -36,7 +37,9 @@ export class AtividadesPage {
     public popoverCtrl: PopoverController,
     private store: Store<State>,
   ) {
-    this.atividadesPendentes$ = this.store.select(atendimentosPendentes);
+    this.atividadesPendentes$ = this.store.select(getAtividadesPendentes);
+    this.atividadesEmExecucao$ = this.store.select(getAtividadesEmExecucao);
+    this.atividadesConcluidas$ = this.store.select(getAtividadesConcluidas);
   }
 
   ionViewDidLoad() {

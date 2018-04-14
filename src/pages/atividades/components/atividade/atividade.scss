@@ -1,18 +1,63 @@
 atividade {
-  ion-item {
-    img {
-      height: 40px;
-      width: 40px;
-    }
-    h5 {
+  background-color: transparent !important;
+  .content-atividade {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .em-execucao {
+    border-left: 3px solid #01ff70;
+  }
+
+  .pendente {
+    border-left: 3px solid red;
+  }
+
+  .pausado {
+    border-left: 3px solid #ffdc00;
+  }
+
+  .concluido {
+    border-left: 3px solid #006cfc;
+  }
+
+  ion-item{
+    h2 {
+      font-size: 1.3em !important;
       color: #333 !important;
-      font-family: 'Montserrat', sans-serif !important;
+      font-family: 'Open Sans', sans-serif !important;
     }
     p {
-      margin-top: 15px !important;
       color: #666 !important;
       font-family: 'Open Sans', sans-serif !important;
-      line-height: 20px !important;
     }
+  }
+
+
+  ion-label {
+    padding-right: 20px;
+    border: none !important;
+  }
+
+  ion-label.em-execucao {
+    color: #008d3d;
+  }
+
+  ion-label.pendente {
+    color: red;
+  }
+
+  ion-label.pausado {
+    color: #c7ac00;
+  }
+
+  ion-label.concluido {
+    color: #006cfc;
+  }
+
+  ion-item {
+    background-color: transparent !important;
   }
 }

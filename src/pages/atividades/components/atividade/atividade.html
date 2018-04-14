@@ -1,13 +1,30 @@
-  <ion-item (click)="openAtividadeDetail(atividade._id)">
-    <ion-avatar item-start>
-      <img src="assets/icon/company.svg">
-    </ion-avatar>
-    <h2>{{ atividade?.cliente.nome_razao_social | uppercase }}</h2>
-    <p>
-      <ion-icon name="pin" color="primary"></ion-icon>
-      {{ atividade?.endereco.bairro | uppercase }},
-      {{ atividade?.endereco.cidade | uppercase }} -
-      {{ atividade?.endereco.uf | uppercase }},
-      {{ atividade?.endereco.cep | uppercase }}
-    </p>
-  </ion-item>
+<ion-card-content class="{{class}}" (click)="openAtividadeDetail(atividade)">
+  <div class="content-atividade">
+    <div *ngIf="atividade.tipo === 'atendimento'">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/icon/company.svg">
+        </ion-avatar>
+        <h2>{{ atividade?.atendimento.cliente.nome_razao_social }}</h2>
+        <p>
+          <ion-icon name="pin" color="primary"></ion-icon>
+          {{ atividade?.atendimento.endereco.bairro | uppercase }}, {{ atividade?.atendimento.endereco.cidade | uppercase }} - {{ atividade?.atendimento.endereco.uf
+          | uppercase }}, {{ atividade?.atendimento.endereco.cep | uppercase }}
+        </p>
+      </ion-item>
+    </div>
+
+    <div *ngIf="atividade.tipo !== 'atendimento'">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/icon/start.svg">
+          </ion-avatar>
+          <h2>{{ atividade?.tipo | uppercase }}</h2>
+        </ion-item>
+      </div>
+
+    <div>
+      <ion-label class="{{class}}">{{ situacao }}</ion-label>
+    </div>
+  </div>
+</ion-card-content>

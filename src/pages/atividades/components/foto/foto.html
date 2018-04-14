@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Fotos do Atendimento</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2>Início do Atendimento</h2>
+  <div class="photos">
+    <ion-avatar (click)="!blockAction && photo.canClick && changePicture('inicio_atedimento')" class="container" *ngFor="let photo of photosStart | async">
+      <img [src]="photo.localPath" onerror="this.src='assets/imgs/img-default.png'" />
+      <button ion-button color="primary" class="btn">
+        <ion-icon name="md-images"></ion-icon>
+      </button>
+    </ion-avatar>
+  </div>
+
+  <h2>Fim do Atendimento</h2>
+  <div class="photos">
+
+    <ion-avatar (click)="!blockAction && photo.canClick && changePicture('fim_atedimento')" class="container" *ngFor="let photo of photosEnd | async">
+        <img [src]="photo.localPath" onerror="this.src='assets/imgs/img-default.png'" />
+        <button ion-button color="primary" class="btn">
+          <ion-icon name="md-images"></ion-icon>
+        </button>
+    </ion-avatar>
+
+  </div>
+
+</ion-content>

@@ -6,13 +6,17 @@ navbar {
     button {
       color: white !important
     }
+    ion-icon {
+      font-size: 20px;
+    }
   }
+
 }
 
 ion-toolbar {
   padding-top: 30px;
   ion-title {
-    font-size: 30px;
+    font-size: 20px;
   }
   .perfil {
     padding-left: 30px;

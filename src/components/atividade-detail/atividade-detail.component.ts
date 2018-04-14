@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { getAllAtividades } from './../../redux/reducers/atividade.reduce';
+import { Component, Input } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 
@@ -8,6 +9,7 @@ import { Atendimento } from '../../models';
 import {
   RelatorioInteracaoPage,
 } from '../../pages/atividades/components/relatorio-interacao/relatorio-interacao.component';
+import { AtividadeI } from '../../models/atividade';
 
 @Component({
   selector: 'atividade-detail',
@@ -15,26 +17,19 @@ import {
 })
 export class AtividadeDetail {
 
-  private atividadeID: string;
-  public atividadeDetail$: Observable<Atendimento>;
+  public atividade;
   public title = 'Detalhes';
+  public actionSegments = 'acoes';
 
   constructor(
     public navCtrl: NavController,
     private navParams: NavParams,
     private store: Store<State>,
   ) {
-    this.atividadeID = this.navParams.get('id');
+    this.atividade = this.navParams.get('id');
   }
 
-  ionViewDidLoad() {
-    this.atividadeDetail$ = this.store.select((state) => {
-      const { atendimentos } =  state.atendimentos;
-      return atendimentos.find(atendimento => atendimento._id === this.atividadeID);
-    });
-  }
-
-  openRelatorioInteracaoPage() {
-    this.navCtrl.push(RelatorioInteracaoPage);
+  openRelatorioInteracaoPage(atividade) {
+    this.navCtrl.push(RelatorioInteracaoPage, { atividade });
   }
 }

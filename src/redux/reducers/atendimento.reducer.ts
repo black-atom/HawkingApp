@@ -1,15 +1,10 @@
+import { Atendimento } from './../../models/atendimento';
 import { Action, createSelector } from '@ngrx/store';
 
-import { Atendimento } from './../../models';
-import { AtendimentoState } from './../models';
 import { State } from './';
 import moment from 'moment';
 
-const INITIAL_STATE: AtendimentoState = {
-  atendimentos: [],
-  loading: false,
-  error: false,
-};
+const INITIAL_STATE: Atendimento[] = [];
 
 export const RETRIEVE_ATENDIMENTOS = 'RETRIEVE_ATENDIMENTOS';
 export const RETRIEVE_ATENDIMENTOS_SUCCESS = 'RETRIEVE_ATENDIMENTOS_SUCCESS';
@@ -29,7 +24,7 @@ export class RetriveAtendimento implements Action{
 
 export class RetriveAtendimentoSuccess implements Action{
   readonly type: string = RETRIEVE_ATENDIMENTOS_SUCCESS;
-  constructor(public payload: Atendimento) { }
+  constructor(public payload: [Atendimento]) { }
 }
 
 export class RetriveAtendimentoFailed implements Action{
@@ -71,13 +66,13 @@ export type ActionsAtendimento =
   |  SyncAtendimentosFailed
   |  AdicionarPerguntas;
 
-export const atendimentoReducer = (state: AtendimentoState = INITIAL_STATE, action: any) => {
+export const atendimentoReducer = (state: Atendimento[] = INITIAL_STATE, action: any) => {
   switch (action.type) {
 
     case RETRIEVE_ATENDIMENTOS_SUCCESS: {
       const atendimentos = action.payload.atendimentos.map((atendimento: Atendimento) => {
         const atendimentoFound: Atendimento = state
-          .atendimentos.find(at => at._id === atendimento._id);
+          .find(at => at._id === atendimento._id);
 
         if (atendimentoFound && !atendimentoFound.synced) {
           return atendimentoFound;
@@ -87,11 +82,11 @@ export const atendimentoReducer = (state: AtendimentoState = INITIAL_STATE, acti
 
       });
 
-      return { ...state, atendimentos, loading: true, error: false };
+      return atendimentos;
     }
 
     case RETRIEVE_ATENDIMENTOS_FAILED:
-      return { ...state, loading: false, error: true };
+      return state;
 
     default:
       return state;
@@ -104,7 +99,7 @@ const isSameDate = firstDate => secondDate => moment(firstDate)
 
 const isToday = isSameDate(new Date());
 
-export const getAllAtendimentos = (state: State) => state.atendimentos.atendimentos;
+export const getAllAtendimentos = (state: State) => state.atendimentos;
 
 export const atendimentosPendentes = createSelector(
   getAllAtendimentos,

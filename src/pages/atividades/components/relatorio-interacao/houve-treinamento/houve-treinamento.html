@@ -1,28 +1,35 @@
-<ion-card>
+<ion-card [formGroup]="treinamentoForm">
   <ion-card-header>
     <ion-item>
       <ion-label> Houve treinamento ?</ion-label>
-      <ion-toggle></ion-toggle>
+      <ion-toggle [(ngModel)]="showInput" [ngModelOptions]="{standalone: true}">
+      </ion-toggle>
     </ion-item>
   </ion-card-header>
-  <ion-card-content>
+
+  <ion-card-content *ngIf="showInput">
+
     <ion-item>
-      <ion-label>Topicos</ion-label>
-      <ion-select multiple="true" cancelText="Cancelar">
-        <ion-option> topicos </ion-option>
+      <ion-label>Software</ion-label>
+      <ion-select cancelText="Cancelar" formControlName="software">
+        <ion-option *ngFor="let software of softwares" [value]="software">
+          {{ software }}
+        </ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label>Software</ion-label>
-      <ion-select cancelText="Cancelar">
-        <ion-option> softwares </ion-option>
+      <ion-label>Topicos</ion-label>
+      <ion-select multiple="true" cancelText="Cancelar" formControlName="topicos">
+        <ion-option *ngFor="let topico of topicos" [value]="topico" >
+          {{ topico }}
+        </ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" stacked> Caminho da rede </ion-label>
-      <ion-input type="text" placeholder="Digite o caminho da rede."></ion-input>
+      <ion-input formControlName="caminho_rede" type="text" placeholder="Digite o caminho da rede."></ion-input>
     </ion-item>
   </ion-card-content>
 </ion-card>

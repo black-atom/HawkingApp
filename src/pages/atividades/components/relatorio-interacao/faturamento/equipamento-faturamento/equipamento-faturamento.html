@@ -1,0 +1,54 @@
+<ion-item-group [formGroup]="equipamentoForm">
+
+  <ion-item>
+    <button (click)="removeEquipamento()">text</button>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Equipamento</ion-label>
+    <ion-select cancelText="Cancelar" formControlName="modelo_equipamento" value="modelo_equipamento" (ionChange)="resetItemsForm()">
+      <ion-option *ngFor="let equipamento of equipamentos" [value]="equipamento.modelo">{{ equipamento.modelo }}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" stacked> Nº Equipamento </ion-label>
+    <ion-input formControlName="numero_equipamento" type="number" placeholder="Digite o número do equipamento."></ion-input>
+  </ion-item>
+
+ <ion-item-group formArrayName="pecas">
+   <ion-item>
+     <h2>Peças Trocadas do equipamento</h2>
+   </ion-item>
+    <div *ngFor="let peca of equipamentoForm.controls['pecas'].controls; index as i">
+      <div formGroupName="{{ i }}">
+        <ion-item>
+            <button (click)="removeItem(i)">Remover Item</button>
+        </ion-item>
+        <ion-item>
+            <ion-label>Descrição</ion-label>
+            <ion-select cancelText="Cancelar" formControlName="descricao">
+              <ion-option *ngFor="let peca of itensEquipamentoSelecionado" [value]="peca.descricao">{{ peca.descricao }}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="primary" stacked> Quantidade </ion-label>
+            <ion-input formControlName="quantidade" type="number" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="primary" stacked> R$ Unit. </ion-label>
+            <ion-input formControlName="preco" type="number" ></ion-input>
+          </ion-item>
+      </div>
+    </div>
+ </ion-item-group>
+
+  <ion-item text-left *ngIf="equipamentoForm.controls['modelo_equipamento'].value">
+    <button ion-button outline only-icon (click)="addItem(equipamentoForm.controls['modelo_equipamento'].value)">
+      <ion-icon name="add" large>Adicionar Peca</ion-icon>
+    </button>
+  </ion-item>
+
+</ion-item-group>

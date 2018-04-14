@@ -1,5 +1,6 @@
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
+
 import { MOTIVOS_RETORNO_LOCAL } from '../../../../../utils/mocks';
 
 @Component({
@@ -8,23 +9,18 @@ import { MOTIVOS_RETORNO_LOCAL } from '../../../../../utils/mocks';
 })
 export class RetornoLocalComponent implements OnInit {
 
-  public showInput: boolean = false;
+
+  @Input()
   public retornoLocalForm: FormGroup;
+
+  public showInput: boolean = false;
   public motivos = MOTIVOS_RETORNO_LOCAL;
 
   constructor(
     private fb: FormBuilder,
   ) { }
 
-  ngOnInit() {
-    this.createForm();
-  }
-
-  createForm() {
-    this.retornoLocalForm = this.fb.group({
-      motivo: [''],
-    });
-  }
+  ngOnInit() { }
 
   print() {
     // this.retornoLocalForm.get('motivo').disable();
@@ -34,6 +30,7 @@ export class RetornoLocalComponent implements OnInit {
   print1() {
     this.retornoLocalForm.get('motivo').reset();
   }
+
 }
 
 
