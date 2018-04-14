@@ -1,5 +1,5 @@
 import { FormGroup } from '@angular/forms';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { TOPICOS_DETALHES_TREINAMENTO, SOFTWARES } from '../../../../../utils/mocks';
 
@@ -12,6 +12,9 @@ export class HouveTreinamentoComponent implements OnInit {
   @Input()
   treinamentoForm: FormGroup;
 
+  @Output()
+  addTreinamentoToForm = new EventEmitter();
+
   public topicos = TOPICOS_DETALHES_TREINAMENTO;
   public softwares = SOFTWARES;
   public showInput = false;
@@ -19,6 +22,9 @@ export class HouveTreinamentoComponent implements OnInit {
   constructor(
   ) { }
 
+  addTreinamento() {
+    this.addTreinamentoToForm.emit(this.showInput);
+  }
   ngOnInit() { }
 
 }

@@ -38,8 +38,6 @@ export class RelatorioInteracaoPage {
       motivo_retorno: ['', Validators.required],
       resumo_atendimento: ['', Validators.required],
       equipamentos_retirados: this.fb.array([]),
-      treinamento: this.treinamentoControl(),
-      faturamento: this.faturamentoControl(),
     });
   }
 
@@ -51,6 +49,19 @@ export class RelatorioInteracaoPage {
       equipamentos_com_troca_de_peca: this.fb.array([]),
     });
   }
+
+  addTreinamento(add) {
+    const addToForm = () => this.form.addControl('treinamento', this.treinamentoControl());
+    const removeForm = () => this.form.removeControl('treinamento');
+    add ? addToForm() : removeForm();
+  }
+
+  addFaturamento(add) {
+    const addToForm = () => this.form.addControl('faturamento', this.faturamentoControl());
+    const removeForm = () => this.form.removeControl('faturamento');
+    add ? addToForm() : removeForm();
+  }
+
   treinamentoControl() {
     return this.fb.group({
       topicos: [[], Validators.required],

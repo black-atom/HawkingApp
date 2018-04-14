@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,9 @@ export class FaturamentoComponent {
   @Input()
   public faturamentoForm: FormGroup;
 
+  @Output()
+  public addFaturamentoToForm = new EventEmitter();
+
   @Input()
   public dadosCliente;
 
@@ -20,6 +23,10 @@ export class FaturamentoComponent {
   constructor(
     private fb: FormBuilder,
   ) {  }
+
+  addFaturamento() {
+    this.addFaturamentoToForm.emit(this.showInputFaturamento);
+  }
 
   equipamentoControl() {
     return this.fb.group({

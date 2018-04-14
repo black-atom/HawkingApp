@@ -1,13 +1,13 @@
-<ion-card [formGroup]="faturamentoForm">
+<ion-card>
 
   <ion-card-header>
     <ion-item>
       <ion-label> Faturamento </ion-label>
-      <ion-toggle [(ngModel)]="showInputFaturamento" [ngModelOptions]="{standalone: true}"></ion-toggle>
+      <ion-toggle [(ngModel)]="showInputFaturamento" [ngModelOptions]="{standalone: true}" (ionChange)='addFaturamento()'></ion-toggle>
     </ion-item>
   </ion-card-header>
 
-  <div *ngIf="showInputFaturamento">
+  <div *ngIf="faturamentoForm" [formGroup]="faturamentoForm">
     <ion-card-content>
       <ion-item text-wrap>
         <p>Cliente: {{ dadosCliente.atendimento.cliente.nome_razao_social | uppercase }}</p>
