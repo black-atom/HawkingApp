@@ -1,5 +1,5 @@
 import { Foto } from './../../models/foto';
-import { selectFotosToUpload, UploadFoto, getAllFotos } from './../../redux/reducers/foto.reducer';
+import { selectFotosToUpload, UploadFoto } from './../../redux/reducers/foto.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import { Component } from '@angular/core';

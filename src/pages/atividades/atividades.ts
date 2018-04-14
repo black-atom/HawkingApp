@@ -1,16 +1,18 @@
-import { getAtividadesPendentes, getAtividadesEmExecucao, getAtividadesConcluidas } from './../../redux/reducers/atividade.reduce';
+import {
+  getAtividadesPendentes,
+  getAtividadesEmExecucao,
+  getAtividadesConcluidas,
+} from './../../redux/reducers/atividade.reduce';
 import { Component } from '@angular/core';
 import { PopoverController } from 'ionic-angular';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 
-import { Atendimento, AtividadeI } from '../../models';
+import { AtividadeI } from '../../models';
 import { State } from '../../redux/reducers';
 
 import {
   RetriveAtendimento,
-  atendimentosPendentes,
-  atendimentosEmAndamento,
 } from '../../redux/reducers/atendimento.reducer';
 
 import { buttonProperties } from '../../utils/ButtonProperties';

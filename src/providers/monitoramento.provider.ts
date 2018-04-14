@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { AuthHttp } from 'angular2-jwt';
 
 import { Monitoramento } from './../models';
 

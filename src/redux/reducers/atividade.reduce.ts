@@ -1,4 +1,3 @@
-import { Monitoramento } from './../../models/monitoramento';
 import uuidv4  from 'uuid/v4';
 import { AtividadeI, AtividadeStatus, AtividadeTipo } from '../../models/atividade';
 import { Atendimento } from '../../models';

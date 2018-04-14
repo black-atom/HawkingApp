@@ -1,4 +1,4 @@
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 
 import { MOTIVOS_RETORNO_LOCAL } from '../../../../../utils/mocks';
@@ -17,7 +17,7 @@ export class RetornoLocalComponent implements OnInit {
   public motivos = MOTIVOS_RETORNO_LOCAL;
 
   constructor(
-    private fb: FormBuilder,
+
   ) { }
 
   ngOnInit() { }

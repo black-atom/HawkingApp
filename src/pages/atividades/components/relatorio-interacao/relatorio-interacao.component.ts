@@ -1,27 +1,18 @@
 import { AtividadeI } from './../../../../models/atividade';
 
-import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
 
 import {
-  IonicPage,
   NavController,
   NavParams,
-  Item,
-  ItemSliding,
 } from 'ionic-angular';
 
 import {
-  FormArray,
   FormBuilder,
   FormGroup,
   Validators,
-  FormControl,
 } from '@angular/forms';
-import { Observable } from 'rxjs/Rx';
 
-import { Atendimento } from './../../../../models';
-import { State } from '../../../../redux/reducers';
 import { FotoPage } from '../foto/foto';
 
 @Component({
@@ -36,7 +27,6 @@ export class RelatorioInteracaoPage {
   constructor(
     private fb: FormBuilder,
     public navParams: NavParams,
-    private store: Store<State>,
     public navCtrl: NavController,
   ) {
     this.atividade = this.navParams.get('atividade');
@@ -71,7 +61,7 @@ export class RelatorioInteracaoPage {
 
 
   openPhotoPage() {
-    this.navCtrl.push(FotoPage, { atendimento_id: this.atividade.atendimento_id});
+    this.navCtrl.push(FotoPage, { atendimento_id: this.atividade.atendimento_id });
   }
 
   saveForm(form) {

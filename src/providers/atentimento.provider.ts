@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import { AuthHttp } from 'angular2-jwt';
 
 import { Store } from '@ngrx/store';
 
 import API_URL from '../app/api';
-import { Atendimento, Assinatura } from '../models';
+import { Atendimento } from '../models';
 import { State } from '../redux/reducers';
 import { HttpClient } from '@angular/common/http';
 

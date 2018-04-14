@@ -5,13 +5,11 @@ import {
   Output,
 } from '@angular/core';
 import {
-  FormGroup,
   Validators,
   FormBuilder,
   FormArray,
 } from '@angular/forms';
 
-import { ModalController } from 'ionic-angular';
 
 @Component({
   selector: 'equipamento-faturamento',

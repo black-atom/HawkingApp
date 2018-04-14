@@ -1,4 +1,4 @@
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 
 import { TOPICOS_DETALHES_TREINAMENTO, SOFTWARES } from '../../../../../utils/mocks';
@@ -17,7 +17,6 @@ export class HouveTreinamentoComponent implements OnInit {
   public showInput = false;
 
   constructor(
-    private fb: FormBuilder,
   ) { }
 
   ngOnInit() { }

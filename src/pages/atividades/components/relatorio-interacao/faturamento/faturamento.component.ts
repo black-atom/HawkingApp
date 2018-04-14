@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IonicPage, NavController, Item, ItemSliding  } from 'ionic-angular';
-import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'faturamento',
