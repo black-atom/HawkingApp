@@ -22,11 +22,13 @@ export class HouveTreinamentoComponent implements OnInit {
   constructor(
   ) { }
 
+  ngOnInit() {
+    this.showInput = Boolean(this.treinamentoForm);
+  }
+
   addTreinamento() {
     this.addTreinamentoToForm.emit(this.showInput);
   }
-  ngOnInit() { }
-
 }
 
 

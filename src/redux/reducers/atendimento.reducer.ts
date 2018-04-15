@@ -104,6 +104,7 @@ export const atendimentoReducer = (
         ({
           ...atendimento,
           relatorio,
+          synced: false,
         }) :
         atendimento,
       );

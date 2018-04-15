@@ -44,7 +44,7 @@ export class FaturamentoComponent {
 
   addEquipamento() {
     const equipamentos: FormArray =
-    (<FormArray>this.faturamentoForm.controls['equipamentos_com_troca_de_peca']);
+    (<FormArray>this.faturamentoForm.controls['equipamentos']);
     if (this.showFaturamento) return equipamentos.push(this.equipamentoControl());
     return equipamentos.value.forEach(() => equipamentos.removeAt(0));
   }

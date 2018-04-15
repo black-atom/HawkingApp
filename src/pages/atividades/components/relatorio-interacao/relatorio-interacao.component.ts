@@ -40,15 +40,43 @@ export class RelatorioInteracaoPage {
 
   initForm() {
     const { relatorio } = this.atendimento;
+    const {
+      equipamentos = [],
+      motivo_retorno = '',
+      resumo_atendimento = '',
+    } = relatorio;
+
     this.form = this.fb.group({
-      motivo_retorno: ['', Validators.required],
-      resumo_atendimento: ['', Validators.required],
-      equipamentos_retirados: this.fb.array([]),
+      motivo_retorno: [motivo_retorno , Validators.required],
+      resumo_atendimento: [resumo_atendimento, Validators.required],
+      equipamentos: this.initEquipamentos(equipamentos),
     });
     if (relatorio) {
       relatorio.faturamento && this.addFaturamento(true, relatorio.faturamento);
       relatorio.treinamento && this.addTreinamento(true, relatorio.treinamento);
     }
+  }
+
+  initEquipamentos(equipamentos = []) {
+    const getItem = ({
+      descricao = '',
+      quantidade = 0,
+    } = {}) => this.fb.group({
+      descricao: [descricao, Validators.required],
+      quantidade: [quantidade, Validators.required],
+    });
+
+    const getEquipamentos = ({
+      modelo_equipamento = '',
+      numero_equipamento = '',
+      itens = [],
+    }= {}) => this.fb.group({
+      modelo_equipamento: [modelo_equipamento, Validators.required],
+      numero_equipamento: [numero_equipamento, Validators.required],
+      itens: this.fb.array(itens.map(getItem)),
+    });
+
+    return this.fb.array(equipamentos.map(getEquipamentos));
   }
 
   faturamentoControl({
@@ -57,15 +85,14 @@ export class RelatorioInteracaoPage {
     email = '',
     equipamentos= [],
   } = {}) {
-    console.log(equipamentos)
     const getPecas = ({
       descricao = '',
       quantidade = 1,
-      preco = '',
+      preco = 0,
     }= {}) => this.fb.group({
-      descricao: ['', Validators.required],
+      descricao: [descricao, Validators.required],
       quantidade: [1, Validators.required],
-      preco: ['', Validators.required],
+      preco: [preco, Validators.required],
     });
 
     const getEquipamento = ({
@@ -73,8 +100,8 @@ export class RelatorioInteracaoPage {
       numero_equipamento = '',
       pecas = [],
     } = {}) => this.fb.group({
-      modelo_equipamento: ['', Validators.required],
-      numero_equipamento: ['', Validators.required],
+      modelo_equipamento: [modelo_equipamento, Validators.required],
+      numero_equipamento: [numero_equipamento, Validators.required],
       pecas: this.fb.array(pecas.map(getPecas)),
     });
 

@@ -16,7 +16,9 @@ export class RemocaoEquipamentoComponent implements OnInit {
     private fb: FormBuilder,
   ) { }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.showInput = Boolean(this.remocaoEquipamentoForm);
+  }
 
   equipamentoControl() {
     return this.fb.group({

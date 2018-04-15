@@ -70,7 +70,7 @@ export class EquipamentoFaturamentoComponent {
     return this.fb.group({
       descricao: ['', Validators.required],
       quantidade: [1, Validators.required],
-      preco: ['', Validators.required],
+      preco: [0, Validators.required],
     });
   }
 
