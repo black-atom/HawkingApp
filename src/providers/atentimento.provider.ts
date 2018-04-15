@@ -36,6 +36,11 @@ export class AtendimentoProvider {
     });
   }
 
+  syncAtendimentos(atendimentos: Atendimento[]) {
+    return this.http.patch<Atendimento[]>(this.url, atendimentos)
+      .catch(this.lidaComErro);
+  }
+
   lidaComErro(erro: Response | any) {
     let mensagemErro: string;
     if (erro instanceof Response) {

@@ -40,17 +40,17 @@ export class EditarAtendimento implements Action{
 
 export class SyncAtendimentos implements Action{
   readonly type: string = SYNC_ATENDIMENTOS;
-  constructor(public payload: Atendimento) { }
+  constructor(public payload: Atendimento[]) { }
 }
 
 export class SyncAtendimentosSuccess implements Action{
   readonly type: string = SYNC_ATENDIMENTOS_SUCCESS;
-  constructor(public payload: Atendimento) { }
+  constructor(public payload: Atendimento[]) { }
 }
 
 export class SyncAtendimentosFailed implements Action{
   readonly type: string = SYNC_ATENDIMENTOS_FAILED;
-  constructor(public payload: Atendimento) { }
+  constructor() { }
 }
 
 export class AdicionarPerguntas implements Action{
@@ -110,6 +110,17 @@ export const atendimentoReducer = (
       );
     }
 
+    case SYNC_ATENDIMENTOS_SUCCESS: {
+      const { payload: atendimentos } = <SyncAtendimentosSuccess>action;
+      return atendimentos.map((atendimento) => {
+        const currentAtendimento =  state.find(at => at._id === atendimento._id);
+
+        return (currentAtendimento && !currentAtendimento.synced)
+          ? { ...currentAtendimento, synced: true }
+          : atendimentos;
+      });
+    }
+
     case RETRIEVE_ATENDIMENTOS_FAILED:
       return state;
 
@@ -125,6 +136,11 @@ const isSameDate = firstDate => secondDate => moment(firstDate)
 const isToday = isSameDate(new Date());
 
 export const getAllAtendimentos = (state: State) => state.atendimentos;
+
+export const selectAtendimentosToSync = createSelector(
+  getAllAtendimentos,
+  atendimentos => atendimentos.filter(atendimento => !atendimento.synced),
+);
 
 export const atendimentosPendentes = createSelector(
   getAllAtendimentos,
