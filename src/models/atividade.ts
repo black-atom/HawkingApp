@@ -8,13 +8,21 @@ export enum AtividadeTipo {
   outros = 'outros',
 }
 
-export enum AtividadeStatus {
-  pendente = 'pendente',
-  pausado = 'pausado',
-  em_execucao = 'em_execucao',
-  concluido = 'concluido',
+export enum MonitoramentoStatuses {
+  pendente = 'PENDENTE',
+  pauseAtividade = 'PAUSE_ATIVIDADE',
+  inicioAtividade = 'INICIO_ATIVIDADE',
+  fimAtividade = 'FIM_ATIVIDADE',
+  inicioDeslocamento = 'INICIO_DESLOCAMENTO',
+  fimDeslocamento = 'FIM_DESLOCAMENTO',
+  cancelaAtividade = 'CANCELA_ATIVIDADE',
 }
 
+export interface Monitoramento {
+  status: MonitoramentoStatuses;
+  date: Date;
+  motivo?: string;
+}
 
 export interface AtividadeI {
   atividade_id: String;
@@ -23,5 +31,5 @@ export interface AtividadeI {
   funcionario_id: String;
   atendimento_id?: String;
   atendimento?: Atendimento;
-  status?: AtividadeStatus;
+  status: MonitoramentoStatuses;
 }
