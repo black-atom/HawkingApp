@@ -1,3 +1,4 @@
+import { Atendimento } from './../../../../../models/atendimento';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -14,7 +15,7 @@ export class FaturamentoComponent {
   public addFaturamentoToForm = new EventEmitter();
 
   @Input()
-  public dadosCliente;
+  public atendimento: Atendimento;
 
   public showInput: boolean = false;
   public showFaturamento: boolean = false;
@@ -22,7 +23,12 @@ export class FaturamentoComponent {
 
   constructor(
     private fb: FormBuilder,
-  ) {  }
+  ) {
+  }
+
+  ngOnInit() {
+    this.showInputFaturamento = Boolean(this.faturamentoForm);
+  }
 
   addFaturamento() {
     this.addFaturamentoToForm.emit(this.showInputFaturamento);

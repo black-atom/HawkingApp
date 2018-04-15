@@ -9,7 +9,7 @@
   <houve-treinamento (addTreinamentoToForm)='addTreinamento($event)' [treinamentoForm]="form.controls['treinamento']"></houve-treinamento>
   <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos_retirados']"></remocao-equipamento>
   <retorno-local [retornoLocalForm]="form"></retorno-local>
-  <faturamento (addFaturamentoToForm)='addFaturamento($event)' [faturamentoForm]="form.controls['faturamento']" [dadosCliente]="atividade"></faturamento>
+  <faturamento (addFaturamentoToForm)='addFaturamento($event)' [faturamentoForm]="form.controls['faturamento']" [atendimento]="atendimento"></faturamento>
   <ion-card>
     <ion-card-content >
       <ion-item text-wrap>
@@ -22,6 +22,9 @@
         </ion-textarea>
       </ion-item>
     </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <button ion-button (click)='saveForm(form)'>Default</button>
   </ion-card>
 
 

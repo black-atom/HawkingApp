@@ -57,8 +57,8 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
       return state.map(
         atividade => (atividade.atividade_id === atividadeID)
         ? ({
-          status,
           ...atividade,
+          status,
           monitoramentos: [
             ...atividade.monitoramentos,{
               status,

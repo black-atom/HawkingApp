@@ -26,6 +26,7 @@ export interface Atendimento {
   imagens: any[];
   synced?: boolean;
   assinatura: Assinatura;
+  relatorio?: Relatorio;
 }
 
 export interface Motivo {
@@ -39,6 +40,32 @@ export interface Cliente {
   nome_razao_social: string;
   nome_fantasia?: string;
   inscricao_estadual?: string;
+}
+export interface Faturamento {
+  equipamentos: any[];
+  email: string;
+  razao_social: string;
+  cnpj: string;
+}
+
+export interface Equipamentos {
+  itens: any[];
+  numero_equipamento: string;
+  modelo_equipamento: string;
+}
+
+export interface Treinamento {
+  caminho_rede: string;
+  software: string;
+  topicos: string[];
+}
+
+export interface Relatorio {
+  faturamento: Faturamento;
+  equipamentos: Equipamentos[];
+  treinamento: Treinamento;
+  resumo_atendimento: string;
+  motivo_retorno: string;
 }
 
 export interface Endereco {

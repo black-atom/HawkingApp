@@ -18,13 +18,13 @@ export class AtendimentoEffects {
     private atendimentoProvider: AtendimentoProvider,
   ) { }
 
-@Effect() atendimentos$ = this.actions$
-  .ofType(RETRIEVE_ATENDIMENTOS)
-  .map((action: any) => action.payload)
-  .switchMap(payload => this.atendimentoProvider
-    .getAllAtendimentosToday()
-      .map(atendimentos => new RetriveAtendimentoSuccess(atendimentos))
-      .catch(() => Observable.of(new RetriveAtendimentoFailed())),
+  @Effect() atendimentos$ = this.actions$
+    .ofType(RETRIEVE_ATENDIMENTOS)
+    .map((action: any) => action.payload)
+    .switchMap(payload => this.atendimentoProvider
+      .getAllAtendimentosToday()
+        .map(atendimentos => new RetriveAtendimentoSuccess(atendimentos))
+        .catch(() => Observable.of(new RetriveAtendimentoFailed())),
   );
 }
 

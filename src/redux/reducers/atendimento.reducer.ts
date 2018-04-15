@@ -1,4 +1,4 @@
-import { Atendimento } from './../../models/atendimento';
+import { Atendimento, Relatorio } from './../../models/atendimento';
 import { Action, createSelector } from '@ngrx/store';
 
 import { State } from './';
@@ -11,6 +11,8 @@ export const RETRIEVE_ATENDIMENTOS_SUCCESS = 'RETRIEVE_ATENDIMENTOS_SUCCESS';
 export const RETRIEVE_ATENDIMENTOS_FAILED = 'RETRIEVE_ATENDIMENTOS_FAILED';
 
 export const EDITAR_ATENDIMENTO = 'EDITAR_ATENDIMENTO';
+export const SAVE_RELATORIO_ATENDIMENTO = 'SAVE_RELATORIO_ATENDIMENTO';
+
 
 export const SYNC_ATENDIMENTOS = 'SYNC_ATENDIMENTOS';
 export const SYNC_ATENDIMENTOS_SUCCESS = 'SYNC_ATENDIMENTOS_SUCCESS';
@@ -56,6 +58,11 @@ export class AdicionarPerguntas implements Action{
   constructor(public payload: Atendimento) { }
 }
 
+export class SaveRelatorio implements Action {
+  readonly type: string = SAVE_RELATORIO_ATENDIMENTO;
+  constructor(public atendimentoId: string,public payload: Relatorio) { }
+}
+
 export type ActionsAtendimento =
   |  RetriveAtendimento
   |  RetriveAtendimentoSuccess
@@ -64,9 +71,13 @@ export type ActionsAtendimento =
   |  SyncAtendimentos
   |  SyncAtendimentosSuccess
   |  SyncAtendimentosFailed
+  |  SaveRelatorio
   |  AdicionarPerguntas;
 
-export const atendimentoReducer = (state: Atendimento[] = INITIAL_STATE, action: any) => {
+export const atendimentoReducer = (
+  state: Atendimento[] = INITIAL_STATE,
+  action: any,
+) => {
   switch (action.type) {
 
     case RETRIEVE_ATENDIMENTOS_SUCCESS: {
@@ -83,6 +94,19 @@ export const atendimentoReducer = (state: Atendimento[] = INITIAL_STATE, action:
       });
 
       return atendimentos;
+    }
+
+    case SAVE_RELATORIO_ATENDIMENTO: {
+      const { atendimentoId, payload: relatorio } = <SaveRelatorio>action;
+
+      return state.map(atendimento =>
+        atendimento._id === atendimentoId ?
+        ({
+          ...atendimento,
+          relatorio,
+        }) :
+        atendimento,
+      );
     }
 
     case RETRIEVE_ATENDIMENTOS_FAILED:
