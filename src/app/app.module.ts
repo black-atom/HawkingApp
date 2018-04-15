@@ -18,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginProvider } from '../providers';
 
 import { ProvidersModule } from '../providers/providers.module';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 
 const storage = new Storage({});
@@ -52,6 +53,7 @@ export function getAuthHttp(http) {
     LoginProvider,
     StatusBar,
     SplashScreen,
+    LaunchNavigator,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     {
       provide: AuthHttp,
