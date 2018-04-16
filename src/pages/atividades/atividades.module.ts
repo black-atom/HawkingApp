@@ -31,6 +31,7 @@ import {
 import {
   RemocaoEquipamentoComponent,
 } from './components/relatorio-interacao/remocao-equipamento/remocao-equipamento';
+import { AssinaturaComponent } from './components/assinatura/assinatura.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {
     RemocaoEquipamentoComponent,
     RelatorioInteracaoPage,
     RetornoLocalComponent,
+    AssinaturaComponent,
   ],
   imports: [
     ComponentsModule,
@@ -61,6 +63,8 @@ import {
     RelatorioInteracaoPage,
     RemocaoEquipamentoComponent,
     RetornoLocalComponent,
+    AssinaturaComponent,
+
   ],
   providers: [
     Camera,
