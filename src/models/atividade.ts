@@ -14,6 +14,7 @@ export enum MonitoramentoStatuses {
   inicioAtividade = 'INICIO_ATIVIDADE',
   fimAtividade = 'FIM_ATIVIDADE',
   inicioDeslocamento = 'INICIO_DESLOCAMENTO',
+  criarAtividade = 'CRIAR_ATIVIDADE',
   fimDeslocamento = 'FIM_DESLOCAMENTO',
   cancelaAtividade = 'CANCELA_ATIVIDADE',
 }
