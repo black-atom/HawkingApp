@@ -25,11 +25,13 @@ export interface Monitoramento {
 }
 
 export interface AtividadeI {
-  atividade_id: String;
+  _id?: string;
+  atividade_id: string;
   monitoramentos: Monitoramento[];
   tipo: AtividadeTipo;
-  funcionario_id: String;
-  atendimento_id?: String;
+  funcionario_id: string;
+  atendimento_id?: string;
   atendimento?: Atendimento;
   status: MonitoramentoStatuses;
+  synced: boolean;
 }

@@ -1,4 +1,8 @@
-import { selectAtendimentosToSync, SyncAtendimentos } from './../../redux/reducers/atendimento.reducer';
+import { selectAtividadesToSync, SyncAtividade } from './../../redux/reducers/atividade.reduce';
+import {
+  selectAtendimentosToSync,
+  SyncAtendimentos,
+} from './../../redux/reducers/atendimento.reducer';
 import { Foto } from './../../models/foto';
 import { selectFotosToUpload, UploadFoto } from './../../redux/reducers/foto.reducer';
 import { Store } from '@ngrx/store';
@@ -39,6 +43,12 @@ export class TabPage {
       .mergeMap(() => this.store.select(selectAtendimentosToSync).take(1))
       .filter(atendimentos => atendimentos.length > 0)
       .do(atendimentos => this.store.dispatch(new SyncAtendimentos(atendimentos)))
+      .subscribe();
+
+    Observable.interval(10000)
+      .mergeMap(() => this.store.select(selectAtividadesToSync).take(1))
+      .mergeMap(atividades => atividades)
+      .do(atividade => this.store.dispatch(new SyncAtividade(atividade)))
       .subscribe();
   }
 }

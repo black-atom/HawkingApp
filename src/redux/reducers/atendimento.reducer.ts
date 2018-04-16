@@ -89,7 +89,7 @@ export const atendimentoReducer = (
           return atendimentoFound;
         }
 
-        return atendimento;
+        return { ...atendimento, synced: true };
 
       });
 
