@@ -53,9 +53,16 @@ atividade-detail {
     width: 80px;
     height: 80px;
     border-radius: 50px !important;
-    box-shadow: 2px 2px rgb(160, 160, 160);
+    box-shadow: 2px 2px rgb(216, 216, 216);
     padding: 15px;
+    transition: 1s;
   }
+
+  .photo:active {
+    box-shadow: 2px 2px 15px rgb(34, 34, 34);
+    background-color:  rgb(160, 160, 160);
+  }
+
   ion-segment {
     background-color: #FFFFFF !important;
     margin-top: 12.7% !important;
