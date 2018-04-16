@@ -18,7 +18,10 @@ export class LoginPage {
   public username: string = '';
   public password: string = '';
 
-  constructor(public navCtrl: NavController, private store: Store<LoginState>) { }
+  constructor(
+    public navCtrl: NavController,
+    private store: Store<LoginState>,
+  ) { }
 
   login() {
     const parserUserLowerCase = this.username.toLocaleLowerCase();
