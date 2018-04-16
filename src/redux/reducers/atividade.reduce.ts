@@ -11,6 +11,8 @@ import { createSelector, Action } from '@ngrx/store';
 
 const INITIAL_STATE: AtividadeI[] = [];
 
+export const CRIAR_ATIVIDADE = 'CRIAR_ATIVIDADE';
+export const CRIAR_ATIVIDADE_DESCRICAO = 'CRIAR_ATIVIDADE_DESCRICAO';
 export const MUDA_ATIVIDADE_STATUS = 'MUDA_ATIVIDADE_STATUS';
 export const SYNC_ATIVADE = 'SYNC_ATIVADE';
 export const SYNC_ATIVADE_FAILED = 'SYNC_ATIVADE_FAILED';
@@ -30,6 +32,29 @@ export class SyncAtividadeSuccess implements Action {
 export class SyncAtividadeFailed implements Action {
   type = SYNC_ATIVADE_FAILED;
   constructor(public payload: AtividadeI) { }
+}
+
+export class CriarAtividade implements Action {
+  type = CRIAR_ATIVIDADE;
+  payload;
+  constructor(
+    public funcionarioID: string,
+    public tipo: string,
+  ) {
+    this.payload = { funcionarioID, tipo };
+  }
+}
+
+export class CriarAtividadeDescricao implements Action {
+  type = CRIAR_ATIVIDADE_DESCRICAO;
+  payload;
+  constructor(
+    public funcionarioID: string,
+    public tipo: string,
+    public descricao: string,
+  ) {
+    this.payload = { funcionarioID, tipo, descricao };
+  }
 }
 
 export class PauseAtividade implements Action {
@@ -63,6 +88,8 @@ export class FinalizaDeslocamento implements Action {
 }
 
 export type actionTypes = PauseAtividade
+  | CriarAtividade
+  | CriarAtividadeDescricao
   | IniciaAtividade
   | FinalizaAtividade
   | InicializaDeslocamento
@@ -117,6 +144,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
               atendimento,
               funcionario_id: funcionarioId,
               atendimento_id: _id,
+              descricao: null,
               status: MonitoramentoStatuses.pendente,
               monitoramentos: [],
               atividade_id: uuidv4(),
@@ -129,7 +157,34 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
 
       return atividades;
     }
-
+    case CRIAR_ATIVIDADE: {
+      const atividade = {
+        atendimento: null,
+        funcionario_id: action.payload.funcionarioID,
+        atendimento_id: null,
+        descricao: null,
+        status: MonitoramentoStatuses.inicioDeslocamento,
+        monitoramentos: [{ status: MonitoramentoStatuses.inicioDeslocamento, date: new Date() }],
+        atividade_id: uuidv4(),
+        tipo: action.payload.tipo,
+        synced: false,
+      };
+      return [...state, atividade];
+    }
+    case CRIAR_ATIVIDADE_DESCRICAO: {
+      const atividade = {
+        atendimento: null,
+        funcionario_id: action.payload.funcionarioID,
+        atendimento_id: null,
+        status: MonitoramentoStatuses.inicioDeslocamento,
+        descricao: action.payload.descricao,
+        monitoramentos: [],
+        atividade_id: uuidv4(),
+        tipo: action.payload.tipo,
+        synced: false,
+      };
+      return [...state, atividade];
+    }
     default:
       return state;
   }

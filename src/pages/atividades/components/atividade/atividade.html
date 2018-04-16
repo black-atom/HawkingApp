@@ -17,7 +17,7 @@
     <div *ngIf="atividade.tipo !== 'atendimento'">
         <ion-item>
           <ion-avatar item-start>
-            <img src="assets/icon/start.svg">
+            <img src="assets/icon/{{atividade.tipo}}.svg">
           </ion-avatar>
           <h2>{{ atividade?.tipo | uppercase }}</h2>
         </ion-item>

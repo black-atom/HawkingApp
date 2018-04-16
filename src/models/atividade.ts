@@ -26,6 +26,7 @@ export interface Monitoramento {
 
 export interface AtividadeI {
   _id?: string;
+  descricao: string;
   atividade_id: string;
   monitoramentos: Monitoramento[];
   tipo: AtividadeTipo;

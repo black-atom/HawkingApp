@@ -2,7 +2,7 @@ const buttonProperties = [
   {
     key: 'almoco',
     name: 'Almoço',
-    imgPath: 'assets/icon/restaurant.svg',
+    imgPath: 'assets/icon/almoco.svg',
     pageType: 'ContentModalMonitoramento',
     imageHeader: '',
     props: [
@@ -35,7 +35,7 @@ const buttonProperties = [
   {
     key: 'abastecimento',
     name: 'Abastecimento',
-    imgPath: 'assets/icon/gas-station.svg',
+    imgPath: 'assets/icon/abastecimento.svg',
     pageType: 'ContentModalMonitoramento',
     imageHeader: '',
     props: [
@@ -68,7 +68,7 @@ const buttonProperties = [
   {
     key: 'empresa',
     name: 'Empresa',
-    imgPath: 'assets/icon/realponto.svg',
+    imgPath: 'assets/icon/empresa.svg',
     pageType: 'ContentModalMonitoramento',
     imageHeader: '',
     props: [
@@ -89,7 +89,7 @@ const buttonProperties = [
   {
     key: 'outros',
     name: 'Outros',
-    imgPath: 'assets/icon/other.svg',
+    imgPath: 'assets/icon/outros.svg',
     pageType: 'ContentModalMonitoramento',
     imageHeader: '',
     props: [

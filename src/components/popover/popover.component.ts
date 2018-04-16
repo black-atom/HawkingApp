@@ -18,11 +18,17 @@ export class PopoverComponent {
   constructor(
     public navParms: NavParams,
     public navCtrl: NavController,
+    public viewCtrl: ViewController,
   ) {
     this.buttonProperties = navParms.get('buttonProperties');
   }
 
   openAtividadeDetail(id) {
     this.navCtrl.push(AtividadeDetail, { id });
+    this.close();
+  }
+
+  close() {
+    this.viewCtrl.dismiss();
   }
 }

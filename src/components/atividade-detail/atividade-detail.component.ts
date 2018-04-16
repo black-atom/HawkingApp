@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { NavParams, NavController } from 'ionic-angular';
+import {
+  AlertController,
+  NavParams,
+  NavController,
+} from 'ionic-angular';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 import {
@@ -8,7 +12,15 @@ import {
 import { AtividadeI } from '../../models';
 import { State } from '../../redux/reducers';
 import { Store } from '@ngrx/store';
-import { IniciaAtividade, FinalizaAtividade, InicializaDeslocamento, FinalizaDeslocamento, PauseAtividade } from '../../redux/reducers/atividade.reduce';
+import {
+  IniciaAtividade,
+  FinalizaAtividade,
+  InicializaDeslocamento,
+  FinalizaDeslocamento,
+  PauseAtividade,
+  CriarAtividade,
+  CriarAtividadeDescricao,
+} from '../../redux/reducers/atividade.reduce';
 
 @Component({
   selector: 'atividade-detail',
@@ -16,17 +28,28 @@ import { IniciaAtividade, FinalizaAtividade, InicializaDeslocamento, FinalizaDes
 })
 export class AtividadeDetail {
 
-  public atividade: AtividadeI;
+  public atividade;
   public title = 'Detalhes';
   public actionSegments = 'acoes';
+  private tecnicoId: string;
 
   constructor(
+    public alertCtrl: AlertController,
     public navCtrl: NavController,
     private navParams: NavParams,
     private launchNavigator: LaunchNavigator,
     private store: Store<State>,
   ) {
     this.atividade = this.navParams.get('id');
+    this.store.select('login').subscribe(user => this.tecnicoId = user._id);
+  }
+
+  criarAtividade() {
+    this.store.dispatch(new CriarAtividade(this.tecnicoId, this.atividade));
+  }
+
+  criarAtividadeDescricao({ descricao }) {
+    this.store.dispatch(new CriarAtividadeDescricao(this.tecnicoId, this.atividade, descricao));
   }
 
   iniciarAtividade() {
@@ -40,6 +63,7 @@ export class AtividadeDetail {
   }
 
   inicializaDeslocamento() {
+    if (!this.atividade.tipo && this.atividade !== 'outros') return this.criarAtividade();
     const { atividade_id } = this.atividade;
     this.store.dispatch(new InicializaDeslocamento(atividade_id));
   }
@@ -61,4 +85,32 @@ export class AtividadeDetail {
   openRelatorioInteracaoPage(atividade) {
     this.navCtrl.push(RelatorioInteracaoPage, { atividade });
   }
+
+
+  showPrompt() {
+    const prompt = this.alertCtrl.create({
+      title: 'Descrição da Atividade',
+      message: 'Digite a descrição da atividade',
+      inputs: [
+        {
+          name: 'descricao',
+          placeholder: 'digite aqui!',
+        },
+      ],
+      buttons: [
+        {
+          text: 'cancelar',
+          handler: () => { },
+        },
+        {
+          text: 'salvar',
+          handler: (data) => {
+            this.criarAtividadeDescricao(data);
+          },
+        },
+      ],
+    });
+    prompt.present();
+  }
+
 }
