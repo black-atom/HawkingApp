@@ -1,9 +1,6 @@
 import { AtividadeI } from './../../../../models/atividade';
 import { Component, Input } from '@angular/core';
-import {
-  NavController,
-  ModalController,
-} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import {
   AtividadeDetail,
@@ -26,7 +23,6 @@ export class Atividade {
 
   constructor(
     public navCtrl: NavController,
-    public modalCtrl: ModalController,
   ) {  }
 
 

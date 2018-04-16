@@ -17,6 +17,7 @@ import {
 } from '../../redux/reducers/atendimento.reducer';
 
 import { buttonProperties } from '../../utils/ButtonProperties';
+import { PopoverComponent } from './../../components/popover/popover.component';
 
 
 @Component({
@@ -54,4 +55,13 @@ export class AtividadesPage {
     this.store.dispatch(new RetriveAtendimento());
   }
 
+  presentPopover() {
+    const options = { cssClass : 'atividade-modal' };
+    const popover = this.popoverCtrl.create(
+      PopoverComponent,
+      { buttonProperties },
+      options,
+    );
+    popover.present();
+  }
 }
