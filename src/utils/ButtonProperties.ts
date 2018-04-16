@@ -67,7 +67,7 @@ const buttonProperties = [
   },
   {
     key: 'empresa',
-    name: 'Realponto',
+    name: 'Empresa',
     imgPath: 'assets/icon/realponto.svg',
     pageType: 'ContentModalMonitoramento',
     imageHeader: '',
