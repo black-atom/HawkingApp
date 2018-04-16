@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, NavController } from 'ionic-angular';
+import { NavParams, NavController, PopoverController } from 'ionic-angular';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 import {
@@ -13,9 +13,10 @@ import { IniciaAtividade,
   FinalizaDeslocamento,
   PauseAtividade } from '../../redux/reducers/atividade.reduce';
 import { AtividadeI } from './../../models/atividade';
+
 import {
-  AssinaturaComponent,
-} from '../../pages/atividades/components/assinatura/assinatura.component';
+  AssinaturaFormComponent,
+} from '../../pages/atividades/components/assinatura-form/assinatura-form.component';
 
 @Component({
   selector: 'atividade-detail',
@@ -30,6 +31,7 @@ export class AtividadeDetail {
   constructor(
     public navCtrl: NavController,
     private navParams: NavParams,
+    public popoverCtrl: PopoverController,
     private launchNavigator: LaunchNavigator,
     private store: Store<State>,
   ) {
@@ -69,7 +71,14 @@ export class AtividadeDetail {
     this.navCtrl.push(RelatorioInteracaoPage, { atividade });
   }
 
-  openAssinatura() {
-    this.navCtrl.push(AssinaturaComponent);
+  openAssinaturaForm() {
+    const data: any = {};
+    const options = { cssClass : 'assinatura-modal' };
+    const popover = this.popoverCtrl.create(
+      AssinaturaFormComponent,
+      data,
+      options,
+    );
+    popover.present();
   }
 }
