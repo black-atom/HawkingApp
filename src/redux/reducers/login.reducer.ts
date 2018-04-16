@@ -7,6 +7,8 @@ const INITIAL_STATE: LoginState = {
   loading: false,
   error: false,
   nome: null,
+  foto_url: null,
+  rg: null,
   _id: null,
 };
 
@@ -38,8 +40,8 @@ export type ActionsMonitoramento =
 export const loginReducer = (state: LoginState = INITIAL_STATE, action: ActionsMonitoramento) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      const { funcionario: { login, nome, _id } } = action.payload;
-      return { ...state, _id, nome, login, loading: true,  error: false };
+      const { funcionario: { login, nome, _id, foto_url, rg } } = action.payload;
+      return { ...state, _id, nome, foto_url, rg, login, loading: true,  error: false };
     case LOGIN_FAILED:
       return { ...state, error: true };
     default:
@@ -47,7 +49,7 @@ export const loginReducer = (state: LoginState = INITIAL_STATE, action: ActionsM
   }
 };
 
-const getLogin = (state: State) => state.login;
+export const getLogin = (state: State) => state.login;
 
 export const isLogged = createSelector(getLogin, (loginState:LoginState) => loginState
   .login !== null,
