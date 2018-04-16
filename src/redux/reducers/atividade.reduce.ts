@@ -94,6 +94,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
               date: new Date(),
 //              motivo?: string; to be implemented
             }],
+          synced: false,
         })
         : atividade,
       );

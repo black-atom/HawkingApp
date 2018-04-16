@@ -39,17 +39,17 @@ export class RelatorioInteracaoPage {
   }
 
   initForm() {
-    const { relatorio } = this.atendimento;
+    const { relatorio  } = this.atendimento;
     const {
-      equipamentos = [],
+      equipamentos_retirados = [],
       motivo_retorno = '',
       resumo_atendimento = '',
-    } = relatorio;
+    } = relatorio || {};
 
     this.form = this.fb.group({
       motivo_retorno: [motivo_retorno , Validators.required],
       resumo_atendimento: [resumo_atendimento, Validators.required],
-      equipamentos: this.initEquipamentos(equipamentos),
+      equipamentos_retirados: this.initEquipamentos(equipamentos_retirados),
     });
     if (relatorio) {
       relatorio.faturamento && this.addFaturamento(true, relatorio.faturamento);
@@ -58,6 +58,7 @@ export class RelatorioInteracaoPage {
   }
 
   initEquipamentos(equipamentos = []) {
+    console.log(equipamentos)
     const getItem = ({
       descricao = '',
       quantidade = 0,
@@ -70,7 +71,7 @@ export class RelatorioInteracaoPage {
       modelo_equipamento = '',
       numero_equipamento = '',
       itens = [],
-    }= {}) => this.fb.group({
+    }) => this.fb.group({
       modelo_equipamento: [modelo_equipamento, Validators.required],
       numero_equipamento: [numero_equipamento, Validators.required],
       itens: this.fb.array(itens.map(getItem)),

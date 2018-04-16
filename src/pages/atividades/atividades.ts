@@ -2,6 +2,7 @@ import {
   getAtividadesPendentes,
   getAtividadesEmExecucao,
   getAtividadesConcluidas,
+  getAtividadesPausadas,
 } from './../../redux/reducers/atividade.reduce';
 import { Component } from '@angular/core';
 import { PopoverController } from 'ionic-angular';
@@ -42,6 +43,7 @@ export class AtividadesPage {
     this.atividadesPendentes$ = this.store.select(getAtividadesPendentes);
     this.atividadesEmExecucao$ = this.store.select(getAtividadesEmExecucao);
     this.atividadesConcluidas$ = this.store.select(getAtividadesConcluidas);
+    this.atividadesPausadas$ = this.store.select(getAtividadesPausadas);
   }
 
   ionViewDidLoad() {

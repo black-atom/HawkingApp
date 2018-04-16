@@ -26,7 +26,7 @@
   <div [ngSwitch]="actionSegments">
     <ion-list *ngSwitchCase="'acoes'">
       <div class="actions">
-        <div class="action">
+        <div class="action" (click)='inicializaDeslocamento()'>
           <div class="photo">
             <img src="" onerror="this.src='assets/icon/pointer.svg'" />
           </div>
@@ -34,7 +34,7 @@
             Deslocamento</p>
         </div>
 
-        <div class="action">
+        <div class="action" (click)='finalizaDeslocamento()'>
           <div class="photo">
             <img src="" onerror="this.src='assets/icon/placeholder.svg'" />
           </div>
@@ -49,7 +49,7 @@
           <p>Gps</p>
         </div>
 
-        <div class="action">
+        <div class="action" (click)='iniciarAtividade()'>
           <div class="photo">
             <img src="" onerror="this.src='assets/icon/clock.svg'" />
           </div>
@@ -60,7 +60,7 @@
 
         <div class="actions">
 
-            <div class="action">
+            <div class="action" (click)='pausaAtividade()'>
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/pause.svg'" />
               </div>
@@ -71,7 +71,7 @@
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/play-button.svg'" />
               </div>
-              <p>Continuar</p>
+              <p>Continuar(*nao existe isso)</p>
             </div>
 
             <div class="action" (click)="openRelatorioInteracaoPage(atividade)">

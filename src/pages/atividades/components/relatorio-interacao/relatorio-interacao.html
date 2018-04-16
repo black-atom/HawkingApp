@@ -7,7 +7,7 @@
 <ion-content [formGroup]="form" padding>
 
   <houve-treinamento (addTreinamentoToForm)='addTreinamento($event)' [treinamentoForm]="form.controls['treinamento']"></houve-treinamento>
-  <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos']"></remocao-equipamento>
+  <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos_retirados']"></remocao-equipamento>
   <retorno-local [retornoLocalForm]="form"></retorno-local>
   <faturamento (addFaturamentoToForm)='addFaturamento($event)' [faturamentoForm]="form.controls['faturamento']" [atendimento]="atendimento"></faturamento>
   <ion-card>
@@ -33,9 +33,9 @@
       <ion-icon name="camera"></ion-icon>
     </button>
   </ion-fab>
-  <!-- <pre>
+  <pre>
     {{ form.value | json}}
-  </pre> -->
+  </pre>
 </ion-content>
 
 

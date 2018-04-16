@@ -62,7 +62,7 @@ export interface Treinamento {
 
 export interface Relatorio {
   faturamento: Faturamento;
-  equipamentos: Equipamentos[];
+  equipamentos_retirados: Equipamentos[];
   treinamento: Treinamento;
   resumo_atendimento: string;
   motivo_retorno: string;
