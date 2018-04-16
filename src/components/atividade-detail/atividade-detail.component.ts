@@ -3,6 +3,7 @@ import {
   AlertController,
   NavParams,
   NavController,
+  ToastController,
 } from 'ionic-angular';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
@@ -20,6 +21,7 @@ import {
   PauseAtividade,
   CriarAtividade,
   CriarAtividadeDescricao,
+  CancelarAtividade,
 } from '../../redux/reducers/atividade.reduce';
 import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
 
@@ -40,6 +42,7 @@ export class AtividadeDetail {
     public navCtrl: NavController,
     private navParams: NavParams,
     private launchNavigator: LaunchNavigator,
+    public toastCtrl: ToastController,
     private store: Store<State>,
   ) {
     this.atividade = this.navParams.get('id');
@@ -47,42 +50,58 @@ export class AtividadeDetail {
   }
 
   criarAtividade() {
+    const message = 'Descolamento iniciado com sucesso!';
     this.store.dispatch(new CriarAtividade(this.tecnicoId, this.atividade));
+    this.presentToast(message);
   }
 
   criarAtividadeDescricao({ descricao }) {
+    const message = 'Nova atividade criada!';
     this.store.dispatch(new CriarAtividadeDescricao(this.tecnicoId, this.atividade, descricao));
+    this.presentToast(message);
   }
 
   cancelarAtividade({ motivo }) {
-    // this.store.dispatch((this.tecnicoId, this.atividade, motivo));
+    const message = 'Atividade cancelada com sucesso!';
+    const { atividade_id } = this.atividade;
+    this.store.dispatch(new CancelarAtividade(atividade_id, motivo));
+    this.presentToast(message);
   }
 
-
   iniciarAtividade() {
+    const message = 'Atividade iniciada com sucesso!';
     const { atividade_id } = this.atividade;
     this.store.dispatch(new IniciaAtividade(atividade_id));
+    this.presentToast(message);
   }
 
   finalizarAtividade() {
+    const message = 'Atividade finalizada com sucesso!';
     const { atividade_id } = this.atividade;
     this.store.dispatch(new FinalizaAtividade(atividade_id));
+    this.presentToast(message);
   }
 
   inicializaDeslocamento() {
+    const message = 'Descolamento iniciado com sucesso!';
     if (!this.atividade.tipo && this.atividade !== 'outros') return this.criarAtividade();
     const { atividade_id } = this.atividade;
     this.store.dispatch(new InicializaDeslocamento(atividade_id));
+    this.presentToast(message);
   }
 
   finalizaDeslocamento() {
+    const message = 'Descolamento finalizado com sucesso!';
     const { atividade_id } = this.atividade;
     this.store.dispatch(new FinalizaDeslocamento(atividade_id));
+    this.presentToast(message);
   }
 
-  pausaAtividade() {
+  pausaAtividade({ motivo }) {
+    const message = 'Atividade foi pausada!';
     const { atividade_id } = this.atividade;
-    this.store.dispatch(new PauseAtividade(atividade_id));
+    this.store.dispatch(new PauseAtividade(atividade_id, motivo));
+    this.presentToast(message);
   }
   openGPS() {
     const { atendimento: { endereco } } = this.atividade;
@@ -114,12 +133,23 @@ export class AtividadeDetail {
             if (type === 'cancelar') {
               return this.cancelarAtividade(data);
             }
+            if (type === 'pausar') {
+              return this.pausaAtividade(data);
+            }
             return this.criarAtividadeDescricao(data);
           },
         },
       ],
     });
     prompt.present();
+  }
+
+  presentToast(message) {
+    const toast = this.toastCtrl.create({
+      message,
+      duration: 3000,
+    });
+    toast.present();
   }
 
 }

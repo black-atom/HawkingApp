@@ -71,4 +71,20 @@ atividade-detail {
   ion-list {
     margin-top: 10% !important;
   }
+  .atividade-info {
+    margin-top: 25px;
+    text-align: center;
+  }
+  .atividade-info img {
+    width: 200px;
+    height: 200px;
+  }
+  .atividade-info h3 {
+    color: rgb(160, 160, 160);
+    font-weight: bold;
+  }
+  button.action {
+    background-color: transparent !important;
+    border: none !important;
+  }
 }

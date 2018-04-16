@@ -6,10 +6,16 @@ const configAlertInputAtividade = {
     type: 'descricao',
   },
   cancelar: {
-    name: 'cancelar',
+    name: 'motivo',
     title: 'Cancelar Atividade',
     message: 'Motivo do cancelamento',
     type: 'cancelar',
+  },
+  pausar: {
+    name: 'motivo',
+    title: 'Pausar Atividade',
+    message: 'Digite o motivo',
+    type: 'pausar',
   },
 };
 

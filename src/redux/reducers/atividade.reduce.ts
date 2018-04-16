@@ -14,6 +14,8 @@ const INITIAL_STATE: AtividadeI[] = [];
 export const CRIAR_ATIVIDADE = 'CRIAR_ATIVIDADE';
 export const CRIAR_ATIVIDADE_DESCRICAO = 'CRIAR_ATIVIDADE_DESCRICAO';
 export const CANCELAR_ATIVIDADE = 'CANCELAR_ATIVIDADE';
+export const PAUSAR_ATIVIDADE = 'PAUSAR_ATIVIDADE';
+
 export const MUDA_ATIVIDADE_STATUS = 'MUDA_ATIVIDADE_STATUS';
 export const SYNC_ATIVADE = 'SYNC_ATIVADE';
 export const SYNC_ATIVADE_FAILED = 'SYNC_ATIVADE_FAILED';
@@ -38,10 +40,7 @@ export class SyncAtividadeFailed implements Action {
 export class CriarAtividade implements Action {
   type = CRIAR_ATIVIDADE;
   payload;
-  constructor(
-    public funcionarioID: string,
-    public tipo: string,
-  ) {
+  constructor(public funcionarioID, public tipo) {
     this.payload = { funcionarioID, tipo };
   }
 }
@@ -50,9 +49,9 @@ export class CriarAtividadeDescricao implements Action {
   type = CRIAR_ATIVIDADE_DESCRICAO;
   payload;
   constructor(
-    public funcionarioID: string,
-    public tipo: string,
-    public descricao: string,
+    public funcionarioID,
+    public tipo,
+    public descricao,
   ) {
     this.payload = { funcionarioID, tipo, descricao };
   }
@@ -60,16 +59,14 @@ export class CriarAtividadeDescricao implements Action {
 
 export class CancelarAtividade implements Action {
   type = CANCELAR_ATIVIDADE;
-  payload;
-  constructor(public motivo: string) {
-    this.payload = { motivo };
-  }
+  payload = MonitoramentoStatuses.cancelaAtividade;
+  constructor(public atividadeID, public motivo) { }
 }
 
 export class PauseAtividade implements Action {
-  type = MUDA_ATIVIDADE_STATUS;
+  type = PAUSAR_ATIVIDADE;
   payload = MonitoramentoStatuses.pauseAtividade;
-  constructor(public atividadeID) { }
+  constructor(public atividadeID, public motivo) { }
 }
 
 export class IniciaAtividade implements Action {
@@ -195,6 +192,38 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
       };
       return [...state, atividade];
     }
+    case CANCELAR_ATIVIDADE: {
+      const { atividadeID, motivo, payload: status } = action;
+
+      return state.map(atividade => (atividade.atividade_id === atividadeID)
+      ? ({
+        ...atividade,
+        status,
+        monitoramentos: [
+          ...atividade.monitoramentos,{
+            status,
+            motivo,
+            date: new Date(),
+          }],
+      }) : atividade);
+
+    }
+    case PAUSAR_ATIVIDADE: {
+      const { atividadeID, motivo, payload: status } = action;
+
+      return state.map(atividade => (atividade.atividade_id === atividadeID)
+      ? ({
+        ...atividade,
+        status,
+        monitoramentos: [
+          ...atividade.monitoramentos,{
+            status,
+            motivo,
+            date: new Date(),
+          }],
+      }) : atividade);
+
+    }
     default:
       return state;
   }
@@ -221,7 +250,7 @@ const statuses = {
   FIM_ATIVIDADE: 'concluido',
   INICIO_DESLOCAMENTO: 'execucao',
   FIM_DESLOCAMENTO: 'execucao',
-  CANCELA_ATIVIDADE: 'cancelado',
+  CANCELA_ATIVIDADE: 'concluido',
   CRIAR_ATIVIDADE: 'execucao',
 };
 
