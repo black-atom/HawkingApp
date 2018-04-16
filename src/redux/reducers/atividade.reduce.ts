@@ -13,6 +13,7 @@ const INITIAL_STATE: AtividadeI[] = [];
 
 export const CRIAR_ATIVIDADE = 'CRIAR_ATIVIDADE';
 export const CRIAR_ATIVIDADE_DESCRICAO = 'CRIAR_ATIVIDADE_DESCRICAO';
+export const CANCELAR_ATIVIDADE = 'CANCELAR_ATIVIDADE';
 export const MUDA_ATIVIDADE_STATUS = 'MUDA_ATIVIDADE_STATUS';
 export const SYNC_ATIVADE = 'SYNC_ATIVADE';
 export const SYNC_ATIVADE_FAILED = 'SYNC_ATIVADE_FAILED';
@@ -57,6 +58,14 @@ export class CriarAtividadeDescricao implements Action {
   }
 }
 
+export class CancelarAtividade implements Action {
+  type = CANCELAR_ATIVIDADE;
+  payload;
+  constructor(public motivo: string) {
+    this.payload = { motivo };
+  }
+}
+
 export class PauseAtividade implements Action {
   type = MUDA_ATIVIDADE_STATUS;
   payload = MonitoramentoStatuses.pauseAtividade;
@@ -90,6 +99,7 @@ export class FinalizaDeslocamento implements Action {
 export type actionTypes = PauseAtividade
   | CriarAtividade
   | CriarAtividadeDescricao
+  | CancelarAtividade
   | IniciaAtividade
   | FinalizaAtividade
   | InicializaDeslocamento
@@ -176,7 +186,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
         atendimento: null,
         funcionario_id: action.payload.funcionarioID,
         atendimento_id: null,
-        status: MonitoramentoStatuses.inicioDeslocamento,
+        status: MonitoramentoStatuses.criarAtividade,
         descricao: action.payload.descricao,
         monitoramentos: [],
         atividade_id: uuidv4(),
@@ -189,7 +199,6 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
       return state;
   }
 };
-
 
 export const getAllAtividades = (state: State) => state.atividades;
 
@@ -213,6 +222,7 @@ const statuses = {
   INICIO_DESLOCAMENTO: 'execucao',
   FIM_DESLOCAMENTO: 'execucao',
   CANCELA_ATIVIDADE: 'cancelado',
+  CRIAR_ATIVIDADE: 'execucao',
 };
 
 const getStatus = status => statuses[status];
