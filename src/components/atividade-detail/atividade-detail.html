@@ -32,7 +32,7 @@
 
           <div class="action"
             *ngIf="!atividade.tipo && atividade === 'outros' || atividade.tipo === 'outros'"
-            (click)="showPrompt()">
+            (click)="showPrompt(configAlertInput.descricao)">
             <div class="photo" >
               <img src="" onerror="this.src='assets/icon/tool.svg'"/>
             </div>
@@ -79,7 +79,7 @@
           <p>Pausar</p>
         </div>
 
-        <div class="action">
+        <div class="action" (click)="showPrompt(configAlertInput.cancelar)">
           <div class="photo">
             <img src="" onerror="this.src='assets/icon/cancel.svg'" />
           </div>

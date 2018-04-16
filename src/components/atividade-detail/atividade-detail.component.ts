@@ -21,6 +21,7 @@ import {
   CriarAtividade,
   CriarAtividadeDescricao,
 } from '../../redux/reducers/atividade.reduce';
+import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
 
 @Component({
   selector: 'atividade-detail',
@@ -32,6 +33,7 @@ export class AtividadeDetail {
   public title = 'Detalhes';
   public actionSegments = 'acoes';
   private tecnicoId: string;
+  public configAlertInput = configAlertInputAtividade;
 
   constructor(
     public alertCtrl: AlertController,
@@ -51,6 +53,11 @@ export class AtividadeDetail {
   criarAtividadeDescricao({ descricao }) {
     this.store.dispatch(new CriarAtividadeDescricao(this.tecnicoId, this.atividade, descricao));
   }
+
+  cancelarAtividade({ motivo }) {
+    // this.store.dispatch((this.tecnicoId, this.atividade, motivo));
+  }
+
 
   iniciarAtividade() {
     const { atividade_id } = this.atividade;
@@ -86,14 +93,13 @@ export class AtividadeDetail {
     this.navCtrl.push(RelatorioInteracaoPage, { atividade });
   }
 
-
-  showPrompt() {
+  showPrompt({ title, message, name, type }) {
     const prompt = this.alertCtrl.create({
-      title: 'Descrição da Atividade',
-      message: 'Digite a descrição da atividade',
+      title,
+      message,
       inputs: [
         {
-          name: 'descricao',
+          name,
           placeholder: 'digite aqui!',
         },
       ],
@@ -105,7 +111,10 @@ export class AtividadeDetail {
         {
           text: 'salvar',
           handler: (data) => {
-            this.criarAtividadeDescricao(data);
+            if (type === 'cancelar') {
+              return this.cancelarAtividade(data);
+            }
+            return this.criarAtividadeDescricao(data);
           },
         },
       ],
