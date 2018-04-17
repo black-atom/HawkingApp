@@ -1,6 +1,11 @@
 import { Atendimento } from './../../models/atendimento';
 import uuidv4  from 'uuid/v4';
 import {
+  unionWith,
+  eqBy,
+  prop,
+} from 'ramda';
+import {
   AtividadeI,
   MonitoramentoStatuses,
   AtividadeTipo,
@@ -116,7 +121,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
     }
 
     case MUDA_ATIVIDADE_STATUS: {
-      const { atividadeID, payload: status } = <actionTypes>action;
+      const { atividadeID, payload: status } = <InicializaDeslocamento>action;
       return state.map(
         atividade => (atividade.atividade_id === atividadeID)
         ? ({
@@ -162,7 +167,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
           return mapToAtividade(<any>atendimento);
         });
 
-      return atividades;
+      return unionWith(eqBy(prop('atividade_id')), atividades, state);
     }
     case CRIAR_ATIVIDADE: {
       const atividade = {
@@ -205,6 +210,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
             motivo,
             date: new Date(),
           }],
+        synced: false,
       }) : atividade);
 
     }
@@ -221,6 +227,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
             motivo,
             date: new Date(),
           }],
+        synced: false,
       }) : atividade);
 
     }
