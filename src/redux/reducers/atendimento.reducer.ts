@@ -3,6 +3,11 @@ import { Action, createSelector } from '@ngrx/store';
 
 import { State } from './';
 import moment from 'moment';
+import {
+  unionWith,
+  eqBy,
+  prop,
+} from 'ramda';
 
 const INITIAL_STATE: Atendimento[] = [];
 
@@ -93,7 +98,7 @@ export const atendimentoReducer = (
 
       });
 
-      return atendimentos;
+      return unionWith(eqBy(prop('_id')), atendimentos, state);
     }
 
     case SAVE_RELATORIO_ATENDIMENTO: {

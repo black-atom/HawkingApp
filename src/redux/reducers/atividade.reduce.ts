@@ -1,5 +1,6 @@
 import { Atendimento } from './../../models/atendimento';
 import uuidv4  from 'uuid/v4';
+import moment from 'moment';
 import {
   unionWith,
   eqBy,
@@ -162,6 +163,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
               atividade_id: uuidv4(),
               tipo: AtividadeTipo.atendimento,
               synced: false,
+              localCreatedAt: new Date(),
             });
 
           return mapToAtividade(<any>atendimento);
@@ -170,7 +172,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
       return unionWith(eqBy(prop('atividade_id')), atividades, state);
     }
     case CRIAR_ATIVIDADE: {
-      const atividade = {
+      const atividade: AtividadeI = {
         atendimento: null,
         funcionario_id: action.payload.funcionarioID,
         atendimento_id: null,
@@ -180,11 +182,12 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
         atividade_id: uuidv4(),
         tipo: action.payload.tipo,
         synced: false,
+        localCreatedAt: new Date(),
       };
       return [...state, atividade];
     }
     case CRIAR_ATIVIDADE_DESCRICAO: {
-      const atividade = {
+      const atividade: AtividadeI = {
         atendimento: null,
         funcionario_id: action.payload.funcionarioID,
         atendimento_id: null,
@@ -194,6 +197,7 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
         atividade_id: uuidv4(),
         tipo: action.payload.tipo,
         synced: false,
+        localCreatedAt: new Date(),
       };
       return [...state, atividade];
     }
@@ -236,7 +240,18 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
   }
 };
 
+const isSameDate = firstDate => secondDate => moment(firstDate)
+  .isSame(secondDate, 'day');
+
+const isToday = isSameDate(new Date());
+
 export const getAllAtividades = (state: State) => state.atividades;
+
+export const getAllAtendimentosOfToday = createSelector(
+  getAllAtividades,
+  atendimentos => atendimentos
+    .filter(atendimento => isToday(atendimento.localCreatedAt || atendimento.createdAt)),
+);
 
 export const selectAtividadesToSync = createSelector(
   getAllAtividades,
@@ -264,7 +279,7 @@ const statuses = {
 const getStatus = status => statuses[status];
 
 export const getAtividadesPendentes = createSelector(
-  getAllAtividades,
+  getAllAtendimentosOfToday,
   getAllAtendimentos,
   (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
     return atividades.map(mapAtividade(atendimentos))
@@ -272,7 +287,7 @@ export const getAtividadesPendentes = createSelector(
   });
 
 export const getAtividadesEmExecucao = createSelector(
-  getAllAtividades,
+  getAllAtendimentosOfToday,
   getAllAtendimentos,
   (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
     return atividades.map(mapAtividade(atendimentos))
@@ -280,7 +295,7 @@ export const getAtividadesEmExecucao = createSelector(
   });
 
 export const getAtividadesPausadas = createSelector(
-  getAllAtividades,
+  getAllAtendimentosOfToday,
   getAllAtendimentos,
   (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
     return atividades.map(mapAtividade(atendimentos))
@@ -288,7 +303,7 @@ export const getAtividadesPausadas = createSelector(
   });
 
 export const getAtividadesConcluidas = createSelector(
-  getAllAtividades,
+  getAllAtendimentosOfToday,
   getAllAtendimentos,
   (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
     return atividades.map(mapAtividade(atendimentos))

@@ -36,4 +36,6 @@ export interface AtividadeI {
   atendimento?: Atendimento;
   status: MonitoramentoStatuses;
   synced: boolean;
+  localCreatedAt?: Date;
+  createdAt?: Date;
 }
