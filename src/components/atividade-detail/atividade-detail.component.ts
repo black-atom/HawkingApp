@@ -22,6 +22,7 @@ import {
   CriarAtividade,
   CriarAtividadeDescricao,
   CancelarAtividade,
+  selectButton,
 } from '../../redux/reducers/atividade.reduce';
 import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
 
@@ -36,6 +37,7 @@ export class AtividadeDetail {
   public actionSegments = 'acoes';
   private tecnicoId: string;
   public configAlertInput = configAlertInputAtividade;
+  public buttonState;
 
   constructor(
     public alertCtrl: AlertController,
@@ -47,6 +49,10 @@ export class AtividadeDetail {
   ) {
     this.atividade = this.navParams.get('id');
     this.store.select('login').subscribe(user => this.tecnicoId = user._id);
+    this.store.select(selectButton).subscribe(buttonState => {
+      this.buttonState = buttonState;
+      console.log(buttonState);
+    });
   }
 
   criarAtividade() {

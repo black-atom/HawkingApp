@@ -29,7 +29,7 @@
 
       <!-- info message -->
       <div class="atividade-info" *ngIf="atividade.status && atividade.status === 'FIM_ATIVIDADE' || atividade.status === 'CANCELA_ATIVIDADE'">
-        <img src='assets/icon/brushes.svg'> 
+        <img src='assets/icon/brushes.svg'>
         <h3>Atividade atual foi finalizada ou cancelada <br/> e não pode ser alterada!</h3>
       </div>
       <!-- info message -->
@@ -39,36 +39,43 @@
 
         <!-- first section action button -->
         <div class="actions">
-          <button class="action" 
+          <button class="action"
+
             *ngIf="!atividade.tipo && atividade === 'outros' || atividade.tipo === 'outros'"
-            (click)="showPrompt(configAlertInput.descricao)" 
+            (click)="showPrompt(configAlertInput.descricao)"
           >
             <div class="photo"><img src="" onerror="this.src='assets/icon/tool.svg'"/></div>
             <p>Descrição</p>
           </button>
 
-          <button class="action" (click)='inicializaDeslocamento()'>
+          <button class="action"
+
+            (click)='inicializaDeslocamento()'>
             <div class="photo">
               <img src="" onerror="this.src='assets/icon/pointer.svg'" />
             </div>
             <p>Iniciar <br> Deslocamento</p>
           </button>
 
-          <button class="action" (click)='finalizaDeslocamento()'>
+          <button class="action"
+
+            (click)='finalizaDeslocamento()'>
             <div class="photo">
               <img src="" onerror="this.src='assets/icon/placeholder.svg'" />
             </div>
             <p>Finalizar <br> Deslocamento</p>
           </button>
 
-          <button class="action" (click)='openGPS()'  *ngIf="atividade.tipo && atividade.tipo === 'atendimento'">
+          <button class="action" (click)='openGPS()' *ngIf="atividade.tipo && atividade.tipo === 'atendimento'">
             <div class="photo">
                 <img src="" onerror="this.src='assets/icon/google.svg'" />
             </div>
             <p>Gps</p>
           </button>
 
-          <button class="action" (click)='iniciarAtividade()'>
+          <button class="action"
+
+            (click)='iniciarAtividade()'>
             <div class="photo">
                 <img src="" onerror="this.src='assets/icon/clock.svg'" />
             </div>
@@ -76,18 +83,22 @@
           </button>
         </div>
         <!-- first section action button -->
-        
+
 
         <!-- second section action button -->
         <div class="actions">
-            <button class="action" (click)='showPrompt(configAlertInput.pausar)'>
+            <button class="action"
+
+              (click)='showPrompt(configAlertInput.pausar)'>
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/pause.svg'" />
               </div>
               <p>Pausar</p>
             </button>
-  
-            <button class="action" (click)="showPrompt(configAlertInput.cancelar)">
+
+            <button class="action"
+
+              (click)="showPrompt(configAlertInput.cancelar)">
               <div class="photo">
                   <img src="" onerror="this.src='assets/icon/cancel.svg'" />
               </div>
@@ -101,12 +112,14 @@
               <p>Relatório</p>
             </button>
 
-            <button class="action" (click)="finalizarAtividade()">
+            <button class="action"
+
+              (click)="finalizarAtividade()">
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/checked.svg'" />
               </div>
               <p>Finalizar</p>
-            </button>  
+            </button>
           </div>
           <!-- second section action button -->
 
@@ -129,4 +142,3 @@
     <!-- content segment -->
   </div>
 </ion-content>
-  

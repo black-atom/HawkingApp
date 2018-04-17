@@ -1,5 +1,5 @@
 import { FormGroup } from '@angular/forms';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { MOTIVOS_RETORNO_LOCAL } from '../../../../../utils/mocks';
 
@@ -13,6 +13,9 @@ export class RetornoLocalComponent implements OnInit {
   @Input()
   public retornoLocalForm: FormGroup;
 
+  @Output()
+  addRetornoToForm = new EventEmitter();
+
   public showInput: boolean = false;
   public motivos = MOTIVOS_RETORNO_LOCAL;
 
@@ -20,15 +23,14 @@ export class RetornoLocalComponent implements OnInit {
 
   ) { }
 
-  ngOnInit() { }
-
-  print() {
-    // this.retornoLocalForm.get('motivo').disable();
-    console.log(this.retornoLocalForm);
+  ngOnInit() {
+    this.showInput = Boolean(this.retornoLocalForm);
   }
 
-  print1() {
-    this.retornoLocalForm.get('motivo').reset();
+
+
+  addRetorno() {
+    this.addRetornoToForm.emit(this.showInput);
   }
 
 }

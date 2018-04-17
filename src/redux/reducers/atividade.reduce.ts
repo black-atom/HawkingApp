@@ -310,3 +310,19 @@ export const getAtividadesConcluidas = createSelector(
       .filter(atividade => getStatus(atividade.status) === 'concluido');
   });
 
+const selectButtonState = {
+  CRIAR_ATIVIDADE: 'descricao',
+  INICIO_ATIVIDADE: 'iniciar_atividade',
+  INICIO_DESLOCAMENTO: 'iniciar_deslocamento',
+  FIM_DESLOCAMENTO: 'fim_deslocamento',
+};
+
+export const selectButton = createSelector(
+  getAtividadesEmExecucao,
+  (atividades) => {
+    console.log(atividades.length);
+    const atividade: AtividadeI = atividades[0];
+    if (atividades.length <= 0) return 'criar';
+    console.log(atividade.status);
+    return selectButtonState[atividade.status];
+  });

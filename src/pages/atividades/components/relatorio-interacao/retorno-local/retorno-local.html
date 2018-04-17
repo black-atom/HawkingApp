@@ -2,7 +2,7 @@
   <ion-card-header>
     <ion-item>
       <ion-label> Retornará ao local ? </ion-label>
-      <ion-toggle [(ngModel)]="showInput" [ngModelOptions]="{standalone: true}"></ion-toggle>
+      <ion-toggle [(ngModel)]="showInput" [ngModelOptions]="{standalone: true}" (ionChange)="addRetorno()"></ion-toggle>
     </ion-item>
   </ion-card-header>
 
