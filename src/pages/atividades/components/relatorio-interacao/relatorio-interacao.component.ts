@@ -39,52 +39,106 @@ export class RelatorioInteracaoPage {
   }
 
   initForm() {
+    const { relatorio  } = this.atendimento;
+    const {
+      equipamentos_retirados = [],
+      motivo_retorno = '',
+      resumo_atendimento = '',
+    } = relatorio || {};
+
     this.form = this.fb.group({
-      motivo_retorno: [{ value: '', disabled: true }, Validators.required],
+      motivo_retorno: [motivo_retorno , Validators.required],
+      resumo_atendimento: [resumo_atendimento, Validators.required],
+      equipamentos_retirados: this.initEquipamentos(equipamentos_retirados),
+    });
+    if (relatorio) {
+      relatorio.faturamento && this.addFaturamento(true, relatorio.faturamento);
+      relatorio.treinamento && this.addTreinamento(true, relatorio.treinamento);
+    }
+  }
+
+  initEquipamentos(equipamentos = []) {
+    console.log(equipamentos)
+    const getItem = ({
+      descricao = '',
+      quantidade = 0,
+    } = {}) => this.fb.group({
+      descricao: [descricao, Validators.required],
+      quantidade: [quantidade, Validators.required],
+    });
+
+    const getEquipamentos = ({
+      modelo_equipamento = '',
+      numero_equipamento = '',
+      itens = [],
+    }) => this.fb.group({
+      modelo_equipamento: [modelo_equipamento, Validators.required],
+      numero_equipamento: [numero_equipamento, Validators.required],
+      itens: this.fb.array(itens.map(getItem)),
+    });
+
+    return this.fb.array(equipamentos.map(getEquipamentos));
+  }
+
+  faturamentoControl({
+    cnpj = '',
+    razao_social = '',
+    email = '',
+    equipamentos= [],
+  } = {}) {
+    const getPecas = ({
+      descricao = '',
+      quantidade = 1,
+      preco = 0,
+    }= {}) => this.fb.group({
+      descricao: [descricao, Validators.required],
+      quantidade: [1, Validators.required],
+      preco: [preco, Validators.required],
+    });
+
+    const getEquipamento = ({
+      modelo_equipamento = '',
+      numero_equipamento = '',
+      pecas = [],
+    } = {}) => this.fb.group({
+      modelo_equipamento: [modelo_equipamento, Validators.required],
+      numero_equipamento: [numero_equipamento, Validators.required],
+      pecas: this.fb.array(pecas.map(getPecas)),
+    });
+
+    return this.fb.group({
+      cnpj: [cnpj, Validators.required],
+      razao_social: [razao_social, Validators.required],
+      email: [email, Validators.required],
+      equipamentos: this.fb.array(equipamentos.map(getEquipamento)),
     });
   }
 
-  addRetorno(value) {
-    console.log(value);
-    if (value) return this.form.get('motivo_retorno').disable();
-    return this.form.get('motivo_retorno').enable();
+  addTreinamento(add, defaulValues?) {
+    const addToForm = () => this.form
+      .addControl('treinamento', this.treinamentoControl(defaulValues));
+    const removeForm = () => this.form.removeControl('treinamento');
+    add ? addToForm() : removeForm();
   }
 
-//   this.interacaoTecnicoForm = this.fb.group({
-//     resumo_atendimento: [ '', Validators.required ],
-//     retorno: this.fb.group({
-//       retornar: [ false, Validators.required ],
-//       motivo: [{ value: '', disabled: true}, Validators.required]
-//     }),
-//     relatorio_tecnico: ['', Validators.required],
-//     treinamento: this.fb.group({
-//       treinamento: [ false, Validators.required ],
-//       cadastros: [{ value: false, disabled: true }],
-//       interrupcoes: [{ value: false, disabled: true }],
-//       relatorios: [{ value: false, disabled: true }],
-//       importacao_dados: [{ value: false, disabled: true }],
-//       parametros_gerais: [{ value: false, disabled: true }],
-//       abonos_justificativas: [{ value: false, disabled: true }],
-//       backup_sistema: [{ value: false, disabled: true }],
-//       software: [{ value: '', disabled: true }, Validators.required],
-//       caminho: [{ value: '', disabled: true }],
-//     }),
-//     retirou_equipamento: this.fb.group({
-//       retirado: [ false, Validators.required ],
-//       mesmo_equipamento:  [{ value: true, disabled: true }, Validators.required ],
-//       informacoe_equipamento: [{ value: '', disabled: true }, Validators.required ],
-//     }),
-//     faturamento: this.fb.group({
-//       mesmo_cnpj: [ true, Validators.required ],
-//       cnpj: [{ value: '', disabled: true }, Validators.required ],
-//       nome_razao_social: [{ value: '', disabled: true }, Validators.required ],
-//       email: [{ value: '', disabled: true }, Validators.required ],
-//       quem_aprovou: [{ value: '', disabled: true }, Validators.required ],
-//       valor: [{ value: '', disabled: true }, Validators.required ],
-//       prazo_pagamento: [{ value: '', disabled: true} , Validators.required ],
-//     })
-//   });
-// }
+  addFaturamento(add, defaulValues?) {
+    const addToForm = () => this.form
+      .addControl('faturamento', this.faturamentoControl(defaulValues));
+    const removeForm = () => this.form.removeControl('faturamento');
+    add ? addToForm() : removeForm();
+  }
+
+  treinamentoControl({
+    topicos = [],
+    software = '',
+    caminho_rede = '',
+  } = {}) {
+    return this.fb.group({
+      topicos: [topicos, Validators.required],
+      software: [software, Validators.required],
+      caminho_rede: [caminho_rede, Validators.required],
+    });
+  }
 
 
   openPhotoPage() {
@@ -92,8 +146,8 @@ export class RelatorioInteracaoPage {
   }
 
   saveForm(form) {
-    // this.store.dispatch(new SaveRelatorio(this.atendimento._id, form.value));
-    // console.log(form.value);
+    this.store.dispatch(new SaveRelatorio(this.atendimento._id, form.value));
+    console.log(form.value);
   }
 
 }

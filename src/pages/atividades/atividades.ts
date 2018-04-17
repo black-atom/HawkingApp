@@ -5,7 +5,10 @@ import {
   getAtividadesPausadas,
 } from './../../redux/reducers/atividade.reduce';
 import { Component } from '@angular/core';
-import { PopoverController } from 'ionic-angular';
+import {
+  PopoverController,
+  AlertController,
+} from 'ionic-angular';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 
@@ -39,6 +42,7 @@ export class AtividadesPage {
 
   constructor(
     public popoverCtrl: PopoverController,
+    public alertCtrl: AlertController,
     private store: Store<State>,
   ) {
     this.atividadesPendentes$ = this.store.select(getAtividadesPendentes);
@@ -55,7 +59,22 @@ export class AtividadesPage {
     this.store.dispatch(new RetriveAtendimento());
   }
 
-  presentPopover() {
+  presentPopover(totalExecucao) {
+    totalExecucao > 0 ? this.showAlert() : this.showPopOver();
+  }
+
+
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Atenção!',
+      // tslint:disable-next-line:max-line-length
+      subTitle: 'Para iniciar uma nova atividade é necessário finalizar ou pausar a atividade em execução!',
+      buttons: ['OK'],
+    });
+    alert.present();
+  }
+
+  showPopOver() {
     const options = { cssClass : 'atividade-modal' };
     const popover = this.popoverCtrl.create(
       PopoverComponent,

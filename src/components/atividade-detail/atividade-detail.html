@@ -3,12 +3,12 @@
     <ion-title>Detalhes</ion-title>
   </ion-navbar>
 
-    <div class="header-title" *ngIf="atividade.tipo">
-      <h1>{{ atividade.tipo | uppercase }}</h1>
+    <div class="header-title" *ngIf="atividade?.tipo">
+      <h1>{{ atividade?.tipo | uppercase }}</h1>
     </div>
 
-    <div class="header-title" *ngIf="!atividade.tipo">
-      <h1>{{ atividade | uppercase }}</h1>
+    <div class="header-title" *ngIf="atividadeTipo && !atividade">
+      <h1>{{ atividadeTipo | uppercase }}</h1>
     </div>
 
     <div padding>
@@ -28,28 +28,28 @@
     <ion-list *ngSwitchCase="'acoes'">
 
       <!-- info message -->
-      <div class="atividade-info" *ngIf="atividade.status && atividade.status === 'FIM_ATIVIDADE' || atividade.status === 'CANCELA_ATIVIDADE'">
+      <div class="atividade-info" *ngIf="atividade?.status === 'FIM_ATIVIDADE'">
         <img src='assets/icon/brushes.svg'>
         <h3>Atividade atual foi finalizada ou cancelada <br/> e não pode ser alterada!</h3>
       </div>
       <!-- info message -->
 
       <!-- actions button -->
-      <div *ngIf="!atividade.status || atividade.status !== 'FIM_ATIVIDADE' && atividade.status !== 'CANCELA_ATIVIDADE'">
+      <div  *ngIf="atividade?.status !== 'FIM_ATIVIDADE'">
 
         <!-- first section action button -->
         <div class="actions">
           <button class="action"
-
-            *ngIf="!atividade.tipo && atividade === 'outros' || atividade.tipo === 'outros'"
             (click)="showPrompt(configAlertInput.descricao)"
-          >
+            [disabled]="selectedButton !== 'descricao'"
+            *ngIf="atividadeTipo === 'outros' || atividade?.tipo === 'outros'"
+            >
             <div class="photo"><img src="" onerror="this.src='assets/icon/tool.svg'"/></div>
             <p>Descrição</p>
           </button>
 
           <button class="action"
-
+            [disabled]="selectedButton !== 'iniciar_deslocamento'"
             (click)='inicializaDeslocamento()'>
             <div class="photo">
               <img src="" onerror="this.src='assets/icon/pointer.svg'" />
@@ -58,7 +58,7 @@
           </button>
 
           <button class="action"
-
+            [disabled]="selectedButton !== 'finalizar_deslocamento'"
             (click)='finalizaDeslocamento()'>
             <div class="photo">
               <img src="" onerror="this.src='assets/icon/placeholder.svg'" />
@@ -66,7 +66,9 @@
             <p>Finalizar <br> Deslocamento</p>
           </button>
 
-          <button class="action" (click)='openGPS()' *ngIf="atividade.tipo && atividade.tipo === 'atendimento'">
+          <button class="action"
+            [disabled]="selectedButton !== 'finalizar_deslocamento'"
+            (click)='openGPS()' *ngIf="atividade?.tipo === 'atendimento'">
             <div class="photo">
                 <img src="" onerror="this.src='assets/icon/google.svg'" />
             </div>
@@ -74,7 +76,7 @@
           </button>
 
           <button class="action"
-
+            [disabled]="selectedButton !== 'iniciar_atividade'"
             (click)='iniciarAtividade()'>
             <div class="photo">
                 <img src="" onerror="this.src='assets/icon/clock.svg'" />
@@ -84,11 +86,10 @@
         </div>
         <!-- first section action button -->
 
-
         <!-- second section action button -->
         <div class="actions">
             <button class="action"
-
+              [disabled]="atividade?.status === 'PAUSE_ATIVIDADE'"
               (click)='showPrompt(configAlertInput.pausar)'>
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/pause.svg'" />
@@ -97,7 +98,7 @@
             </button>
 
             <button class="action"
-
+              [disabled]="atividade?.status === 'PAUSE_ATIVIDADE'"
               (click)="showPrompt(configAlertInput.cancelar)">
               <div class="photo">
                   <img src="" onerror="this.src='assets/icon/cancel.svg'" />
@@ -105,7 +106,9 @@
               <p>Cancelar</p>
             </button>
 
-            <button class="action" (click)="openRelatorioInteracaoPage(atividade)" *ngIf="atividade.tipo && atividade.tipo === 'atendimento'">
+            <button class="action"
+              [disabled]=""
+              (click)="openRelatorioInteracaoPage(atividade)" *ngIf="atividade?.tipo === 'atendimento'">
               <div class="photo">
                   <img src="" onerror="this.src='assets/icon/clipboard.svg'" />
               </div>
@@ -113,7 +116,7 @@
             </button>
 
             <button class="action"
-
+              [disabled]="selectedButton !== 'finalizar_atividade'"
               (click)="finalizarAtividade()">
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/checked.svg'" />
@@ -122,7 +125,6 @@
             </button>
           </div>
           <!-- second section action button -->
-
       </div>
       <!-- actions button -->
     </ion-list>
@@ -130,11 +132,11 @@
     <!-- content segment -->
       <ion-list *ngSwitchCase="'atividade'">
 
-        <ion-list *ngIf="atividade.tipo === 'atendimento'">
+        <ion-list *ngIf="atividade?.tipo === 'atendimento'">
           <atendimento [atividade]="atividade"></atendimento>
         </ion-list>
 
-        <ion-list *ngIf="!atividade.tipo || atividade.tipo !== 'atendimento'">
+        <ion-list *ngIf="atividade?.tipo !== 'atendimento'">
           <atividade [atividade]="atividade"></atividade>
         </ion-list>
 

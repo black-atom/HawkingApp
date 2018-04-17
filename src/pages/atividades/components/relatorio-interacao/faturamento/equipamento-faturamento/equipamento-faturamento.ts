@@ -10,6 +10,8 @@ import {
   FormArray,
 } from '@angular/forms';
 
+import { EQUIPAMENTOS } from '../../../../../../utils/mocks/index';
+
 
 @Component({
   selector: 'equipamento-faturamento',
@@ -25,40 +27,7 @@ export class EquipamentoFaturamentoComponent {
 
   public itensEquipamentoSelecionado = [];
 
-  public equipamentos = [{
-    id: 1,
-    modelo: 'Prisma R02',
-    itens: [
-      'Chave',
-      'Fonte',
-      'Bateria',
-      'Pino da Bobina',
-      'Bobina',
-    ],
-    pecas: [
-      { id: 1, descricao: 'impressora', preco: 256.3 },
-      { id: 2, descricao: 'pino da bobina', preco: 256.3 },
-      { id: 3, descricao: 'leitor biometrico', preco: 256.3 },
-      { id: 4, descricao: 'sensor da impresora', preco: 256.3 },
-    ],
-  },
-  {
-    id: 2,
-    modelo: 'Orion 6B',
-    itens: [
-      'Lapis',
-      'Caneta',
-      'Borracha',
-      'Caminhao',
-      'cortina',
-    ],
-    pecas: [
-      { id: 1, descricao: 'impressora', preco: 256.3 },
-      { id: 2, descricao: 'pino da bobina', preco: 256.3 },
-      { id: 3, descricao: 'leitor biometrico', preco: 256.3 },
-      { id: 4, descricao: 'sensor da impresora', preco: 256.3 },
-    ],
-  }];
+  public equipamentos = EQUIPAMENTOS;
 
   constructor(
     private fb: FormBuilder,

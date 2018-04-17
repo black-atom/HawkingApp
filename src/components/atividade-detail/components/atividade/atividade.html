@@ -4,7 +4,7 @@
   </ion-item>
   <ion-item text-wrap>
     <div class="timeline">
-      <div class="entry" *ngFor="let monitoramento of atividade.monitoramentos">
+      <div class="entry" *ngFor="let monitoramento of atividade?.monitoramentos">
         <div class="title">
           <h3>{{ monitoramento.date | date: 'HH:mm' }}</h3>
         </div>

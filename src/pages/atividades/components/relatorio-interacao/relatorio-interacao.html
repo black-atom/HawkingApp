@@ -1,41 +1,40 @@
 <ion-header>
- <ion-navbar color="primary">
-    <ion-title>Relatório do Técnico</ion-title>
-  </ion-navbar>
-</ion-header>
+  <ion-navbar color="primary">
+     <ion-title>Relatório do Técnico</ion-title>
+   </ion-navbar>
+ </ion-header>
 
-<ion-content [formGroup]="form" padding>
+ <ion-content [formGroup]="form" padding>
 
-  <!-- <houve-treinamento (addTreinamentoToForm)='addTreinamento($event)' [treinamentoForm]="form.controls['treinamento']"></houve-treinamento> -->
-  <!-- <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos_retirados']"></remocao-equipamento> -->
-  <retorno-local (addRetornoToForm)="addRetorno($event)" [retornoLocalForm]="form"></retorno-local>
-  <!-- <faturamento (addFaturamentoToForm)='addFaturamento($event)' [faturamentoForm]="form.controls['faturamento']" [atendimento]="atendimento"></faturamento> -->
-  <!-- <ion-card>
-    <ion-card-content >
-      <ion-item text-wrap>
-        <ion-label color="primary" stacked>Resumo do atendimento</ion-label>
-        <ion-textarea
-          formControlName="resumo_atendimento"
-          placeholder="Digite o resumo do atendimento..."
-          rows="7" cols="10"
-        >
-        </ion-textarea>
-      </ion-item>
-    </ion-card-content>
-  </ion-card> -->
-  <ion-card>
-    <button ion-button (click)='saveForm(form)'>Salvar</button>
-  </ion-card>
+   <houve-treinamento (addTreinamentoToForm)='addTreinamento($event)' [treinamentoForm]="form.controls['treinamento']"></houve-treinamento>
+   <remocao-equipamento [remocaoEquipamentoForm]="form.controls['equipamentos_retirados']"></remocao-equipamento>
+   <retorno-local [retornoLocalForm]="form"></retorno-local>
+   <faturamento (addFaturamentoToForm)='addFaturamento($event)' [faturamentoForm]="form.controls['faturamento']" [atendimento]="atendimento"></faturamento>
+   <ion-card>
+     <ion-card-content >
+       <ion-item text-wrap>
+         <ion-label color="primary" stacked>Resumo do atendimento</ion-label>
+         <ion-textarea
+           formControlName="resumo_atendimento"
+           placeholder="Digite o resumo do atendimento..."
+           rows="7" cols="10"
+         >
+         </ion-textarea>
+       </ion-item>
+     </ion-card-content>
+   </ion-card>
+   <ion-card>
+     <button ion-button (click)='saveForm(form)'>Salvar</button>
+   </ion-card>
 
 
-  <ion-fab right bottom>
-    <button ion-fab color="primary" (click)="openPhotoPage()">
-      <ion-icon name="camera"></ion-icon>
-    </button>
-  </ion-fab>
-  <pre>
-    {{ form.value | json}}
-  </pre>
-</ion-content>
-
+   <ion-fab right bottom>
+     <button ion-fab color="primary" (click)="openPhotoPage()">
+       <ion-icon name="camera"></ion-icon>
+     </button>
+   </ion-fab>
+   <pre>
+     {{ form.value | json}}
+   </pre>
+ </ion-content>
 

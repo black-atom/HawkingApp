@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AlertController,
   NavParams,
@@ -23,6 +23,7 @@ import {
   CriarAtividadeDescricao,
   CancelarAtividade,
   selectButton,
+  getAtividadesEmExecucao,
 } from '../../redux/reducers/atividade.reduce';
 import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
 
@@ -30,9 +31,10 @@ import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
   selector: 'atividade-detail',
   templateUrl: 'atividade-detail.html',
 })
-export class AtividadeDetail {
+export class AtividadeDetail implements OnInit{
 
-  public atividade;
+  public atividade: AtividadeI = null;
+  public atividadeTipo: string = null;
   public title = 'Detalhes';
   public actionSegments = 'acoes';
   private tecnicoId: string;
@@ -47,23 +49,39 @@ export class AtividadeDetail {
     public toastCtrl: ToastController,
     private store: Store<State>,
   ) {
+
+  }
+
+  ngOnInit() {
     this.atividade = this.navParams.get('id');
+    this.atividadeTipo = this.navParams.get('tipo');
+
+    this.atividadeTipo && this.store
+    .select(getAtividadesEmExecucao)
+      .subscribe((atividades) => {
+        atividades.length > 0
+        ? this.atividade = atividades[0]
+        : this.atividade = null;
+      });
+
     this.store.select('login').subscribe(user => this.tecnicoId = user._id);
-    this.store.select(selectButton).subscribe(buttonState => {
-      this.buttonState = buttonState;
-      console.log(buttonState);
-    });
+    this.store.select(selectButton).subscribe(buttonState => this.buttonState = buttonState);
+  }
+
+  get selectedButton() {
+    const descricao = this.atividadeTipo === 'outros' ? 'descricao' : null;
+    return descricao || this.buttonState;
   }
 
   criarAtividade() {
     const message = 'Descolamento iniciado com sucesso!';
-    this.store.dispatch(new CriarAtividade(this.tecnicoId, this.atividade));
+    this.store.dispatch(new CriarAtividade(this.tecnicoId, this.atividadeTipo));
     this.presentToast(message);
   }
 
   criarAtividadeDescricao({ descricao }) {
     const message = 'Nova atividade criada!';
-    this.store.dispatch(new CriarAtividadeDescricao(this.tecnicoId, this.atividade, descricao));
+    this.store.dispatch(new CriarAtividadeDescricao(this.tecnicoId, this.atividadeTipo, descricao));
     this.presentToast(message);
   }
 
@@ -90,7 +108,15 @@ export class AtividadeDetail {
 
   inicializaDeslocamento() {
     const message = 'Descolamento iniciado com sucesso!';
-    if (!this.atividade.tipo && this.atividade !== 'outros') return this.criarAtividade();
+
+    if (
+      (this.atividadeTipo && this.atividadeTipo !== 'outros') ||
+      (
+        this.atividade &&
+        this.atividade.tipo !== 'outros' &&
+        this.atividade.tipo !== 'atendimento'
+      )) return this.criarAtividade();
+
     const { atividade_id } = this.atividade;
     this.store.dispatch(new InicializaDeslocamento(atividade_id));
     this.presentToast(message);
@@ -109,11 +135,13 @@ export class AtividadeDetail {
     this.store.dispatch(new PauseAtividade(atividade_id, motivo));
     this.presentToast(message);
   }
+
   openGPS() {
     const { atendimento: { endereco } } = this.atividade;
     endereco && this.launchNavigator
       .navigate(`${endereco.numero} ${endereco.rua},${endereco.bairro},${endereco.cidade}`);
   }
+
   openRelatorioInteracaoPage(atividade) {
     this.navCtrl.push(RelatorioInteracaoPage, { atividade });
   }

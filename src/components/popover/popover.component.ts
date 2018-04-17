@@ -23,8 +23,8 @@ export class PopoverComponent {
     this.buttonProperties = navParms.get('buttonProperties');
   }
 
-  openAtividadeDetail(id) {
-    this.navCtrl.push(AtividadeDetail, { id });
+  openAtividadeDetail(tipo) {
+    this.navCtrl.push(AtividadeDetail, { tipo });
     this.close();
   }
 

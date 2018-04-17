@@ -311,18 +311,16 @@ export const getAtividadesConcluidas = createSelector(
   });
 
 const selectButtonState = {
-  CRIAR_ATIVIDADE: 'descricao',
-  INICIO_ATIVIDADE: 'iniciar_atividade',
-  INICIO_DESLOCAMENTO: 'iniciar_deslocamento',
-  FIM_DESLOCAMENTO: 'fim_deslocamento',
+  CRIAR_ATIVIDADE: 'iniciar_deslocamento',
+  INICIO_DESLOCAMENTO: 'finalizar_deslocamento',
+  FIM_DESLOCAMENTO: 'iniciar_atividade',
+  INICIO_ATIVIDADE: 'finalizar_atividade',
 };
 
 export const selectButton = createSelector(
   getAtividadesEmExecucao,
   (atividades) => {
-    console.log(atividades.length);
     const atividade: AtividadeI = atividades[0];
-    if (atividades.length <= 0) return 'criar';
-    console.log(atividade.status);
+    if (atividades.length <= 0) return 'iniciar_deslocamento';
     return selectButtonState[atividade.status];
   });
