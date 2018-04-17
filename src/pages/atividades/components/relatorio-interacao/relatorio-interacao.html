@@ -23,9 +23,8 @@
        </ion-item>
      </ion-card-content>
    </ion-card>
-   <ion-card>
-     <button ion-button (click)='saveForm(form)'>Salvar</button>
-   </ion-card>
+
+     <button ion-button full (click)='saveForm(form)'>Salvar</button>
 
 
    <ion-fab right bottom>
@@ -34,7 +33,6 @@
      </button>
    </ion-fab>
    <pre>
-     {{ form.value | json}}
    </pre>
  </ion-content>
 

@@ -9,8 +9,11 @@ export class AtendimentoComponet {
 
   @Input()
   atividade: AtividadeI;
+  
+  @Input()
+  relatorioTecnico;
 
 
-  constructor( ) { }
+  constructor() {  }
 
 }

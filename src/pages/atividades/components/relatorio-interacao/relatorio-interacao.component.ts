@@ -58,7 +58,6 @@ export class RelatorioInteracaoPage {
   }
 
   initEquipamentos(equipamentos = []) {
-    console.log(equipamentos)
     const getItem = ({
       descricao = '',
       quantidade = 0,
@@ -147,7 +146,6 @@ export class RelatorioInteracaoPage {
 
   saveForm(form) {
     this.store.dispatch(new SaveRelatorio(this.atendimento._id, form.value));
-    console.log(form.value);
   }
 
 }

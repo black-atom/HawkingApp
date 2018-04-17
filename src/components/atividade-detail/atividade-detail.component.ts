@@ -40,6 +40,7 @@ export class AtividadeDetail implements OnInit{
   private tecnicoId: string;
   public configAlertInput = configAlertInputAtividade;
   public buttonState;
+  public relatorioTecnico;
 
   constructor(
     public alertCtrl: AlertController,
@@ -66,6 +67,12 @@ export class AtividadeDetail implements OnInit{
 
     this.store.select('login').subscribe(user => this.tecnicoId = user._id);
     this.store.select(selectButton).subscribe(buttonState => this.buttonState = buttonState);
+
+    this.store.select('atendimentos')
+    .subscribe(atendimentos =>
+     this.relatorioTecnico = atendimentos
+     .find(atendimento =>
+      atendimento._id === this.atividade.atendimento_id));
   }
 
   get selectedButton() {

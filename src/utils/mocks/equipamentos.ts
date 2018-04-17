@@ -38,7 +38,7 @@ export const EQUIPAMENTOS = [
       'SOLENOIDE G',
       'SOLENOIDE P',
     ],
-       pecas: [
+    pecas: [
       { id: 1, descricao: 'Leitor Biometrico', preco: 0 },
       { id: 2, descricao: 'Solenoide G', preco: 0 },
       { id: 3, descricao: 'Solenoide P', preco: 0 },
@@ -66,7 +66,7 @@ export const EQUIPAMENTOS = [
       'SOLENOIDE G',
       'SOLENOIDE P',
     ],
-       pecas: [
+    pecas: [
       { id: 1, descricao: 'Leitor Biometrico', preco: 0 },
       { id: 2, descricao: 'Solenoide G', preco: 0 },
       { id: 3, descricao: 'Solenoide P', preco: 0 },
@@ -122,7 +122,7 @@ export const EQUIPAMENTOS = [
       'SOLENOIDE G',
       'SOLENOIDE P',
     ],
-       pecas: [
+    pecas: [
       { id: 1, descricao: 'Leitor Biometrico', preco: 0 },
       { id: 2, descricao: 'Solenoide G', preco: 0 },
       { id: 3, descricao: 'Solenoide P', preco: 0 },
@@ -148,7 +148,8 @@ export const EQUIPAMENTOS = [
       'Placa Central',
     ],
     pecas: [
-    ] },
+    ],
+  },
   {
     modelo: 'EZ POINT',
     itens: [
@@ -159,12 +160,13 @@ export const EQUIPAMENTOS = [
       'Impressora',
     ],
     pecas: [
-       { id: 1, descricao: 'Fonte', preco: 0 },
+      { id: 1, descricao: 'Fonte', preco: 0 },
       { id: 2, descricao: 'Bateria', preco: 0 },
-      { id: 3, descricao: 'Impressora' preco: 0 },
-      { id: 4, descricao: 'Fechadura' preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 4, descricao: 'Fechadura', preco: 0 },
 
-    ] },
+    ] ,
+  },
   {
     modelo: 'HENRY PLUS',
     itens: [
@@ -182,7 +184,8 @@ export const EQUIPAMENTOS = [
       { id: 5, descricao: 'Placa Central', preco: 0 },
       { id: 6, descricao: 'Botão Azul', preco: 0 },
 
-    ] },
+    ],
+  },
   {
     modelo: 'HENRY VEGA',
     itens: [
@@ -202,7 +205,8 @@ export const EQUIPAMENTOS = [
       { id: 8, descricao: 'Sensor do cabeçote', preco: 0 },
       { id: 9, descricao: 'Display', preco: 0 },
 
-    ] },
+    ],
+  },
   {
     modelo: 'HENRY FORT',
     itens: [
@@ -223,7 +227,8 @@ export const EQUIPAMENTOS = [
       { id: 8, descricao: 'Sensor do cabeçote', preco: 0 },
       { id: 9, descricao: 'Display', preco: 0 },
 
-    ] },
+    ],
+  },
   {
     modelo: 'HEXA B',
     itens: [
@@ -245,7 +250,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'HEXA C',
     itens: [
@@ -267,7 +273,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'HEXA B ADVANCE',
     itens: [
@@ -289,7 +296,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'HEXA C ADVANCE',
     itens: [
@@ -311,7 +319,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'IDNOX',
     itens: [
@@ -331,7 +340,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'INNER REP PLUS TOPDATA',
     itens: [
@@ -351,7 +361,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'INNER DISK',
     itens: [
@@ -361,7 +372,8 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'INNER NET',
     itens: [
@@ -371,7 +383,8 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'INNER PLUS',
     itens: [
@@ -381,7 +394,8 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'INNER REP AZUL 2 IMPRESSORA',
     itens: [
@@ -391,7 +405,8 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'INNER REP BIO',
     itens: [
@@ -402,7 +417,8 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'KURUMIM REP II',
     itens: [
@@ -423,7 +439,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'KURUMIM REP III MAX',
     itens: [
@@ -444,12 +461,13 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
+    ],
+  },
   {
     modelo: 'MODULO RP',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'ORION 5',
     itens: [
@@ -467,7 +485,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta USB', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'ORION 6',
     itens: [
@@ -477,7 +496,6 @@ export const EQUIPAMENTOS = [
       'Pino da Bobina',
     ],
     pecas: [
-
       { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
@@ -488,7 +506,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'ORION REFEITÓRIO',
     itens: [
@@ -504,7 +523,8 @@ export const EQUIPAMENTOS = [
       { id: 9, descricao: 'Teclado', preco: 0 },
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 12, descricao: 'Porta USB', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRIMME',
     itens: [
@@ -513,13 +533,14 @@ export const EQUIPAMENTOS = [
       'Bateria',
     ],
     pecas: [
-           { id: 6, descricao: 'Fonte', preco: 0 },
+          { id: 6, descricao: 'Fonte', preco: 0 },
       { id: 7, descricao: 'Bateria', preco: 0 },
       { id: 8, descricao: 'Display', preco: 0 },
       { id: 9, descricao: 'Teclado', preco: 0 },
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 12, descricao: 'Porta USB', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRIMME PONTO',
     itens: [
@@ -528,13 +549,14 @@ export const EQUIPAMENTOS = [
       'Bateria',
     ],
     pecas: [
-           { id: 6, descricao: 'Fonte', preco: 0 },
+          { id: 6, descricao: 'Fonte', preco: 0 },
       { id: 7, descricao: 'Bateria', preco: 0 },
       { id: 8, descricao: 'Display', preco: 0 },
       { id: 9, descricao: 'Teclado', preco: 0 },
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 12, descricao: 'Porta USB', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRIMME ACESSO',
     itens: [
@@ -543,13 +565,14 @@ export const EQUIPAMENTOS = [
       'Bateria',
     ],
     pecas: [
-           { id: 6, descricao: 'Fonte', preco: 0 },
+          { id: 6, descricao: 'Fonte', preco: 0 },
       { id: 7, descricao: 'Bateria', preco: 0 },
       { id: 8, descricao: 'Display', preco: 0 },
       { id: 9, descricao: 'Teclado', preco: 0 },
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 12, descricao: 'Porta USB', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA E',
     itens: [
@@ -570,7 +593,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA F',
     itens: [
@@ -591,7 +615,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA G',
     itens: [
@@ -612,7 +637,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA H',
     itens: [
@@ -633,7 +659,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA I',
     itens: [
@@ -644,7 +671,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -654,7 +681,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA J',
     itens: [
@@ -675,7 +703,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R01',
     itens: [
@@ -686,7 +715,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -696,7 +725,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R02',
     itens: [
@@ -717,7 +747,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R03',
     itens: [
@@ -728,7 +759,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -738,7 +769,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R04',
     itens: [
@@ -749,7 +781,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -759,7 +791,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R05',
     itens: [
@@ -770,7 +803,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -780,7 +813,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R01 ADVANCE',
     itens: [
@@ -791,7 +825,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -801,7 +835,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R02 ADVANCE',
     itens: [
@@ -812,7 +847,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -822,7 +857,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R03 ADVANCE',
     itens: [
@@ -833,7 +869,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -843,7 +879,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R04 ADVANCE',
     itens: [
@@ -854,7 +891,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -864,7 +901,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'PRISMA SF R05 ADVANCE',
     itens: [
@@ -875,7 +913,7 @@ export const EQUIPAMENTOS = [
     ],
     pecas: [
       { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-            { id: 3, descricao: 'Impressora', preco: 0 },
+      { id: 3, descricao: 'Impressora', preco: 0 },
       { id: 4, descricao: 'Guilhotina', preco: 0 },
       { id: 5, descricao: 'Fechadura', preco: 0 },
       { id: 6, descricao: 'Fonte', preco: 0 },
@@ -885,43 +923,38 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'RDI-1G',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'RDI-1M',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'RDI-1P',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'RDI-2G',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'RDI-2M',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'RDI-2P',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'RW POINT LINE',
     itens: [
@@ -941,7 +974,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'REP TOPDATA DE PONTO CARTOGRAFICO',
     itens: [
@@ -959,7 +993,8 @@ export const EQUIPAMENTOS = [
       { id: 7, descricao: 'Sensor do dia', preco: 0 },
       { id: 8, descricao: 'Sensor do cabeçote', preco: 0 },
       { id: 9, descricao: 'Display', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'SUPER FÁCIL ANTIGO',
     itens: [
@@ -978,19 +1013,18 @@ export const EQUIPAMENTOS = [
       { id: 7, descricao: 'Sensor do dia', preco: 0 },
       { id: 8, descricao: 'Sensor do cabeçote', preco: 0 },
       { id: 9, descricao: 'Display', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'SIRENE 250M',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'SIRENE 500M',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'T 1000',
     itens: [
@@ -998,15 +1032,13 @@ export const EQUIPAMENTOS = [
       'Fonte',
       'Bateria',
     ],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'TOK CERTO',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'TOPDATA VIGIA',
     itens: [
@@ -1014,15 +1046,13 @@ export const EQUIPAMENTOS = [
       'Cabo USB',
       'Bateria',
     ],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'MODULO RP',
     itens: [],
-    pecas: [
-
-    ] },
+    pecas: [],
+  },
   {
     modelo: 'ZPM R100',
     itens: [
@@ -1045,7 +1075,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'ZPM R130',
     itens: [
@@ -1068,7 +1099,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'ZPM R300',
     itens: [
@@ -1091,7 +1123,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'ZPM R300 JUMBO',
     itens: [
@@ -1114,7 +1147,8 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
   {
     modelo: 'ZPM R410',
     itens: [
@@ -1126,18 +1160,19 @@ export const EQUIPAMENTOS = [
       'Pino da Bobina Jumbo',
     ],
     pecas: [
-      { id:1, descricao: 'Leitor Biometrico', preco: 0 },
-      { id: 3, descricao: 'Impressora', preco: 0 },
-      { id: 4, descricao: 'Guilhotina', preco: 0 },
-      { id: 5, descricao: 'Fechadura', preco: 0 },
-      { id: 6, descricao: 'Fonte', preco: 0 },
-      { id: 7, descricao: 'Bateria', preco: 0 },
-      { id: 8, descricao: 'Display', preco: 0 },
-      { id: 9, descricao: 'Teclado', preco: 0 },
-      { id: 10, descricao: 'Membrana Teclado', preco: 0 },
-      { id: 11, descricao: 'Pino da Bobina', preco: 0 },
-      { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+        { id:1, descricao: 'Leitor Biometrico', preco: 0 },
+        { id: 3, descricao: 'Impressora', preco: 0 },
+        { id: 4, descricao: 'Guilhotina', preco: 0 },
+        { id: 5, descricao: 'Fechadura', preco: 0 },
+        { id: 6, descricao: 'Fonte', preco: 0 },
+        { id: 7, descricao: 'Bateria', preco: 0 },
+        { id: 8, descricao: 'Display', preco: 0 },
+        { id: 9, descricao: 'Teclado', preco: 0 },
+        { id: 10, descricao: 'Membrana Teclado', preco: 0 },
+        { id: 11, descricao: 'Pino da Bobina', preco: 0 },
+        { id: 12, descricao: 'Porta Fiscal', preco: 0 },
+    ],
+  },
   {
     modelo: 'ZPM RC 1000',
     itens: [
@@ -1160,5 +1195,6 @@ export const EQUIPAMENTOS = [
       { id: 10, descricao: 'Membrana Teclado', preco: 0 },
       { id: 11, descricao: 'Pino da Bobina', preco: 0 },
       { id: 12, descricao: 'Porta Fiscal', preco: 0 },
-    ] },
+    ],
+  },
 ];
