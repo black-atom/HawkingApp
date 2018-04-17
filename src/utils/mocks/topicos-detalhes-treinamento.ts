@@ -1,9 +1,9 @@
 export const TOPICOS_DETALHES_TREINAMENTO: string[] = [
+  'Abonos',
+  'Backup do Sistema',
   'Cadastros',
-  'Abonos/Justificativas',
+  'Importação',
+  'Justificativas',
   'Parâmetros Gerais',
   'Relatórios',
-  'Importação',
-  'Interrupções',
-  'Backup do Sistema',
 ];

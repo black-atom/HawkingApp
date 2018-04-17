@@ -7,6 +7,6 @@ export const MOTIVOS_RETORNO_LOCAL: string[] = [
   'Finalizar instalação e treinamento do sistema.',
   'Finalizar o treinamento do sistema.',
   'Finalizar instalação do equipamento.',
-  'Instalar equipamento de emprestimo.',
+  'Instalar equipamento de empréstimo.',
   'Técnico não possuia a peça para o reparo.',
 ];
