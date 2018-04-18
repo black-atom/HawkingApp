@@ -1,3 +1,4 @@
+import { UploadAssinatura } from './../../redux/reducers/assinatura.reducer';
 import { selectAtividadesToSync, SyncAtividade } from './../../redux/reducers/atividade.reduce';
 import {
   selectAtendimentosToSync,
@@ -16,6 +17,7 @@ import { LoginPage } from '../login/login';
 
 import { SuportePage } from '../suporte/suporte';
 import { State } from '../../redux/reducers';
+import { selectAssinaturasToUpload } from '../../redux/reducers/assinatura.reducer';
 
 
 @Component({
@@ -35,22 +37,28 @@ export class TabPage {
   constructor(
     private store: Store<State>,
   ) {
-    // Observable.interval(30000)
-    //   .mergeMap(() => this.store.select(selectFotosToUpload).take(1))
-    //   .mergeMap(fotos => fotos)
-    //   .do((foto:Foto) => this.store.dispatch(new UploadFoto(foto)))
-    //   .subscribe();
+    Observable.interval(30000)
+      .mergeMap(() => this.store.select(selectFotosToUpload).take(1))
+      .mergeMap(fotos => fotos)
+      .do((foto:Foto) => this.store.dispatch(new UploadFoto(foto)))
+      .subscribe();
 
-    // Observable.interval(30000)
-    //   .mergeMap(() => this.store.select(selectAtendimentosToSync).take(1))
-    //   .filter(atendimentos => atendimentos.length > 0)
-    //   .do(atendimentos => this.store.dispatch(new SyncAtendimentos(atendimentos)))
-    //   .subscribe();
+    Observable.interval(30000)
+      .mergeMap(() => this.store.select(selectAtendimentosToSync).take(1))
+      .filter(atendimentos => atendimentos.length > 0)
+      .do(atendimentos => this.store.dispatch(new SyncAtendimentos(atendimentos)))
+      .subscribe();
 
-    // Observable.interval(10000)
-    //   .mergeMap(() => this.store.select(selectAtividadesToSync).take(1))
-    //   .mergeMap(atividades => atividades)
-    //   .do(atividade => this.store.dispatch(new SyncAtividade(atividade)))
-    //   .subscribe();
+    Observable.interval(30000)
+      .mergeMap(() => this.store.select(selectAtividadesToSync).take(1))
+      .mergeMap(atividades => atividades)
+      .do(atividade => this.store.dispatch(new SyncAtividade(atividade)))
+      .subscribe();
+
+    Observable.interval(30000)
+      .mergeMap(() => this.store.select(selectAssinaturasToUpload).take(1))
+      .mergeMap(assinaturas => assinaturas)
+      .do(assinatura => this.store.dispatch(new UploadAssinatura(assinatura)))
+      .subscribe();
   }
 }

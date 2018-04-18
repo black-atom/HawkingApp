@@ -107,8 +107,8 @@ export interface Assinatura {
   url?: string;
   isUploading?: boolean;
   isUploaded?: boolean;
-  nome: string;
-  document_id: string;
+  nome?: string;
+  document_id?: string;
   atendimentoID?: string;
 }
 

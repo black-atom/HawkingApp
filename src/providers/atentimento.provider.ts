@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import { Store } from '@ngrx/store';
 
 import API_URL from '../app/api';
-import { Atendimento } from '../models';
+import { Atendimento, Assinatura } from '../models';
 import { State } from '../redux/reducers';
 import { HttpClient } from '@angular/common/http';
 
@@ -38,6 +38,12 @@ export class AtendimentoProvider {
 
   syncAtendimentos(atendimentos: Atendimento[]) {
     return this.http.patch<Atendimento[]>(this.url, atendimentos)
+      .catch(this.lidaComErro);
+  }
+
+  public enviarAssinatura(assinatura: Assinatura): Observable<Assinatura> {
+    return this.http
+      .post<Assinatura>(`${this.url}/${assinatura.atendimentoID}/assinaturas`, assinatura)
       .catch(this.lidaComErro);
   }
 

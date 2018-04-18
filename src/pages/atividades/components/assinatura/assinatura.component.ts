@@ -1,4 +1,5 @@
-import { Avaliacao } from './../../../../models/atendimento';
+import { AddAssinatura } from './../../../../redux/reducers/assinatura.reducer';
+import { Avaliacao, Assinatura } from './../../../../models/atendimento';
 import {
   SaveAtendimentoAssinatura,
   SaveAvaliacao,
@@ -9,7 +10,6 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { NavController, ViewController, NavParams, ToastController, Platform } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-import { Assinatura } from '../../../../models';
 import { State } from '../../../../redux/reducers';
 import { Store } from '@ngrx/store';
 
@@ -93,6 +93,18 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
     };
     this.rating > 0 && dispatchAvaliacao();
 
+    const dispatchAssinatura = () => {
+      const assinaturaBase64 = this.signaturePad.toDataURL().replace(/^data:image\/png;base64,/,'');
+      const assinatura: Assinatura = {
+        assinaturaBase64,
+        atendimentoID: this.atendimentoID,
+      };
+      this.store.dispatch(new AddAssinatura(assinatura));
+    };
+    dispatchAssinatura();
+
+    this.presentToast();
+    this.view.dismiss();
   }
 
   canvasResize() {
