@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   AlertController,
   NavParams,
@@ -32,13 +32,14 @@ import {
   AssinaturaFormComponent,
 } from '../../pages/atividades/components/assinatura-form/assinatura-form.component';
 import { AtividadeI } from '../../models';
+import { Subscription } from 'rxjs';
 
 
 @Component({
   selector: 'atividade-detail',
   templateUrl: 'atividade-detail.html',
 })
-export class AtividadeDetail implements OnInit{
+export class AtividadeDetail implements OnInit, OnDestroy{
 
   public atividade: AtividadeI = null;
   public atividadeID: string = null;
@@ -49,6 +50,8 @@ export class AtividadeDetail implements OnInit{
   public configAlertInput = configAlertInputAtividade;
   public buttonState;
   public relatorioTecnico;
+
+  public subscriptions: Subscription[] = [];
 
   constructor(
     public alertCtrl: AlertController,
@@ -62,12 +65,18 @@ export class AtividadeDetail implements OnInit{
 
   }
 
+  ngOnDestroy() {
+    this.subscriptions
+      .filter(Boolean)
+      .forEach(subscription => subscription.unsubscribe());
+  }
+
   ngOnInit() {
     this.atividadeID = this.navParams.get('id');
     this.atividadeTipo = this.navParams.get('tipo');
 
-    this.atividadeTipo && this.store
-    .select(getAtividadesEmExecucao)
+    const sub1 = this.atividadeTipo && this.store
+      .select(getAtividadesEmExecucao)
       .filter(atividades => atividades.length > 0)
       .map(atividade => atividade[0].atividade_id)
       .mergeMap((id) => {
@@ -82,7 +91,7 @@ export class AtividadeDetail implements OnInit{
         this.atividade = atividade;
       });
 
-    this.atividadeID && this.store
+    const sub2 =this.atividadeID && this.store
       .select(getAllAtividadesOfToday)
       .map(atividades => atividades.find(at => at.atividade_id === this.atividadeID))
       .filter(atividade => Boolean(atividade))
@@ -91,8 +100,12 @@ export class AtividadeDetail implements OnInit{
         this.atividade = atividade;
       });
 
-    this.store.select('login').subscribe(user => this.tecnicoId = user._id);
-    this.store.select(selectButton).subscribe(buttonState => this.buttonState = buttonState);
+    const sub3 = this.store.select('login').subscribe(user => this.tecnicoId = user._id);
+    const sub4 = this.store
+      .select(selectButton)
+      .subscribe(buttonState => this.buttonState = buttonState);
+
+    this.subscriptions = [sub1, sub2, sub3, sub4]
   }
 
   get selectedButton() {
