@@ -98,35 +98,35 @@
   <!-- info-atendimento -->
   <hr>
 
-  <ion-list>
+  <ion-list *ngIf='atividade.atendimento.relatorio'>
 
       <ion-item no-lines class="top-item">
         <h1>Dados Preenchido pelo Técnico</h1>
       </ion-item>
 
-       <ion-item text-wrap *ngIf="relatorioTecnico?.relatorio?.resumo_atendimento">
+       <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.resumo_atendimento">
         <h2>Relatório do atendimento</h2>
-        <p>{{ relatorioTecnico?.relatorio?.resumo_atendimento }}</p>
+        <p>{{ atividade.atendimento.relatorio?.resumo_atendimento }}</p>
       </ion-item>
 
-      <ion-item text-wrap *ngIf="relatorioTecnico?.relatorio?.motivo_retorno">
+      <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.motivo_retorno">
         <h2>Retorna ao Local?</h2>
-        <p>{{ relatorioTecnico?.relatorio?.motivo_retorno }}</p>
+        <p>{{ atividade.atendimento.relatorio?.motivo_retorno }}</p>
       </ion-item>
 
-      <ion-item text-wrap *ngIf="relatorioTecnico?.relatorio?.treinamento.software">
-        <h2>Treinamento Software {{ relatorioTecnico?.relatorio.treinamento.software }} </h2>
+      <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.treinamento?.software">
+        <h2>Treinamento Software {{ atividade.atendimento.relatorio?.treinamento?.software }} </h2>
         <hr>
         <h3>Os tópicos ensinado no treinamento</h3>
         <ul>
-          <li *ngFor="let topico of relatorioTecnico?.relatorio?.treinamento.topicos">{{ topico }}</li>
+          <li *ngFor="let topico of atividade.atendimento.relatorio?.treinamento?.topicos">{{ topico }}</li>
         </ul>
       </ion-item>
 
-      <ion-item text-wrap *ngIf="relatorioTecnico?.relatorio?.equipamentos_retirados.length > 0">
+      <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.equipamentos_retirados.length > 0">
         <h2>Equipamento(s) retirado(s)</h2>
         <hr>
-        <div *ngFor="let equipamento of relatorioTecnico?.relatorio?.equipamentos_retirados">
+        <div *ngFor="let equipamento of atividade.atendimento.relatorio?.equipamentos_retirados">
           <p><strong>{{ equipamento?.modelo_equipamento }} N. {{ equipamento?.numero_equipamento }}</strong></p>
           <hr>
           <h5>Itens retirado</h5>
@@ -137,14 +137,14 @@
         </div>
       </ion-item>
 
-      <ion-item text-wrap *ngIf="relatorioTecnico?.relatorio?.faturamento?.modelo_equipamento">
+      <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.faturamento?.modelo_equipamento">
         <h2>Dados de Faturamento</h2>
         <hr>
-        <p *ngIf="relatorioTecnico?.relatorio?.faturamento.cnpj">Cnpj: {{ relatorioTecnico?.relatorio?.faturamento.cnpj }}</p>
-        <p *ngIf="relatorioTecnico?.relatorio?.faturamento.razao_social">Razão Social: {{ relatorioTecnico?.relatorio?.faturamento.razao_social }}</p>
-        <p *ngIf="relatorioTecnico?.relatorio?.faturamento.email">Razão Social: {{ relatorioTecnico?.relatorio?.faturamento.email }}</p>
+        <p *ngIf="atividade.atendimento.relatorio?.faturamento.cnpj">Cnpj: {{ atividade.atendimento.relatorio?.faturamento.cnpj }}</p>
+        <p *ngIf="atividade.atendimento.relatorio?.faturamento.razao_social">Razão Social: {{ atividade.atendimento.relatorio?.faturamento.razao_social }}</p>
+        <p *ngIf="atividade.atendimento.relatorio?.faturamento.email">Razão Social: {{ atividade.atendimento.relatorio?.faturamento.email }}</p>
 
-        <div *ngFor="let equipamento of relatorioTecnico?.relatorio.faturamento.equipamentos">
+        <div *ngFor="let equipamento of atividade.atendimento.relatorio?.faturamento.equipamentos">
           <p><strong>{{ equipamento?.modelo_equipamento }} N. {{ equipamento?.numero_equipamento }}</strong></p>
           <hr>
           <h5>Peça que foram utilizadas no reparo do equipamento de numero {{ equipamento?.numero_equipamento }}</h5>

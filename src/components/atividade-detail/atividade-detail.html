@@ -133,7 +133,7 @@
       <ion-list *ngSwitchCase="'atividade'">
 
         <ion-list *ngIf="atividade?.tipo === 'atendimento'">
-          <atendimento [atividade]="atividade" [relatorioTecnico]="relatorioTecnico"></atendimento>
+          <atendimento [atividade]="atividade"></atendimento>
         </ion-list>
 
         <ion-list *ngIf="atividade?.tipo !== 'atendimento'">

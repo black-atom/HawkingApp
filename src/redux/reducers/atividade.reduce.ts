@@ -246,24 +246,27 @@ const isSameDate = firstDate => secondDate => moment(firstDate)
 const isToday = isSameDate(new Date());
 
 export const getAllAtividades = (state: State) => state.atividades;
-
-export const getAllAtendimentosOfToday = createSelector(
-  getAllAtividades,
-  atendimentos => atendimentos
-    .filter(atendimento => isToday(atendimento.localCreatedAt || atendimento.createdAt)),
-);
-
-export const selectAtividadesToSync = createSelector(
-  getAllAtividades,
-  atividades => atividades.filter(atividade => !atividade.synced),
-);
-
 const getAllAtendimentos = (state: State) => state.atendimentos;
 
 const mapAtividade = (atendimentos:Atendimento[]) => (atividade: AtividadeI): AtividadeI => ({
   ...atividade,
   atendimento: atendimentos.find(atendimento => atendimento._id === atividade.atendimento_id),
 });
+
+export const getAllAtividadesOfToday = createSelector(
+  getAllAtividades,
+  getAllAtendimentos,
+  (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
+    return  atividades
+      .filter(atendimento => isToday(atendimento.localCreatedAt || atendimento.createdAt))
+      .map(mapAtividade(atendimentos));
+  },
+);
+
+export const selectAtividadesToSync = createSelector(
+  getAllAtividades,
+  atividades => atividades.filter(atividade => !atividade.synced),
+);
 
 const statuses = {
   PENDENTE: 'pendente',
@@ -279,34 +282,30 @@ const statuses = {
 const getStatus = status => statuses[status];
 
 export const getAtividadesPendentes = createSelector(
-  getAllAtendimentosOfToday,
-  getAllAtendimentos,
-  (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
-    return atividades.map(mapAtividade(atendimentos))
+  getAllAtividadesOfToday,
+  (atividades: AtividadeI[]): AtividadeI[] => {
+    return atividades
       .filter(atividade => getStatus(atividade.status) === 'pendente');
   });
 
 export const getAtividadesEmExecucao = createSelector(
-  getAllAtendimentosOfToday,
-  getAllAtendimentos,
-  (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
-    return atividades.map(mapAtividade(atendimentos))
+  getAllAtividadesOfToday,
+  (atividades: AtividadeI[]): AtividadeI[] => {
+    return atividades
       .filter(atividade => getStatus(atividade.status) === 'execucao');
   });
 
 export const getAtividadesPausadas = createSelector(
-  getAllAtendimentosOfToday,
-  getAllAtendimentos,
-  (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
-    return atividades.map(mapAtividade(atendimentos))
+  getAllAtividadesOfToday,
+  (atividades: AtividadeI[]): AtividadeI[] => {
+    return atividades
       .filter(atividade => getStatus(atividade.status) === 'pausado');
   });
 
 export const getAtividadesConcluidas = createSelector(
-  getAllAtendimentosOfToday,
-  getAllAtendimentos,
-  (atividades: AtividadeI[], atendimentos: Atendimento[]): AtividadeI[] => {
-    return atividades.map(mapAtividade(atendimentos))
+  getAllAtividadesOfToday,
+  (atividades: AtividadeI[]): AtividadeI[] => {
+    return atividades
       .filter(atividade => getStatus(atividade.status) === 'concluido');
   });
 

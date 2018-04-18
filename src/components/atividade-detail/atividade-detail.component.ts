@@ -24,6 +24,7 @@ import {
   CancelarAtividade,
   selectButton,
   getAtividadesEmExecucao,
+  getAllAtividadesOfToday,
 } from '../../redux/reducers/atividade.reduce';
 import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
 
@@ -34,6 +35,7 @@ import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
 export class AtividadeDetail implements OnInit{
 
   public atividade: AtividadeI = null;
+  public atividadeID: string = null;
   public atividadeTipo: string = null;
   public title = 'Detalhes';
   public actionSegments = 'acoes';
@@ -54,25 +56,36 @@ export class AtividadeDetail implements OnInit{
   }
 
   ngOnInit() {
-    this.atividade = this.navParams.get('id');
+    this.atividadeID = this.navParams.get('id');
     this.atividadeTipo = this.navParams.get('tipo');
 
     this.atividadeTipo && this.store
     .select(getAtividadesEmExecucao)
-      .subscribe((atividades) => {
-        atividades.length > 0
-        ? this.atividade = atividades[0]
-        : this.atividade = null;
+      .filter(atividades => atividades.length > 0)
+      .map(atividade => atividade[0].atividade_id)
+      .mergeMap((id) => {
+        this.atividadeID = id;
+        return this.store
+          .select(getAllAtividadesOfToday)
+          .map(atividades => atividades.find(at => at.atividade_id === id));
+      })
+      .filter(atividade => Boolean(atividade))
+      .subscribe((atividade) => {
+        console.log('update ===>', atividade);
+        this.atividade = atividade;
+      });
+
+    this.atividadeID && this.store
+      .select(getAllAtividadesOfToday)
+      .map(atividades => atividades.find(at => at.atividade_id === this.atividadeID))
+      .filter(atividade => Boolean(atividade))
+      .subscribe((atividade) => {
+        console.log('update ===>', atividade);
+        this.atividade = atividade;
       });
 
     this.store.select('login').subscribe(user => this.tecnicoId = user._id);
     this.store.select(selectButton).subscribe(buttonState => this.buttonState = buttonState);
-
-    this.store.select('atendimentos')
-    .subscribe(atendimentos =>
-     this.relatorioTecnico = atendimentos
-     .find(atendimento =>
-      atendimento._id === this.atividade.atendimento_id));
   }
 
   get selectedButton() {
@@ -94,22 +107,19 @@ export class AtividadeDetail implements OnInit{
 
   cancelarAtividade({ motivo }) {
     const message = 'Atividade cancelada com sucesso!';
-    const { atividade_id } = this.atividade;
-    this.store.dispatch(new CancelarAtividade(atividade_id, motivo));
+    this.store.dispatch(new CancelarAtividade(this.atividadeID, motivo));
     this.presentToast(message);
   }
 
   iniciarAtividade() {
     const message = 'Atividade iniciada com sucesso!';
-    const { atividade_id } = this.atividade;
-    this.store.dispatch(new IniciaAtividade(atividade_id));
+    this.store.dispatch(new IniciaAtividade(this.atividadeID));
     this.presentToast(message);
   }
 
   finalizarAtividade() {
     const message = 'Atividade finalizada com sucesso!';
-    const { atividade_id } = this.atividade;
-    this.store.dispatch(new FinalizaAtividade(atividade_id));
+    this.store.dispatch(new FinalizaAtividade(this.atividadeID));
     this.presentToast(message);
   }
 
@@ -124,22 +134,19 @@ export class AtividadeDetail implements OnInit{
         this.atividade.tipo !== 'atendimento'
       )) return this.criarAtividade();
 
-    const { atividade_id } = this.atividade;
-    this.store.dispatch(new InicializaDeslocamento(atividade_id));
+    this.store.dispatch(new InicializaDeslocamento(this.atividadeID));
     this.presentToast(message);
   }
 
   finalizaDeslocamento() {
     const message = 'Descolamento finalizado com sucesso!';
-    const { atividade_id } = this.atividade;
-    this.store.dispatch(new FinalizaDeslocamento(atividade_id));
+    this.store.dispatch(new FinalizaDeslocamento(this.atividadeID));
     this.presentToast(message);
   }
 
   pausaAtividade({ motivo }) {
     const message = 'Atividade foi pausada!';
-    const { atividade_id } = this.atividade;
-    this.store.dispatch(new PauseAtividade(atividade_id, motivo));
+    this.store.dispatch(new PauseAtividade(this.atividadeID, motivo));
     this.presentToast(message);
   }
 

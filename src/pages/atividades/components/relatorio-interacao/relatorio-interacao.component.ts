@@ -34,6 +34,7 @@ export class RelatorioInteracaoPage {
     private store: Store<State>,
   ) {
     const { atendimento } = <AtividadeI>this.navParams.get('atividade');
+    console.log(atendimento);
     this.atendimento = atendimento;
     this.initForm();
   }
