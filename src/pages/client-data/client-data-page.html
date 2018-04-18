@@ -12,8 +12,9 @@
 
  <ion-content>
   <ion-slides>
-    <ion-slide>
-      <preview></preview>
+
+    <ion-slide class="preview">
+      <preview (next)="goToSlide($event)"></preview>
     </ion-slide>
 
     <ion-slide>
@@ -21,7 +22,7 @@
     </ion-slide>
 
     <ion-slide>
-      <assinatura></assinatura>
+      <assinatura (next)="goToSlide($event)"></assinatura>
     </ion-slide>
 
     <ion-slide>

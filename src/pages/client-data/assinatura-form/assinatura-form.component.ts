@@ -1,8 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { ViewController, NavController, ToastController, NavParams } from 'ionic-angular';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
-import { AssinaturaComponent } from '../assinatura/assinatura.component';
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
+
+import {
+  AlertController,
+  ViewController,
+  NavParams,
+} from 'ionic-angular';
 
 
 @Component({
@@ -20,10 +33,11 @@ export class AssinaturaFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private viewCtrl: ViewController,
-    private navCtrl: NavController,
     private navParams: NavParams,
-    public toastCtrl: ToastController,
-  ) { }
+    public alertCtrl: AlertController,
+  ) {
+    this.initiaForm();
+    }
 
   ngOnInit(): void {
     this.initiaForm();
@@ -45,15 +59,19 @@ export class AssinaturaFormComponent implements OnInit {
     this.next.emit();
   }
 
-  openAssinatura(valid, assinatura) {
-    const toast = this.toastCtrl.create({
-      message: 'Por favor, preencha os dados!',
-      duration: 3000,
-    });
-
+  openAssinatura(valid) {
     valid && this.emitNextEvent();
-    !valid && toast.present();
+    !valid && this.showAlert();
+  }
 
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Atenção!',
+      // tslint:disable-next-line:max-line-length
+      subTitle: 'Por favor, preencha os dados!',
+      buttons: ['OK'],
+    });
+    alert.present();
   }
 
 }

@@ -3,9 +3,14 @@
 
   <signature-pad [options]="signaturePadOptions"></signature-pad>
 
+  <div class="buttons" >
   <ion-buttons>
-    <button ion-button large color="primary" (click)="limpar()" clear>Limpar</button>
-  </ion-buttons>
+      <button ion-button large color="danger" (click)="limpar()" >Limpar</button>
+    </ion-buttons>
+    <ion-buttons>
+      <button ion-button large color="primary" (click)="salvar()" >Finalizar</button>
+    </ion-buttons>
+  </div>
 
 </ion-content>
 

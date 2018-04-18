@@ -225,8 +225,8 @@ export class AtividadeDetail implements OnInit, OnDestroy{
     toast.present();
   }
 
-  openAssinatura() {
-    this.navCtrl.push(ClientDataPage);
+  openAssinatura(atividade) {
+    this.navCtrl.push(ClientDataPage, { atividade });
   }
 
 }

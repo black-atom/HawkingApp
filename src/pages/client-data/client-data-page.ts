@@ -14,8 +14,15 @@ export class ClientDataPage {
 
   constructor() { }
 
+  ngAfterViewInit() {
+    this.slides.lockSwipes(true);
+  }
+
+
   goToSlide() {
+    this.slides.lockSwipes(false);
     this.slides.slideNext(200);
+    this.slides.lockSwipes(true);
   }
 
 }

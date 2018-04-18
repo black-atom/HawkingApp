@@ -13,7 +13,7 @@ export interface State {
   atividades: [AtividadeI];
   fotos: [Foto];
   login: LoginState;
-  assinaturas: Assinatura[];
+  assinaturas: [Assinatura];
 }
 
 export const reducers = {

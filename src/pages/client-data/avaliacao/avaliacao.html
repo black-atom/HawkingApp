@@ -1,3 +1,4 @@
+<h2>Avalie o atendimento do técnico!</h2>
 <ion-buttons>
   <button ion-button icon-only large (click)="evaluate(1)" color="primary" clear>
     <ion-icon color="primary" name="{{ changeStyle(1) }}"></ion-icon>
@@ -15,3 +16,13 @@
     <ion-icon color="primary" name="{{ changeStyle(5) }}"></ion-icon>
   </button>
 </ion-buttons>
+
+<ion-list>
+  <ion-item>
+    <button >Não Avaliar</button>
+  </ion-item>
+
+  <ion-item>
+    <button (click)="avaliar()">Avaliar</button>
+  </ion-item>
+</ion-list>

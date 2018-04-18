@@ -14,7 +14,10 @@ assinatura-form {
   }
 
   ion-content {
-    left: 10% !important;
+    .form-client {
+      width: 50%;
+      margin: 0 auto;
+    }
   }
 
   ion-list {
@@ -47,5 +50,7 @@ assinatura-form {
       }
     }
   }
+
+
 }
 

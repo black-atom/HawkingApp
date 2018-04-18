@@ -4,7 +4,8 @@ import {
   SaveAtendimentoAssinatura,
   SaveAvaliacao,
 } from './../../../redux/reducers/atendimento.reducer';
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+
+import { Component, OnInit, OnDestroy, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
@@ -31,6 +32,9 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
   public responsavelForm: FormGroup;
 
   public rating: number = 0;
+
+  @Output()
+  next = new EventEmitter;
 
   public assinatura: Assinatura;
   public atendimentoID: string;
@@ -83,16 +87,6 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
   }
 
   salvar() {
-    const dispatchAvaliacao = () => {
-      const avaliacao: Avaliacao  = {
-        pergunta: 'Como voce avalia o atendimento?',
-        valor: this.rating,
-      };
-
-      this.store.dispatch(new SaveAvaliacao(this.atendimentoID, avaliacao));
-    };
-    this.rating > 0 && dispatchAvaliacao();
-
     const dispatchAssinatura = () => {
       const assinaturaBase64 = this.signaturePad.toDataURL().replace(/^data:image\/png;base64,/,'');
       const assinatura: Assinatura = {
@@ -104,7 +98,7 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
     dispatchAssinatura();
 
     this.presentToast();
-    this.view.dismiss();
+    this.next.emit();
   }
 
   canvasResize() {
@@ -121,7 +115,6 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
       showCloseButton: true,
       closeButtonText: 'Ok',
     });
-    toast.present();
   }
 
   ngAfterViewInit() {

@@ -116,6 +116,7 @@
             </button>
 
             <button class="action"
+              *ngIf="atividade?.tipo !== 'atendimento'"
               [disabled]="selectedButton !== 'finalizar_atividade'"
               (click)="finalizarAtividade()">
               <div class="photo">
@@ -125,11 +126,13 @@
             </button>
 
             <button class="action"
-              (click)="openAssinatura()">
+              *ngIf="atividade?.tipo === 'atendimento'"
+              [disabled]="selectedButton !== 'finalizar_atividade'"
+              (click)="openAssinatura(atividade)">
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/checked.svg'" />
               </div>
-              <p>openAssinaturaForm</p>
+              <p>Finalizar</p>
             </button>
           </div>
           <!-- second section action button -->
