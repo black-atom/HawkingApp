@@ -207,9 +207,10 @@ export class AtividadeDetail implements OnInit{
     toast.present();
   }
 
-
   openAssinaturaForm() {
-    const data: any = {};
+    const data: any = {
+      atendimentoID: this.atividade.atendimento_id,
+    };
     const options = { cssClass : 'assinatura-modal' };
     const popover = this.popoverCtrl.create(
       AssinaturaFormComponent,

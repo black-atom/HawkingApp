@@ -1,4 +1,4 @@
-import { Atendimento, Relatorio } from './../../models/atendimento';
+import { Atendimento, Relatorio, Assinatura, Avaliacao } from './../../models/atendimento';
 import { Action, createSelector } from '@ngrx/store';
 
 import { State } from './';
@@ -24,6 +24,11 @@ export const SYNC_ATENDIMENTOS_SUCCESS = 'SYNC_ATENDIMENTOS_SUCCESS';
 export const SYNC_ATENDIMENTOS_FAILED = 'SYNC_ATENDIMENTOS_FAILED';
 
 export const ADICIONAR_PERGUNTAS = 'ADICIONAR_PERGUNTAS';
+export const SAVE_AVALIACAO = 'SAVE_AVALIACAO';
+
+
+export const SAVE_ATENDIMENTO_ASSINATURA = 'SAVE_ATENDIMENTO_ASSINATURA';
+
 
 export class RetriveAtendimento implements Action{
   readonly type: string = RETRIEVE_ATENDIMENTOS;
@@ -43,9 +48,19 @@ export class EditarAtendimento implements Action{
   constructor(public payload: Atendimento) { }
 }
 
+export class SaveAtendimentoAssinatura implements Action{
+  readonly type: string = SAVE_ATENDIMENTO_ASSINATURA;
+  constructor(public atendimentoID: string, public assinatura: Assinatura) { }
+}
+
 export class SyncAtendimentos implements Action{
   readonly type: string = SYNC_ATENDIMENTOS;
   constructor(public payload: Atendimento[]) { }
+}
+
+export class SaveAvaliacao implements Action{
+  readonly type: string = SAVE_AVALIACAO;
+  constructor(public atendimentoID:string, public avaliacao: Avaliacao) { }
 }
 
 export class SyncAtendimentosSuccess implements Action{
@@ -85,6 +100,30 @@ export const atendimentoReducer = (
 ) => {
   switch (action.type) {
 
+    case SAVE_AVALIACAO: {
+      const { atendimentoID, avaliacao } = <SaveAvaliacao>action;
+      return state.map(
+        atendimento => atendimento._id === atendimentoID ?
+        {
+          ...atendimento,
+          avaliacao: [avaliacao],
+          synced: false,
+        } :
+        atendimento,
+      );
+    }
+    case SAVE_ATENDIMENTO_ASSINATURA: {
+      const { atendimentoID, assinatura } = <SaveAtendimentoAssinatura>action;
+      return state.map(
+        atendimento => atendimento._id === atendimentoID ?
+        {
+          ...atendimento,
+          assinatura,
+          synced: false,
+        } :
+        atendimento,
+      );
+    }
     case RETRIEVE_ATENDIMENTOS_SUCCESS: {
       const atendimentos = action.payload.atendimentos.map((atendimento: Atendimento) => {
         const atendimentoFound: Atendimento = state

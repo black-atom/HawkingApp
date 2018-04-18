@@ -10,6 +10,7 @@ export class AtendimentoComponet {
   @Input()
   atividade: AtividadeI;
 
+
   constructor() {  }
 
 }

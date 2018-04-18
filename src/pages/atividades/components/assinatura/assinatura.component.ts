@@ -1,9 +1,17 @@
+import { Avaliacao } from './../../../../models/atendimento';
+import {
+  SaveAtendimentoAssinatura,
+  SaveAvaliacao,
+} from './../../../../redux/reducers/atendimento.reducer';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { NavController, ViewController, NavParams, ToastController, Platform } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { Assinatura } from '../../../../models';
+import { State } from '../../../../redux/reducers';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -24,6 +32,9 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
 
   public rating: number = 0;
 
+  public assinatura: Assinatura;
+  public atendimentoID: string;
+
   constructor(
     private screenOrientation: ScreenOrientation,
     public navCtrl: NavController,
@@ -32,8 +43,8 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
     public navParams: NavParams,
     private readonly toastCtrl: ToastController,
     public platform: Platform,
+    public store: Store<State>,
   ) {
-    this.initiaForm();
   }
 
   ngOnInit(): void {
@@ -41,6 +52,9 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
         && !this.platform.is('mobileweb')
         &&  this.screenOrientation
       .lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    this.assinatura = this.navParams.get('assinatura');
+    this.atendimentoID = this.navParams.get('atendimentoID');
+    this.store.dispatch(new SaveAtendimentoAssinatura(this.atendimentoID, this.assinatura));
   }
 
   ngOnDestroy(): void {
@@ -69,8 +83,16 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
   }
 
   salvar() {
-    this.presentToast();
-    this.view.dismiss();
+    const dispatchAvaliacao = () => {
+      const avaliacao: Avaliacao  = {
+        pergunta: 'Como voce avalia o atendimento?',
+        valor: this.rating,
+      };
+
+      this.store.dispatch(new SaveAvaliacao(this.atendimentoID, avaliacao));
+    };
+    this.rating > 0 && dispatchAvaliacao();
+
   }
 
   canvasResize() {
