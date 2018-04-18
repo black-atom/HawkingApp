@@ -106,12 +106,12 @@
 
        <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.resumo_atendimento">
         <h2>Relatório do atendimento</h2>
-        <p>{{ atividade.atendimento.relatorio?.resumo_atendimento }}</p>
+        <p><strong>{{ atividade.atendimento.relatorio?.resumo_atendimento }}</strong></p>
       </ion-item>
 
-      <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.motivo_retorno">
+      <ion-item text-wrap *ngIf="atividade.atendimento?.relatorio?.motivo_retorno">
         <h2>Retorna ao Local?</h2>
-        <p>{{ atividade.atendimento.relatorio?.motivo_retorno }}</p>
+        <p><strong>{{ atividade.atendimento?.relatorio?.motivo_retorno }}</strong></p>
       </ion-item>
 
       <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.treinamento?.software">
@@ -137,7 +137,7 @@
         </div>
       </ion-item>
 
-      <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.faturamento?.modelo_equipamento">
+      <ion-item text-wrap *ngIf="atividade.atendimento.relatorio?.faturamento?.equipamentos.length > 0">
         <h2>Dados de Faturamento</h2>
         <hr>
         <p *ngIf="atividade.atendimento.relatorio?.faturamento.cnpj">Cnpj: {{ atividade.atendimento.relatorio?.faturamento.cnpj }}</p>
@@ -149,7 +149,7 @@
           <hr>
           <h5>Peça que foram utilizadas no reparo do equipamento de numero {{ equipamento?.numero_equipamento }}</h5>
           <ul>
-            <li *ngFor="let peca of equipamento?.pecas"> {{ peca?.descricao}} - {{ peca?.quantidade}} un x R$  {{ peca?.preco}} = R$ {{ peca?.quantidade * peca?.preco } </li>
+            <li *ngFor="let peca of equipamento?.pecas"> {{ peca?.descricao}} - ({{ peca?.quantidade}} un x R$  {{ peca?.preco}}) = R$ {{ peca?.quantidade * peca?.preco }} </li>
           </ul>
         </div>
       </ion-item>
