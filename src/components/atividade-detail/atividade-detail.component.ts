@@ -87,16 +87,14 @@ export class AtividadeDetail implements OnInit, OnDestroy{
       })
       .filter(atividade => Boolean(atividade))
       .subscribe((atividade) => {
-        console.log('update ===>', atividade);
         this.atividade = atividade;
       });
 
-    const sub2 =this.atividadeID && this.store
+    const sub2 = this.atividadeID && this.store
       .select(getAllAtividadesOfToday)
       .map(atividades => atividades.find(at => at.atividade_id === this.atividadeID))
       .filter(atividade => Boolean(atividade))
       .subscribe((atividade) => {
-        console.log('update ===>', atividade);
         this.atividade = atividade;
       });
 
@@ -105,12 +103,19 @@ export class AtividadeDetail implements OnInit, OnDestroy{
       .select(selectButton)
       .subscribe(buttonState => this.buttonState = buttonState);
 
-    this.subscriptions = [sub1, sub2, sub3, sub4]
+    this.subscriptions = [sub1, sub2, sub3, sub4];
   }
 
   get selectedButton() {
-    const descricao = this.atividadeTipo === 'outros' ? 'descricao' : null;
-    return descricao || this.buttonState;
+    const buttonStates = {
+      CRIAR_ATIVIDADE: 'iniciar_deslocamento',
+      INICIO_DESLOCAMENTO: 'finalizar_deslocamento',
+      FIM_DESLOCAMENTO: 'iniciar_atividade',
+      INICIO_ATIVIDADE: 'finalizar_atividade',
+    };
+    const { status= null } = this.atividade || {};
+    const defaultTo = this.atividadeTipo === 'outros' ? 'descricao' : 'iniciar_deslocamento';
+    return buttonStates[status] || defaultTo;
   }
 
   criarAtividade() {
@@ -151,7 +156,7 @@ export class AtividadeDetail implements OnInit, OnDestroy{
       (
         this.atividade &&
         this.atividade.tipo !== 'outros' &&
-        this.atividade.tipo !== 'atendimento'
+        this.atividade.tipo !== 'atendimento' && this.atividade.status === 'PENDENTE'
       )) return this.criarAtividade();
 
     this.store.dispatch(new InicializaDeslocamento(this.atividadeID));
