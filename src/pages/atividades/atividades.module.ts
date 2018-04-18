@@ -31,8 +31,6 @@ import {
 import {
   RemocaoEquipamentoComponent,
 } from './components/relatorio-interacao/remocao-equipamento/remocao-equipamento';
-import { AssinaturaComponent } from './components/assinatura/assinatura.component';
-import { AssinaturaFormComponent } from './components/assinatura-form/assinatura-form.component';
 
 
 @NgModule({
@@ -47,8 +45,6 @@ import { AssinaturaFormComponent } from './components/assinatura-form/assinatura
     RemocaoEquipamentoComponent,
     RelatorioInteracaoPage,
     RetornoLocalComponent,
-    AssinaturaComponent,
-    AssinaturaFormComponent,
   ],
   imports: [
     ComponentsModule,
@@ -67,8 +63,6 @@ import { AssinaturaFormComponent } from './components/assinatura-form/assinatura
     RelatorioInteracaoPage,
     RemocaoEquipamentoComponent,
     RetornoLocalComponent,
-    AssinaturaComponent,
-    AssinaturaFormComponent,
   ],
   providers: [
     Camera,

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Assinatura e Avaliação</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button large icon-right (click)="goToSlide()">
+        <h6>Finalizar</h6>
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+ </ion-header>
+
+ <ion-content>
+  <ion-slides>
+    <ion-slide>
+      <preview></preview>
+    </ion-slide>
+
+    <ion-slide>
+      <assinatura-form (next)="goToSlide($event)"></assinatura-form>
+    </ion-slide>
+
+    <ion-slide>
+      <assinatura></assinatura>
+    </ion-slide>
+
+    <ion-slide>
+      <avaliacao></avaliacao>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
+
+

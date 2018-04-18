@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ViewController, NavController, ToastController, NavParams } from 'ionic-angular';
+
 import { AssinaturaComponent } from '../assinatura/assinatura.component';
+
 
 @Component({
   selector: 'assinatura-form',
   templateUrl: 'assinatura-form.html',
 })
 export class AssinaturaFormComponent implements OnInit {
+
+  @Output()
+  next = new EventEmitter();
 
   public responsavelForm: FormGroup;
   public atendimentoID: string;
@@ -36,19 +41,19 @@ export class AssinaturaFormComponent implements OnInit {
     this.viewCtrl.dismiss();
   }
 
+  emitNextEvent() {
+    this.next.emit();
+  }
+
   openAssinatura(valid, assinatura) {
     const toast = this.toastCtrl.create({
       message: 'Por favor, preencha os dados!',
       duration: 3000,
     });
 
+    valid && this.emitNextEvent();
     !valid && toast.present();
 
-    valid && this.navCtrl.push(AssinaturaComponent, {
-      assinatura,
-      atendimentoID: this.atendimentoID,
-    });
-    valid && this.close();
   }
 
 }

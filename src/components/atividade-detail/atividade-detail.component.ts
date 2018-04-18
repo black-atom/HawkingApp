@@ -28,11 +28,11 @@ import {
 } from '../../redux/reducers/atividade.reduce';
 import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
 
-import {
-  AssinaturaFormComponent,
-} from '../../pages/atividades/components/assinatura-form/assinatura-form.component';
+
 import { AtividadeI } from '../../models';
 import { Subscription } from 'rxjs';
+
+import { ClientDataPage } from '../../pages/client-data/client-data-page';
 
 
 @Component({
@@ -220,17 +220,8 @@ export class AtividadeDetail implements OnInit, OnDestroy{
     toast.present();
   }
 
-  openAssinaturaForm() {
-    const data: any = {
-      atendimentoID: this.atividade.atendimento_id,
-    };
-    const options = { cssClass : 'assinatura-modal' };
-    const popover = this.popoverCtrl.create(
-      AssinaturaFormComponent,
-      data,
-      options,
-    );
-    popover.present();
+  openAssinatura() {
+    this.navCtrl.push(ClientDataPage);
   }
 
 }

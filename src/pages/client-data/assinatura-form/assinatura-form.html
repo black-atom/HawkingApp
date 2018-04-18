@@ -1,8 +1,9 @@
-<ion-header>
-  <h1>Dados do Cliente</h1>
-</ion-header>
+<img src="assets/icon/form.svg" alt="icon-form">
 
-  <ion-list [formGroup]="responsavelForm" text-center>
+<h1>Dados do Cliente</h1>
+
+<ion-content text-center>
+  <ion-card [formGroup]="responsavelForm" text-center>
     <ion-item>
       <ion-label stacked color="primary">Nome Completo</ion-label>
       <ion-input formControlName="nome" placeholder="Insira o nome!"></ion-input>
@@ -11,12 +12,12 @@
       <ion-label stacked color="primary">RG/CPF</ion-label>
       <ion-input formControlName="documento_id" placeholder="Insira o rg/cpf!"></ion-input>
     </ion-item>
-  </ion-list>
+  </ion-card>
+</ion-content>
 
- <ion-footer>
+ <ion-footer fixed>
   <ion-buttons end>
-    <button ion-button large color="primary" (click)="close()"clear>cancelar</button>
-    <button ion-button large color="primary" (click)="openAssinatura(responsavelForm.valid, responsavelForm.value)"clear>avaliar</button>
+    <button ion-button large color="primary" (click)="openAssinatura(responsavelForm.valid, responsavelForm.value)"clear>adicionar assinatura</button>
   </ion-buttons>
  </ion-footer>
 

@@ -9,6 +9,7 @@ import { PerfilModule } from './perfil/perfil.module';
 import { LoginModule } from './login/login.module';
 import { SuporteModule } from './suporte/suporte.module';
 import { TabPageModule } from './tab-page/tab-page.module';
+import { ClientDataPageModule } from './client-data/client-data-page.module';
 
 @NgModule({
   imports:[
@@ -20,6 +21,7 @@ import { TabPageModule } from './tab-page/tab-page.module';
     LoginModule,
     SuporteModule,
     TabPageModule,
+    ClientDataPageModule,
     ReactiveFormsModule,
   ],
 })
