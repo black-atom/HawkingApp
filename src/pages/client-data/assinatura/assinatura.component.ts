@@ -1,16 +1,16 @@
-import { AddAssinatura } from './../../../../redux/reducers/assinatura.reducer';
-import { Avaliacao, Assinatura } from './../../../../models/atendimento';
+import { AddAssinatura } from './../../../redux/reducers/assinatura.reducer';
+import { Avaliacao, Assinatura } from './../../../models/atendimento';
 import {
   SaveAtendimentoAssinatura,
   SaveAvaliacao,
-} from './../../../../redux/reducers/atendimento.reducer';
+} from './../../../redux/reducers/atendimento.reducer';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { NavController, ViewController, NavParams, ToastController, Platform } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-import { State } from '../../../../redux/reducers';
+import { State } from '../../../redux/reducers';
 import { Store } from '@ngrx/store';
 
 
