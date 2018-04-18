@@ -15,6 +15,8 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 import { LoginProvider } from '../providers';
 
 import { ProvidersModule } from '../providers/providers.module';
@@ -53,6 +55,7 @@ export function getAuthHttp(http) {
     LoginProvider,
     StatusBar,
     SplashScreen,
+    ScreenOrientation,
     LaunchNavigator,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     {

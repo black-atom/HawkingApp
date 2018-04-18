@@ -4,13 +4,13 @@ import {
   NavParams,
   NavController,
   ToastController,
+  PopoverController,
 } from 'ionic-angular';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 import {
   RelatorioInteracaoPage,
 } from '../../pages/atividades/components/relatorio-interacao/relatorio-interacao.component';
-import { AtividadeI } from '../../models';
 import { State } from '../../redux/reducers';
 import { Store } from '@ngrx/store';
 import {
@@ -27,6 +27,12 @@ import {
   getAllAtividadesOfToday,
 } from '../../redux/reducers/atividade.reduce';
 import { configAlertInputAtividade } from '../../utils/AlertInputAtividade';
+
+import {
+  AssinaturaFormComponent,
+} from '../../pages/atividades/components/assinatura-form/assinatura-form.component';
+import { AtividadeI } from '../../models';
+
 
 @Component({
   selector: 'atividade-detail',
@@ -48,6 +54,7 @@ export class AtividadeDetail implements OnInit{
     public alertCtrl: AlertController,
     public navCtrl: NavController,
     private navParams: NavParams,
+    public popoverCtrl: PopoverController,
     private launchNavigator: LaunchNavigator,
     public toastCtrl: ToastController,
     private store: Store<State>,
@@ -198,6 +205,18 @@ export class AtividadeDetail implements OnInit{
       duration: 3000,
     });
     toast.present();
+  }
+
+
+  openAssinaturaForm() {
+    const data: any = {};
+    const options = { cssClass : 'assinatura-modal' };
+    const popover = this.popoverCtrl.create(
+      AssinaturaFormComponent,
+      data,
+      options,
+    );
+    popover.present();
   }
 
 }

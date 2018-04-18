@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Assinatura e Avaliação</ion-title>
+    <ion-buttons end>
+      <button ion-button large icon-right (click)="salvar()">
+        <h6>Finalizar</h6>
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+ </ion-header>
+
+ <ion-content text-center>
+  <h1>Avalie o atendimento</h1>
+  <ion-buttons>
+    <button ion-button icon-only large (click)="evaluate(1)" color="primary" clear>
+      <ion-icon color="primary" name="{{ changeStyle(1) }}"></ion-icon>
+    </button>
+    <button ion-button icon-only large (click)="evaluate(2)" color="primary" clear>
+      <ion-icon color="primary" name="{{ changeStyle(2) }}"></ion-icon>
+    </button>
+    <button ion-button icon-only large (click)="evaluate(3)" color="primary" clear>
+      <ion-icon color="primary" name="{{ changeStyle(3) }}"></ion-icon>
+    </button>
+    <button ion-button icon-only large (click)="evaluate(4)" color="primary" clear>
+      <ion-icon color="primary" name="{{ changeStyle(4) }}"></ion-icon>
+    </button>
+    <button ion-button icon-only large (click)="evaluate(5)" color="primary" clear>
+      <ion-icon color="primary" name="{{ changeStyle(5) }}"></ion-icon>
+    </button>
+  </ion-buttons>
+
+  <signature-pad [options]="signaturePadOptions"></signature-pad>
+
+  <ion-buttons>
+    <button ion-button large color="primary" (click)="limpar()" clear>Limpar</button>
+  </ion-buttons>
+
+ </ion-content>
+
+
