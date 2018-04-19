@@ -14,19 +14,19 @@
   <ion-slides>
 
     <ion-slide class="preview">
-      <preview (next)="goToSlide($event)"></preview>
+      <preview (next)="goToSlide($event)" [relatorio]='atividade?.atendimento?.relatorio'></preview>
     </ion-slide>
 
     <ion-slide>
-      <assinatura-form (next)="goToSlide($event)"></assinatura-form>
+      <assinatura-form (next)="goToSlide($event)" (save)="saveAtendimentoAssinatura($event)"></assinatura-form>
     </ion-slide>
 
     <ion-slide>
-      <assinatura (next)="goToSlide($event)"></assinatura>
+      <assinatura (next)="goToSlide($event)" (save)='saveAssinaturaBase64($event)'></assinatura>
     </ion-slide>
 
     <ion-slide>
-      <avaliacao></avaliacao>
+      <avaliacao (next)="close()" (save)="saveAvaliacao($event)"></avaliacao>
     </ion-slide>
 
   </ion-slides>

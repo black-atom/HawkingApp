@@ -13,8 +13,6 @@ import {
 
 import {
   AlertController,
-  ViewController,
-  NavParams,
 } from 'ionic-angular';
 
 
@@ -27,21 +25,21 @@ export class AssinaturaFormComponent implements OnInit {
   @Output()
   next = new EventEmitter();
 
+  @Output()
+  save = new EventEmitter();
+
   public responsavelForm: FormGroup;
   public atendimentoID: string;
 
   constructor(
     private fb: FormBuilder,
-    private viewCtrl: ViewController,
-    private navParams: NavParams,
     public alertCtrl: AlertController,
   ) {
     this.initiaForm();
-    }
+  }
 
   ngOnInit(): void {
     this.initiaForm();
-    this.atendimentoID = this.navParams.get('atendimentoID');
   }
 
   initiaForm() {
@@ -51,15 +49,12 @@ export class AssinaturaFormComponent implements OnInit {
     });
   }
 
-  close() {
-    this.viewCtrl.dismiss();
-  }
-
   emitNextEvent() {
     this.next.emit();
   }
 
-  openAssinatura(valid) {
+  openAssinatura(valid, values) {
+    valid && this.save.emit(values);
     valid && this.emitNextEvent();
     !valid && this.showAlert();
   }
@@ -67,7 +62,6 @@ export class AssinaturaFormComponent implements OnInit {
   showAlert() {
     const alert = this.alertCtrl.create({
       title: 'Atenção!',
-      // tslint:disable-next-line:max-line-length
       subTitle: 'Por favor, preencha os dados!',
       buttons: ['OK'],
     });

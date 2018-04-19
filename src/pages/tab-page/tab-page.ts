@@ -13,7 +13,6 @@ import { IonicPage } from 'ionic-angular';
 import { AtividadesPage } from '../atividades/atividades';
 import { ConcluidosPage } from '../concluidos/concluidos';
 import { PerfilPage } from './../perfil/perfil';
-import { LoginPage } from '../login/login';
 
 import { SuportePage } from '../suporte/suporte';
 import { State } from '../../redux/reducers';

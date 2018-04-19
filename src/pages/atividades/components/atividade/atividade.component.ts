@@ -7,7 +7,6 @@ import {
 import {
   AtividadeDetail,
 } from '../../../../components/atividade-detail/atividade-detail.component';
-import { Observable, Subject } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { AtividadeI } from './../../../../models/atividade';
 import { State } from '../../../../redux/reducers';

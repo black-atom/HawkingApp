@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 
-import { Login } from './../../redux/reducers/login.reducer';
 import { LoginState } from './../../redux/models/loginState';
 
 @Component({

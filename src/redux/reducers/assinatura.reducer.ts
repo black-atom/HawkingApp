@@ -11,19 +11,19 @@ export const UPLOAD_ASSINATURA_FAILED = 'UPLOAD_ASSINATURA_FAILED';
 export class AddAssinatura implements Action {
   readonly type = ADD_ASSINATURA;
   payload: Assinatura;
-  constructor(payload: Assinatura){
+  constructor(payload: Assinatura) {
     this.payload = {
       ...payload,
       isUploaded: false,
       isUploading: false,
-    }
+    };
   }
 }
 
 export class UploadAssinatura implements Action {
   readonly type = UPLOAD_ASSINATURA;
   payload: Assinatura;
-  constructor(payload: Assinatura){
+  constructor(payload: Assinatura) {
     this.payload = {
       ...payload,
       isUploading: true,
@@ -46,7 +46,7 @@ export class UploadAssinaturaSuccess implements Action {
 export class UploadAssinaturaFailed implements Action {
   readonly type = UPLOAD_ASSINATURA_FAILED;
   payload: Assinatura;
-  constructor(payload: Assinatura){
+  constructor(payload: Assinatura) {
     this.payload = {
       ...payload,
       isUploading: false,

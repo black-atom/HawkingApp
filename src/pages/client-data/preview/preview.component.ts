@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
-import { NavParams } from 'ionic-angular';
 
-import { AtividadeI } from '../../../models/atividade';
+import { Relatorio } from '../../../models/atendimento';
 
 @Component({
   selector: 'preview',
@@ -10,16 +9,13 @@ import { AtividadeI } from '../../../models/atividade';
 })
 export class PreviewComponent  {
 
-  public atividade: AtividadeI;
+  @Input()
+  relatorio: Relatorio;
 
   @Output()
   next = new EventEmitter;
 
-  constructor(private navParams: NavParams) { }
-
-  ngOnInit() {
-    this.atividade = this.navParams.get('atividade');
-  }
+  constructor() { }
 
   emitNextEvent() {
     this.next.emit();

@@ -16,7 +16,7 @@ import {
 } from '@angular/forms';
 
 import { FotoPage } from '../foto/foto';
-import { Relatorio, Atendimento } from '../../../../models/atendimento';
+import { Atendimento } from '../../../../models/atendimento';
 
 @Component({
   selector: 'relatorio-interacao',

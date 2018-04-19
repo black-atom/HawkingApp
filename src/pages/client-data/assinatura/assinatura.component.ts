@@ -1,18 +1,9 @@
-import { AddAssinatura } from './../../../redux/reducers/assinatura.reducer';
-import { Avaliacao, Assinatura } from './../../../models/atendimento';
-import {
-  SaveAtendimentoAssinatura,
-  SaveAvaliacao,
-} from './../../../redux/reducers/atendimento.reducer';
 
 import { Component, OnInit, OnDestroy, ViewChild, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-import { NavController, ViewController, NavParams, ToastController, Platform } from 'ionic-angular';
+import { ToastController, Platform } from 'ionic-angular';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
-import { State } from '../../../redux/reducers';
-import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -29,25 +20,16 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
     canvasHeight: this.platform.height() * 0.33,
   };
 
-  public responsavelForm: FormGroup;
-
-  public rating: number = 0;
-
   @Output()
   next = new EventEmitter;
 
-  public assinatura: Assinatura;
-  public atendimentoID: string;
+  @Output()
+  save = new EventEmitter;
 
   constructor(
     private screenOrientation: ScreenOrientation,
-    public navCtrl: NavController,
-    private view: ViewController,
-    private fb: FormBuilder,
-    public navParams: NavParams,
     private readonly toastCtrl: ToastController,
     public platform: Platform,
-    public store: Store<State>,
   ) {
   }
 
@@ -56,9 +38,6 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
         && !this.platform.is('mobileweb')
         &&  this.screenOrientation
       .lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-    this.assinatura = this.navParams.get('assinatura');
-    this.atendimentoID = this.navParams.get('atendimentoID');
-    this.store.dispatch(new SaveAtendimentoAssinatura(this.atendimentoID, this.assinatura));
   }
 
   ngOnDestroy(): void {
@@ -68,35 +47,9 @@ export class AssinaturaComponent implements OnInit, OnDestroy {
       .lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
-  initiaForm() {
-    this.responsavelForm = this.fb.group({
-      nome: ['', Validators.required],
-      documento_id: ['', Validators.required],
-    });
-  }
-
-  evaluate(rating: number) {
-    this.rating = rating;
-    this.changeStyle(rating);
-  }
-
-  changeStyle(number) {
-    return number > this.rating
-    ? 'md-star-outline'
-    : 'md-star';
-  }
-
   salvar() {
-    const dispatchAssinatura = () => {
-      const assinaturaBase64 = this.signaturePad.toDataURL().replace(/^data:image\/png;base64,/,'');
-      const assinatura: Assinatura = {
-        assinaturaBase64,
-        atendimentoID: this.atendimentoID,
-      };
-      this.store.dispatch(new AddAssinatura(assinatura));
-    };
-    dispatchAssinatura();
-
+    const assinaturaBase64 = this.signaturePad.toDataURL().replace(/^data:image\/png;base64,/,'');
+    this.save.emit(assinaturaBase64);
     this.presentToast();
     this.next.emit();
   }

@@ -8,7 +8,6 @@ import {
 import { MonitoramentoProvider } from './../../providers/monitoramento.provider';
 import { Actions, Effect } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
-import { SyncAtendimentosFailed } from '../reducers/atendimento.reducer';
 
 @Injectable()
 export class AtividadeEffects{
