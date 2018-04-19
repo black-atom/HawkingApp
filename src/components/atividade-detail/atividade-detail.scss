@@ -32,6 +32,15 @@ atividade-detail {
         width: 100%;
       }
     }
+    div.segments-custom {
+      background-color: #FFFFFF !important;
+      margin: 20% 0 0 0 !important;
+      padding: 0 !important;
+    }
+    div.input-wrapper {
+      background-color: #FFFFFF !important;
+
+    }
   }
 
   ion-content {
@@ -63,13 +72,8 @@ atividade-detail {
     background-color:  rgb(160, 160, 160);
   }
 
-  ion-segment {
-    background-color: #FFFFFF !important;
-    margin-top: 14% !important;
-  }
-
   ion-list {
-    margin-top: 10% !important;
+    margin-top: 20% !important;
   }
   .atividade-info {
     margin-top: 25px;

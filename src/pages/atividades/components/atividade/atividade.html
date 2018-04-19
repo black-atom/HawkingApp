@@ -5,11 +5,11 @@
         <ion-avatar item-start>
           <img src="assets/icon/company.svg">
         </ion-avatar>
-        <h2>{{ atividade?.atendimento.cliente.nome_razao_social }}</h2>
+        <h2>{{ atividade?.atendimento?.cliente?.nome_razao_social }}</h2>
         <p>
           <ion-icon name="pin" color="primary"></ion-icon>
-          {{ atividade?.atendimento.endereco.bairro | uppercase }}, {{ atividade?.atendimento.endereco.cidade | uppercase }} - {{ atividade?.atendimento.endereco.uf
-          | uppercase }}, {{ atividade?.atendimento.endereco.cep | uppercase }}
+          {{ atividade?.atendimento?.endereco?.bairro | uppercase }}, {{ atividade?.atendimento?.endereco?.cidade | uppercase }} - {{ atividade?.atendimento?.endereco?.uf
+          | uppercase }}, {{ atividade?.atendimento?.endereco?.cep | uppercase }}
         </p>
       </ion-item>
     </div>
@@ -17,7 +17,7 @@
     <div *ngIf="atividade.tipo !== 'atendimento'">
         <ion-item>
           <ion-avatar item-start>
-            <img src="assets/icon/{{atividade.tipo}}.svg">
+            <img src="assets/icon/{{atividade?.tipo}}.svg">
           </ion-avatar>
           <h2>{{ atividade?.tipo | uppercase }}</h2>
         </ion-item>

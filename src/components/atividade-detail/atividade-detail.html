@@ -11,7 +11,7 @@
       <h1>{{ atividadeTipo | uppercase }}</h1>
     </div>
 
-    <div padding>
+    <div class="segments-custom" padding>
       <ion-segment [(ngModel)]="actionSegments">
         <ion-segment-button value="acoes">
           Ações
@@ -28,14 +28,14 @@
     <ion-list *ngSwitchCase="'acoes'">
 
       <!-- info message -->
-      <div class="atividade-info" *ngIf="atividade?.status === 'FIM_ATIVIDADE'">
+      <div class="atividade-info" *ngIf="atividade?.status === 'FIM_ATIVIDADE' || atividade?.status === 'CANCELA_ATIVIDADE'">
         <img src='assets/icon/brushes.svg'>
         <h3>Atividade atual foi finalizada ou cancelada <br/> e não pode ser alterada!</h3>
       </div>
       <!-- info message -->
 
       <!-- actions button -->
-      <div  *ngIf="atividade?.status !== 'FIM_ATIVIDADE'">
+      <div  *ngIf="atividade?.status !== 'CANCELA_ATIVIDADE' && atividade?.status !== 'FIM_ATIVIDADE'">
 
         <!-- first section action button -->
         <div class="actions">
