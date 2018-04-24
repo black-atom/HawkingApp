@@ -1,6 +1,6 @@
 import { MonitoramentoProvider } from './monitoramento.provider';
 import { FotoProvider } from './foto.provider';
-import { File, FileEntry, IFile } from '@ionic-native/file';
+import { File } from '@ionic-native/file';
 
 import { AtendimentoProvider } from './atentimento.provider';
 import { ApikeyReqInject } from './../utils/ApiKeyRequestInjector';

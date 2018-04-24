@@ -1,0 +1,56 @@
+assinatura-form {
+  ion-header {
+    height: 70px !important;
+  }
+  h1 {
+    font-size: 40px;
+    padding: 0px 30px !important;
+    color: #6d6d6d
+  }
+  img {
+    padding-top: 20px !important;
+    height: 180px !important;
+    width: 180px !important;
+  }
+
+  ion-content {
+    .form-client {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  ion-list {
+    height: 0%;
+    border-radius: 5px !important;
+    ion-item {
+      margin-top: 25px !important;
+      margin: none !important;
+      padding: none !important;
+    }
+  }
+}
+
+.assinatura-modal {
+  .popover-wrapper {
+    .popover-content {
+      top: 15% !important;
+      left: 15% !important;
+      height: 60% !important;
+      width: 70% !important;
+      padding: 20px 40px !important;
+
+      h1 {
+        font-size: 28px;
+        color: #666 !important;
+      }
+      h3 {
+        font-size: 20px;
+        color: #999 !important
+      }
+    }
+  }
+
+
+}
+

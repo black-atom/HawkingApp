@@ -3,11 +3,15 @@
     <ion-title>Detalhes</ion-title>
   </ion-navbar>
 
-    <div class="header-title">
-      <h1>{{ atividade.tipo | uppercase }}</h1>
+    <div class="header-title" *ngIf="atividade?.tipo">
+      <h1>{{ atividade?.tipo | uppercase }}</h1>
     </div>
 
-    <div padding>
+    <div class="header-title" *ngIf="atividadeTipo && !atividade">
+      <h1>{{ atividadeTipo | uppercase }}</h1>
+    </div>
+
+    <div class="segments-custom" padding>
       <ion-segment [(ngModel)]="actionSegments">
         <ion-segment-button value="acoes">
           Ações
@@ -20,89 +24,134 @@
 </ion-header>
 
 <ion-content>
-
-
-
   <div [ngSwitch]="actionSegments">
     <ion-list *ngSwitchCase="'acoes'">
-      <div class="actions">
-        <div class="action">
-          <div class="photo">
-            <img src="" onerror="this.src='assets/icon/pointer.svg'" />
-          </div>
-          <p>Iniciar <br>
-            Deslocamento</p>
-        </div>
 
-        <div class="action">
-          <div class="photo">
-            <img src="" onerror="this.src='assets/icon/placeholder.svg'" />
-          </div>
-          <p>Finalizar <br>
-             Deslocamento</p>
-        </div>
-
-        <div class="action">
-          <div class="photo">
-            <img src="" onerror="this.src='assets/icon/google.svg'" />
-          </div>
-          <p>Gps</p>
-        </div>
-
-        <div class="action">
-          <div class="photo">
-            <img src="" onerror="this.src='assets/icon/clock.svg'" />
-          </div>
-          <p>Iniciar</p>
-        </div>
-
+      <!-- info message -->
+      <div class="atividade-info" *ngIf="atividade?.status === 'FIM_ATIVIDADE' || atividade?.status === 'CANCELA_ATIVIDADE'">
+        <img src='assets/icon/brushes.svg'>
+        <h3>Atividade atual foi finalizada ou cancelada <br/> e não pode ser alterada!</h3>
       </div>
+      <!-- info message -->
 
+      <!-- actions button -->
+      <div  *ngIf="atividade?.status !== 'CANCELA_ATIVIDADE' && atividade?.status !== 'FIM_ATIVIDADE'">
+
+        <!-- first section action button -->
         <div class="actions">
+          <button class="action"
+            (click)="showPrompt(configAlertInput.descricao)"
+            [disabled]="selectedButton !== 'descricao'"
+            *ngIf="atividadeTipo === 'outros' || atividade?.tipo === 'outros'"
+            >
+            <div class="photo"><img src="" onerror="this.src='assets/icon/tool.svg'"/></div>
+            <p>Descrição</p>
+          </button>
 
-            <div class="action">
+          <button class="action"
+            [disabled]="selectedButton !== 'iniciar_deslocamento'"
+            (click)='inicializaDeslocamento()'>
+            <div class="photo">
+              <img src="" onerror="this.src='assets/icon/pointer.svg'" />
+            </div>
+            <p>Iniciar <br> Deslocamento</p>
+          </button>
+
+          <button class="action"
+            [disabled]="selectedButton !== 'finalizar_deslocamento'"
+            (click)='finalizaDeslocamento()'>
+            <div class="photo">
+              <img src="" onerror="this.src='assets/icon/placeholder.svg'" />
+            </div>
+            <p>Finalizar <br> Deslocamento</p>
+          </button>
+
+          <button class="action"
+            [disabled]="selectedButton !== 'finalizar_deslocamento'"
+            (click)='openGPS()' *ngIf="atividade?.tipo === 'atendimento'">
+            <div class="photo">
+                <img src="" onerror="this.src='assets/icon/google.svg'" />
+            </div>
+            <p>Gps</p>
+          </button>
+
+          <button class="action"
+            [disabled]="selectedButton !== 'iniciar_atividade'"
+            (click)='iniciarAtividade()'>
+            <div class="photo">
+                <img src="" onerror="this.src='assets/icon/clock.svg'" />
+            </div>
+            <p>Iniciar</p>
+          </button>
+        </div>
+        <!-- first section action button -->
+
+        <!-- second section action button -->
+        <div class="actions">
+            <button class="action"
+              [disabled]="atividade?.status === 'PAUSE_ATIVIDADE'"
+              (click)='showPrompt(configAlertInput.pausar)'>
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/pause.svg'" />
               </div>
               <p>Pausar</p>
-            </div>
+            </button>
 
-            <div class="action">
+            <button class="action"
+              [disabled]="atividade?.status === 'PAUSE_ATIVIDADE'"
+              (click)="showPrompt(configAlertInput.cancelar)">
               <div class="photo">
-                <img src="" onerror="this.src='assets/icon/play-button.svg'" />
+                  <img src="" onerror="this.src='assets/icon/cancel.svg'" />
               </div>
-              <p>Continuar</p>
-            </div>
+              <p>Cancelar</p>
+            </button>
 
-            <div class="action" (click)="openRelatorioInteracaoPage(atividade)">
+            <button class="action"
+              [disabled]=""
+              (click)="openRelatorioInteracaoPage(atividade)" *ngIf="atividade?.tipo === 'atendimento'">
               <div class="photo">
-                <img src="" onerror="this.src='assets/icon/clipboard.svg'" />
+                  <img src="" onerror="this.src='assets/icon/clipboard.svg'" />
               </div>
               <p>Relatório</p>
-            </div>
+            </button>
 
-            <div class="action">
+            <button class="action"
+              *ngIf="atividade?.tipo !== 'atendimento'"
+              [disabled]="selectedButton !== 'finalizar_atividade'"
+              (click)="finalizarAtividade()">
               <div class="photo">
                 <img src="" onerror="this.src='assets/icon/checked.svg'" />
               </div>
               <p>Finalizar</p>
-            </div>
+            </button>
+
+            <button class="action"
+              *ngIf="atividade?.tipo === 'atendimento'"
+              [disabled]="selectedButton !== 'finalizar_atividade'"
+              (click)="openAssinatura(atividade)">
+              <div class="photo">
+                <img src="" onerror="this.src='assets/icon/checked.svg'" />
+              </div>
+              <p>Finalizar</p>
+            </button>
           </div>
-
-
+          <!-- second section action button -->
+      </div>
+      <!-- actions button -->
     </ion-list>
 
-    <ion-list *ngSwitchCase="'atividade'">
-      <ion-list *ngIf="atividade.tipo === 'atendimento'">
+    <!-- content segment -->
+      <ion-list *ngSwitchCase="'atividade'">
+
+        <ion-list *ngIf="atividade?.tipo === 'atendimento'">
           <atendimento [atividade]="atividade"></atendimento>
         </ion-list>
 
-        <ion-list *ngIf="atividade.tipo !== 'atendimento'">
+        <ion-list *ngIf="atividade?.tipo !== 'atendimento'">
           <atividade [atividade]="atividade"></atividade>
         </ion-list>
-    </ion-list>
+
+      </ion-list>
+    <!-- content segment -->
   </div>
-
-
-
 </ion-content>

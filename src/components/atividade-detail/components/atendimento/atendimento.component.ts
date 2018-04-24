@@ -11,6 +11,6 @@ export class AtendimentoComponet {
   atividade: AtividadeI;
 
 
-  constructor( ) { }
+  constructor() {  }
 
 }

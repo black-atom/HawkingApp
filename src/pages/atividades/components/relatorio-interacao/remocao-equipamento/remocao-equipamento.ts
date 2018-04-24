@@ -1,4 +1,4 @@
-import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -16,7 +16,9 @@ export class RemocaoEquipamentoComponent implements OnInit {
     private fb: FormBuilder,
   ) { }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.showInput = Boolean(this.remocaoEquipamentoForm);
+  }
 
   equipamentoControl() {
     return this.fb.group({

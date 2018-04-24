@@ -1,0 +1,32 @@
+<img src="assets/icon/form.svg" alt="icon-form">
+
+<h1>Dados do Cliente</h1>
+
+<ion-content>
+
+  <div class="form-client">
+    <ion-list [formGroup]="responsavelForm">
+      <ion-item>
+        <ion-label stacked>Nome Completo</ion-label>
+        <ion-input type="text" value="" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Rg ou Cpf</ion-label>
+        <ion-input type="number" formControlName="documento_id"></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>
+
+ <ion-footer fixed>
+  <ion-buttons end>
+    <button ion-button large
+      color="primary"
+        (click)="openAssinatura(responsavelForm.valid, responsavelForm.value)"
+        clear>Avançar</button>
+  </ion-buttons>
+ </ion-footer>
+
+

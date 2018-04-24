@@ -1,13 +1,16 @@
-<ion-card [formGroup]="treinamentoForm">
+<ion-card>
   <ion-card-header>
     <ion-item>
       <ion-label> Houve treinamento ?</ion-label>
-      <ion-toggle [(ngModel)]="showInput" [ngModelOptions]="{standalone: true}">
+      <ion-toggle [(ngModel)]="showInput" [ngModelOptions]="{standalone: true}" (ionChange)='addTreinamento()'>
       </ion-toggle>
     </ion-item>
   </ion-card-header>
 
-  <ion-card-content *ngIf="showInput">
+  <ion-card-content
+    *ngIf="showInput && treinamentoForm"
+    [formGroup]="treinamentoForm"
+  >
 
     <ion-item>
       <ion-label>Software</ion-label>
@@ -27,9 +30,9 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-label color="primary" stacked> Caminho da rede </ion-label>
       <ion-input formControlName="caminho_rede" type="text" placeholder="Digite o caminho da rede."></ion-input>
-    </ion-item>
+    </ion-item> -->
   </ion-card-content>
 </ion-card>

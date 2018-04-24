@@ -1,19 +1,26 @@
-import { getAtividadesPendentes, getAtividadesEmExecucao, getAtividadesConcluidas } from './../../redux/reducers/atividade.reduce';
+import {
+  getAtividadesPendentes,
+  getAtividadesEmExecucao,
+  getAtividadesConcluidas,
+  getAtividadesPausadas,
+} from './../../redux/reducers/atividade.reduce';
 import { Component } from '@angular/core';
-import { PopoverController } from 'ionic-angular';
+import {
+  PopoverController,
+  AlertController,
+} from 'ionic-angular';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 
-import { Atendimento, AtividadeI } from '../../models';
+import { AtividadeI } from '../../models';
 import { State } from '../../redux/reducers';
 
 import {
   RetriveAtendimento,
-  atendimentosPendentes,
-  atendimentosEmAndamento,
 } from '../../redux/reducers/atendimento.reducer';
 
 import { buttonProperties } from '../../utils/ButtonProperties';
+import { PopoverComponent } from './../../components/popover/popover.component';
 
 
 @Component({
@@ -35,11 +42,13 @@ export class AtividadesPage {
 
   constructor(
     public popoverCtrl: PopoverController,
+    public alertCtrl: AlertController,
     private store: Store<State>,
   ) {
     this.atividadesPendentes$ = this.store.select(getAtividadesPendentes);
     this.atividadesEmExecucao$ = this.store.select(getAtividadesEmExecucao);
     this.atividadesConcluidas$ = this.store.select(getAtividadesConcluidas);
+    this.atividadesPausadas$ = this.store.select(getAtividadesPausadas);
   }
 
   ionViewDidLoad() {
@@ -50,4 +59,28 @@ export class AtividadesPage {
     this.store.dispatch(new RetriveAtendimento());
   }
 
+  presentPopover(totalExecucao) {
+    totalExecucao > 0 ? this.showAlert() : this.showPopOver();
+  }
+
+
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Atenção!',
+      // tslint:disable-next-line:max-line-length
+      subTitle: 'Para iniciar uma nova atividade é necessário finalizar ou pausar a atividade em execução!',
+      buttons: ['OK'],
+    });
+    alert.present();
+  }
+
+  showPopOver() {
+    const options = { cssClass : 'atividade-modal' };
+    const popover = this.popoverCtrl.create(
+      PopoverComponent,
+      { buttonProperties },
+      options,
+    );
+    popover.present();
+  }
 }

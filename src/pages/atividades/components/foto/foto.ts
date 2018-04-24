@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs/Rx';
 import { AddFoto, getAllFotos } from './../../../../redux/reducers/foto.reducer';
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, normalizeURL } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Store } from '@ngrx/store';
 import { State } from '../../../../redux/reducers';
 import { Foto } from '../../../../models';
-import { File, DirectoryEntry, FileEntry } from '@ionic-native/file';
+import { File, FileEntry } from '@ionic-native/file';
 import { DomSanitizer } from '@angular/platform-browser';
 
 

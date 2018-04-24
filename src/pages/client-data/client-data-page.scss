@@ -1,0 +1,11 @@
+client-data-page {
+  ion-slide {
+    .slide-zoom {
+      height: calc(100vh - 143px);
+      overflow-y: auto;
+    }
+  }
+  .preview {
+    background-color: #fff !important;
+  }
+}

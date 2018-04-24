@@ -1,0 +1,20 @@
+assinatura {
+  signature-pad {
+    canvas {
+      border: solid 1px #cccccc !important;
+      border-radius: 5px;
+    }
+  }
+
+  ion-slide {
+    .slide-zoom {
+      height: calc(100vh - 143px);
+      overflow-y: auto;
+    }
+  }
+
+  .buttons {
+    display: flex;
+  }
+}
+

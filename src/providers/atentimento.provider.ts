@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import { AuthHttp } from 'angular2-jwt';
 
 import { Store } from '@ngrx/store';
 
@@ -35,6 +34,17 @@ export class AtendimentoProvider {
       return this.http.get<[Atendimento]>(this.url, { params: { ...query } })
       .catch(this.lidaComErro);
     });
+  }
+
+  syncAtendimentos(atendimentos: Atendimento[]) {
+    return this.http.patch<Atendimento[]>(this.url, atendimentos)
+      .catch(this.lidaComErro);
+  }
+
+  public enviarAssinatura(assinatura: Assinatura): Observable<Assinatura> {
+    return this.http
+      .post<Assinatura>(`${this.url}/${assinatura.atendimentoID}/assinaturas`, assinatura)
+      .catch(this.lidaComErro);
   }
 
   lidaComErro(erro: Response | any) {

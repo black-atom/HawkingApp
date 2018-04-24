@@ -1,26 +1,27 @@
-<ion-card [formGroup]="faturamentoForm">
+<ion-card>
 
   <ion-card-header>
     <ion-item>
       <ion-label> Faturamento </ion-label>
-      <ion-toggle [(ngModel)]="showInputFaturamento" [ngModelOptions]="{standalone: true}"></ion-toggle>
+      <ion-toggle [(ngModel)]="showInputFaturamento" [ngModelOptions]="{standalone: true}" (ionChange)='addFaturamento()'></ion-toggle>
     </ion-item>
   </ion-card-header>
 
-  <div *ngIf="showInputFaturamento">
+  <div *ngIf="faturamentoForm" [formGroup]="faturamentoForm">
     <ion-card-content>
-      <ion-item text-wrap>
-        <p>Cliente: {{ dadosCliente.atendimento.cliente.nome_razao_social | uppercase }}</p>
-        <p>Cnpj/Cpf: {{ dadosCliente.atendimento.cliente.cnpj_cpf }}</p>
-      </ion-item>
+      <!-- <ion-item text-wrap>
+        <p>Cliente: {{ atendimento.cliente.nome_razao_social | uppercase }}</p>
+        <p>Cnpj/Cpf: {{ atendimento.cliente.cnpj_cpf }}</p>
+      </ion-item> -->
 
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-label> Outro Cnpj? </ion-label>
         <ion-toggle [(ngModel)]="showInput" [ngModelOptions]="{standalone: true}"></ion-toggle>
-      </ion-item>
+      </ion-item> -->
 
-      <div *ngIf="showInput">
+      <!-- <div *ngIf="showInput"> -->
+      <div>
         <ion-item>
           <ion-label color="primary" stacked> CNPJ </ion-label>
           <ion-input formControlName="cnpj" type="number" placeholder="00.000.000/0000-00"></ion-input>
@@ -44,10 +45,10 @@
         <ion-toggle [(ngModel)]="showFaturamento" [ngModelOptions]="{standalone: true}" (ionChange)="addEquipamento()"></ion-toggle>
       </ion-item>
 
-      <div *ngIf="showFaturamento">
+      <div *ngIf="faturamentoForm.controls['equipamentos']">
 
         <equipamento-faturamento
-          *ngFor="let equipamento of faturamentoForm.controls['equipamentos_com_troca_de_peca'].controls; index as i"
+          *ngFor="let equipamento of faturamentoForm.controls['equipamentos'].controls; index as i"
           [equipamentoForm]="equipamento"
           (removeEquipamentoEmitter)="removeEquipamento(i)"
         >

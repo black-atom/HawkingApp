@@ -7,7 +7,7 @@ import { SideMenuComponent } from './sidemenu/sidemenu.component';
 import { TimeLine } from './time-line/time-line';
 import { ToolBarActions } from './tool-bar-actions/tool-bar-actions';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { PopoverComponent } from './popover/popover.component';
 
 
 @NgModule({
@@ -18,11 +18,13 @@ import { NavbarComponent } from './navbar/navbar.component';
   declarations: [
     NavbarComponent,
     SideMenuComponent,
+    PopoverComponent,
     TimeLine,
     ToolBarActions,
   ],
   entryComponents: [
     NavbarComponent,
+    PopoverComponent,
     TimeLine,
     ToolBarActions,
   ],
@@ -30,6 +32,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     AtividadeDetailModule,
     NavbarComponent,
     SideMenuComponent,
+    PopoverComponent,
     TimeLine,
     ToolBarActions,
   ],

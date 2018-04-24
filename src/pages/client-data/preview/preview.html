@@ -1,0 +1,66 @@
+<ion-list *ngIf='relatorio'>
+
+  <ion-item no-lines class="top-item">
+    <h1>Dados Preenchido pelo Técnico</h1>
+  </ion-item>
+
+   <ion-item text-wrap *ngIf="relatorio?.resumo_atendimento">
+    <h2>Relatório do atendimento</h2>
+    <p><strong>{{ relatorio?.resumo_atendimento }}</strong></p>
+  </ion-item>
+
+  <ion-item text-wrap *ngIf="relatorio?.motivo_retorno">
+    <h2>Retorna ao Local?</h2>
+    <p><strong>{{ relatorio?.motivo_retorno }}</strong></p>
+  </ion-item>
+
+  <ion-item text-wrap *ngIf="relatorio?.treinamento?.software">
+    <h2>Treinamento Software {{ relatorio?.treinamento?.software }} </h2>
+    <hr>
+    <h3>Os tópicos ensinado no treinamento</h3>
+    <ul>
+      <li *ngFor="let topico of relatorio?.treinamento?.topicos">{{ topico }}</li>
+    </ul>
+  </ion-item>
+
+  <ion-item text-wrap *ngIf="relatorio?.equipamentos_retirados.length > 0">
+    <h2>Equipamento(s) retirado(s)</h2>
+    <hr>
+    <div *ngFor="let equipamento of relatorio?.equipamentos_retirados">
+      <p><strong>{{ equipamento?.modelo_equipamento }} N. {{ equipamento?.numero_equipamento }}</strong></p>
+      <hr>
+      <h5>Itens retirado</h5>
+
+      <ul>
+        <li *ngFor="let item of equipamento?.itens"> {{ item.descricao }} - {{ item.quantidade }} un</li>
+      </ul>
+    </div>
+  </ion-item>
+
+  <ion-item text-wrap *ngIf="relatorio?.faturamento?.equipamentos.length > 0">
+    <h2>Dados de Faturamento</h2>
+    <hr>
+    <p *ngIf="relatorio?.faturamento.cnpj">Cnpj: {{ relatorio?.faturamento.cnpj }}</p>
+    <p *ngIf="relatorio?.faturamento.razao_social">Razão Social: {{ relatorio?.faturamento.razao_social }}</p>
+    <p *ngIf="relatorio?.faturamento.email">E-mail: {{ relatorio?.faturamento.email }}</p>
+
+    <div *ngFor="let equipamento of relatorio?.faturamento.equipamentos">
+      <p><strong>{{ equipamento?.modelo_equipamento }} N. {{ equipamento?.numero_equipamento }}</strong></p>
+      <hr>
+      <h5>Peça que foram utilizadas no reparo do equipamento de numero {{ equipamento?.numero_equipamento }}</h5>
+      <ul>
+        <li *ngFor="let peca of equipamento?.pecas"> {{ peca?.descricao}} - ({{ peca?.quantidade}} un x R$  {{ peca?.preco}}) = R$ {{ peca?.quantidade * peca?.preco }} </li>
+      </ul>
+    </div>
+  </ion-item>
+
+</ion-list>
+
+
+<ion-footer fixed>
+  <ion-buttons end>
+    <button ion-button large
+      (click)="emitNextEvent()"
+      color="primary" clear>Avançar</button>
+  </ion-buttons>
+ </ion-footer>

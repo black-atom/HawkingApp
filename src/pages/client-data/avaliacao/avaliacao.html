@@ -1,0 +1,29 @@
+<h2>Avalie nosso atendimento!</h2>
+<ion-buttons>
+  <button ion-button icon-only large (click)="evaluate(1)" color="primary" clear>
+    <ion-icon color="primary" name="{{ changeStyle(1) }}"></ion-icon>
+  </button>
+  <button ion-button icon-only large (click)="evaluate(2)" color="primary" clear>
+    <ion-icon color="primary" name="{{ changeStyle(2) }}"></ion-icon>
+  </button>
+  <button ion-button icon-only large (click)="evaluate(3)" color="primary" clear>
+    <ion-icon color="primary" name="{{ changeStyle(3) }}"></ion-icon>
+  </button>
+  <button ion-button icon-only large (click)="evaluate(4)" color="primary" clear>
+    <ion-icon color="primary" name="{{ changeStyle(4) }}"></ion-icon>
+  </button>
+  <button ion-button icon-only large (click)="evaluate(5)" color="primary" clear>
+    <ion-icon color="primary" name="{{ changeStyle(5) }}"></ion-icon>
+  </button>
+</ion-buttons>
+
+
+<div class="buttons">
+  <ion-buttons>
+    <button style="width: 200px" ion-button large color="primary" (click)="avaliar()" >Avaliar</button>
+  </ion-buttons>
+  <ion-buttons>
+    <button ion-button color="danger" (click)="close()" >Não Avaliar</button>
+  </ion-buttons>
+</div>
+

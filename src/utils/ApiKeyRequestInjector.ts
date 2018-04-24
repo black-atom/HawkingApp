@@ -1,4 +1,4 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs/Observable';

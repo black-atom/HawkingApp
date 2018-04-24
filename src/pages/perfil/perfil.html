@@ -2,22 +2,22 @@
   <navbar [titlePage]="title"></navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="user$ | async; let user">
   <ion-avatar item-start>
-      <img src="assets/icon/user.svg">
+      <img src="{{ user.foto_url }}" onerror="this.src='assets/icon/user.svg'">
   </ion-avatar>
-  <h3>Felipe Francischetto</h3>
+  <h3>{{ user.nome | uppercase }}</h3>
    <div padding>
-     <label>RG</label>
-    <p>43.43.4.5-3</p>
+     <label>Função</label>
+    <p>Técnico Externo</p>
     <hr>
-    <label>Email</label>
-    <p>testes@teste.com</p>
+    <label>RG</label>
+    <p>{{ user.rg }}</p>
     <hr>
-    <label>Celular</label>
-    <p>9823-3244 </p>
+    <label>Empresa</label>
+    <p>RealPonto Comércio e Serviço de Relógio de Ponto</p>
     <hr>
     <label>Telefone</label>
-    <p>4342-0099</p>
+    <p>4332-4040</p>
   </div>
 </ion-content>

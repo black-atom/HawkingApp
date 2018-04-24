@@ -1,18 +1,22 @@
 <ion-list>
-
-  <ion-item no-lines>
-    <h3>Informações da Atividade</h3>
-  </ion-item>
-
   <ion-item text-wrap>
-    <h4>{{ atividade.status | uppercase }}</h4>
-    <h5>{{ atividade.tipo }}</h5>
+    <h2>Time-line dos eventos</h2>
   </ion-item>
-
   <ion-item text-wrap>
-    <h2>Logs</h2>
-    <p *ngFor="let monitoramento of atividade.monitoramento">{{ monitoramento | json }}</p>
-  </ion-item>
+    <div class="timeline">
+      <div class="entry" *ngFor="let monitoramento of atividade?.monitoramentos">
+        <div class="title">
+          <h3>{{ monitoramento.date | date: 'HH:mm' }}</h3>
+        </div>
+        <div class="body">
+          <p>Status</p>
+          <ul>
+            <li>{{ monitoramento.status }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
+  </ion-item>
 </ion-list>
 

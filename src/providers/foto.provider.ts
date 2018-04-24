@@ -4,9 +4,8 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { File, FileEntry, IFile } from '@ionic-native/file';
 
-import { Atendimento, Foto } from './../models';
+import { Foto } from './../models';
 import api from '../app/api';
-import { State } from '../redux/reducers';
 
 
 @Injectable()
@@ -49,7 +48,7 @@ export class FotoProvider {
   }
 
   handleError(error: Response | any) {
-    console.error('error',JSON.stringify(error))
+    console.error('error',JSON.stringify(error));
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json();

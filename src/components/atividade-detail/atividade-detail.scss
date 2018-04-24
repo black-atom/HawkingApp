@@ -32,6 +32,15 @@ atividade-detail {
         width: 100%;
       }
     }
+    div.segments-custom {
+      background-color: #FFFFFF !important;
+      margin: 20% 0 0 0 !important;
+      padding: 0 !important;
+    }
+    div.input-wrapper {
+      background-color: #FFFFFF !important;
+
+    }
   }
 
   ion-content {
@@ -53,15 +62,33 @@ atividade-detail {
     width: 80px;
     height: 80px;
     border-radius: 50px !important;
-    box-shadow: 2px 2px rgb(160, 160, 160);
+    box-shadow: 2px 2px rgb(216, 216, 216);
     padding: 15px;
+    transition: 1s;
   }
-  ion-segment {
-    background-color: #FFFFFF !important;
-    margin-top: 12.7% !important;
+
+  .photo:active {
+    box-shadow: 2px 2px 15px rgb(34, 34, 34);
+    background-color:  rgb(160, 160, 160);
   }
 
   ion-list {
-    margin-top: 10% !important;
+    margin-top: 20% !important;
+  }
+  .atividade-info {
+    margin-top: 25px;
+    text-align: center;
+  }
+  .atividade-info img {
+    width: 200px;
+    height: 200px;
+  }
+  .atividade-info h3 {
+    color: rgb(160, 160, 160);
+    font-weight: bold;
+  }
+  button.action {
+    background-color: transparent !important;
+    border: none !important;
   }
 }

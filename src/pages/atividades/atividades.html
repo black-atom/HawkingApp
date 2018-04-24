@@ -14,5 +14,12 @@
     <grupo-atividades [classGroup]="'concluido'" [title]='"Concluído"' [atividades]='atividadesConcluidas$ | async' [collapse]="false"></grupo-atividades>
   </ion-item-group>
 
+  <ion-fab *ngIf="atividadesEmExecucao$ | async as atividade" right bottom >
+    <button ion-fab color="primary" (click)="presentPopover(atividade.length)">
+      <ion-icon name="add">
+      </ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
 
