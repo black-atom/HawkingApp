@@ -1,9 +1,3 @@
-import { FinalizaAtividade } from './../../redux/reducers/atividade.reduce';
-import {
-  SaveAtendimentoAssinatura,
-  SaveAvaliacao,
-} from './../../redux/reducers/atendimento.reducer';
-import { AtividadeI } from './../../models/atividade';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonicPage, Slides, NavParams, ViewController } from 'ionic-angular';
 import { State } from '../../redux/reducers';
@@ -11,6 +5,13 @@ import { Store } from '@ngrx/store';
 import { Assinatura } from '../../models';
 import { AddAssinatura } from '../../redux/reducers/assinatura.reducer';
 import { Avaliacao } from '../../models/atendimento';
+import { AddAssinaturaInfo } from './../../redux/reducers/assinatura.reducer';
+import { FinalizaAtividade } from './../../redux/reducers/atividade.reduce';
+import {
+  SaveAtendimentoAssinatura,
+  SaveAvaliacao,
+} from './../../redux/reducers/atendimento.reducer';
+import { AtividadeI } from './../../models/atividade';
 
 @Component({
   selector: 'client-data-page',
@@ -46,7 +47,9 @@ export class ClientDataPage implements OnInit {
   }
 
   saveAtendimentoAssinatura(clienteData) {
-    this.store.dispatch(new SaveAtendimentoAssinatura(this.atividade.atendimento_id, clienteData));
+    this.store.dispatch(new AddAssinaturaInfo(
+      { ...clienteData, atendimentoID: this.atividade.atendimento_id },
+    ));
   }
 
   saveAssinaturaBase64(assinaturaBase64) {
