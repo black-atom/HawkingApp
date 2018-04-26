@@ -37,7 +37,13 @@ export class AtendimentoProvider {
   }
 
   syncAtendimentos(atendimentos: Atendimento[]) {
-    return this.http.patch<Atendimento[]>(this.url, atendimentos)
+    const atendimentosFormmated = atendimentos.map((atendimento) => {
+      delete atendimento.imagens;
+      delete atendimento.assinatura;
+      return atendimento;
+    });
+
+    return this.http.patch<Atendimento[]>(this.url, atendimentosFormmated)
       .catch(this.lidaComErro);
   }
 

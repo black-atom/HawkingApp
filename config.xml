@@ -3,7 +3,7 @@
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://192.168.0.162:8100" />
     <access origin="file:///*" />
     <access origin="cdvfile://*" />
     <allow-navigation href="file:///*/*" />
@@ -96,6 +96,7 @@
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^4.2.0" />
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
+    <allow-navigation href="http://192.168.0.162:8100" />
     <engine name="android" spec="6.4.0" />
     <engine name="browser" spec="5.0.3" />
 </widget>
