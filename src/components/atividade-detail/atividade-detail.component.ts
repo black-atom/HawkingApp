@@ -7,10 +7,6 @@ import {
   PopoverController,
 } from 'ionic-angular';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
-
-import {
-  RelatorioInteracaoPage,
-} from '../../pages/atividades/components/relatorio-interacao/relatorio-interacao.component';
 import { State } from '../../redux/reducers';
 import { Store } from '@ngrx/store';
 import {
