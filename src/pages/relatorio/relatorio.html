@@ -1,0 +1,60 @@
+<ion-content>
+  <ul class="form-menu">
+    <li [class.active]="activeFormIndex === 0" (click)="handleFormMenuClick(0)">
+      Treinamento
+    </li>
+    <li [class.active]="activeFormIndex === 1" (click)="handleFormMenuClick(1)">
+        Remocao de Equipamento
+    </li>
+    <li [class.active]="activeFormIndex === 2" (click)="handleFormMenuClick(2)">
+          Faturamento
+    </li>
+    <li [class.active]="activeFormIndex === 3" (click)="handleFormMenuClick(3)">
+          Resumo
+    </li>
+  </ul>
+  <div class="forms-content">
+    <div class="form-slides">
+        <ion-slides (ionSlideDidChange)='ionSlideDidChange()' pager paginationType="progress">
+            <ion-slide>
+              <form-treinamento
+                *ngIf="activeFormIndex === 0"
+                [initialData]="treinamentoData"
+                (change)="formChange($event)">
+              </form-treinamento>
+            </ion-slide>
+            <ion-slide>
+              <form-equipamentos-retirados
+                *ngIf="activeFormIndex === 1"
+                [initialData]="equipamentosRetiradosData"
+                (change)="formChange($event)">
+              </form-equipamentos-retirados>
+            </ion-slide>
+            <ion-slide>
+              <form-faturamento
+                *ngIf="activeFormIndex === 2"
+                [initialData]="faturamentoData"
+                (change)="formChange($event)">
+              </form-faturamento>
+            </ion-slide>
+            <ion-slide>
+              <form-resumo
+                *ngIf="activeFormIndex === 3"
+                [initialData]="resumoData"
+                (change)="formChange($event)">
+              </form-resumo>
+            </ion-slide>
+          </ion-slides>
+    </div>
+    <div class="action-buttons">
+      <button ion-button icon-left *ngIf="!beginning" (click)='previous()'>
+        <ion-icon name="arrow-round-back"></ion-icon>
+        Salvar e Voltar
+      </button>
+      <button ion-button icon-right *ngIf="!end" (click)='next()'>
+          Salvar e Proseguir
+          <ion-icon name="arrow-round-forward"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-content>

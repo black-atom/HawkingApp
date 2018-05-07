@@ -1,0 +1,14 @@
+<form>
+  <equipamento
+    *ngFor="let equipamento of form.controls; index as i"
+    [equipamentoForm]="equipamento"
+    (removeEquipamentoEmitter)="removeEquipamento(i)"
+  >
+  </equipamento>
+
+  <ion-item text-right>
+    <button ion-button outline only-icon (click)="addEquipamento()">
+      <ion-icon name="add" large> Adicionar Equipamento</ion-icon>
+    </button>
+  </ion-item>
+</form>

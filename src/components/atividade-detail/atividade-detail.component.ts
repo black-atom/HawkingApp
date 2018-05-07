@@ -182,7 +182,7 @@ export class AtividadeDetail implements OnInit, OnDestroy{
   }
 
   openRelatorioInteracaoPage(atividade) {
-    this.navCtrl.push(RelatorioInteracaoPage, { atividade });
+    this.navCtrl.push('RelatorioPage', { atividade });
   }
 
   showPrompt({ title, message, name, type }) {

@@ -1,0 +1,54 @@
+page-relatorio {
+
+  .form-menu {
+    display: flex;
+    max-height: 150px;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0px;
+
+    li {
+      list-style: none;
+      background-color: color($colors, secondary);
+      height: 100px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+      flex-basis: 0;
+      margin: 2px;
+      flex-wrap: wrap-reverse;
+      text-align: center;
+      padding: 2px;
+      color: white;
+    }
+
+    .active {
+      background-color: color($colors, primary);
+    }
+  }
+
+  .slide-zoom {
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  .forms-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: calc(100vh - 120px);
+  }
+
+  .form-slides {
+    flex: 1;
+  }
+
+  .action-buttons {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
