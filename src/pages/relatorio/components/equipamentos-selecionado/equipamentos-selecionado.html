@@ -1,0 +1,35 @@
+<!--
+  Generated template for the EquipamentosSelecionadoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{ equipmentsType | uppercase }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content>
+    <ion-grid>
+       <ion-row>
+
+         <ion-col col-6 *ngFor="let equipamento of equipamentos">
+             <div class="photo">
+               <img src="/assets/imgs/equipamentos/relogios/{{equipamento.foto}}" alt="">
+                 <div class="header">
+                   <h6>{{ equipamento.descricao }}</h6>
+                   <button class="btn" (click)="navPageDetail(equipamento)">
+                     <ion-icon name="add"></ion-icon>
+                   </button>
+               </div>
+             </div>
+         </ion-col>
+
+       </ion-row>
+     </ion-grid>
+ </ion-content>

@@ -1,7 +1,9 @@
+import { NavController } from 'ionic-angular';
 import { EquipamentoComponent } from './equipamento/equipamento';
 import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
+import { CategoriasPage } from './../categorias/categorias';
 
 @Component({
   selector: 'form-equipamentos-retirados',
@@ -18,8 +20,11 @@ export class FormEquipamentosRetiradosComponent  implements OnInit, OnDestroy{
   @Output()
   change = new EventEmitter();
 
+  page = CategoriasPage;
+
   constructor(
     private fb: FormBuilder,
+    public navCtrl: NavController,
   ) {}
 
   ngOnInit(): void {
@@ -76,4 +81,10 @@ export class FormEquipamentosRetiradosComponent  implements OnInit, OnDestroy{
   ngOnDestroy(){
     this.subscription.unsubscribe();
   }
+
+  navPageDetail() {
+    this.navCtrl.push(this.page);
+  }
+
+
 }

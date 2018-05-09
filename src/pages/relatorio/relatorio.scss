@@ -3,33 +3,38 @@ page-relatorio {
   .form-menu {
     display: flex;
     max-height: 150px;
-    justify-content: space-between;
-    margin: 0px;
-    padding: 0px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0px;
 
     li {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.4em;
       list-style: none;
-      background-color: color($colors, secondary);
-      height: 100px;
-      align-items: center;
-      display: flex;
       justify-content: center;
-      flex-grow: 1;
-      flex-basis: 0;
-      margin: 2px;
-      flex-wrap: wrap-reverse;
       text-align: center;
       padding: 2px;
       color: white;
     }
 
+    li ion-icon {
+      color: #40B0EC;
+      text-shadow: none;
+    }
+
+    .active ion-icon {
+      color: #9CFF90;
+      text-shadow: 0 0 10px #31ED68, 0 0 5px green;
+      font-weight: 800;
+    }
     .active {
-      background-color: color($colors, primary);
+      // background-color: color($colors, primary);
     }
   }
 
   .slide-zoom {
-    padding: 20px;
+    margin-top: 4%;
+    padding: 10px;
     overflow-y: auto;
     height: 100%;
   }
@@ -51,4 +56,24 @@ page-relatorio {
     justify-content: space-between;
     flex-direction: row;
   }
+
+  ion-header {
+    background: #40B0EC;
+  }
+  .client-info {
+    color: #fff;
+    padding: 16px;
+  }
+  .client-info h5  {
+    color: #eee;
+  }
+
+  .step ion-icon {
+    height: 35px;
+    width: 35px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 1.5em;
+  }
+
 }
