@@ -8,8 +8,6 @@
   </div>
   <br/>
 
-  <br/>
-
   <ul class="form-menu">
     <li [class.active]="activeFormIndex === 0" (click)="handleFormMenuClick(0)">
       Treinamento &nbsp; <ion-icon name="md-checkmark"></ion-icon>
@@ -59,15 +57,19 @@
             </ion-slide>
           </ion-slides>
     </div>
-    <div class="action-buttons">
-      <button ion-button icon-left *ngIf="!beginning" (click)='previous()'>
-        <ion-icon name="arrow-round-back"></ion-icon>
-        Salvar e Voltar
-      </button>
-      <button ion-button icon-right *ngIf="!end" (click)='next()'>
-          Salvar e Proseguir
-          <ion-icon name="arrow-round-forward"></ion-icon>
-      </button>
-    </div>
   </div>
 </ion-content>
+
+
+<ion-footer>
+  <div class="action-buttons">
+    <button ion-button icon-left *ngIf="!beginning" (click)='previous()'>
+      <ion-icon name="arrow-round-back"></ion-icon>
+      Anterior
+    </button>
+    <button ion-button icon-right *ngIf="!end" (click)='next()'>
+      Próximo
+      <ion-icon name="arrow-round-forward"></ion-icon>
+    </button>
+  </div>
+</ion-footer>
