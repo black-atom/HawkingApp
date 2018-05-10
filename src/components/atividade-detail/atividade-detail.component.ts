@@ -145,7 +145,7 @@ export class AtividadeDetail implements OnInit, OnDestroy{
   }
 
   inicializaDeslocamento() {
-    const message = 'Descolamento iniciado com sucesso!';
+    const message = 'Deslocamento iniciado com sucesso!';
 
     if (
       (this.atividadeTipo && this.atividadeTipo !== 'outros') ||
@@ -160,7 +160,7 @@ export class AtividadeDetail implements OnInit, OnDestroy{
   }
 
   finalizaDeslocamento() {
-    const message = 'Descolamento finalizado com sucesso!';
+    const message = 'Deslocamento finalizado com sucesso!';
     this.store.dispatch(new FinalizaDeslocamento(this.atividadeID));
     this.presentToast(message);
   }
