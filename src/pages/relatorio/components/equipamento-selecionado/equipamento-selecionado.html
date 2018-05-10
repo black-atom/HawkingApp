@@ -15,7 +15,7 @@
         </ion-col>
         <ion-col col-6>
           <div class="photo">
-            <img src="/assets/imgs/equipamentos/relogios/{{ equipamentoSelecionado.foto }}" alt="">
+            <img src="assets/imgs/equipamentos/relogios/{{ equipamentoSelecionado.foto }}" alt="">
           </div>
         </ion-col>
         <ion-col col-6>
@@ -31,7 +31,7 @@
           <p>Modelo:</p>
           <div class="models-equipament">
             <ion-row>
-              <ion-col col-2  *ngFor="let modelo of equipamentoSelecionado.modelos">
+              <ion-col col-3 *ngFor="let modelo of equipamentoSelecionado.modelos">
                 <button class="model"
                 (click)="setModelEquipments(modelo)">{{ modelo }}</button>
               </ion-col>
@@ -83,7 +83,7 @@
                   <div class="btn-remove" (click)="deleteItem(i)">
                     <ion-icon name="close"></ion-icon>
                   </div>
-                  <img src="/assets/imgs/pecas/{{ formEquipment.value.pecas[i].foto }}">
+                  <img src="assets/imgs/pecas/{{ formEquipment.value.pecas[i].foto }}">
                </div>
               <div>
                 <p>{{ formEquipment.value.pecas[i].descricao }}</p>
