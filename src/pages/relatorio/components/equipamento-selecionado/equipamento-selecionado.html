@@ -8,8 +8,16 @@
 
 
   <ion-content>
+
+    <pre>
+      {{ formEquipment.value | json }}
+    </pre>
+    <pre>
+      {{ formEquipment.status | json }}
+    </pre>
+
     <ion-grid>
-      <ion-row>
+      <ion-row [formGroup]="formEquipment">
         <ion-col col-12>
           <h4>{{ equipamentoSelecionado.descricao }} {{ model }} - {{ numberEquipments }}</h4>
         </ion-col>
@@ -21,7 +29,12 @@
         <ion-col col-6>
           <div class="number-equipments">
             <label for="">N. Serie</label>
-            <input type="text" [(ngModel)]="numberEquipments">
+            <input type="text" [(ngModel)]="numberEquipments" formControlName="numero_equipamento">
+            <small class="text-danger"
+              *ngIf="formEquipment.get('numero_equipamento').hasError('required') && formEquipment.get('numero_equipamento').touched">
+              <ion-icon name="close"></ion-icon>
+              Campo requerido!
+            </small>
           </div>
           <p>Modelo:</p>
           <div class="models-equipament">
@@ -30,6 +43,13 @@
                 <button class="model"
                 (click)="setModelEquipments(modelo)">{{ modelo }}</button>
               </ion-col>
+              <ion-col col-12>
+                <small class="text-danger"
+                *ngIf="formEquipment.get('modelo_equipamento').hasError('required') && formEquipment.touched">
+                  <ion-icon name="close"></ion-icon>
+                  Selecione um modelo!
+                </small>
+              </ion-col>
             </ion-row>
           </div>
         </ion-col>
@@ -37,11 +57,21 @@
         <ion-col col-12>
           <div class="input-text-equipments">
             <label for="">Problema</label>
-            <input type="text">
+            <input type="text" formControlName="problema">
+            <small class="text-danger"
+            *ngIf="formEquipment.get('problema').hasError('required') && formEquipment.get('problema').touched">
+              <ion-icon name="close"></ion-icon>
+              Campo requerido!
+            </small>
           </div>
           <div class="input-text-equipments">
             <label for="">Testes Efetuados</label>
-            <input type="text">
+            <input type="text" formControlName="testes_efetuados">
+            <small class="text-danger"
+            *ngIf="formEquipment.get('testes_efetuados').hasError('required') && formEquipment.get('testes_efetuados').touched">
+              <ion-icon name="close"></ion-icon>
+              Campo requerido!
+            </small>
           </div>
         </ion-col>
 
@@ -54,22 +84,22 @@
           </div>
         </ion-col>
 
-        <div class="item">
+        <div class="item" formArrayName="pecas">
           <ul>
-            <li *ngFor="let peca of pecasSelecionadas">
+            <li *ngFor="let peca of formEquipment.controls['pecas'].controls; let i=index" formGroupName="{{i}}">
                <div class="remove-item">
-                  <div class="btn-remove" (click)="deleteItem(peca)">
+                  <div class="btn-remove" (click)="deleteItem(i)">
                     <ion-icon name="close"></ion-icon>
                   </div>
-                  <img src="/assets/imgs/pecas/{{peca.foto}}">
+                  <img src="/assets/imgs/pecas/{{ formEquipment.value.pecas[i].foto }}">
                </div>
               <div>
-                <p>{{peca.descricao}}</p>
+                <p>{{ formEquipment.value.pecas[i].descricao }}</p>
               </div>
               <div class="quantity">
-                <ion-icon name="remove" (click)="modifyQuantity(peca, 'remove')"></ion-icon>
-                  un {{ peca.quantidade }}
-                <ion-icon name="add" (click)="modifyQuantity(peca, 'add')"></ion-icon>
+                <ion-icon name="remove" (click)="lessQuantity(i)"></ion-icon>
+                  un {{ formEquipment.value.pecas[i].quantidade }}
+                <ion-icon name="add" (click)="moreQuantity(i)"></ion-icon>
               </div>
               </li>
             </ul>
@@ -78,3 +108,7 @@
       </ion-row>
     </ion-grid>
   </ion-content>
+
+  <ion-footer class="equipament-footer">
+    <button [disabled]="!formEquipment.valid" (click)="saveEquipment(formEquipment.value)">Salvar</button>
+  </ion-footer>

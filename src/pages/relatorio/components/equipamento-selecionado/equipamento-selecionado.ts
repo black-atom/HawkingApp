@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
+
 
 @IonicPage()
 @Component({
@@ -11,22 +13,33 @@ export class EquipamentoSelecionadoPage implements OnInit {
   public equipamentoSelecionado;
   public model: string = '';
   public numberEquipments: string = '';
-  public quantity: number = 1;
-  public pecasSelecionadas = [];
+  public formEquipment: FormGroup;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit() {
     this.equipamentoSelecionado = this.navParams.get('equipamento');
+    this.initForm();
   }
 
-
+  initForm() {
+    this.formEquipment = this.fb.group({
+      modelo_equipamento: ['', [Validators.required]],
+      numero_equipamento: ['', [Validators.required]],
+      problema: ['', [Validators.required]],
+      testes_efetuados: ['', [Validators.required]],
+      pecas: this.fb.array([]),
+    });
+  }
 
   setModelEquipments(model) {
+    const modeloEquipamento = `${this.equipamentoSelecionado.descricao} ${model}`;
+    this.formEquipment.get('modelo_equipamento').patchValue(modeloEquipamento);
     this.model = model;
   }
 
@@ -49,33 +62,54 @@ export class EquipamentoSelecionadoPage implements OnInit {
       handler: (data) => {
         const pecas = data.map((peca) => {
           const quantidade = 1;
-          return { ...peca, quantidade };
+          const control = <FormArray>this.formEquipment.controls['pecas'];
+          control.push(new FormControl({ ...peca, quantidade }));
         });
-        this.pecasSelecionadas = [...this.pecasSelecionadas, ...pecas];
       },
     });
     alert.present();
   }
 
-
-  addItem(peca) {
-    this.pecasSelecionadas = this.pecasSelecionadas
-      .map(p => (p.descricao === peca.descricao ? { ...p, quantidade: p.quantidade + 1 } :  p));
+  get pecas(): FormArray {
+    return this.formEquipment.get('pecas') as FormArray;
   }
 
-  removeItem(peca) {
-    const removeQuantidadeItem = this.pecasSelecionadas
-      .map(p => (p.descricao === peca.descricao ? { ...p, quantidade: p.quantidade + -1 } :  p));
-    this.pecasSelecionadas = removeQuantidadeItem.filter(p => p.quantidade > 0);
+  deleteItem(index) {
+    this.pecas.removeAt(index);
   }
 
-  deleteItem(peca) {
-    this.pecasSelecionadas = this.pecasSelecionadas.filter(p => p.descricao !== peca.descricao);
+  moreQuantity(index) {
+    const {
+      quantidade,
+      descricao,
+      foto ,
+    } = (<FormArray>this.formEquipment.controls['pecas']).at(index).value;
+
+    (<FormArray>this.formEquipment.controls['pecas']).at(index).patchValue({
+      descricao,
+      foto,
+      quantidade: quantidade + 1,
+    });
   }
 
-  modifyQuantity(peca, action) {
-    if (action === 'add') return this.addItem(peca);
-    return this.removeItem(peca);
+  lessQuantity(index) {
+    const {
+      quantidade,
+      descricao,
+      foto ,
+    } = (<FormArray>this.formEquipment.controls['pecas']).at(index).value;
+
+    if (quantidade > 1) {
+      (<FormArray>this.formEquipment.controls['pecas']).at(index).patchValue({
+        descricao,
+        foto,
+        quantidade: quantidade + -1,
+      });
+    }
+  }
+
+  saveEquipment(equipment) {
+    console.log('=======>', equipment);
   }
 
 }

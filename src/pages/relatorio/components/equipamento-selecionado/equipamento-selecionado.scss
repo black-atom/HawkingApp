@@ -35,11 +35,12 @@ page-equipamento-selecionado {
   button.model {
     color: #4484EF;
     font-weight: 800 !important;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border: 2px solid #4484EF;
     border-radius: 50%;
     background: transparent;
+    font-size: 1em;
   }
 
   button.model:hover {
@@ -78,7 +79,6 @@ page-equipamento-selecionado {
     width: 100%;
     padding-left: 10px;
   }
-
 
   div.add-item {
     border-top: 1px solid #ddd;
@@ -126,11 +126,11 @@ page-equipamento-selecionado {
     font-weight: 800;
   }
 
-  label, p {
+  label, p, .unit-item {
     font-size: 1.5em;
   }
 
-  .remove-item  {
+  .remove-item {
     display: flex;
     align-items: center;
   }
@@ -151,16 +151,60 @@ page-equipamento-selecionado {
   }
 
   .quantity {
-   display: flex;
-   font-size: 1.6em;
-   margin-right: 2%;
-   justify-content: space-around;
-   align-items: center;
-   width: 25%;
+    display: flex;
+    font-size: 1.6em;
+    margin-right: 2%;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
   }
-  .quantity ion-icon{
+  .quantity ion-icon {
     font-size: 1.6em;
     color: #4484EF;
     font-weight: bold;
-   }
+  }
+
+  ion-footer.equipament-footer {
+    height: 8% ;
+    padding: 20px;
+  }
+
+  ion-footer.equipament-footer button {
+    width: 100%;
+    height: 90%;
+    color: #fff;
+    font-size: 2em;
+    border-radius: 3px;
+    background: #4484EF;
+  }
+
+  ion-footer.equipament-footer button:active {
+    opacity: 0.5;
+  }
+
+  input.ng-valid span {
+    border: 1px solid green
+  }
+
+  input.ng-invalid.ng-touched span{
+    border: 1px solid red
+  }
+
+  small {
+    font-size: 1em;
+  }
+
+  .text-danger {
+    color: #DF1A1C;
+  }
+
+  .input-quantity-peca input {
+    border: none;
+    border-bottom: 1px solid #4484EF;
+    margin-left: 2%;
+    text-align: center;
+    width: 30%;
+    font-size: 1.8em;
+  }
+
 }
