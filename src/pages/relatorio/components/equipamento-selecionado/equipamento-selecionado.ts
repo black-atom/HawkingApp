@@ -57,8 +57,25 @@ export class EquipamentoSelecionadoPage implements OnInit {
     alert.present();
   }
 
-  modifyQuantity(peca, action) {
 
+  addItem(peca) {
+    this.pecasSelecionadas = this.pecasSelecionadas
+      .map(p => (p.descricao === peca.descricao ? { ...p, quantidade: p.quantidade + 1 } :  p));
+  }
+
+  removeItem(peca) {
+    const removeQuantidadeItem = this.pecasSelecionadas
+      .map(p => (p.descricao === peca.descricao ? { ...p, quantidade: p.quantidade + -1 } :  p));
+    this.pecasSelecionadas = removeQuantidadeItem.filter(p => p.quantidade > 0);
+  }
+
+  deleteItem(peca) {
+    this.pecasSelecionadas = this.pecasSelecionadas.filter(p => p.descricao !== peca.descricao);
+  }
+
+  modifyQuantity(peca, action) {
+    if (action === 'add') return this.addItem(peca);
+    return this.removeItem(peca);
   }
 
 }

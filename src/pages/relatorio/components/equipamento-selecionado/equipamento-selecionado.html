@@ -58,7 +58,7 @@
           <ul>
             <li *ngFor="let peca of pecasSelecionadas">
                <div class="remove-item">
-                  <div class="btn-remove">
+                  <div class="btn-remove" (click)="deleteItem(peca)">
                     <ion-icon name="close"></ion-icon>
                   </div>
                   <img src="/assets/imgs/pecas/{{peca.foto}}">
