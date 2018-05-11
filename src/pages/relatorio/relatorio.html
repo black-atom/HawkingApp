@@ -8,16 +8,20 @@
 
   <ul class="form-menu">
     <li [class.active]="activeFormIndex === 0" (click)="handleFormMenuClick(0)">
-      Treinamento &nbsp; <ion-icon name="md-checkmark"></ion-icon>
+      Treinamento
+      <!-- &nbsp; <ion-icon name="md-checkmark"></ion-icon> -->
     </li>
     <li [class.active]="activeFormIndex === 1" (click)="handleFormMenuClick(1)">
-      Retirar Equipamento &nbsp; <ion-icon name="md-checkmark"></ion-icon>
+      Retirar Equipamento
+      <!-- &nbsp; <ion-icon name="md-checkmark"></ion-icon> -->
     </li>
     <li [class.active]="activeFormIndex === 2" (click)="handleFormMenuClick(2)">
-      Faturamento &nbsp; <ion-icon name="md-checkmark"></ion-icon>
+      Faturamento
+      <!-- &nbsp; <ion-icon name="md-checkmark"></ion-icon> -->
     </li>
     <li [class.active]="activeFormIndex === 3" (click)="handleFormMenuClick(3)">
-      Resumo &nbsp; <ion-icon name="md-checkmark"></ion-icon>
+      Resumo
+      <!-- &nbsp; <ion-icon name="md-checkmark"></ion-icon> -->
     </li>
   </ul>
  </ion-header>
@@ -60,12 +64,15 @@
 
 <ion-footer>
   <div class="action-buttons">
-    <button ion-button icon-left *ngIf="!beginning" (click)='previous()'>
+
+    <button *ngIf="!beginning" (click)='previous()'>
       <ion-icon name="arrow-round-back"></ion-icon>
-      Anterior
+      <div>
+          Anterior
+      </div>
     </button>
-    <button ion-button icon-right *ngIf="!end" (click)='next()'>
-      Próximo
+    <button *ngIf="!end" (click)='next()'>
+      <div>Próximo</div>
       <ion-icon name="arrow-round-forward"></ion-icon>
     </button>
   </div>

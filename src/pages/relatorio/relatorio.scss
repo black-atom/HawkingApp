@@ -5,8 +5,9 @@ page-relatorio {
     justify-content: space-around;
     align-items: center;
     margin-top: 0px;
+    padding:10px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.4em;
+    font-size: 1.3em;
     color: white;
     text-align: center;
 
@@ -23,9 +24,8 @@ page-relatorio {
       text-shadow: none;
     }
 
-    .active ion-icon {
-      color: #9CFF90;
-      text-shadow: 0 0 10px #31ED68, 0 0 5px green;
+    .active  {
+      color: rgb(0, 60, 163);
       font-weight: 800;
     }
   }
@@ -56,16 +56,28 @@ page-relatorio {
     font-size: 1.5em;
   }
 
+  ion-footer button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 20%;
+    padding: 2%;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 800;
+    border-radius: 3px;
+    background: #4484EF;
+  }
+
+  ion-footer button:active {
+    opacity: 0.5;
+  }
+
   @media screen and (max-width: 600px) {
 
     ion-header {
       max-height: 40%;
     }
-
-    .content {
-     top: 3%;
-    }
-
   }
 
   @media screen and (max-width: 500px) {
@@ -113,13 +125,13 @@ page-relatorio {
 
   @media screen and (max-width: 400px) {
     .content {
-     top: 13%;
+     top: 12%;
     }
   }
 
   @media screen and (max-width: 200px) {
     .content {
-     top: 11%;
+     top: 10%;
     }
   }
 
