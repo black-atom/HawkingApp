@@ -4,9 +4,7 @@
   </ion-navbar>
   <div class="client-info">
     <h3>Digaspi comercio e Serviço de Relogio de Ponto</h3>
-    <h5>10 mai 2017 terça</h5>
   </div>
-  <br/>
 
   <ul class="form-menu">
     <li [class.active]="activeFormIndex === 0" (click)="handleFormMenuClick(0)">
@@ -23,10 +21,10 @@
     </li>
   </ul>
  </ion-header>
+
 <ion-content>
-  <div class="forms-content">
-    <div class="form-slides">
-        <ion-slides (ionSlideDidChange)='ionSlideDidChange()' pager paginationType="progress">
+  <div class="content">
+        <ion-slides (ionSlideDidChange)='ionSlideDidChange()' paginationType="progress">
             <ion-slide>
               <form-treinamento
                 *ngIf="activeFormIndex === 0"
@@ -56,7 +54,6 @@
               </form-resumo>
             </ion-slide>
           </ion-slides>
-    </div>
   </div>
 </ion-content>
 

@@ -16,30 +16,30 @@ export class RelatorioPage  implements OnInit{
   activeFormIndex = 0;
   currentFormsData = {};
 
-  get beginning(){
+  get beginning() {
     return this.slides.isBeginning();
   }
 
-  get end(){
+  get end() {
     return this.slides.isEnd();
   }
 
-  get treinamentoData(){
+  get treinamentoData() {
     return this.getFormData('treinamento');
   }
 
-  get equipamentosRetiradosData(){
+  get equipamentosRetiradosData() {
     return this.getFormData('equipamentos_retirados');
   }
 
-  get resumoData(){
+  get resumoData() {
     return {
       resumo_atendimento: this.getFormData('resumo_atendimento'),
-      motivo_retorno: this.getFormData('motivo_retorno')
+      motivo_retorno: this.getFormData('motivo_retorno'),
     };
   }
 
-  get faturamentoData(){
+  get faturamentoData() {
     return this.getFormData('faturamento');
   }
 
@@ -51,45 +51,42 @@ export class RelatorioPage  implements OnInit{
 
   }
 
-  getFormData(formName){
+  getFormData(formName) {
     return view(
       lensProp(formName),
-      this.currentFormsData
-    )
+      this.currentFormsData,
+    );
   }
 
-  ionSlideDidChange(){
-    let currentIndex = this.slides.realIndex;
-    this.activeFormIndex  = currentIndex;
+  ionSlideDidChange() {
+    const currentIndex = this.slides.realIndex;
+    this.activeFormIndex = currentIndex;
   }
 
-  handleFormMenuClick(index){
+  handleFormMenuClick(index) {
     this.activeFormIndex = index;
     this.slides.slideTo(index);
-    this.saveData();
   }
 
-  formChange({formName, formData, formValid}) {
-    if(formName && formData){
+  formChange({ formName, formData, formValid }) {
+    if (formName && formData) {
       this.currentFormsData = set(
         lensProp(formName),
         formData,
-        this.currentFormsData
+        this.currentFormsData,
       );
     }
   }
 
-  next(){
+  next() {
     this.slides.slideNext();
-    this.saveData();
   }
 
-  previous(){
+  previous() {
     this.slides.slidePrev();
-    this.saveData();
   }
 
-  saveData(){
-    console.log('saving', this.currentFormsData)
+  saveData() {
+    console.log('saving', this.currentFormsData);
   }
 }

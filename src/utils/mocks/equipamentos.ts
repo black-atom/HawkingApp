@@ -28,6 +28,7 @@ export const relogiosMock = [
       { descricao: 'Fonte', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Hexa',
@@ -42,6 +43,7 @@ export const relogiosMock = [
       { descricao: 'Fonte PQ', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Hexa Advanced',
@@ -56,6 +58,7 @@ export const relogiosMock = [
       { descricao: 'Fonte PQ', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Inner Rep Plus',
@@ -70,6 +73,7 @@ export const relogiosMock = [
       { descricao: 'Bateria 12V', foto: 'bateria-12v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Idnox',
@@ -83,6 +87,7 @@ export const relogiosMock = [
       { descricao: 'Bateria 12V', foto: 'bateria-12v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Kurumim Rep III',
@@ -97,6 +102,7 @@ export const relogiosMock = [
       { descricao: 'Fonte PQ', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Kurumim Rep II',
@@ -111,6 +117,7 @@ export const relogiosMock = [
       { descricao: 'Fonte PQ', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Orion 6',
@@ -128,6 +135,7 @@ export const relogiosMock = [
       { descricao: 'Impressora C/Glt 12V', foto: 'impressora-orion-12v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Prisma SF',
@@ -142,6 +150,7 @@ export const relogiosMock = [
       { descricao: 'Fonte PQ', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Prisma',
@@ -156,6 +165,7 @@ export const relogiosMock = [
       { descricao: 'Fonte PQ', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Prisma SF Advanced',
@@ -170,6 +180,7 @@ export const relogiosMock = [
       { descricao: 'Fonte PQ', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Protocolador',
@@ -182,6 +193,7 @@ export const relogiosMock = [
       { descricao: 'Bateria', foto: 'bateria-12v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'RHJ',
@@ -195,6 +207,7 @@ export const relogiosMock = [
       { descricao: 'Fonte PQ', foto: 'fonte-7-8v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'Rw Tech',
@@ -208,6 +221,7 @@ export const relogiosMock = [
       { descricao: 'Fonte C/Nobreak', foto: 'fonte-com-nobreak.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'RDI',
@@ -215,6 +229,7 @@ export const relogiosMock = [
     foto: 'rdi.jpeg',
     pecas: [],
     tipo: 'relógio',
+    key: 'relogios',
   },
   {
     descricao: 'ZPM',
@@ -231,5 +246,111 @@ export const relogiosMock = [
       { descricao: 'Bateria 12V', foto: 'bateria-12v.jpg' },
     ],
     tipo: 'relógio',
+    key: 'relogios',
+  },
+  {
+    descricao: 'Catraca Lumen',
+    modelos: ['Comanda', 'Advance'],
+    foto: 'lumem.jpeg',
+    pecas: [
+      { descricao: 'Chave', foto: 'chaves.jpg' },
+      { descricao: 'Fonte', foto: 'fonte-7-8v.jpg' },
+      { descricao: 'Bateria 12V', foto: 'bateria-12v.jpg' },
+    ],
+    tipo: 'catraca',
+    key: 'catracas',
+  },
+  {
+    descricao: 'Catraca Lumen',
+    modelos: ['Balcão'],
+    foto: 'lumen-balcao.jpg',
+    pecas: [
+      { descricao: 'Chave', foto: 'chaves.jpg' },
+      { descricao: 'Fonte', foto: 'fonte-7-8v.jpg' },
+      { descricao: 'Bateria 12V', foto: 'bateria-12v.jpg' },
+    ],
+    tipo: 'catraca',
+    key: 'catracas',
+  },
+  {
+    descricao: 'Catraca Lumen',
+    modelos: ['Cadeirante'],
+    foto: 'lumen-cadeirante.jpg',
+    pecas: [
+      { descricao: 'Chave', foto: 'chaves.jpg' },
+      { descricao: 'Fonte', foto: 'fonte-7-8v.jpg' },
+      { descricao: 'Bateria 12V', foto: 'bateria-12v.jpg' },
+    ],
+    tipo: 'catraca',
+    key: 'catracas',
+  },
+  {
+    descricao: 'Catraca Lumen Cofre',
+    modelos: ['Comanda', 'Advance'],
+    foto: 'lumen-cofre.jpg',
+    pecas: [
+      { descricao: 'Chave', foto: 'chaves.jpg' },
+      { descricao: 'Fonte', foto: 'fonte-7-8v.jpg' },
+      { descricao: 'Bateria 12V', foto: 'bateria-12v.jpg' },
+    ],
+    tipo: 'catraca',
+    key: 'catracas',
+  },
+  {
+    descricao: 'Acionador TokCerto',
+    modelos: ['I', 'II', 'III'],
+    foto: 'acionador.jpeg',
+    pecas: [],
+    tipo: 'acionador',
+    key: 'acionadores',
+  },
+  {
+    descricao: 'Sirene Eletromecânica',
+    modelos: ['250M', '500M'],
+    foto: 'sirene.jpg',
+    pecas: [],
+    tipo: 'acionador',
+    key: 'acionadores',
+  },
+  {
+    descricao: 'Cigarra Eletrônica',
+    modelos: ['100M'],
+    foto: 'cigarra.jpg',
+    pecas: [],
+    tipo: 'acionador',
+    key: 'acionadores',
+  },
+  {
+    descricao: 'Argos',
+    modelos: ['Bio', 'Prox', 'Bio+Prox'],
+    foto: 'argos.jpeg',
+    pecas: [
+      { descricao: 'Fonte', foto: 'fonte-7-8v.jpg' },
+    ],
+    tipo: 'controle de acesso',
+    key: 'controladores-de-acesso',
+  },
+  {
+    descricao: 'Prime SF',
+    modelos: ['Bio', 'Prox', 'Barras', 'Bio+Prox', 'Bio+Barras', 'Bio+Prox+Barras'],
+    foto: 'primme-sf.jpg',
+    pecas: [
+      { descricao: 'Chave', foto: 'chaves.jpg' },
+      { descricao: 'Fonte', foto: 'fonte-7-8v.jpg' },
+      { descricao: 'Fonte C/Nobreak', foto: 'fonte-com-nobreak.jpg' },
+      { descricao: 'Bateria 12V', foto: 'bateria-12v.jpg' },
+    ],
+    tipo: 'controle de acesso',
+    key: 'controladores-de-acesso',
+  },
+  {
+    descricao: 'Acesso',
+    modelos: ['Light'],
+    foto: 'acesso-light.jpg',
+    pecas: [
+      { descricao: 'Fonte', foto: 'fonte-7-8v.jpg' },
+    ],
+    tipo: 'controle de acesso',
+    key: 'controladores-de-acesso',
   },
 ];

@@ -2,19 +2,20 @@ page-relatorio {
 
   .form-menu {
     display: flex;
-    max-height: 150px;
     justify-content: space-around;
     align-items: center;
     margin-top: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4em;
+    color: white;
+    text-align: center;
+
+    ul {
+      border-bottom: 10px solid  red;
+    }
 
     li {
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.4em;
       list-style: none;
-      justify-content: center;
-      text-align: center;
-      padding: 2px;
-      color: white;
     }
 
     li ion-icon {
@@ -27,27 +28,6 @@ page-relatorio {
       text-shadow: 0 0 10px #31ED68, 0 0 5px green;
       font-weight: 800;
     }
-    .active {
-      // background-color: color($colors, primary);
-    }
-  }
-
-  .slide-zoom {
-    margin-top: 4%;
-    padding: 10px;
-    overflow-y: auto;
-    height: 100%;
-  }
-
-  .forms-content {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    height: calc(100vh - 150px);
-  }
-
-  .form-slides {
-    flex: 1;
   }
 
   .action-buttons {
@@ -75,5 +55,73 @@ page-relatorio {
     border-radius: 50%;
     font-size: 1.5em;
   }
+
+  @media screen and (max-width: 600px) {
+
+    ion-header {
+      max-height: 40%;
+    }
+
+    .content {
+     top: 3%;
+    }
+
+  }
+
+  @media screen and (max-width: 500px) {
+    h1, h2, h3, h4, h5, h6, p, ul, li  {
+      font-size: 1em !important;
+    }
+
+    .form-menu {
+      display: block;
+      margin-top: 0;
+      text-align: left;
+    }
+
+    ul {
+      padding: 2%;
+    }
+
+    li {
+      font-family: Arial, Helvetica, sans-serif;;
+      text-align: left !important;
+      padding: 3% !important;
+      width: 100%;
+      border-radius: 2%;
+      transition: all 0.4s;
+      cursor: pointer;
+    }
+
+    li:hover {
+      padding-left: 6% !important;
+    }
+
+    li:hover ion-icon {
+      color: rgba(0, 102, 255, 0.315);
+      text-shadow: none;
+    }
+
+    .active {
+      background-color: color($colors, primary);
+    }
+
+    .content {
+     top: 15%;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .content {
+     top: 13%;
+    }
+  }
+
+  @media screen and (max-width: 200px) {
+    .content {
+     top: 11%;
+    }
+  }
+
 
 }

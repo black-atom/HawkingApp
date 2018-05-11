@@ -1,6 +1,6 @@
 <form [formGroup]="form">
     <ion-card-content>
-      <div>
+      <!-- <div>
         <ion-item>
           <ion-label color="primary" stacked> CNPJ </ion-label>
           <ion-input formControlName="cnpj" type="number" placeholder="00.000.000/0000-00"></ion-input>
@@ -15,10 +15,13 @@
           <ion-label color="primary" stacked> E-mail </ion-label>
           <ion-input formControlName="email" type="email" placeholder="exemplo@exemplo.com.br"></ion-input>
         </ion-item>
-      </div>
+      </div> -->
+      <button ion-button outline only-icon (click)="addEquipamento()">
+        <ion-icon name="add" large>Adicionar Equipamento</ion-icon>
+      </button>
     </ion-card-content>
 
-    <ion-card-content>
+    <!-- <ion-card-content>
       <ion-item>
         <ion-label> Adicionar Equipamentos que tiveram troca de peca </ion-label>
       </ion-item>
@@ -38,5 +41,5 @@
           </button>
         </ion-item>
       </div>
-    </ion-card-content>
+    </ion-card-content> -->
 </form>
