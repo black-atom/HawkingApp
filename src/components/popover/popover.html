@@ -1,8 +1,8 @@
 <h1 padding >Nova Atividade</h1>
 
-<div>
+<div class="action-activity">
   <button *ngFor="let buttonProps of buttonProperties" padding (click)="openAtividadeDetail(buttonProps.key)">
-    <img class="avatar" src="{{ buttonProps.imgPath }}" >
+    <img src="{{ buttonProps.imgPath }}" >
     <h2>{{ buttonProps.name }}</h2>
   </button>
 </div>

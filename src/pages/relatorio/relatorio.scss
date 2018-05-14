@@ -1,5 +1,63 @@
 page-relatorio {
 
+  ion-content {
+    background: #fff;
+  }
+
+  button.btn-add-equipments {
+    width: 50%;
+    padding: 2%;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 800;
+    border-radius: 3px;
+    background: #4484EF;
+  }
+
+  div.item {
+    text-align: left;
+    display: flex;
+    padding: 1%;
+    background-color: #fff;
+    align-items: center;
+    width: 100%;
+    font-size: 0.8em;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .foto-wrapper {
+    margin-left: 5%;
+    width: 13%;
+  }
+
+  .more-action-item {
+    margin-left: 5%;
+    font-size: 1.8em;
+    color: red;
+  }
+
+  div.content-item {
+    color: #666;
+    font-family: arial, helvetica, 'san-serif';
+  }
+
+  div.content-item p, div.content-item  h3 {
+    margin: 0;
+  }
+
+  .quantity {
+    margin: 0;
+    padding-top: 10px;
+  }
+
+  .quantity > h5 {
+    color: #1C7637;
+  }
+
+  .quantity p {
+    font-weight: bold;
+  }
+
   .form-menu {
     display: flex;
     justify-content: space-around;
@@ -10,10 +68,6 @@ page-relatorio {
     font-size: 1.3em;
     color: white;
     text-align: center;
-
-    ul {
-      border-bottom: 10px solid  red;
-    }
 
     li {
       list-style: none;
@@ -73,6 +127,34 @@ page-relatorio {
     opacity: 0.5;
   }
 
+  .text-danger {
+    color: #DF1A1C;
+  }
+
+
+  div.input-text-faturamento input {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 1.3em;
+    margin-top: 2%;
+    height: 42px;
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  div.input-text-faturamento {
+    margin-top : 2%;
+    text-align: left;
+  }
+
+  label {
+    font-size: 1.5em;
+  }
+
+  small {
+    font-size: 1em;
+  }
+
   @media screen and (max-width: 600px) {
 
     ion-header {
@@ -82,7 +164,7 @@ page-relatorio {
 
   @media screen and (max-width: 500px) {
     h1, h2, h3, h4, h5, h6, p, ul, li  {
-      font-size: 1em !important;
+      font-size: 0.8em !important;
     }
 
     .form-menu {

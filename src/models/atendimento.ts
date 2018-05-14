@@ -42,10 +42,20 @@ export interface Cliente {
   inscricao_estadual?: string;
 }
 export interface Faturamento {
-  equipamentos: any[];
+  equipamentos: EquipamentoFaturamento[];
   email: string;
   razao_social: string;
   cnpj: string;
+}
+
+export interface EquipamentoFaturamento {
+  id: string;
+  descricao: string;
+  modelo: string;
+  numero_equipamento: string;
+  foto: string;
+  key: string;
+  pecas: Peca[];
 }
 
 export interface Equipamentos {
@@ -62,7 +72,7 @@ export interface Treinamento {
 
 export interface Relatorio {
   faturamento: Faturamento;
-  equipamentos_retirados: Equipamentos[];
+  equipamentos_retirados: RemocaoRelogio[];
   treinamento: Treinamento;
   resumo_atendimento: string;
   motivo_retorno: string;
@@ -143,16 +153,22 @@ export interface Treinamento {
 }
 
 export interface RemocaoRelogio {
-  retirado: boolean;
-  mesmo_equipamento: boolean;
-  modelo_equipamento: string;
+  id: string;
+  descricao: string;
+  modelo: string;
   numero_equipamento: string;
-  peca: Peca[];
+  testes: string;
+  foto: string;
+  key: string;
+  problema: string;
+  pecas: Peca[];
 }
 
 export interface Peca {
-  descricao_peca: string;
+  descricao: string;
   quantidade: number;
+  foto?: string;
+  preco?: number;
 }
 
 export interface Faturamento {

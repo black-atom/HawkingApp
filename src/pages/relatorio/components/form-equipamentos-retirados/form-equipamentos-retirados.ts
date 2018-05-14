@@ -1,63 +1,42 @@
-import { NavController } from 'ionic-angular';
-import { EquipamentoComponent } from './equipamento/equipamento';
-import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from '@angular/core';
+import { EquipamentoSelecionadoPage } from './../equipamento-selecionado/equipamento-selecionado';
+import { Store } from '@ngrx/store';
+import { atendimentosAll } from './../../../../redux/reducers/atendimento.reducer';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { CategoriasPage } from './../categorias/categorias';
+import { State } from '../../../../redux/reducers';
 
 @Component({
   selector: 'form-equipamentos-retirados',
   templateUrl: 'form-equipamentos-retirados.html',
 })
-export class FormEquipamentosRetiradosComponent  implements OnInit, OnDestroy{
+export class FormEquipamentosRetiradosComponent  implements OnInit {
 
   form: FormArray;
   subscription : Subscription;
 
   @Input()
-  initialData;
-
-  @Output()
-  change = new EventEmitter();
+  atividadeSelecionada;
+  atividadeSelecionadaStore;
 
   page = CategoriasPage;
 
   constructor(
     private fb: FormBuilder,
     public navCtrl: NavController,
+    public navParams: NavParams,
+    private store: Store<State>,
+    public popoverCtrl: PopoverController,
   ) {}
 
   ngOnInit(): void {
-    this.initForm(this.initialData);
-  }
-
-  initForm(equipamentos = []){
-    const getItem = ({
-      descricao = '',
-      quantidade = 0,
-    } = {}) => this.fb.group({
-      descricao: [descricao, Validators.required],
-      quantidade: [quantidade, Validators.required],
+    this.store.select(atendimentosAll).subscribe((atendimentos) => {
+      this.atividadeSelecionadaStore = atendimentos.
+        find(atendimento =>
+          atendimento._id === this.atividadeSelecionada.atendimento._id);
     });
-
-    const getEquipamentos = ({
-      modelo_equipamento = '',
-      numero_equipamento = '',
-      itens = [],
-    }) => this.fb.group({
-      modelo_equipamento: [modelo_equipamento, Validators.required],
-      numero_equipamento: [numero_equipamento, Validators.required],
-      itens: this.fb.array(itens.map(getItem)),
-    });
-
-    this.form = this.fb.array(equipamentos.map(getEquipamentos));
-    this.subscription = this.form
-      .valueChanges
-      .subscribe((values) => this.change.emit({
-        formName: 'equipamentos_retirados',
-        formData: values,
-        formValid: this.form.valid,
-      }));
   }
 
   equipamentoControl() {
@@ -68,23 +47,19 @@ export class FormEquipamentosRetiradosComponent  implements OnInit, OnDestroy{
     });
   }
 
-  addEquipamento() {
-    const equipamentos: any = this.form;
-    equipamentos.push(this.equipamentoControl());
-  }
-
-  removeEquipamento(index) {
-    const equipamento: any = this.form;
-    equipamento.removeAt(index);
-  }
-
-  ngOnDestroy(){
-    this.subscription.unsubscribe();
-  }
-
   navPageDetail() {
-    this.navCtrl.push(this.page);
+    this.navCtrl.push(this.page, {
+      atividade: this.atividadeSelecionada,
+      tipoPage: 'retirar',
+    });
   }
 
+  editarEquipamento(equipamento) {
+    this.navCtrl.push(EquipamentoSelecionadoPage, {
+      equipamento,
+      atividade: this.atividadeSelecionada,
+      tipoPage: 'retirar',
+    });
+  }
 
 }

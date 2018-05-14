@@ -3,7 +3,7 @@
     <ion-title>Relatório do Técnico</ion-title>
   </ion-navbar>
   <div class="client-info">
-    <h3>Digaspi comercio e Serviço de Relogio de Ponto</h3>
+    <h4>{{ atividadeSelecionada?.atendimento?.cliente?.nome_razao_social }}</h4>
   </div>
 
   <ul class="form-menu">
@@ -39,7 +39,7 @@
             <ion-slide>
               <form-equipamentos-retirados
                 *ngIf="activeFormIndex === 1"
-                [initialData]="equipamentosRetiradosData"
+                [atividadeSelecionada]="atividadeSelecionada"
                 (change)="formChange($event)">
               </form-equipamentos-retirados>
             </ion-slide>

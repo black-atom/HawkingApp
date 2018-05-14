@@ -1,5 +1,22 @@
 <ion-card-content>
-  <button ion-button outline only-icon (click)="navPageDetail()">
+  <button class="btn-add-equipments" (click)="navPageDetail()">
     <ion-icon name="add" large> Adicionar Equipamento</ion-icon>
   </button>
 </ion-card-content>
+
+  <div class="item" *ngFor="let equipamento of atividadeSelecionadaStore?.relatorio?.equipamentos_retirados">
+      <div class="more-action-item" >
+        <ion-icon name="close"></ion-icon>
+        </div>
+      <div class="foto-wrapper">
+        <img class="photo-item" src="assets/imgs/equipamentos/{{ equipamento.key }}/{{ equipamento.foto }}" alt="">
+      </div>
+      <div class="content-item" (click)="editarEquipamento(equipamento)">
+        <h3>{{ equipamento.descricao }} {{ equipamento.modelo }}</h3>
+        <p>N. Serie {{ equipamento.numero_equipamento }}</p>
+          <div class="quantity" *ngIf="equipamento.pecas.length > 0">
+            <h5 class="quantity">Quantidade Pecas</h5>
+            <p class="quantity">Un. {{ equipamento.pecas.length || 0 }}</p>
+        </div>
+      </div>
+  </div>

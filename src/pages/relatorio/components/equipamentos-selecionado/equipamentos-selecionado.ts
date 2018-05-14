@@ -13,6 +13,8 @@ export class EquipamentosSelecionadoPage implements OnInit{
   public equipmentsType;
   public equipamentos;
   public equipamentosMock = relogiosMock;
+  public atividadeSelecionada;
+  public tipoPage;
 
   private page = EquipamentoSelecionadoPage;
   constructor(
@@ -29,11 +31,17 @@ export class EquipamentosSelecionadoPage implements OnInit{
     this.equipamentos = this.equipamentosMock.filter(
       equipamento => equipamento.tipo === this.equipmentsType,
     );
+    this.atividadeSelecionada = this.navParams.get('atividade');
+    this.tipoPage = this.navParams.get('tipoPage');
   }
 
 
   navPageDetail(equipamento) {
-    this.navCtrl.push(EquipamentoSelecionadoPage, { equipamento });
+    this.navCtrl.push(EquipamentoSelecionadoPage, {
+      equipamento,
+      atividade: this.atividadeSelecionada,
+      tipoPage: this.tipoPage,
+    });
   }
 
 }

@@ -1,45 +1,45 @@
+<ion-card-content>
+  <button class="btn-add-equipments" (click)="navPageDetail()">
+    <ion-icon name="add" large> Adicionar Equipamento</ion-icon>
+  </button>
+</ion-card-content>
+
+
 <form [formGroup]="form">
-    <ion-card-content>
-      <!-- <div>
-        <ion-item>
-          <ion-label color="primary" stacked> CNPJ </ion-label>
-          <ion-input formControlName="cnpj" type="number" placeholder="00.000.000/0000-00"></ion-input>
-        </ion-item>
+  <ion-card-content>
+    <div>
 
-        <ion-item>
-          <ion-label color="primary" stacked> Razão Social </ion-label>
-          <ion-input formControlName="razao_social" type="text" placeholder="REAL PONTO"></ion-input>
-        </ion-item>
+        <div class="input-text-faturamento">
+          <label for="">Cnpj</label>
+          <input type="text" formControlName="cnpj">
+          <small class="text-danger"
+        *ngIf="form.get('cnpj').hasError('required') && form.get('cnpj').touched">
+          <ion-icon name="close"></ion-icon>
+          Campo requerido!
+        </small>
+        </div>
 
-        <ion-item>
-          <ion-label color="primary" stacked> E-mail </ion-label>
-          <ion-input formControlName="email" type="email" placeholder="exemplo@exemplo.com.br"></ion-input>
-        </ion-item>
-      </div> -->
-      <button ion-button outline only-icon (click)="addEquipamento()">
-        <ion-icon name="add" large>Adicionar Equipamento</ion-icon>
-      </button>
-    </ion-card-content>
 
-    <!-- <ion-card-content>
-      <ion-item>
-        <ion-label> Adicionar Equipamentos que tiveram troca de peca </ion-label>
-      </ion-item>
+        <div class="input-text-faturamento">
+            <label for="">Razão Social</label>
+            <input type="text" formControlName="razao_social" >
+            <small class="text-danger"
+            *ngIf="form.get('razao_social').hasError('required') && form.get('razao_social').touched">
+              <ion-icon name="close"></ion-icon>
+              Campo requerido!
+            </small>
+          </div>
 
-      <div>
 
-        <equipamento-faturamento
-          *ngFor="let equipamento of form.controls['equipamentos'].controls; index as i"
-          [equipamentoForm]="equipamento"
-          (removeEquipamentoEmitter)="removeEquipamento(i)"
-        >
-        </equipamento-faturamento>
-
-        <ion-item text-right>
-          <button ion-button outline only-icon (click)="addEquipamento()">
-            <ion-icon name="add" large>Adicionar Equipamento</ion-icon>
-          </button>
-        </ion-item>
-      </div>
-    </ion-card-content> -->
+        <div class="input-text-faturamento">
+            <label for="">Email</label>
+            <input type="text" formControlName="email">
+            <small class="text-danger"
+        *ngIf="form.get('email').hasError('required') && form.get('email').touched">
+          <ion-icon name="close"></ion-icon>
+          Campo requerido!
+        </small>
+          </div>
+    </div>
+  </ion-card-content>
 </form>

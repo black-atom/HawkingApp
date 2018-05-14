@@ -1,5 +1,13 @@
-import { Atendimento, Relatorio, Assinatura, Avaliacao } from './../../models/atendimento';
+import {
+  Atendimento,
+  Relatorio,
+  Assinatura,
+  Avaliacao,
+  RemocaoRelogio,
+  EquipamentoFaturamento,
+} from './../../models/atendimento';
 import { Action, createSelector } from '@ngrx/store';
+import uuidv4  from 'uuid/v4';
 
 import { State } from './';
 import moment from 'moment';
@@ -18,6 +26,8 @@ export const RETRIEVE_ATENDIMENTOS_FAILED = 'RETRIEVE_ATENDIMENTOS_FAILED';
 export const EDITAR_ATENDIMENTO = 'EDITAR_ATENDIMENTO';
 export const SAVE_RELATORIO_ATENDIMENTO = 'SAVE_RELATORIO_ATENDIMENTO';
 
+export const SAVE_REMOVE_EQUIPAMENTO = 'SAVE_REMOVE_EQUIPAMENTO';
+export const SAVE_FATURAR_EQUIPAMENTO = 'SAVE_FATURAR_EQUIPAMENTO';
 
 export const SYNC_ATENDIMENTOS = 'SYNC_ATENDIMENTOS';
 export const SYNC_ATENDIMENTOS_SUCCESS = 'SYNC_ATENDIMENTOS_SUCCESS';
@@ -63,6 +73,36 @@ export class SaveAvaliacao implements Action{
   constructor(public atendimentoID:string, public avaliacao: Avaliacao) { }
 }
 
+export class SaveRemoveEquipamento implements Action{
+  readonly type: string = SAVE_REMOVE_EQUIPAMENTO;
+  constructor(public atendimentoID:string, public payload: RemocaoRelogio) {
+    this.payload = {
+      ...payload,
+      id: uuidv4(),
+    };
+  }
+}
+
+export class EditarRemoveEquipamento implements Action{
+  readonly type: string = SAVE_REMOVE_EQUIPAMENTO;
+  constructor(public atendimentoID:string, public payload: RemocaoRelogio) { }
+}
+
+export class SaveFaturamentoEquipamento implements Action{
+  readonly type: string = SAVE_FATURAR_EQUIPAMENTO;
+  constructor(public atendimentoID:string, public payload: EquipamentoFaturamento) {
+    this.payload = {
+      ...payload,
+      id: uuidv4(),
+    };
+  }
+}
+
+export class EditarFaturamentoEquipamento implements Action{
+  readonly type: string = SAVE_FATURAR_EQUIPAMENTO;
+  constructor(public atendimentoID:string, public payload: EquipamentoFaturamento) { }
+}
+
 export class SyncAtendimentosSuccess implements Action{
   readonly type: string = SYNC_ATENDIMENTOS_SUCCESS;
   constructor(public payload: Atendimento[]) { }
@@ -91,6 +131,10 @@ export type ActionsAtendimento =
   |  SyncAtendimentos
   |  SyncAtendimentosSuccess
   |  SyncAtendimentosFailed
+  |  SaveRemoveEquipamento
+  |  EditarRemoveEquipamento
+  |  EditarFaturamentoEquipamento
+  |  EditarFaturamentoEquipamento
   |  SaveRelatorio
   |  AdicionarPerguntas;
 
@@ -151,6 +195,63 @@ export const atendimentoReducer = (
           synced: false,
         }) :
         atendimento,
+      );
+    }
+
+    case SAVE_REMOVE_EQUIPAMENTO: {
+      const { atendimentoID, payload } = <SaveRemoveEquipamento>action;
+      const atendimento = state;
+      const findAtendimento = atendimento.find(atendimento => atendimento._id === atendimentoID);
+
+
+      if (findAtendimento.relatorio === null) {
+        const newRelatorio = { equipamentos_retirados: [payload] };
+
+        return state.map(atendimento =>
+          atendimento._id === atendimentoID ?
+          ({
+            ...atendimento,
+            relatorio: { ...newRelatorio },
+            synced: false,
+          }) :
+          atendimento,
+        );
+      }
+
+      const findEquipamento = findAtendimento.relatorio.equipamentos_retirados
+        .find(equipamento => equipamento.id === payload.id);
+
+      if (!findEquipamento) {
+        const newRelatorio = {
+          ...findAtendimento.relatorio,
+          equipamentos_retirados: [...findAtendimento.relatorio.equipamentos_retirados, payload],
+        };
+
+        return state.map(atendimento =>
+          atendimento._id === atendimentoID ?
+          ({
+            ...atendimento,
+            relatorio: { ...newRelatorio },
+            synced: false,
+          }) :
+          atendimento,
+        );
+      }
+
+      const newPecas = findAtendimento.relatorio.equipamentos_retirados
+        .map(equipamento => equipamento.id === payload.id ? payload : equipamento);
+
+      const newAtendimento = {
+        ...findAtendimento,
+        relatorio: {
+          ...findAtendimento.relatorio,
+          equipamentos_retirados: newPecas,
+        }};
+
+      return state.map(atendimento =>
+        atendimento._id === atendimentoID
+        ? newAtendimento
+        : atendimento,
       );
     }
 
@@ -227,3 +328,8 @@ export const atendimentosConcluida = createSelector(
       return  false;
     });
   });
+
+export const atendimentosAll = createSelector(
+  getAllAtendimentos,
+  (atendimentos: Atendimento[]) => atendimentos);
+

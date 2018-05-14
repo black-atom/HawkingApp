@@ -31,13 +31,13 @@
           <p>Modelo:</p>
           <div class="models-equipament">
             <ion-row>
-              <ion-col col-3 *ngFor="let modelo of equipamentoSelecionado.modelos">
+              <ion-col col-3 *ngFor="let modelo of equipamentoSelecionado?.modelos">
                 <button class="model"
                 (click)="setModelEquipments(modelo)">{{ modelo }}</button>
               </ion-col>
               <ion-col col-12>
                 <small class="text-danger"
-                *ngIf="formEquipment.get('modelo_equipamento').hasError('required') && formEquipment.touched">
+                *ngIf="formEquipment.get('modelo').hasError('required') && formEquipment.touched">
                   <ion-icon name="close"></ion-icon>
                   Selecione um modelo!
                 </small>
@@ -58,9 +58,9 @@
           </div>
           <div class="input-text-equipments">
             <label for="">Testes Efetuados</label>
-            <input type="text" formControlName="testes_efetuados">
+            <input type="text" formControlName="testes">
             <small class="text-danger"
-            *ngIf="formEquipment.get('testes_efetuados').hasError('required') && formEquipment.get('testes_efetuados').touched">
+            *ngIf="formEquipment.get('testes').hasError('required') && formEquipment.get('testes').touched">
               <ion-icon name="close"></ion-icon>
               Campo requerido!
             </small>

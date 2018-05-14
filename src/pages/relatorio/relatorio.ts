@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { NavController, Slides, IonicPage } from 'ionic-angular';
+import { NavController, Slides, IonicPage, NavParams } from 'ionic-angular';
 import { lensProp, set, view } from 'ramda';
 
 @IonicPage({
@@ -15,6 +15,7 @@ export class RelatorioPage  implements OnInit{
   @ViewChild(Slides) slides: Slides;
   activeFormIndex = 0;
   currentFormsData = {};
+  atividadeSelecionada;
 
   get beginning() {
     return this.slides.isBeginning();
@@ -43,12 +44,16 @@ export class RelatorioPage  implements OnInit{
     return this.getFormData('faturamento');
   }
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+  ) {
 
   }
 
   ngOnInit() {
-
+    this.atividadeSelecionada = this.navParams.get('atividade');
+    this.activeFormIndex = this.navParams.get('tipoPage') || 0;
   }
 
   getFormData(formName) {
