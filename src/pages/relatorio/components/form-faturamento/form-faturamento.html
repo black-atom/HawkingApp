@@ -33,7 +33,7 @@
 
         <div class="input-text-faturamento">
             <label for="">Email</label>
-            <input type="text" formControlName="email">
+            <input type="text" formControlName="email" autocomplete='email'>
             <small class="text-danger"
         *ngIf="form.get('email').hasError('required') && form.get('email').touched">
           <ion-icon name="close"></ion-icon>

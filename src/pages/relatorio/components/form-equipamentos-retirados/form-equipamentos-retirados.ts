@@ -1,9 +1,10 @@
-import { EquipamentoSelecionadoPage } from './../equipamento-selecionado/equipamento-selecionado';
+import {
+  RemoverEquipamentoSelecionadoPage,
+} from './../remover-equipamento-selecionado/remover-equipamento-selecionado';
 import { Store } from '@ngrx/store';
 import { atendimentosAll } from './../../../../redux/reducers/atendimento.reducer';
 import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { CategoriasPage } from './../categorias/categorias';
 import { State } from '../../../../redux/reducers';
@@ -14,7 +15,6 @@ import { State } from '../../../../redux/reducers';
 })
 export class FormEquipamentosRetiradosComponent  implements OnInit {
 
-  form: FormArray;
   subscription : Subscription;
 
   @Input()
@@ -24,7 +24,6 @@ export class FormEquipamentosRetiradosComponent  implements OnInit {
   page = CategoriasPage;
 
   constructor(
-    private fb: FormBuilder,
     public navCtrl: NavController,
     public navParams: NavParams,
     private store: Store<State>,
@@ -39,14 +38,6 @@ export class FormEquipamentosRetiradosComponent  implements OnInit {
     });
   }
 
-  equipamentoControl() {
-    return this.fb.group({
-      modelo_equipamento: ['', Validators.required],
-      numero_equipamento: ['', Validators.required],
-      itens: this.fb.array([]),
-    });
-  }
-
   navPageDetail() {
     this.navCtrl.push(this.page, {
       atividade: this.atividadeSelecionada,
@@ -55,7 +46,7 @@ export class FormEquipamentosRetiradosComponent  implements OnInit {
   }
 
   editarEquipamento(equipamento) {
-    this.navCtrl.push(EquipamentoSelecionadoPage, {
+    this.navCtrl.push(RemoverEquipamentoSelecionadoPage, {
       equipamento,
       atividade: this.atividadeSelecionada,
       tipoPage: 'retirar',

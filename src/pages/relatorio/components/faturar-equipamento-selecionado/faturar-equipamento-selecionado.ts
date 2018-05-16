@@ -1,25 +1,19 @@
-import { Equipamentos } from './../../../../models/atendimento';
-import { ClientDataPage } from './../../../client-data/client-data-page';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { State } from '../../../../redux/reducers';
-import {
-  SaveRemoveEquipamento,
-  EditarRemoveEquipamento,
-} from './../../../../redux/reducers/atendimento.reducer';
+import { State } from './../../../../redux/reducers/';
 import { RelatorioPage } from './../../relatorio';
-import { relogiosMock } from '../../../../utils/mocks/equipamentos';
+import { equipamentosFaturamento } from './../../../../utils/mocks/equipamentos';
 
 @IonicPage()
 @Component({
-  selector: 'page-equipamento-selecionado',
-  templateUrl: 'equipamento-selecionado.html',
+  selector: 'page-faturar-equipamento-selecionado',
+  templateUrl: 'faturar-equipamento-selecionado.html',
 })
-export class EquipamentoSelecionadoPage implements OnInit {
+export class FaturarEquipamentoSelecionadoPage  implements OnInit {
 
-  public equipamentos = relogiosMock;
+  public equipamentos = equipamentosFaturamento;
   private equipamentoRecebido;
   public equipamentoSelecionado;
   public model: string = '';
@@ -46,7 +40,6 @@ export class EquipamentoSelecionadoPage implements OnInit {
         .find(equipamento => equipamento.descricao === this.equipamentoRecebido.descricao);
 
     this.atividadeSelecionado = this.navParams.get('atividade');
-    this.tipoPage = this.navParams.get('tipoPage');
     this.initForm();
     this.recuperarEquipamento();
   }
@@ -57,7 +50,7 @@ export class EquipamentoSelecionadoPage implements OnInit {
       modelo: ['', [Validators.required]],
       numero_equipamento: ['', [Validators.required]],
       problema: ['', [Validators.required]],
-      testes: ['', [Validators.required]],
+      solucao: ['', [Validators.required]],
       pecas: this.fb.array([]),
     });
   }
@@ -79,7 +72,7 @@ export class EquipamentoSelecionadoPage implements OnInit {
     this.formEquipment.get('modelo').patchValue(modelo);
     this.formEquipment.get('numero_equipamento').patchValue(numero_equipamento);
     this.formEquipment.get('problema').patchValue(problema);
-    this.formEquipment.get('testes').patchValue(testes);
+    this.formEquipment.get('solucao').patchValue(testes);
     this.model = modelo;
     this.numberEquipments = numero_equipamento;
     pecas.forEach(() => this.adicionarPecas());
@@ -129,6 +122,33 @@ export class EquipamentoSelecionadoPage implements OnInit {
     alert.present();
   }
 
+  modifyPrice({ preco, foto, quantidade, descricao }, index) {
+    const alert = this.alertCtrl.create();
+    alert.setTitle('Alterar Preço do itens!');
+
+    alert.addInput({
+      type: 'text',
+      label: 'Preço R$',
+      value: preco,
+      name: 'preco_alterado',
+    });
+
+    alert.addButton('Cancelar');
+    alert.addButton({
+      text: 'Ok',
+      handler: ({ preco_alterado }) => {
+        (<FormArray>this.formEquipment.controls['pecas']).at(index).patchValue({
+          descricao,
+          foto,
+          quantidade,
+          preco: preco_alterado,
+        });
+
+      },
+    });
+    alert.present();
+  }
+
   get pecas(): FormArray {
     return this.formEquipment.get('pecas') as FormArray;
   }
@@ -142,11 +162,13 @@ export class EquipamentoSelecionadoPage implements OnInit {
       quantidade,
       descricao,
       foto,
+      preco,
     } = (<FormArray>this.formEquipment.controls['pecas']).at(index).value;
 
     (<FormArray>this.formEquipment.controls['pecas']).at(index).patchValue({
       descricao,
       foto,
+      preco,
       quantidade: quantidade + 1,
     });
   }
@@ -156,70 +178,32 @@ export class EquipamentoSelecionadoPage implements OnInit {
       quantidade,
       descricao,
       foto,
+      preco,
     } = (<FormArray>this.formEquipment.controls['pecas']).at(index).value;
 
     if (quantidade > 1) {
       (<FormArray>this.formEquipment.controls['pecas']).at(index).patchValue({
         descricao,
         foto,
+        preco,
         quantidade: quantidade + -1,
       });
     }
   }
 
-  saveOrEditEquipmentsRetirado(equipment) {
-    if (this.equipamentoRecebido.id) {
-      const { id } = this.equipamentoRecebido;
-      this.store.dispatch(new EditarRemoveEquipamento(
-        this.atividadeSelecionado.atendimento._id,
-        {
-          ...equipment,
-          id,
-          foto: this.equipamentoSelecionado.foto,
-          key: this.equipamentoSelecionado.key,
-        },
-      ));
-
-      return this.navPageDetail();
-    }
-
-    this.store.dispatch(
-      new SaveRemoveEquipamento(
-        this.atividadeSelecionado.atendimento._id,
-        {
-          ...equipment,
-          foto: this.equipamentoSelecionado.foto,
-          key: this.equipamentoSelecionado.key,
-        },
-      ),
-    );
-
-
-    return this.navPageDetail();
-  }
-
-  saveOrEditEquipmentsFaturar(equipment) {
-
+  saveOrEditEquipment(equipment) {
+    console.log(equipment);
   }
 
   saveEquipment(equipment) {
-    if (this.tipoPage === 'retirar') {
-      return this.saveOrEditEquipmentsRetirado(equipment);
-    }
-    return this.saveOrEditEquipmentsFaturar(equipment);
+    return this.saveOrEditEquipment(equipment);
   }
 
   navPageDetail() {
-    const indexPageForm = {
-      retirar: 1,
-      faturar: 2,
-    };
-
     this.navCtrl.push(this.page, {
       atividade: this.atividadeSelecionado,
-      tipoPage: indexPageForm[this.tipoPage],
+      tipoPage: 2,
     });
-
   }
 
 }

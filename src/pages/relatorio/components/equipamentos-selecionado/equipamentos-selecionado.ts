@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { relogiosMock } from './../../../../utils/mocks/equipamentos';
-import { EquipamentoSelecionadoPage } from '../equipamento-selecionado/equipamento-selecionado';
+import { equipamentosRetirar } from './../../../../utils/mocks/equipamentos';
+
+import {
+  RemoverEquipamentoSelecionadoPage,
+} from '../remover-equipamento-selecionado/remover-equipamento-selecionado';
+import {
+  FaturarEquipamentoSelecionadoPage,
+} from '../faturar-equipamento-selecionado/faturar-equipamento-selecionado';
 
 @IonicPage()
 @Component({
@@ -12,11 +18,14 @@ export class EquipamentosSelecionadoPage implements OnInit{
 
   public equipmentsType;
   public equipamentos;
-  public equipamentosMock = relogiosMock;
+  public equipamentosMock = equipamentosRetirar;
   public atividadeSelecionada;
   public tipoPage;
 
-  private page = EquipamentoSelecionadoPage;
+  private page = {
+    retirar: RemoverEquipamentoSelecionadoPage,
+    faturar: FaturarEquipamentoSelecionadoPage,
+  };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -37,10 +46,9 @@ export class EquipamentosSelecionadoPage implements OnInit{
 
 
   navPageDetail(equipamento) {
-    this.navCtrl.push(EquipamentoSelecionadoPage, {
+    this.navCtrl.push(this.page[this.tipoPage], {
       equipamento,
       atividade: this.atividadeSelecionada,
-      tipoPage: this.tipoPage,
     });
   }
 
