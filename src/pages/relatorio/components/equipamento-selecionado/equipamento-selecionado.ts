@@ -92,6 +92,7 @@ export class EquipamentoSelecionadoPage implements OnInit {
       descricao : ['', [Validators.required]],
       quantidade : ['', [Validators.required]],
       foto : ['', [Validators.required]],
+      preco: ['', [Validators.required]],
     }));
   }
 

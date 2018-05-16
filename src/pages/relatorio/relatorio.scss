@@ -209,11 +209,33 @@ page-relatorio {
     .content {
      top: 12%;
     }
+
+    button.btn-add-equipments {
+      font-size: .8em;
+    }
+
+    ion-footer button {
+      font-size: .8em;
+    }
+
+  }
+
+
+
+  @media screen and (max-width: 300px) {
+
+    ion-footer button {
+      font-size: .6em;
+    }
+
   }
 
   @media screen and (max-width: 200px) {
     .content {
      top: 10%;
+    }
+    ion-footer button {
+      font-size: .5em;
     }
   }
 
