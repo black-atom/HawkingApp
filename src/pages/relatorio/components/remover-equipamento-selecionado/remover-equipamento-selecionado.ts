@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 import { State } from '../../../../redux/reducers';
 import {
   SaveRemoveEquipamento,
-  EditarRemoveEquipamento,
 } from './../../../../redux/reducers/atendimento.reducer';
 import { RelatorioPage } from './../../relatorio';
 import { equipamentosRetirar } from '../../../../utils/mocks/equipamentos';
@@ -166,18 +165,21 @@ export class RemoverEquipamentoSelecionadoPage implements OnInit {
   }
 
   saveOrEditEquipment(equipment) {
-    console.log(equipment);
+    this.store.dispatch
+    (new SaveRemoveEquipamento(this.atividadeSelecionado.atendimento._id ,equipment),
+  );
+    this.goBack();
   }
 
   saveEquipment(equipment) {
     return this.saveOrEditEquipment(equipment);
   }
 
-  navPageDetail() {
-    this.navCtrl.push(this.page, {
-      atividade: this.atividadeSelecionado,
-      tipoPage: 1,
-    });
+  goBack() {
+    // tslint:disable-next-line:one-variable-per-declaration
+    const indexPage = this.navCtrl.inde‌​xOf(this.page);
+    this.navCtrl.getByIndex(indexPage);
+    // this.navCtrl.pop();
   }
 
 }

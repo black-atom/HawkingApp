@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { State } from './../../../../redux/reducers/';
 import { RelatorioPage } from './../../relatorio';
 import { equipamentosFaturamento } from './../../../../utils/mocks/equipamentos';
+import { SaveFaturamentoEquipamento } from '../../../../redux/reducers/atendimento.reducer';
 
 @IonicPage()
 @Component({
@@ -192,11 +193,14 @@ export class FaturarEquipamentoSelecionadoPage  implements OnInit {
   }
 
   saveOrEditEquipment(equipment) {
-    console.log(equipment);
+    this.store.dispatch(
+      new SaveFaturamentoEquipamento(this.atividadeSelecionado.atendimento._id ,equipment),
+    );
   }
 
   saveEquipment(equipment) {
-    return this.saveOrEditEquipment(equipment);
+    this.saveOrEditEquipment(equipment);
+    this.navPageDetail();
   }
 
   navPageDetail() {

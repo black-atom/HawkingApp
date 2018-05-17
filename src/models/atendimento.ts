@@ -42,7 +42,7 @@ export interface Cliente {
   inscricao_estadual?: string;
 }
 export interface Faturamento {
-  equipamentos: EquipamentoFaturamento[];
+  equipamentos?: EquipamentoFaturamento[];
   email: string;
   razao_social: string;
   cnpj: string;
@@ -72,7 +72,7 @@ export interface Treinamento {
 
 export interface Relatorio {
   faturamento: Faturamento;
-  equipamentos_retirados: RemocaoRelogio[];
+  equipamentos_retirados?: RemocaoRelogio[];
   treinamento: Treinamento;
   resumo_atendimento: string;
   motivo_retorno: string;

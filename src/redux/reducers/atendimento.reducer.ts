@@ -132,6 +132,7 @@ export type ActionsAtendimento =
   |  SyncAtendimentosSuccess
   |  SyncAtendimentosFailed
   |  SaveRemoveEquipamento
+  |  SaveFaturamentoEquipamento
   |  EditarRemoveEquipamento
   |  EditarFaturamentoEquipamento
   |  EditarFaturamentoEquipamento
@@ -200,57 +201,57 @@ export const atendimentoReducer = (
 
     case SAVE_REMOVE_EQUIPAMENTO: {
       const { atendimentoID, payload } = <SaveRemoveEquipamento>action;
-      const atendimento = state;
-      const findAtendimento = atendimento.find(atendimento => atendimento._id === atendimentoID);
+      const atendimentos = state;
+      const findAtendimento = atendimentos.find(atendimento => atendimento._id === atendimentoID);
+      if (!findAtendimento) return state;
+      const relatorio =  findAtendimento.relatorio || { equipamentos_retirados: [] } ;
+      // tslint:disable-next-line:variable-name
+      const equipamentos_retirados: RemocaoRelogio[] = relatorio.equipamentos_retirados || [];
+      let newEquipamentosRetirados;
 
-
-      if (findAtendimento.relatorio === null) {
-        const newRelatorio = { equipamentos_retirados: [payload] };
-
-        return state.map(atendimento =>
-          atendimento._id === atendimentoID ?
-          ({
-            ...atendimento,
-            relatorio: { ...newRelatorio },
-            synced: false,
-          }) :
-          atendimento,
-        );
+      if (equipamentos_retirados.some(eq => eq.id === payload.id)) {
+        newEquipamentosRetirados =
+          equipamentos_retirados.map(eq => eq.id === payload.id ? payload : eq);
+      }else {
+        newEquipamentosRetirados = [...equipamentos_retirados, payload];
       }
-
-      const findEquipamento = findAtendimento.relatorio.equipamentos_retirados
-        .find(equipamento => equipamento.id === payload.id);
-
-      if (!findEquipamento) {
-        const newRelatorio = {
-          ...findAtendimento.relatorio,
-          equipamentos_retirados: [...findAtendimento.relatorio.equipamentos_retirados, payload],
-        };
-
-        return state.map(atendimento =>
-          atendimento._id === atendimentoID ?
-          ({
-            ...atendimento,
-            relatorio: { ...newRelatorio },
-            synced: false,
-          }) :
-          atendimento,
-        );
-      }
-
-      const newPecas = findAtendimento.relatorio.equipamentos_retirados
-        .map(equipamento => equipamento.id === payload.id ? payload : equipamento);
-
-      const newAtendimento = {
-        ...findAtendimento,
-        relatorio: {
-          ...findAtendimento.relatorio,
-          equipamentos_retirados: newPecas,
-        }};
-
       return state.map(atendimento =>
         atendimento._id === atendimentoID
-        ? newAtendimento
+        ? {
+          ...findAtendimento,
+          synced: false,
+          relatorio: { ...relatorio, equipamentos_retirados: newEquipamentosRetirados },
+        }
+        : atendimento,
+      );
+    }
+
+    case SAVE_FATURAR_EQUIPAMENTO: {
+      const { atendimentoID, payload } = <SaveFaturamentoEquipamento>action;
+      const atendimentos = state;
+      const findAtendimento = atendimentos.find(atendimento => atendimento._id === atendimentoID);
+
+      if (!findAtendimento) return state;
+      const relatorio = findAtendimento.relatorio || { faturamento: { equipamentos: [] } };
+      const faturamento = relatorio.faturamento || { equipamentos: [] } ;
+      const equipamentos: EquipamentoFaturamento[] = faturamento.equipamentos || [];
+
+      let newEquipamentosFaturados;
+      if (equipamentos.some(eq => eq.id === payload.id)) {
+        newEquipamentosFaturados = equipamentos.map(eq => eq.id === payload.id ? payload : eq);
+      }else {
+        newEquipamentosFaturados = [...equipamentos, payload];
+      }
+      return state.map(atendimento =>
+        atendimento._id === atendimentoID
+        ? {
+          ...findAtendimento,
+          synced: false,
+          relatorio: {
+            ...relatorio,
+            faturamento: { ...faturamento, equipamentos: newEquipamentosFaturados },
+          },
+        }
         : atendimento,
       );
     }

@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { NavController, Slides, IonicPage, NavParams } from 'ionic-angular';
 import { lensProp, set, view } from 'ramda';
 
@@ -8,7 +8,6 @@ import { lensProp, set, view } from 'ramda';
 @Component({
   selector: 'page-relatorio',
   templateUrl: 'relatorio.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RelatorioPage  implements OnInit{
 

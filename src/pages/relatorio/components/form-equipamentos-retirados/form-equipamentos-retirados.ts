@@ -1,3 +1,5 @@
+import { Atendimento } from './../../../../models/atendimento';
+import { Observable } from 'rxjs/Rx';
 import {
   RemoverEquipamentoSelecionadoPage,
 } from './../remover-equipamento-selecionado/remover-equipamento-selecionado';
@@ -19,8 +21,7 @@ export class FormEquipamentosRetiradosComponent  implements OnInit {
 
   @Input()
   atividadeSelecionada;
-  atividadeSelecionadaStore;
-
+  atividadeSelecionadaStore$: Observable<Atendimento>;
   page = CategoriasPage;
 
   constructor(
@@ -31,10 +32,10 @@ export class FormEquipamentosRetiradosComponent  implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.store.select(atendimentosAll).subscribe((atendimentos) => {
-      this.atividadeSelecionadaStore = atendimentos.
-        find(atendimento =>
-          atendimento._id === this.atividadeSelecionada.atendimento._id);
+    this.atividadeSelecionadaStore$ = this.store.select(atendimentosAll).map((atendimentos) => {
+      return atendimentos.
+          find(atendimento =>
+            atendimento._id === this.atividadeSelecionada.atendimento._id);
     });
   }
 
