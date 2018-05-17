@@ -7,24 +7,12 @@
   </div>
 
   <ul class="form-menu">
-    <li [class.active]="activeFormIndex === 0" (click)="handleFormMenuClick(0)">
-      Treinamento
-      <!-- &nbsp; <ion-icon name="md-checkmark"></ion-icon> -->
-    </li>
-    <li [class.active]="activeFormIndex === 1" (click)="handleFormMenuClick(1)">
-      Retirar Equipamento
-      <!-- &nbsp; <ion-icon name="md-checkmark"></ion-icon> -->
-    </li>
-    <li [class.active]="activeFormIndex === 2" (click)="handleFormMenuClick(2)">
-      Faturamento
-      <!-- &nbsp; <ion-icon name="md-checkmark"></ion-icon> -->
-    </li>
-    <li [class.active]="activeFormIndex === 3" (click)="handleFormMenuClick(3)">
-      Resumo
-      <!-- &nbsp; <ion-icon name="md-checkmark"></ion-icon> -->
-    </li>
+    <li [class.active]="activeFormIndex === 0" (click)="handleFormMenuClick(0)">Treinamento</li>
+    <li [class.active]="activeFormIndex === 1" (click)="handleFormMenuClick(1)">Retirar Equipamento</li>
+    <li [class.active]="activeFormIndex === 2" (click)="handleFormMenuClick(2)">Faturamento</li>
+    <li [class.active]="activeFormIndex === 3" (click)="handleFormMenuClick(3)">Resumo</li>
   </ul>
- </ion-header>
+</ion-header>
 
 <ion-content>
   <div class="content">
@@ -39,8 +27,7 @@
             <ion-slide>
               <form-equipamentos-retirados
                 *ngIf="activeFormIndex === 1"
-                [atividadeSelecionada]="atividadeSelecionada"
-                (change)="formChange($event)">
+                [atividadeSelecionada]="atividadeSelecionada">
               </form-equipamentos-retirados>
             </ion-slide>
             <ion-slide>
@@ -60,7 +47,6 @@
           </ion-slides>
   </div>
 </ion-content>
-
 
 <ion-footer>
   <div class="action-buttons">

@@ -62,7 +62,7 @@ export class RemoverEquipamentoSelecionadoPage implements OnInit {
   }
 
   recuperarEquipamento() {
-    if (!this.equipamentoRecebido.numero_equipamento) {
+    if (!this.equipamentoRecebido.id) {
       return;
     }
 

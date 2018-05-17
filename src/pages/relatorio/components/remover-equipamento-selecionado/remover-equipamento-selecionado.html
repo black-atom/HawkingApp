@@ -77,6 +77,35 @@
         </ion-col>
 
         <div class="item" formArrayName="pecas">
+          <table>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Descricao</th>
+              <th>Un.</th>
+            </tr>
+            <tr *ngFor="let peca of formEquipment.controls['pecas'].controls; let i=index" formGroupName="{{i}}">
+              <td>
+                <div class="btn-remove" (click)="deleteItem(i)">
+                  <ion-icon name="close"></ion-icon>
+                </div>
+              </td>
+              <td class="td-image"><img src="assets/imgs/pecas/{{ formEquipment.value.pecas[i].foto }}"></td>
+              <td>{{ formEquipment.value.pecas[i].descricao }}</td>
+              <td>
+                <div class="quantity">
+                  <ion-icon name="remove" *ngIf="formEquipment.value.pecas[i].quantidade !== 1" (click)="lessQuantity(i)"></ion-icon>
+                    {{ formEquipment.value.pecas[i].quantidade }}
+                  <ion-icon name="add" (click)="moreQuantity(i)"></ion-icon>
+                </div>
+              </td>
+
+            </tr>
+          </table>
+
+        </div>
+
+        <!-- <div class="item" formArrayName="pecas">
           <ul>
             <li *ngFor="let peca of formEquipment.controls['pecas'].controls; let i=index" formGroupName="{{i}}">
                <div class="remove-item">
@@ -95,7 +124,7 @@
               </div>
               </li>
             </ul>
-          </div>
+          </div> -->
 
       </ion-row>
     </ion-grid>

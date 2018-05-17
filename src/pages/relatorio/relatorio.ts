@@ -29,10 +29,6 @@ export class RelatorioPage  implements OnInit{
     return this.getFormData('treinamento');
   }
 
-  get equipamentosRetiradosData() {
-    return this.getFormData('equipamentos_retirados');
-  }
-
   get resumoData() {
     return {
       resumo_atendimento: this.getFormData('resumo_atendimento'),

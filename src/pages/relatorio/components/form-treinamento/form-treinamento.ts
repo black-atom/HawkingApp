@@ -32,24 +32,24 @@ export class FormTreinamentoComponent  implements OnInit, OnDestroy{
   initForm({
     topicos = [],
     software = '',
-    caminho_rede = ''
-  } = {}){
+    caminho_rede = '',
+  } = {}) {
     this.formTreinamento = this.fb.group({
+      software,
+      caminho_rede,
       topicos: [topicos],
-      software: [software],
-      caminho_rede: [caminho_rede],
     });
 
     this.subscription = this.formTreinamento
       .valueChanges
-      .subscribe((values) => this.change.emit({
+      .subscribe(values => this.change.emit({
         formName: 'treinamento',
         formData: values,
         formValid: this.formTreinamento.valid,
       }));
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

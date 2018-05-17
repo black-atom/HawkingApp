@@ -13,7 +13,7 @@ atividade-detail {
   ion-header{
     background-color: #FFFFFF !important;
     position: relative;
-    height: 295px;
+    height: auto;
     background:
       url(http://www.giardinopollensa.com/wp-content/uploads/2013/06/blur1.jpg)
       no-repeat center center;
@@ -48,7 +48,7 @@ atividade-detail {
   }
 
   .actions {
-    margin-top: 40px;
+    margin-top: 6%;
     display: flex;
     justify-content: space-around;
   }
@@ -72,11 +72,8 @@ atividade-detail {
     background-color:  rgb(160, 160, 160);
   }
 
-  ion-list {
-    margin-top: 20% !important;
-  }
   .atividade-info {
-    margin-top: 25px;
+    margin-top: 10%;
     text-align: center;
   }
   .atividade-info img {

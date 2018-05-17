@@ -106,7 +106,7 @@ page-remover-equipamento-selecionado {
     border-bottom: 1px solid #ddd;
   }
 
-  li img {
+  td img {
     width: 60px;
     height: auto;
   }
@@ -126,24 +126,21 @@ page-remover-equipamento-selecionado {
     font-weight: 800;
   }
 
-  label, p, .unit-item {
-    font-size: 1.5em;
+  label, p, .unit-item, td, th{
+    font-size: 1.3em;
   }
 
-  .remove-item {
-    display: flex;
-    align-items: center;
+  table {
+    margin-top: 4%;
+    width: 100%;
+    text-align: center;
   }
-
-  .remove-item .btn-remove, img {
-    margin-left: 30%;
-  }
-
-  .remove-item .btn-remove {
-    font-size: 2em;
+  td div.btn-remove {
     font-weight: bold;
     color: red;
     cursor: pointer;
+    font-size: 1.2em;
+    padding: 4%;
   }
 
   .photo img {
@@ -152,14 +149,12 @@ page-remover-equipamento-selecionado {
 
   .quantity {
     display: flex;
-    font-size: 1.6em;
-    margin-right: 2%;
     justify-content: space-around;
     align-items: center;
-    width: 25%;
+    padding: 4%;
+    font-size: 1.2em;
   }
   .quantity ion-icon {
-    font-size: 1.6em;
     color: #4484EF;
     font-weight: bold;
   }
@@ -198,5 +193,7 @@ page-remover-equipamento-selecionado {
     width: 30%;
     font-size: 1.8em;
   }
-
+  table td.td-image{
+    width: 60px;
+  }
 }
