@@ -165,9 +165,8 @@ export class RemoverEquipamentoSelecionadoPage implements OnInit {
   }
 
   saveOrEditEquipment(equipment) {
-    this.store.dispatch
-    (new SaveRemoveEquipamento(this.atividadeSelecionado.atendimento._id ,equipment),
-  );
+    const action = new SaveRemoveEquipamento(this.atividadeSelecionado.atendimento._id ,equipment);
+    this.store.dispatch(action);
     this.goBack();
   }
 
@@ -176,10 +175,8 @@ export class RemoverEquipamentoSelecionadoPage implements OnInit {
   }
 
   goBack() {
-    // tslint:disable-next-line:one-variable-per-declaration
-    const indexPage = this.navCtrl.inde‌​xOf(this.page);
-    this.navCtrl.getByIndex(indexPage);
-    // this.navCtrl.pop();
+    const relatorioView  = this.navCtrl.getViews().find(nav => nav.name === 'RelatorioPage');
+    this.navCtrl.popTo(relatorioView);
   }
 
 }

@@ -3,7 +3,6 @@ import { AlertController, IonicPage, NavController, NavParams } from 'ionic-angu
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State } from './../../../../redux/reducers/';
-import { RelatorioPage } from './../../relatorio';
 import { equipamentosFaturamento } from './../../../../utils/mocks/equipamentos';
 import { SaveFaturamentoEquipamento } from '../../../../redux/reducers/atendimento.reducer';
 
@@ -22,8 +21,6 @@ export class FaturarEquipamentoSelecionadoPage  implements OnInit {
   public formEquipment: FormGroup;
   public atividadeSelecionado;
   public tipoPage;
-
-  page = RelatorioPage;
 
   constructor(
     public navCtrl: NavController,
@@ -200,14 +197,12 @@ export class FaturarEquipamentoSelecionadoPage  implements OnInit {
 
   saveEquipment(equipment) {
     this.saveOrEditEquipment(equipment);
-    this.navPageDetail();
+    this.goBackToPageDetail();
   }
 
-  navPageDetail() {
-    this.navCtrl.push(this.page, {
-      atividade: this.atividadeSelecionado,
-      tipoPage: 2,
-    });
+  goBackToPageDetail() {
+    const relatorioView  = this.navCtrl.getViews().find(nav => nav.name === 'RelatorioPage');
+    this.navCtrl.popTo(relatorioView);
   }
 
 }
