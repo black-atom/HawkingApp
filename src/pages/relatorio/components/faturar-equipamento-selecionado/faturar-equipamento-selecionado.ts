@@ -190,8 +190,10 @@ export class FaturarEquipamentoSelecionadoPage  implements OnInit {
   }
 
   saveOrEditEquipment(equipment) {
+    const { foto, key } =  this.equipamentoRecebido;
+    const equipamento = { ...equipment, key, foto };
     this.store.dispatch(
-      new SaveFaturamentoEquipamento(this.atividadeSelecionado.atendimento._id ,equipment),
+      new SaveFaturamentoEquipamento(this.atividadeSelecionado.atendimento._id , equipamento),
     );
   }
 

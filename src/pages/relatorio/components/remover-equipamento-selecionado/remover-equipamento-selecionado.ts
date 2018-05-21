@@ -165,7 +165,10 @@ export class RemoverEquipamentoSelecionadoPage implements OnInit {
   }
 
   saveOrEditEquipment(equipment) {
-    const action = new SaveRemoveEquipamento(this.atividadeSelecionado.atendimento._id ,equipment);
+    const { foto, key } =  this.equipamentoRecebido;
+    const equipamento = { ...equipment, key, foto };
+    const action =
+      new SaveRemoveEquipamento(this.atividadeSelecionado.atendimento._id , equipamento);
     this.store.dispatch(action);
     this.goBack();
   }

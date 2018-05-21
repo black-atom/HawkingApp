@@ -4,7 +4,10 @@ import {
   RemoverEquipamentoSelecionadoPage,
 } from './../remover-equipamento-selecionado/remover-equipamento-selecionado';
 import { Store } from '@ngrx/store';
-import { atendimentosAll } from './../../../../redux/reducers/atendimento.reducer';
+import {
+  atendimentosAll,
+  RemoveEquipamentoRetirado,
+} from './../../../../redux/reducers/atendimento.reducer';
 import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
@@ -52,6 +55,11 @@ export class FormEquipamentosRetiradosComponent  implements OnInit {
       atividade: this.atividadeSelecionada,
       tipoPage: 'retirar',
     });
+  }
+
+  removerEquipamento(equipamento) {
+    const { atendimento: { _id } } = this.atividadeSelecionada;
+    this.store.dispatch(new RemoveEquipamentoRetirado(_id, equipamento));
   }
 
 }

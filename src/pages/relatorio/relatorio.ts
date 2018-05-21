@@ -80,13 +80,15 @@ export class RelatorioPage  implements OnInit{
 
   next() {
     this.slides.slideNext();
+    this.saveData();
   }
 
   previous() {
     this.slides.slidePrev();
+    this.saveData();
   }
 
   saveData() {
-    console.log('saving', this.currentFormsData);
+    console.log('saving',  this.currentFormsData);
   }
 }

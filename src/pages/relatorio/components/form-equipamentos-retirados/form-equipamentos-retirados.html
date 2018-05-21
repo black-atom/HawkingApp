@@ -6,7 +6,7 @@
 
 <div *ngIf="atividadeSelecionadaStore$ | async; let atendimento">
   <div class="item" *ngFor="let equipamento of atendimento?.relatorio?.equipamentos_retirados">
-      <div class="more-action-item" >
+      <div class="more-action-item" (click)="removerEquipamento(equipamento)" >
         <ion-icon name="close"></ion-icon>
         </div>
       <div class="foto-wrapper">

@@ -29,6 +29,9 @@ export const SAVE_RELATORIO_ATENDIMENTO = 'SAVE_RELATORIO_ATENDIMENTO';
 export const SAVE_REMOVE_EQUIPAMENTO = 'SAVE_REMOVE_EQUIPAMENTO';
 export const SAVE_FATURAR_EQUIPAMENTO = 'SAVE_FATURAR_EQUIPAMENTO';
 
+export const REMOVE_REMOVE_EQUIPAMENTO = 'REMOVE_REMOVE_EQUIPAMENTO';
+export const REMOVE_FATURAR_EQUIPAMENTO = 'REMOVE_FATURAR_EQUIPAMENTO';
+
 export const SYNC_ATENDIMENTOS = 'SYNC_ATENDIMENTOS';
 export const SYNC_ATENDIMENTOS_SUCCESS = 'SYNC_ATENDIMENTOS_SUCCESS';
 export const SYNC_ATENDIMENTOS_FAILED = 'SYNC_ATENDIMENTOS_FAILED';
@@ -123,6 +126,16 @@ export class SaveRelatorio implements Action {
   constructor(public atendimentoId: string,public payload: Relatorio) { }
 }
 
+export class RemoveEquipamentoRetirado implements Action {
+  readonly type: string = REMOVE_REMOVE_EQUIPAMENTO;
+  constructor(public atendimentoID: string, public payload: RemocaoRelogio) { }
+}
+
+export class RemoveEquipamentoFaturado implements Action {
+  readonly type: string = REMOVE_FATURAR_EQUIPAMENTO;
+  constructor(public atendimentoID: string, public payload: EquipamentoFaturamento) { }
+}
+
 export type ActionsAtendimento =
   |  RetriveAtendimento
   |  RetriveAtendimentoSuccess
@@ -136,6 +149,8 @@ export type ActionsAtendimento =
   |  EditarRemoveEquipamento
   |  EditarFaturamentoEquipamento
   |  EditarFaturamentoEquipamento
+  |  RemoveEquipamentoFaturado
+  |  RemoveEquipamentoRetirado
   |  SaveRelatorio
   |  AdicionarPerguntas;
 
@@ -266,6 +281,44 @@ export const atendimentoReducer = (
           : atendimentos;
       });
     }
+
+    case REMOVE_REMOVE_EQUIPAMENTO: {
+      const { atendimentoID, payload } = <RemoveEquipamentoRetirado>action;
+      const findAtendimento: Atendimento = state.find(at => at._id === atendimentoID);
+      const { relatorio } = findAtendimento;
+      const equipamentos = relatorio.equipamentos_retirados.filter(eq => eq.id !== payload.id);
+
+      return state.map(atd => atd._id === findAtendimento._id ? {
+        ...findAtendimento,
+        synced: false,
+        relatorio: {
+          ...relatorio,
+          equipamentos_retirados: equipamentos,
+        },
+      }
+      : atd,
+      );
+    }
+
+    case REMOVE_FATURAR_EQUIPAMENTO: {
+      const { atendimentoID, payload } = <RemoveEquipamentoFaturado>action;
+      const findAtendimento: Atendimento = state.find(at => at._id === atendimentoID);
+      const { relatorio } = findAtendimento;
+      const { faturamento } = relatorio;
+      const equipamentos = relatorio.faturamento.equipamentos.filter(eq => eq.id !== payload.id);
+
+      return state.map(atd => atd._id === findAtendimento._id ? {
+        ...findAtendimento,
+        synced: false,
+        relatorio: {
+          ...relatorio,
+          faturamento: { ...faturamento, equipamentos },
+        },
+      }
+      : atd,
+      );
+    }
+
 
     case RETRIEVE_ATENDIMENTOS_FAILED:
       return state;

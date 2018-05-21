@@ -33,6 +33,7 @@
             <ion-slide>
               <form-faturamento
                 *ngIf="activeFormIndex === 2"
+                [atividadeSelecionada]="atividadeSelecionada"
                 [initialData]="faturamentoData"
                 (change)="formChange($event)">
               </form-faturamento>

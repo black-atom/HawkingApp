@@ -5,6 +5,9 @@
       <ion-list>
         <ion-item>
           <ion-label>Retornar ao Local?</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Retornar ao Local?</ion-label>
           <ion-select formControlName="motivo_retorno" cancelText="Cancelar">
             <ion-option *ngFor="let motivo of motivos" [value]="motivo"> {{ motivo }} </ion-option>
           </ion-select>
@@ -15,8 +18,11 @@
 
     <ion-card>
       <ion-card-content >
+          <ion-item>
+            <ion-label>Resumo do atendimento</ion-label>
+          </ion-item>
         <ion-item text-wrap>
-          <ion-label color="primary" stacked>Resumo do atendimento</ion-label>
+          <ion-label color="primary" stacked></ion-label>
           <ion-textarea
             formControlName="resumo_atendimento"
             placeholder="Digite o resumo do atendimento..."
