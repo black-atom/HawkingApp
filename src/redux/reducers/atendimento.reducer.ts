@@ -112,18 +112,18 @@ export const atendimentoReducer = (
         atendimento,
       );
     }
-    case SAVE_ATENDIMENTO_ASSINATURA: {
-      const { atendimentoID, assinatura } = <SaveAtendimentoAssinatura>action;
-      return state.map(
-        atendimento => atendimento._id === atendimentoID ?
-        {
-          ...atendimento,
-          assinatura,
-          synced: false,
-        } :
-        atendimento,
-      );
-    }
+    // case SAVE_ATENDIMENTO_ASSINATURA: {
+    //   const { atendimentoID, assinatura } = <SaveAtendimentoAssinatura>action;
+    //   return state.map(
+    //     atendimento => atendimento._id === atendimentoID ?
+    //     {
+    //       ...atendimento,
+    //       assinatura,
+    //       synced: false,
+    //     } :
+    //     atendimento,
+    //   );
+    // }
     case RETRIEVE_ATENDIMENTOS_SUCCESS: {
       const atendimentos = action.payload.atendimentos.map((atendimento: Atendimento) => {
         const atendimentoFound: Atendimento = state

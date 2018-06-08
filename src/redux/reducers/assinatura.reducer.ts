@@ -55,8 +55,21 @@ export class UploadAssinaturaFailed implements Action {
   }
 }
 
+export class AddAssinaturaInfo implements Action {
+  readonly type = ADD_ASSINATURA;
+  payload: Assinatura;
+  constructor(payload: Assinatura) {
+    this.payload = {
+      ...payload,
+      isUploaded: false,
+      isUploading: false,
+    };
+  }
+}
+
 export type assinaturaActions =
   | AddAssinatura
+  | AddAssinaturaInfo
   | UploadAssinatura
   | UploadAssinaturaSuccess
   | UploadAssinaturaFailed;
@@ -74,7 +87,7 @@ export const assinaturaReducer = (state: Assinatura[] = [], action: assinaturaAc
       const assinatura = action.payload;
       const foundAssinatura = state.find(ass => ass.atendimentoID === assinatura.atendimentoID);
       return foundAssinatura ?
-        state.map(mapper(action.payload)) :
+        state.map(mapper({ ...foundAssinatura, ...action.payload })) :
         [...state, action.payload];
     }
 
