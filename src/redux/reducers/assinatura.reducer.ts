@@ -67,12 +67,17 @@ export class AddAssinaturaInfo implements Action {
   }
 }
 
+class ActionInit implements Action{
+  readonly type = '@ngrx/store/init';
+}
+
 export type assinaturaActions =
   | AddAssinatura
   | AddAssinaturaInfo
   | UploadAssinatura
   | UploadAssinaturaSuccess
-  | UploadAssinaturaFailed;
+  | UploadAssinaturaFailed
+  | ActionInit;
 
 const mapper = (assinatura: Assinatura) => (stateItem: Assinatura) => {
   return assinatura.atendimentoID === stateItem.atendimentoID ?
@@ -82,6 +87,14 @@ const mapper = (assinatura: Assinatura) => (stateItem: Assinatura) => {
 export const assinaturaReducer = (state: Assinatura[] = [], action: assinaturaActions) => {
 
   switch (action.type) {
+    case '@ngrx/store/init': {
+      return state.map((assinatura) => {
+        if (assinatura.isUploading) {
+          return { ...assinatura, isUploading: false };
+        }
+        return assinatura;
+      });
+    }
 
     case ADD_ASSINATURA: {
       const assinatura = action.payload;
@@ -114,4 +127,9 @@ export const selectAssinaturasToUpload = createSelector(
   selectImagens,
   (assinaturas: Assinatura[]) =>  assinaturas.filter(
     (assinatura:Assinatura) => !assinatura.isUploading && !assinatura.isUploaded),
+);
+
+export const numeroDeAssinaturasToUpload = createSelector(
+  selectAssinaturasToUpload,
+  (assinaturas: Assinatura[]) =>  assinaturas.length,
 );

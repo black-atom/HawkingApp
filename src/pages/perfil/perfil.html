@@ -20,4 +20,48 @@
     <label>Telefone</label>
     <p>4332-4040</p>
   </div>
+  <!-- <button ion-button color="danger">Show Dev Tools</button> -->
+  <ion-card>
+    <ion-card-header>
+      Dados para sincronizar
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="images"></ion-icon>
+          Imagens
+        <button ion-button item-end (click)='dispatchForceUpload("imagens")'>
+          {{ numeroDeFotosParaUpload$ | async }}
+          <ion-icon name="sync"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="clipboard"></ion-icon>
+          Atendimentos
+        <button ion-button item-end (click)='dispatchForceUpload("atendimentos")'>
+          {{ numeroDeAtendimentosToUpload$ | async }}
+          <ion-icon name="sync"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="construct"></ion-icon>
+          Atividades
+        <button ion-button item-end (click)='dispatchForceUpload("atividades")'>
+          {{ numeroDeAtividadesToUpload$ | async }}
+          <ion-icon name="sync"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="finger-print"></ion-icon>
+          Assinaturas
+        <button ion-button item-end (click)='dispatchForceUpload("assinaturas")'>
+          {{ numeroDeAssinaturasToUpload$ | async }}
+          <ion-icon name="sync"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
 </ion-content>

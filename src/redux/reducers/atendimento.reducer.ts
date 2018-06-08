@@ -186,6 +186,11 @@ export const selectAtendimentosToSync = createSelector(
   atendimentos => atendimentos.filter(atendimento => !atendimento.synced),
 );
 
+export const numeroDeAtendimentosToSync = createSelector(
+  selectAtendimentosToSync,
+  atendimentos => atendimentos.length,
+);
+
 export const atendimentosPendentes = createSelector(
   getAllAtendimentos,
   (atendimentos: Atendimento[]) => {
