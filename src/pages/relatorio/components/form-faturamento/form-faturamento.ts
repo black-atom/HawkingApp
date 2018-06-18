@@ -54,14 +54,17 @@ export class FormFaturamentoComponent  implements OnInit{
     );
   }
 
-  initForm({ cnpj = '',
+  initForm({
+    cnpj = '',
     email = '',
     razao_social = '',
+    prazo = '',
   } = {}) {
     this.form = this.fb.group({
       cnpj,
       razao_social,
       email,
+      prazo,
     });
 
     this.subscription = this.form

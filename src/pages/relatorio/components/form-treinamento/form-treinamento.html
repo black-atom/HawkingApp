@@ -1,14 +1,26 @@
 <form [formGroup]="formTreinamento">
-  <ion-card-content>
+    <ion-card>
+      <ion-card-content>
+      <ion-list>
+      <ion-item>
+        <ion-label>Software</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Software</ion-label>
+        <ion-select cancelText="Cancelar" formControlName="software">
+          <ion-option *ngFor="let software of softwareList" [value]="software">
+            {{ software }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+<ion-card>
+    <ion-card-content>
     <ion-item>
-      <ion-label>Software</ion-label>
-      <ion-select cancelText="Cancelar" formControlName="software">
-        <ion-option *ngFor="let software of softwareList" [value]="software">
-          {{ software }}
-        </ion-option>
-      </ion-select>
+      <ion-label>Topicos</ion-label>
     </ion-item>
-
       <ion-item>
         <ion-label>Topicos</ion-label>
         <ion-select multiple="true" cancelText="Cancelar" formControlName="topicos">
@@ -18,4 +30,5 @@
         </ion-select>
       </ion-item>
     </ion-card-content>
+  </ion-card>
 </form>

@@ -203,15 +203,26 @@ export const atendimentoReducer = (
     case SAVE_RELATORIO_ATENDIMENTO: {
       const { atendimentoId, payload: relatorio } = <SaveRelatorio>action;
 
-      return state.map(atendimento =>
-        atendimento._id === atendimentoId ?
-        ({
+      return state.map((atendimento) => {
+
+        const { relatorio: oldRelatorio } = atendimento;
+        const faturamento = oldRelatorio && oldRelatorio.faturamento ? ({
+          ...oldRelatorio.faturamento,
+          ...relatorio.faturamento,
+        }) : relatorio.faturamento;
+
+        const newAtendimento = {
           ...atendimento,
-          relatorio,
+          relatorio: {
+            ...oldRelatorio,
+            ...relatorio,
+            faturamento,
+          },
           synced: false,
-        }) :
-        atendimento,
-      );
+        };
+
+        return atendimento._id === atendimentoId ? newAtendimento : atendimento;
+      });
     }
 
     case SAVE_REMOVE_EQUIPAMENTO: {

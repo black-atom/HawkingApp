@@ -10,14 +10,14 @@
         <ion-icon name="close"></ion-icon>
         </div>
       <div class="foto-wrapper">
-        <img class="photo-item" src="assets/imgs/equipamentos/{{ equipamento.key }}/{{ equipamento.foto }}" alt="">
+        <img class="photo-item" src="assets/imgs/equipamentos/{{ equipamento?.key }}/{{ equipamento?.foto }}" alt="">
       </div>
       <div class="content-item" (click)="editarEquipamento(equipamento)">
-        <h3>{{ equipamento.descricao }} {{ equipamento.modelo }}</h3>
-        <p>N. Serie {{ equipamento.numero_equipamento }}</p>
-          <div class="quantity" *ngIf="equipamento.pecas.length > 0">
+        <h3>{{ equipamento?.descricao }} {{ equipamento?.modelo }}</h3>
+        <p>N. Serie {{ equipamento?.numero_equipamento }}</p>
+          <div class="quantity" *ngIf="equipamento?.pecas.length > 0">
             <h5 class="quantity">Quantidade Pecas</h5>
-            <p class="quantity">Un. {{ equipamento.pecas.length || 0 }}</p>
+            <p class="quantity">Un. {{ equipamento?.pecas.length || 0 }}</p>
         </div>
       </div>
   </div>

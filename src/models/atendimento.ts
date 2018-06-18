@@ -178,5 +178,5 @@ export interface Faturamento {
   email: string;
   quem_aprovou: string;
   valor: string;
-  prazo_pagamento: string;
+  prazo: string;
 }

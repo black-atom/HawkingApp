@@ -57,7 +57,7 @@ export class FormResumoComponent  implements OnInit, OnDestroy{
     this.subscriptions = [sub1, sub2];
   }
 
-  ngOnDestroy(){
-    //this.subscriptions.forEach(sub => sub.unsubscribe());
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

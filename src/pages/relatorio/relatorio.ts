@@ -1,6 +1,9 @@
+import { SaveRelatorio, atendimentosAll } from './../../redux/reducers/atendimento.reducer';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { NavController, Slides, IonicPage, NavParams } from 'ionic-angular';
 import { lensProp, set, view } from 'ramda';
+import { Store } from '@ngrx/store';
+import { State } from '../../redux/reducers';
 
 @IonicPage({
   name: 'RelatorioPage',
@@ -13,7 +16,7 @@ export class RelatorioPage  implements OnInit{
 
   @ViewChild(Slides) slides: Slides;
   activeFormIndex = 0;
-  currentFormsData = {};
+  currentFormsData;
   atividadeSelecionada;
 
   get beginning() {
@@ -42,6 +45,7 @@ export class RelatorioPage  implements OnInit{
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private store: Store<State>,
   ) {
 
   }
@@ -49,6 +53,13 @@ export class RelatorioPage  implements OnInit{
   ngOnInit() {
     this.atividadeSelecionada = this.navParams.get('atividade');
     this.activeFormIndex = this.navParams.get('tipoPage') || 0;
+    this.store.select(atendimentosAll).subscribe(atendimentos =>
+      this.currentFormsData = atendimentos.find(
+        atendimento => atendimento._id === this.atividadeSelecionada.atendimento._id,
+      ).relatorio ?  atendimentos.find(
+        atendimento => atendimento._id === this.atividadeSelecionada.atendimento._id,
+      ).relatorio : {},
+    );
   }
 
   getFormData(formName) {
@@ -89,6 +100,8 @@ export class RelatorioPage  implements OnInit{
   }
 
   saveData() {
-    console.log('saving',  this.currentFormsData);
+    this.store.dispatch(
+      new SaveRelatorio(this.atividadeSelecionada.atendimento._id, this.currentFormsData),
+    );
   }
 }
