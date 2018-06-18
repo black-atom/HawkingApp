@@ -1,0 +1,243 @@
+page-relatorio {
+
+  ion-content {
+    background: #fff;
+  }
+
+  button.btn-add-equipments {
+    width: 50%;
+    padding: 2%;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 800;
+    border-radius: 3px;
+    background: #4484EF;
+  }
+
+  div.item {
+    text-align: left;
+    display: flex;
+    padding: 1%;
+    background-color: #fff;
+    align-items: center;
+    width: 100%;
+    font-size: 0.8em;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .foto-wrapper {
+    margin-left: 5%;
+    width: 13%;
+  }
+
+  .more-action-item {
+    margin-left: 5%;
+    font-size: 1.8em;
+    color: red;
+  }
+
+  div.content-item {
+    color: #666;
+    font-family: arial, helvetica, 'san-serif';
+  }
+
+  div.content-item p, div.content-item  h3 {
+    margin: 0;
+  }
+
+  .quantity {
+    margin: 0;
+    padding-top: 10px;
+  }
+
+  .quantity > h5 {
+    color: #1C7637;
+  }
+
+  .quantity p {
+    font-weight: bold;
+  }
+
+  .form-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0px;
+    padding:10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3em;
+    color: white;
+    text-align: center;
+
+    li {
+      list-style: none;
+    }
+
+    li ion-icon {
+      color: #40B0EC;
+      text-shadow: none;
+    }
+
+    .active  {
+      color: rgb(0, 60, 163);
+      font-weight: 800;
+    }
+  }
+
+  .action-buttons {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  ion-header {
+    background: #40B0EC;
+  }
+  .client-info {
+    color: #fff;
+    padding: 16px;
+  }
+  .client-info h5  {
+    color: #eee;
+  }
+
+  .step ion-icon {
+    height: 35px;
+    width: 35px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 1.5em;
+  }
+
+  ion-footer button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 20%;
+    padding: 2%;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 800;
+    border-radius: 3px;
+    background: #4484EF;
+  }
+
+  ion-footer button:active {
+    opacity: 0.5;
+  }
+
+  .text-danger {
+    color: #DF1A1C;
+  }
+
+
+  div.input-text-faturamento input {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 1.3em;
+    margin-top: 2%;
+    height: 42px;
+    width: 100%;
+    padding-left: 10px;
+  }
+
+  div.input-text-faturamento {
+    margin-top : 2%;
+    text-align: left;
+  }
+
+  label {
+    font-size: 1.5em;
+  }
+
+  small {
+    font-size: 1em;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    ion-header {
+      max-height: 40%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    h1, h2, h3, h4, h5, h6, p, ul, li  {
+      font-size: 0.8em !important;
+    }
+
+    .form-menu {
+      display: block;
+      margin-top: 0;
+      text-align: left;
+    }
+
+    ul {
+      padding: 2%;
+    }
+
+    li {
+      font-family: Arial, Helvetica, sans-serif;;
+      text-align: left !important;
+      padding: 3% !important;
+      width: 100%;
+      border-radius: 2%;
+      transition: all 0.4s;
+      cursor: pointer;
+    }
+
+    li:hover {
+      padding-left: 6% !important;
+    }
+
+    li:hover ion-icon {
+      color: rgba(0, 102, 255, 0.315);
+      text-shadow: none;
+    }
+
+    .active {
+      background-color: color($colors, primary);
+    }
+
+    .content {
+     top: 15%;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .content {
+     top: 12%;
+    }
+
+    button.btn-add-equipments {
+      font-size: .8em;
+    }
+
+    ion-footer button {
+      font-size: .8em;
+    }
+
+  }
+
+
+
+  @media screen and (max-width: 300px) {
+
+    ion-footer button {
+      font-size: .6em;
+    }
+
+  }
+
+  @media screen and (max-width: 200px) {
+    .content {
+     top: 10%;
+    }
+    ion-footer button {
+      font-size: .5em;
+    }
+  }
+
+
+}

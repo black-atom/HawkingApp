@@ -1,0 +1,135 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>{{ equipamentoSelecionado.descricao }} {{ model }} - {{ numberEquipments }}</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content>
+    <ion-grid>
+      <ion-row [formGroup]="formEquipment">
+        <ion-col col-12>
+          <h4>{{ equipamentoSelecionado.descricao }} {{ model }} - {{ numberEquipments }}</h4>
+        </ion-col>
+        <ion-col col-6>
+          <div class="photo">
+            <img src="assets/imgs/equipamentos/{{ equipamentoSelecionado.key }}/{{ equipamentoSelecionado.foto }}" alt="">
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="number-equipments">
+            <label for="">N. Serie</label>
+            <input type="text" [(ngModel)]="numberEquipments" formControlName="numero_equipamento">
+            <small class="text-danger"
+              *ngIf="formEquipment.get('numero_equipamento').hasError('required') && formEquipment.get('numero_equipamento').touched">
+              <ion-icon name="close"></ion-icon>
+              Campo requerido!
+            </small>
+          </div>
+          <p>Modelo:</p>
+          <div class="models-equipament">
+            <ion-row>
+              <ion-col col-3 *ngFor="let modelo of equipamentoSelecionado?.modelos">
+                <button class="model"
+                (click)="setModelEquipments(modelo)">{{ modelo }}</button>
+              </ion-col>
+              <ion-col col-12>
+                <small class="text-danger"
+                *ngIf="formEquipment.get('modelo').hasError('required') && formEquipment.touched">
+                  <ion-icon name="close"></ion-icon>
+                  Selecione um modelo!
+                </small>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+
+        <ion-col col-12>
+          <div class="input-text-equipments">
+            <label for="">Problema</label>
+            <input type="text" formControlName="problema">
+            <small class="text-danger"
+            *ngIf="formEquipment.get('problema').hasError('required') && formEquipment.get('problema').touched">
+              <ion-icon name="close"></ion-icon>
+              Campo requerido!
+            </small>
+          </div>
+          <div class="input-text-equipments">
+            <label for="">Testes Efetuados</label>
+            <input type="text" formControlName="testes">
+            <small class="text-danger"
+            *ngIf="formEquipment.get('testes').hasError('required') && formEquipment.get('testes').touched">
+              <ion-icon name="close"></ion-icon>
+              Campo requerido!
+            </small>
+          </div>
+        </ion-col>
+
+        <ion-col col-12 *ngIf="equipamentoSelecionado.pecas.length > 0">
+          <div class="add-item">
+            <h6>Itens</h6>
+            <button class="btn" (click)="showCheckbox()">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </div>
+        </ion-col>
+
+        <div class="item" formArrayName="pecas">
+          <table>
+            <tr>
+              <th></th>
+              <!-- <th></th> -->
+              <th>Descricao</th>
+              <th>Un.</th>
+            </tr>
+            <tr *ngFor="let peca of formEquipment.controls['pecas'].controls; let i=index" formGroupName="{{i}}">
+              <td>
+                <div class="btn-remove" (click)="deleteItem(i)">
+                  <ion-icon name="close"></ion-icon>
+                </div>
+              </td>
+              <!-- <td class="td-image"><img src="assets/imgs/pecas/{{ formEquipment.value.pecas[i].foto }}"></td> -->
+              <td>{{ formEquipment.value.pecas[i].descricao }}</td>
+              <td>
+                <div class="quantity">
+                  <ion-icon name="remove" *ngIf="formEquipment.value.pecas[i].quantidade !== 1" (click)="lessQuantity(i)"></ion-icon>
+                    {{ formEquipment.value.pecas[i].quantidade }}
+                  <ion-icon name="add" (click)="moreQuantity(i)"></ion-icon>
+                </div>
+              </td>
+
+            </tr>
+          </table>
+
+        </div>
+
+        <!-- <div class="item" formArrayName="pecas">
+          <ul>
+            <li *ngFor="let peca of formEquipment.controls['pecas'].controls; let i=index" formGroupName="{{i}}">
+               <div class="remove-item">
+                  <div class="btn-remove" (click)="deleteItem(i)">
+                    <ion-icon name="close"></ion-icon>
+                  </div>
+                  <img src="assets/imgs/pecas/{{ formEquipment.value.pecas[i].foto }}">
+               </div>
+              <div>
+                <p>{{ formEquipment.value.pecas[i].descricao }}</p>
+              </div>
+              <div class="quantity">
+                <ion-icon name="remove" *ngIf="formEquipment.value.pecas[i].quantidade !== 1" (click)="lessQuantity(i)"></ion-icon>
+                  Un. {{ formEquipment.value.pecas[i].quantidade }}
+                <ion-icon name="add" (click)="moreQuantity(i)"></ion-icon>
+              </div>
+              </li>
+            </ul>
+          </div> -->
+
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+
+  <ion-footer class="equipament-footer">
+    <button [disabled]="!formEquipment.valid" (click)="saveEquipment(formEquipment.value)">Salvar</button>
+  </ion-footer>

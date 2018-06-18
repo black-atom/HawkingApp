@@ -7,43 +7,43 @@
     </ion-item>
 
     <ion-item text-wrap>
-      <h4>{{ atividade.atendimento?.cliente.nome_razao_social | uppercase }}</h4>
-      <p>{{ atividade.atendimento?.cliente.cnpj_cpf }}</p>
+      <h4>{{ atividade?.atendimento?.cliente?.nome_razao_social | uppercase }}</h4>
+      <p>{{ atividade?.atendimento?.cliente?.cnpj_cpf }}</p>
     </ion-item>
 
     <ion-item text-wrap>
       <h2>Contato</h2>
-      <p *ngIf="atividade.atendimento?.contato.nome">{{ atividade.atendimento?.contato.nome }}</p>
-      <p *ngIf="atividade.atendimento?.contato.telefone">{{ atividade.atendimento?.contato.telefone }}</p>
+      <p *ngIf="atividade?.atendimento?.contato?.nome">{{ atividade?.atendimento?.contato?.nome }}</p>
+      <p *ngIf="atividade?.atendimento?.contato?.telefone">{{ atividade?.atendimento?.contato?.telefone }}</p>
     </ion-item>
 
     <ion-item text-wrap>
       <h4>Endereço</h4>
       <p>
-        {{ atividade.atendimento?.endereco.rua | uppercase }},
-        <span *ngIf="atividade.atendimento?.endereco.numero !== 'NULL'">
-          {{ atividade.atendimento?.endereco.numero }},
+        {{ atividade?.atendimento?.endereco?.rua | uppercase }},
+        <span *ngIf="atividade?.atendimento?.endereco?.numero !== 'NULL'">
+          {{ atividade?.atendimento?.endereco?.numero }},
         </span>
-        {{ atividade.atendimento?.endereco.bairro | uppercase }},
-        {{ atividade.atendimento?.endereco.cidade | uppercase }} -
-        {{ atividade.atendimento?.endereco.uf | uppercase }},
-        {{ atividade.atendimento?.endereco.cep }}
+        {{ atividade?.atendimento?.endereco?.bairro | uppercase }},
+        {{ atividade?.atendimento?.endereco?.cidade | uppercase }} -
+        {{ atividade?.atendimento?.endereco?.uf | uppercase }},
+        {{ atividade?.atendimento?.endereco?.cep }}
       </p>
     </ion-item>
 
-    <ion-item text-wrap *ngIf="atividade.atendimento?.endereco.ponto_referencia">
+    <ion-item text-wrap *ngIf="atividade?.atendimento?.endereco?.ponto_referencia">
       <h4>Ponto de Referência</h4>
-      <p>{{ atividade.atendimento?.endereco.ponto_referencia }}</p>
+      <p>{{ atividade?.atendimento?.endereco?.ponto_referencia }}</p>
     </ion-item>
 
-    <ion-item text-wrap *ngIf="atividade.atendimento?.estacionamento">
+    <ion-item text-wrap *ngIf="atividade?.atendimento?.estacionamento">
       <h4>Estacionamento</h4>
-      <p>{{ atividade.atendimento?.estacionamento }}</p>
+      <p>{{ atividade?.atendimento?.estacionamento }}</p>
     </ion-item>
 
-    <ion-item text-wrap *ngIf="atividade.atendimento?.observacao" no-lines>
+    <ion-item text-wrap *ngIf="atividade?.atendimento?.observacao" no-lines>
       <h4>Observação do chamado</h4>
-      <p>{{ atividade.atendimento?.observacao }}</p>
+      <p>{{ atividade?.atendimento?.observacao }}</p>
     </ion-item>
 
       <hr>
@@ -54,21 +54,21 @@
 
       <ion-item text-wrap>
         <h4>Aberto Por:</h4>
-        <p>{{ atividade.atendimento?.createdBy | uppercase }}</p>
+        <p>{{ atividade?.atendimento?.createdBy | uppercase }}</p>
       </ion-item>
 
       <ion-item>
         <h4>Tipo de Serviço</h4>
         <p>
-          {{ atividade.atendimento?.tipo }}
-          <span *ngIf="atividade.atendimento?.garantia">
-            - {{ atividade.atendimento?.garantia | date: 'dd/MM/yyyy' }}
+          {{ atividade?.atendimento?.tipo }}
+          <span *ngIf="atividade?.atendimento?.garantia">
+            - {{ atividade?.atendimento?.garantia | date: 'dd/MM/yyyy' }}
           </span>
-          <span *ngIf="atividade.atendimento?.valor">
-            - R$ {{ atividade.atendimento?.valor }}
+          <span *ngIf="atividade?.atendimento?.valor">
+            - R$ {{ atividade?.atendimento?.valor }}
           </span>
-          <span *ngIf="atividade.atendimento?.autorizado">
-            - {{ atividade.atendimento?.autorizado | uppercase }}
+          <span *ngIf="atividade?.atendimento?.autorizado">
+            - {{ atividade?.atendimento?.autorizado | uppercase }}
           </span>
         </p>
       </ion-item>
@@ -77,21 +77,21 @@
       <ion-item text-wrap>
         <h4>Modelo do equipamento</h4>
         <p>
-          {{ atividade.atendimento?.modelo_equipamento }}
-          <span *ngIf="atividade.atendimento?.numero_equipamento">
-            - N.º {{ atividade.atendimento?.numero_equipamento }}
+          {{ atividade?.atendimento?.modelo_equipamento }}
+          <span *ngIf="atividade?.atendimento?.numero_equipamento">
+            - N.º {{ atividade?.atendimento?.numero_equipamento }}
           </span>
         </p>
       </ion-item>
 
       <ion-item text-wrap>
         <h4>Descrição do chamado</h4>
-        <p>{{ atividade.atendimento?.descricao }}</p>
+        <p>{{ atividade?.atendimento?.descricao }}</p>
       </ion-item>
 
       <ion-item text-wrap>
         <h4>Testes efetuados</h4>
-        <p>{{atividade.atendimento?.testes_efetuados}}</p>
+        <p>{{atividade?.atendimento?.testes_efetuados}}</p>
       </ion-item>
 
     </ion-list>

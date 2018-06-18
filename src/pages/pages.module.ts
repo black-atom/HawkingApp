@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { SuporteModule } from './suporte/suporte.module';
 import { TabPageModule } from './tab-page/tab-page.module';
 import { ClientDataPageModule } from './client-data/client-data-page.module';
+import { RelatorioModule } from './relatorio/relatorio.module';
 
 @NgModule({
   imports:[
@@ -23,6 +24,7 @@ import { ClientDataPageModule } from './client-data/client-data-page.module';
     TabPageModule,
     ClientDataPageModule,
     ReactiveFormsModule,
+    RelatorioModule,
   ],
 })
 

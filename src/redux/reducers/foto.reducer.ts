@@ -41,11 +41,15 @@ export class UploadFotoFailed implements Action{
   constructor(public payload: Foto) { }
 }
 
+export class ActionInit implements Action{
+  readonly type = '@ngrx/store/init';
+}
+
 export type ActionsFoto =
   |  AddFoto
   |  UploadFoto
   |  UploadFotoSuccess
-  |  UploadFotoFailed;
+  |  UploadFotoFailed | ActionInit;
 
 export interface ActionWithPayload<T> extends Action {
   payload?: T;
@@ -53,6 +57,14 @@ export interface ActionWithPayload<T> extends Action {
 
 export const fotoReducer = (state: Foto[] = [], action: ActionsFoto) => {
   switch (action.type){
+    case '@ngrx/store/init': {
+      return state.map((foto) => {
+        if (foto.isUploading) {
+          return { ...foto, isUploading: false };
+        }
+        return foto;
+      });
+    }
 
     case ADD_FOTO:
       return [...state, action.payload];
@@ -92,11 +104,6 @@ export const selectFotosToUpload =
   createSelector(getAllFotos, (fotos: Foto[]) =>
     fotos.filter(img => !img.isUploaded && !img.isUploading));
 
-export const fotosParaUploadSelector =
-  createSelector(selectFotosToUpload, (fotos: Foto[]) => {
-    return fotos.reduce((sum, item) => {
-      return sum + 1 ;
-    // tslint:disable-next-line:align
-    }, 0);
-  });
+export const numeroDeFotosParaUploadSelector =
+  createSelector(selectFotosToUpload, (fotos: Foto[]) => fotos.length);
 

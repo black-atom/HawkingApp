@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Relatório do Técnico</ion-title>
+  </ion-navbar>
+  <div class="client-info">
+    <h4>{{ atividadeSelecionada?.atendimento?.cliente?.nome_razao_social }}</h4>
+  </div>
+
+  <ul class="form-menu">
+    <li [class.active]="activeFormIndex === 0" (click)="handleFormMenuClick(0)">Treinamento</li>
+    <li [class.active]="activeFormIndex === 1" (click)="handleFormMenuClick(1)">Retirar Equipamento</li>
+    <li [class.active]="activeFormIndex === 2" (click)="handleFormMenuClick(2)">Faturamento</li>
+    <li [class.active]="activeFormIndex === 3" (click)="handleFormMenuClick(3)">Resumo</li>
+  </ul>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+        <ion-slides (ionSlideDidChange)='ionSlideDidChange()' paginationType="progress">
+            <ion-slide>
+              <form-treinamento
+                *ngIf="activeFormIndex === 0"
+                [initialData]="treinamentoData"
+                (change)="formChange($event)">
+              </form-treinamento>
+            </ion-slide>
+            <ion-slide>
+              <form-equipamentos-retirados
+                *ngIf="activeFormIndex === 1"
+                [atividadeSelecionada]="atividadeSelecionada">
+              </form-equipamentos-retirados>
+            </ion-slide>
+            <ion-slide>
+              <form-faturamento
+                *ngIf="activeFormIndex === 2"
+                [atividadeSelecionada]="atividadeSelecionada"
+                [initialData]="faturamentoData"
+                (change)="formChange($event)">
+              </form-faturamento>
+            </ion-slide>
+            <ion-slide>
+              <form-resumo
+                *ngIf="activeFormIndex === 3"
+                [initialData]="resumoData"
+                (change)="formChange($event)">
+              </form-resumo>
+            </ion-slide>
+          </ion-slides>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="action-buttons">
+
+    <button *ngIf="!beginning" (click)='previous()'>
+      <ion-icon name="arrow-round-back"></ion-icon>
+      <div>
+          Anterior
+      </div>
+    </button>
+    <button *ngIf="!end" (click)='next()'>
+      <div>Próximo</div>
+      <ion-icon name="arrow-round-forward"></ion-icon>
+    </button>
+  </div>
+</ion-footer>

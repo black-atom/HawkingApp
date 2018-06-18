@@ -268,6 +268,11 @@ export const selectAtividadesToSync = createSelector(
   atividades => atividades.filter(atividade => !atividade.synced),
 );
 
+export const numeroAtividadesToSync = createSelector(
+  selectAtividadesToSync,
+  atividades => atividades.length,
+);
+
 const statuses = {
   PENDENTE: 'pendente',
   PAUSE_ATIVIDADE: 'pausado',

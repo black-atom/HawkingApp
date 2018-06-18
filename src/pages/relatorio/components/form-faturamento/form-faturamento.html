@@ -1,0 +1,74 @@
+<ion-card-content>
+  <button class="btn-add-equipments" (click)="navPageDetail()">
+    <ion-icon name="add" large> Adicionar Equipamento</ion-icon>
+  </button>
+</ion-card-content>
+
+
+<form [formGroup]="form">
+  <ion-card-content>
+    <div>
+
+        <div class="input-text-faturamento">
+          <label for="">Cnpj</label>
+          <input type="text" formControlName="cnpj">
+          <small class="text-danger"
+        *ngIf="form.get('cnpj').hasError('required') && form.get('cnpj').touched">
+          <ion-icon name="close"></ion-icon>
+          Campo requerido!
+        </small>
+        </div>
+
+
+        <div class="input-text-faturamento">
+            <label for="">Razão Social</label>
+            <input type="text" formControlName="razao_social" >
+            <small class="text-danger"
+            *ngIf="form.get('razao_social').hasError('required') && form.get('razao_social').touched">
+              <ion-icon name="close"></ion-icon>
+              Campo requerido!
+            </small>
+          </div>
+
+
+        <div class="input-text-faturamento">
+            <label for="">Email</label>
+            <input type="text" formControlName="email" autocomplete='email'>
+            <small class="text-danger"
+        *ngIf="form.get('email').hasError('required') && form.get('email').touched">
+          <ion-icon name="close"></ion-icon>
+          Campo requerido!
+        </small>
+          </div>
+
+          <div class="input-text-faturamento">
+              <label for="">Prazo de Pagamento</label>
+              <input type="text" formControlName="prazo">
+              <small class="text-danger"
+          *ngIf="form.get('prazo').hasError('required') && form.get('prazo').touched">
+            <ion-icon name="close"></ion-icon>
+            Campo requerido!
+          </small>
+            </div>
+    </div>
+  </ion-card-content>
+</form>
+
+<div *ngIf="atividadeSelecionadaStore$ | async; let atendimento">
+  <div class="item" *ngFor="let equipamento of atendimento?.relatorio?.faturamento?.equipamentos">
+      <div class="more-action-item" (click)="removerEquipamento(equipamento)">
+        <ion-icon name="close"></ion-icon>
+        </div>
+      <div class="foto-wrapper">
+        <img class="photo-item" src="assets/imgs/equipamentos/{{ equipamento?.key }}/{{ equipamento?.foto }}" alt="">
+      </div>
+      <div class="content-item" (click)="editarEquipamento(equipamento)">
+        <h3>{{ equipamento?.descricao }} {{ equipamento?.modelo }}</h3>
+        <p>N. Serie {{ equipamento.numero_equipamento }}</p>
+          <div class="quantity" *ngIf="equipamento?.pecas.length > 0">
+            <h5 class="quantity">Quantidade Pecas</h5>
+            <p class="quantity">Un. {{ equipamento?.pecas.length || 0 }}</p>
+        </div>
+      </div>
+  </div>
+</div>

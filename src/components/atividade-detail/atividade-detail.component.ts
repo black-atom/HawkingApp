@@ -7,10 +7,6 @@ import {
   PopoverController,
 } from 'ionic-angular';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
-
-import {
-  RelatorioInteracaoPage,
-} from '../../pages/atividades/components/relatorio-interacao/relatorio-interacao.component';
 import { State } from '../../redux/reducers';
 import { Store } from '@ngrx/store';
 import {
@@ -149,7 +145,7 @@ export class AtividadeDetail implements OnInit, OnDestroy{
   }
 
   inicializaDeslocamento() {
-    const message = 'Descolamento iniciado com sucesso!';
+    const message = 'Deslocamento iniciado com sucesso!';
 
     if (
       (this.atividadeTipo && this.atividadeTipo !== 'outros') ||
@@ -164,7 +160,7 @@ export class AtividadeDetail implements OnInit, OnDestroy{
   }
 
   finalizaDeslocamento() {
-    const message = 'Descolamento finalizado com sucesso!';
+    const message = 'Deslocamento finalizado com sucesso!';
     this.store.dispatch(new FinalizaDeslocamento(this.atividadeID));
     this.presentToast(message);
   }
@@ -182,7 +178,7 @@ export class AtividadeDetail implements OnInit, OnDestroy{
   }
 
   openRelatorioInteracaoPage(atividade) {
-    this.navCtrl.push(RelatorioInteracaoPage, { atividade });
+    this.navCtrl.push('RelatorioPage', { atividade });
   }
 
   showPrompt({ title, message, name, type }) {

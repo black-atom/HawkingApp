@@ -1,10 +1,17 @@
 atividade {
   background-color: transparent !important;
   .content-atividade {
-    height: 80px;
+    height: 110px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .image-activity {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
   }
 
   .em-execucao {
@@ -22,10 +29,8 @@ atividade {
   .concluido {
     border-left: 3px solid #006cfc;
   }
-
-  ion-item{
     h2 {
-      font-size: 1.3em !important;
+      font-size: 0.9em !important;
       color: #333 !important;
       font-family: 'Open Sans', sans-serif !important;
     }
@@ -33,7 +38,6 @@ atividade {
       color: #666 !important;
       font-family: 'Open Sans', sans-serif !important;
     }
-  }
 
 
   ion-label {
@@ -59,5 +63,18 @@ atividade {
 
   ion-item {
     background-color: transparent !important;
+  }
+
+
+  @media (min-width: 100px) and (max-width: 499px) {
+      h2, p {
+        font-size: 1em !important;
+      }
+  }
+
+ @media (min-width: 500px) and (max-width: 2000px) {
+      h2, p {
+        font-size: 1.1em !important;
+      }
   }
 }

@@ -1,8 +1,16 @@
-<h1 padding >Nova Atividade</h1>
+<div class="action-activity">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+          <h1>Nova Atividade</h1>
+      </ion-col>
 
-<div>
-  <button *ngFor="let buttonProps of buttonProperties" padding (click)="openAtividadeDetail(buttonProps.key)">
-    <img class="avatar" src="{{ buttonProps.imgPath }}" >
-    <h2>{{ buttonProps.name }}</h2>
-  </button>
+      <ion-col col-6 col-sm-3 col-md3 col-lg-3 col-xl-3 text-center *ngFor="let buttonProps of buttonProperties">
+        <button (click)="openAtividadeDetail(buttonProps.key)">
+          <img src="{{ buttonProps.imgPath }}">
+          <h2 text-wrap>{{ buttonProps.name }}</h2>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </div>

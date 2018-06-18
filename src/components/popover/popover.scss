@@ -1,27 +1,63 @@
 .atividade-modal {
   .popover-wrapper {
     .popover-content {
-      top: 65%!important;
-      left: 0px!important;
+      top: 40% !important;
+      left: 0px !important;
       width: 100%;
       height: 100%;
-      transform-origin: left top 0px !important;
-      transform: scale(1)!important;
-      align-items: center;
-
-      h1 , h2 {
-        font-size: 20px;
-        color: #666 !important ;
-      }
-
-      button {
-        background-color: white !important;
-        .avatar {
-          height: 60px !important;
-          width: 60px !important;
+      .action-activity {
+        h2,
+        h1 {
+          font-size: 1.2em;
+          color: #666 !important;
+          font-family: Arial, Helvetica, sans-serif;
         }
-        h2 {
-          font-size: 12px;
+        display: flex;
+        justify-content: space-around;
+        button {
+          background: transparent;
+          width: 160px;
+        }
+        button img {
+          width: 50%;
+        }
+      }
+      transform-origin: left top 0px !important;
+      transform: scale(1) !important;
+    }
+  }
+
+  @media (min-width: 100px) and (max-width: 399px) {
+    .popover-wrapper {
+      .popover-content {
+        top: 60% !important;
+        .action-activity button {
+          width: 110px !important;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 400px) and (max-width: 599px) {
+    .popover-wrapper {
+      .popover-content {
+        top: 60% !important;
+        .action-activity button {
+          width: 130px !important;
+          font-size: 1em;
+        }
+      }
+    }
+  }
+
+ @media (min-width: 600px) and (max-width: 2000px) {
+    .popover-wrapper {
+      .popover-content {
+        top: 70% !important;
+        .action-activity button {
+          width: 130px !important;
+          font-size: 1em;
         }
       }
     }

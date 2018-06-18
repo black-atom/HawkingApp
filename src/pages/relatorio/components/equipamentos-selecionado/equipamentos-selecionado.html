@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{ equipmentsType | uppercase }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+       <ion-row>
+
+         <ion-col col-6 *ngFor="let equipamento of equipamentos">
+             <div class="photo" (click)="navPageDetail(equipamento)">
+               <img src="assets/imgs/equipamentos/{{equipamento.key}}/{{equipamento.foto}}" alt="">
+                 <div class="header">
+                   <h6>{{ equipamento.descricao }}</h6>
+               </div>
+             </div>
+         </ion-col>
+
+       </ion-row>
+     </ion-grid>
+ </ion-content>
