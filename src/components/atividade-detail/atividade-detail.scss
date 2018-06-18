@@ -1,21 +1,24 @@
 atividade-detail {
-  @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+  @import url("https://fonts.googleapis.com/css?family=Amatic+SC");
   background-color: #fefefe !important;
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     color: #333 !important;
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: "Montserrat", sans-serif !important;
   }
   p {
     color: #666 !important;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
     line-height: 20px !important;
   }
-  ion-header{
-    background-color: #FFFFFF !important;
+  ion-header {
+    background-color: #ffffff !important;
     position: relative;
     height: auto;
-    background:
-      url(http://www.giardinopollensa.com/wp-content/uploads/2013/06/blur1.jpg)
+    background: url(http://www.giardinopollensa.com/wp-content/uploads/2013/06/blur1.jpg)
       no-repeat center center;
     background-size: cover;
 
@@ -27,30 +30,22 @@ atividade-detail {
       text-align: center;
       h1 {
         font-size: 80px !important;
-        font-family: 'Amatic SC', cursive !important;
-        color: #FFFFFF !important;
+        font-family: "Amatic SC", cursive !important;
+        color: #ffffff !important;
         width: 100%;
       }
     }
     div.segments-custom {
-      background-color: #FFFFFF !important;
-      margin: 20% 0 0 0 !important;
+      background-color: #ffffff !important;
       padding: 0 !important;
     }
     div.input-wrapper {
-      background-color: #FFFFFF !important;
-
+      background-color: #ffffff !important;
     }
   }
 
   ion-content {
-    background-color: #FFFFFF !important;
-  }
-
-  .actions {
-    margin-top: 6%;
-    display: flex;
-    justify-content: space-around;
+    background-color: #ffffff !important;
   }
 
   .action {
@@ -69,7 +64,7 @@ atividade-detail {
 
   .photo:active {
     box-shadow: 2px 2px 15px rgb(34, 34, 34);
-    background-color:  rgb(160, 160, 160);
+    background-color: rgb(160, 160, 160);
   }
 
   .atividade-info {
@@ -88,4 +83,8 @@ atividade-detail {
     background-color: transparent !important;
     border: none !important;
   }
+  .actions {
+    text-align: center;
+  }
+
 }
