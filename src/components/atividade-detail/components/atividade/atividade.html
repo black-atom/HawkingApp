@@ -6,12 +6,12 @@
     <div class="timeline">
       <div class="entry" *ngFor="let monitoramento of atividade?.monitoramentos">
         <div class="title">
-          <h3>{{ monitoramento.date | date: 'HH:mm' }}</h3>
+          <h3>{{ monitoramento?.date | date: 'HH:mm' }}</h3>
         </div>
         <div class="body">
           <p>Status</p>
           <ul>
-            <li>{{ monitoramento.status }}</li>
+            <li>{{ monitoramento?.status }}</li>
           </ul>
         </div>
       </div>
