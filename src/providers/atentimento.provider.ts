@@ -30,7 +30,7 @@ export class AtendimentoProvider {
         estado: 'associado',
         data_atendimento: today,
         'tecnico.nome': nomeFuncionario,
-        app: 'true',
+        app: true,
       };
       return this.http.get<[Atendimento]>(this.url, { params: { ...query } })
       .catch(this.lidaComErro);
