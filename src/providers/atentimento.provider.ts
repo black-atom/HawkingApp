@@ -29,8 +29,8 @@ export class AtendimentoProvider {
       const query = {
         estado: 'associado',
         data_atendimento: today,
+        app: 'true',
         'tecnico.nome': nomeFuncionario,
-        app: true,
       };
       return this.http.get<[Atendimento]>(this.url, { params: { ...query } })
       .catch(this.lidaComErro);
