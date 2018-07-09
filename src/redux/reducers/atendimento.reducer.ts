@@ -8,6 +8,7 @@ import {
   eqBy,
   prop,
 } from 'ramda';
+import { RETRIEVE_ATIVIDADES_SUCCESS, ReTrieveAtivadesSuccess } from './atividade.reduce';
 
 const INITIAL_STATE: Atendimento[] = [];
 
@@ -112,20 +113,10 @@ export const atendimentoReducer = (
         atendimento,
       );
     }
-    // case SAVE_ATENDIMENTO_ASSINATURA: {
-    //   const { atendimentoID, assinatura } = <SaveAtendimentoAssinatura>action;
-    //   return state.map(
-    //     atendimento => atendimento._id === atendimentoID ?
-    //     {
-    //       ...atendimento,
-    //       assinatura,
-    //       synced: false,
-    //     } :
-    //     atendimento,
-    //   );
-    // }
-    case RETRIEVE_ATENDIMENTOS_SUCCESS: {
-      const atendimentos = action.payload.atendimentos.map((atendimento: Atendimento) => {
+
+    case RETRIEVE_ATIVIDADES_SUCCESS: {
+      const { atendimentos } = <ReTrieveAtivadesSuccess> action;
+      const atendimentosFromResponse = atendimentos.map((atendimento: Atendimento) => {
         const atendimentoFound: Atendimento = state
           .find(at => at._id === atendimento._id);
 
@@ -137,7 +128,7 @@ export const atendimentoReducer = (
 
       });
 
-      return unionWith(eqBy(prop('_id')), atendimentos, state);
+      return unionWith(eqBy(prop('_id')), state, atendimentosFromResponse);
     }
 
     case SAVE_RELATORIO_ATENDIMENTO: {
