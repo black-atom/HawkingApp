@@ -21,6 +21,8 @@ import { LoginProvider } from '../providers';
 
 import { ProvidersModule } from '../providers/providers.module';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 
 const storage = new Storage({});
@@ -46,6 +48,7 @@ export function getAuthHttp(http) {
     ReduxModule,
     IonicModule.forRoot(MyApp, { tabsHideOnSubPages: 'true' }),
     ProvidersModule,
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
