@@ -11,7 +11,6 @@ import {
   MonitoramentoStatuses,
   AtividadeTipo,
 } from '../../models/atividade';
-import { RETRIEVE_ATENDIMENTOS_SUCCESS } from './atendimento.reducer';
 import { State } from '.';
 import { createSelector, Action } from '@ngrx/store';
 
@@ -26,6 +25,8 @@ export const MUDA_ATIVIDADE_STATUS = 'MUDA_ATIVIDADE_STATUS';
 export const SYNC_ATIVADE = 'SYNC_ATIVADE';
 export const SYNC_ATIVADE_FAILED = 'SYNC_ATIVADE_FAILED';
 export const SYNC_ATIVADE_SUCCESS = 'SYNC_ATIVADE_SUCESS';
+export const RETRIEVE_ATIVIDADES_SUCCESS = 'RETRIEVE_ATIVIDADES_SUCCESS';
+export const RETRIEVE_ATIVIDADES_FAILED =  'RETRIEVE_ATIVIDADES_FAILED';
 
 
 export class SyncAtividade implements Action {
@@ -99,6 +100,16 @@ export class FinalizaDeslocamento implements Action {
   constructor(public atividadeID) { }
 }
 
+export class ReTrieveAtivadesSuccess implements Action {
+  type = RETRIEVE_ATIVIDADES_SUCCESS;
+  constructor(public payload: [AtividadeI], public atendimentos: [Atendimento]) { }
+}
+
+export class ReTrieveAtivadesFailed implements Action {
+  type = RETRIEVE_ATIVIDADES_FAILED;
+  constructor() { }
+}
+
 export type actionTypes = PauseAtividade
   | CriarAtividade
   | CriarAtividadeDescricao
@@ -106,7 +117,8 @@ export type actionTypes = PauseAtividade
   | IniciaAtividade
   | FinalizaAtividade
   | InicializaDeslocamento
-  | FinalizaDeslocamento;
+  | FinalizaDeslocamento
+  | ReTrieveAtivadesSuccess;
 
 
 export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: any) => {
@@ -140,10 +152,13 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
       );
     }
 
-    case RETRIEVE_ATENDIMENTOS_SUCCESS: {
-      const atividades = action.payload.atendimentos
+    case RETRIEVE_ATIVIDADES_SUCCESS: {
+      const { payload: atividades,  atendimentos } = <ReTrieveAtivadesSuccess> action;
+      const atividadesFromAtendimentos = atendimentos
         .map((atendimento: Atendimento) => {
           const atividadeFound: AtividadeI = state
+            .find(at => at.atendimento_id === atendimento._id) 
+          || atividades
             .find(at => at.atendimento_id === atendimento._id);
 
           if (atividadeFound) {
@@ -168,9 +183,38 @@ export const atividadeReducer = (state: AtividadeI[] = INITIAL_STATE, action: an
 
           return mapToAtividade(<any>atendimento);
         });
+      
+      const atividadesFromAtvidades = atividades.map(atividade => ({
+          ...atividade,
+          synced: true,
+        }))
+        .map((atividade: AtividadeI) => {
+          const atividadeFound: AtividadeI = state
+            .find(at => at.atividade_id === atividade.atividade_id);
 
-      return unionWith(eqBy(prop('atividade_id')), atividades, state);
+          if (atividadeFound) {
+            return atividadeFound;
+          }
+
+          return atividade;
+        });
+
+      console.log('atividadesFromAtendimentos', atividadesFromAtendimentos)
+      console.log('atividades', atividades)
+      console.log('state', state)
+      const unionAtividadesAndState = unionWith(
+        eqBy(prop('atividade_id')),
+        state,
+        atividadesFromAtvidades,
+      );
+
+      return unionWith(
+        eqBy(prop('atividade_id')),
+        unionAtividadesAndState,
+        atividadesFromAtendimentos,
+      );
     }
+
     case CRIAR_ATIVIDADE: {
       const atividade: AtividadeI = {
         atendimento: null,

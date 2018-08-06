@@ -10,7 +10,10 @@ import { State } from '../redux/reducers';
 import { HttpClient } from '@angular/common/http';
 
 
-
+interface AtendimentoResponse {
+  atendimentos: [Atendimento];
+  count: number;
+}
 
 @Injectable()
 export class AtendimentoProvider {
@@ -20,21 +23,24 @@ export class AtendimentoProvider {
   constructor(public http: HttpClient, private store: Store<State>) { }
 
   getAllAtendimentosToday() {
-    return this.store.select(appState => appState.login.nome)
-    .take(1)
-    .switchMap((nomeFuncionario) => {
-      const date = new Date();
-      const today = new Date(date.getFullYear(), date.getMonth(), date.getDate()).toString();
+    return this.store.select(appState => appState.login._id)
+      .take(1)
+      .switchMap((tecnicoID) => {
+        const date = new Date();
+        const today = new Date(date.getFullYear(), date.getMonth(), date.getDate()).toString();
 
-      const query = {
-        estado: 'associado',
-        data_atendimento: today,
-        app: 'true',
-        'tecnico.nome': nomeFuncionario,
-      };
-      return this.http.get<[Atendimento]>(this.url, { params: { ...query } })
-      .catch(this.lidaComErro);
-    });
+        const query = {
+          app: 'true',
+          estado: 'associado',
+          data_atendimento: today,
+          ['tecnico._id']: tecnicoID,
+        };
+
+        return this.http
+          .get<AtendimentoResponse>(this.url, { params: { ...query } })
+          .map(response => response.atendimentos)
+          .catch(this.lidaComErro);
+      });
   }
 
   syncAtendimentos(atendimentos: Atendimento[]) {
