@@ -6,6 +6,8 @@ import { AtendimentoProvider } from './atentimento.provider';
 import { ApikeyReqInject } from './../utils/ApiKeyRequestInjector';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { LocationProvider } from './geoLocation';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { NgModule } from '@angular/core';
     AtendimentoProvider,
     FotoProvider,
     MonitoramentoProvider,
+    BackgroundGeolocation,
+    LocationProvider,
   ],
 })
 export class ProvidersModule {}

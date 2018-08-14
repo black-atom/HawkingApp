@@ -17,6 +17,7 @@ import { PerfilPage } from './../perfil/perfil';
 import { SuportePage } from '../suporte/suporte';
 import { State } from '../../redux/reducers';
 import { selectAssinaturasToUpload } from '../../redux/reducers/assinatura.reducer';
+import { LocationProvider } from '../../providers/geoLocation';
 
 
 @Component({
@@ -35,7 +36,11 @@ export class TabPage {
 
   constructor(
     private store: Store<State>,
+    private locationProvider: LocationProvider,
   ) {
+    // initialize the geo location tracking service
+    this.locationProvider.startTracking();
+
     Observable.interval(30000)
       .mergeMap(() => this.store.select(selectFotosToUpload).take(1))
       .mergeMap(fotos => fotos)

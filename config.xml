@@ -3,7 +3,7 @@
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.0.162:8100" />
+    <content src="index.html" />
     <access origin="file:///*" />
     <access origin="cdvfile://*" />
     <allow-navigation href="file:///*/*" />
@@ -100,4 +100,14 @@
     <allow-navigation href="http://192.168.0.162:8100" />
     <engine name="android" spec="6.4.0" />
     <engine name="browser" spec="5.0.3" />
+    <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.3.5">
+        <variable name="GOOGLE_PLAY_SERVICES_VERSION" value="11+" />
+        <variable name="ANDROID_SUPPORT_LIBRARY_VERSION" value="23+" />
+        <variable name="ICON" value="@mipmap/icon" />
+        <variable name="SMALL_ICON" value="@mipmap/icon" />
+        <variable name="ACCOUNT_NAME" value="@string/app_name" />
+        <variable name="ACCOUNT_LABEL" value="@string/app_name" />
+        <variable name="ACCOUNT_TYPE" value="$PACKAGE_NAME.account" />
+        <variable name="CONTENT_AUTHORITY" value="$PACKAGE_NAME" />
+    </plugin>
 </widget>

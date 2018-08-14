@@ -21,6 +21,7 @@ export class LoginEffects {
   .switchMap(payload => this.loginProvider
     .login(payload)
       .do(response => localStorage.setItem('apiKey', response.funcionario.login.api_key))
+      .do(response => localStorage.setItem('tecnico_id', response.funcionario._id))
       .map(user => new LoginSuccess(user))
       .catch(err => Observable.of(new LoginFailed())),
   );
