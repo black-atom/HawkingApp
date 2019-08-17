@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, Slides, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, Slides, NavParams, ViewController, Platform } from 'ionic-angular';
 import { State } from '../../redux/reducers';
 import { Store } from '@ngrx/store';
 import { Assinatura } from '../../models';
@@ -12,6 +12,7 @@ import {
   SaveAvaliacao,
 } from './../../redux/reducers/atendimento.reducer';
 import { AtividadeI } from './../../models/atividade';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
   selector: 'client-data-page',
@@ -32,6 +33,8 @@ export class ClientDataPage implements OnInit {
     public navParams: NavParams,
     public store: Store<State>,
     public view: ViewController,
+    public platform: Platform,
+    private screenOrientation: ScreenOrientation,
   ) {
 
   }
@@ -44,6 +47,18 @@ export class ClientDataPage implements OnInit {
     this.slides.lockSwipes(false);
     this.slides.slideNext(200);
     this.slides.lockSwipes(true);
+
+    if (this.slides.getActiveIndex() === 2) {
+      !this.platform.is('core')
+        && !this.platform.is('mobileweb')
+        && this.screenOrientation
+        .lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    } else {
+      !this.platform.is('core')
+        && !this.platform.is('mobileweb')
+        && this.screenOrientation
+      .lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    }
   }
 
   saveAtendimentoAssinatura(clienteData) {
